@@ -8,22 +8,29 @@
 
 /* Begin PBXBuildFile section */
 		13961C981FEB511100A9B2C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13961C971FEB511100A9B2C1 /* AppDelegate.swift */; };
-		13961C9A1FEB511100A9B2C1 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13961C991FEB511100A9B2C1 /* FirstViewController.swift */; };
-		13961C9C1FEB511100A9B2C1 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13961C9B1FEB511100A9B2C1 /* SecondViewController.swift */; };
+		13961C9A1FEB511100A9B2C1 /* TodayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13961C991FEB511100A9B2C1 /* TodayVC.swift */; };
+		13961C9C1FEB511100A9B2C1 /* TomorrowVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13961C9B1FEB511100A9B2C1 /* TomorrowVC.swift */; };
 		13961C9F1FEB511100A9B2C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13961C9D1FEB511100A9B2C1 /* Main.storyboard */; };
 		13961CA11FEB511100A9B2C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13961CA01FEB511100A9B2C1 /* Assets.xcassets */; };
 		13961CA41FEB511100A9B2C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13961CA21FEB511100A9B2C1 /* LaunchScreen.storyboard */; };
+		13961CAC1FEB6A5600A9B2C1 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 13961CA51FEB511100A9B2C1 /* Info.plist */; };
+		13961CAE1FEB6CFE00A9B2C1 /* Naste DemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 13961CAD1FEB6CFE00A9B2C1 /* Naste DemiBold.otf */; };
+		13961CB01FEB6D9C00A9B2C1 /* Naste.otf in Resources */ = {isa = PBXBuildFile; fileRef = 13961CAF1FEB6D9C00A9B2C1 /* Naste.otf */; };
+		13961CB21FEB6DA700A9B2C1 /* Naste Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 13961CB11FEB6DA600A9B2C1 /* Naste Light.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		13961C941FEB511100A9B2C1 /* TodayTomorrow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodayTomorrow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13961C971FEB511100A9B2C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		13961C991FEB511100A9B2C1 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		13961C9B1FEB511100A9B2C1 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		13961C991FEB511100A9B2C1 /* TodayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayVC.swift; sourceTree = "<group>"; };
+		13961C9B1FEB511100A9B2C1 /* TomorrowVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TomorrowVC.swift; sourceTree = "<group>"; };
 		13961C9E1FEB511100A9B2C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		13961CA01FEB511100A9B2C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		13961CA31FEB511100A9B2C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		13961CA51FEB511100A9B2C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		13961CAD1FEB6CFE00A9B2C1 /* Naste DemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Naste DemiBold.otf"; sourceTree = "<group>"; };
+		13961CAF1FEB6D9C00A9B2C1 /* Naste.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Naste.otf; sourceTree = "<group>"; };
+		13961CB11FEB6DA600A9B2C1 /* Naste Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Naste Light.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,12 +64,15 @@
 			isa = PBXGroup;
 			children = (
 				13961C971FEB511100A9B2C1 /* AppDelegate.swift */,
-				13961C991FEB511100A9B2C1 /* FirstViewController.swift */,
-				13961C9B1FEB511100A9B2C1 /* SecondViewController.swift */,
+				13961C991FEB511100A9B2C1 /* TodayVC.swift */,
+				13961C9B1FEB511100A9B2C1 /* TomorrowVC.swift */,
 				13961C9D1FEB511100A9B2C1 /* Main.storyboard */,
 				13961CA01FEB511100A9B2C1 /* Assets.xcassets */,
 				13961CA21FEB511100A9B2C1 /* LaunchScreen.storyboard */,
 				13961CA51FEB511100A9B2C1 /* Info.plist */,
+				13961CAD1FEB6CFE00A9B2C1 /* Naste DemiBold.otf */,
+				13961CAF1FEB6D9C00A9B2C1 /* Naste.otf */,
+				13961CB11FEB6DA600A9B2C1 /* Naste Light.otf */,
 			);
 			path = TodayTomorrow;
 			sourceTree = "<group>";
@@ -126,9 +136,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13961CAE1FEB6CFE00A9B2C1 /* Naste DemiBold.otf in Resources */,
+				13961CB21FEB6DA700A9B2C1 /* Naste Light.otf in Resources */,
+				13961CAC1FEB6A5600A9B2C1 /* Info.plist in Resources */,
 				13961CA41FEB511100A9B2C1 /* LaunchScreen.storyboard in Resources */,
 				13961CA11FEB511100A9B2C1 /* Assets.xcassets in Resources */,
 				13961C9F1FEB511100A9B2C1 /* Main.storyboard in Resources */,
+				13961CB01FEB6D9C00A9B2C1 /* Naste.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,9 +153,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13961C9C1FEB511100A9B2C1 /* SecondViewController.swift in Sources */,
+				13961C9C1FEB511100A9B2C1 /* TomorrowVC.swift in Sources */,
 				13961C981FEB511100A9B2C1 /* AppDelegate.swift in Sources */,
-				13961C9A1FEB511100A9B2C1 /* FirstViewController.swift in Sources */,
+				13961C9A1FEB511100A9B2C1 /* TodayVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,7 +299,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ca.centennialcollege.TodayTomorrow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -300,7 +314,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ca.centennialcollege.TodayTomorrow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
