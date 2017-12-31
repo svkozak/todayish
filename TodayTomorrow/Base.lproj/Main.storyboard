@@ -298,6 +298,7 @@
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="QrX-tm-9Gy" firstAttribute="leading" secondItem="SYZ-Vd-rhu" secondAttribute="leading" id="4eH-6I-52L"/>
                             <constraint firstItem="QrX-tm-9Gy" firstAttribute="bottom" secondItem="SYZ-Vd-rhu" secondAttribute="bottom" id="Bg8-45-Iko"/>

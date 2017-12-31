@@ -31,6 +31,7 @@ class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
+        taskDescriptionField.resignFirstResponder()
         if taskDescriptionField.text == "" {
             taskDescriptionField.textColor = UIColor.lightGray
             taskDescriptionField.text = "Task description"
@@ -43,6 +44,10 @@ class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Add gesture recognizers for dismissing the keyboard
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
+        self.navigationController?.navigationBar.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
         
         // Back button color
         self.navigationController?.navigationBar.tintColor = UIColor.white
@@ -99,8 +104,16 @@ class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         
     }
     
+    // MARK: Keyboard
+
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        taskNameField.resignFirstResponder()
+        return true
+    }
     
     
+
     
 
     /*
