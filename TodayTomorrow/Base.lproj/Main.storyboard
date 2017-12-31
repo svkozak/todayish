@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -38,22 +39,32 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e8v-lg-4U7">
-                                                    <rect key="frame" x="332" y="7" width="28" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e8v-lg-4U7">
+                                                    <rect key="frame" x="331.5" y="20" width="28" height="28"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="28" id="3PE-q5-7cR"/>
+                                                    </constraints>
                                                     <state key="normal" image="green-deselected"/>
                                                     <connections>
                                                         <action selector="checkBoxCheckWithSender:" destination="9pv-A4-QxB" eventType="touchUpInside" id="qRT-JK-YKE"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EcD-uD-bFg">
-                                                    <rect key="frame" x="15" y="19" width="309" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EcD-uD-bFg">
+                                                    <rect key="frame" x="15" y="26" width="254" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="254" id="izZ-hP-K3t"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Naste-Light" family="Naste" pointSize="20"/>
                                                     <color key="textColor" red="0.29803921570000003" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="e8v-lg-4U7" secondAttribute="trailing" id="2jp-MG-8uB"/>
+                                                <constraint firstItem="e8v-lg-4U7" firstAttribute="top" secondItem="Uz1-Pd-XpX" secondAttribute="topMargin" constant="9" id="A1P-0E-92P"/>
+                                                <constraint firstItem="EcD-uD-bFg" firstAttribute="top" secondItem="Uz1-Pd-XpX" secondAttribute="topMargin" constant="15" id="R9t-Ei-SXu"/>
+                                                <constraint firstItem="EcD-uD-bFg" firstAttribute="leading" secondItem="Uz1-Pd-XpX" secondAttribute="leadingMargin" id="uue-p4-tKI"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="checkBox" destination="e8v-lg-4U7" id="iMZ-JN-wUS"/>
@@ -91,7 +102,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1468" y="-321.58920539730138"/>
+            <point key="canvasLocation" x="1466.25" y="-322.18309859154931"/>
         </scene>
         <!--Edit task-->
         <scene sceneID="7je-eX-9hW">
@@ -101,95 +112,108 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Task description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PB0-Hy-LEY">
-                                <rect key="frame" x="15" y="184" width="344" height="210"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8bm-LY-Myj">
+                                <rect key="frame" x="0.0" y="116" width="375" height="502"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Task description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PB0-Hy-LEY">
+                                        <rect key="frame" x="20" y="88" width="335" height="210"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="210" id="jh8-zo-oM9"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.29803921570000003" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="Naste-Light" family="Naste" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="4Ze-nd-O0I" id="cWT-rW-R1x"/>
+                                        </connections>
+                                    </textView>
+                                    <textField opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Task title" placeholder="Task title" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="LyK-Yx-RUB">
+                                        <rect key="frame" x="20" y="20" width="335" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="k7E-JU-gOL"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.29803921570000003" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="Naste-Light" family="Naste" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="4Ze-nd-O0I" id="ASb-hH-Vx3"/>
+                                        </connections>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pxq-om-Akr">
+                                        <rect key="frame" x="20" y="318" width="335" height="50"/>
+                                        <color key="backgroundColor" red="0.29803921570000003" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="2hf-sv-0cM"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Naste" family="Naste" pointSize="20"/>
+                                        <state key="normal" title="Update task">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="saveTaskPressed:" destination="LzB-Wj-r9S" eventType="touchUpInside" id="0p4-PV-o5E"/>
+                                            <action selector="updateTask:" destination="4Ze-nd-O0I" eventType="touchUpInside" id="0eD-lQ-YUc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pFB-70-jo7">
+                                        <rect key="frame" x="20" y="388" width="335" height="50"/>
+                                        <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="mfC-qV-b1R"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Naste" family="Naste" pointSize="20"/>
+                                        <state key="normal" title="Delete task">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="deleteTask:" destination="4Ze-nd-O0I" eventType="touchUpInside" id="2b4-Eb-Ytw"/>
+                                            <action selector="saveTaskPressed:" destination="LzB-Wj-r9S" eventType="touchUpInside" id="MMa-u1-jCZ"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or go back to previous screen to discard all edits." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gd4-DZ-Y3h">
+                                        <rect key="frame" x="20" y="458" width="335" height="13"/>
+                                        <fontDescription key="fontDescription" name="Naste-Light" family="Naste" pointSize="13"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="210" id="jh8-zo-oM9"/>
+                                    <constraint firstItem="Pxq-om-Akr" firstAttribute="leading" secondItem="8bm-LY-Myj" secondAttribute="leading" constant="20" id="4Nm-dC-GZ5"/>
+                                    <constraint firstItem="pFB-70-jo7" firstAttribute="leading" secondItem="8bm-LY-Myj" secondAttribute="leading" constant="20" id="6cu-Wg-LrU"/>
+                                    <constraint firstAttribute="trailing" secondItem="Gd4-DZ-Y3h" secondAttribute="trailing" constant="20" id="HUd-dE-TGj"/>
+                                    <constraint firstItem="PB0-Hy-LEY" firstAttribute="top" secondItem="LyK-Yx-RUB" secondAttribute="bottom" constant="8" id="Hrk-b3-gjC"/>
+                                    <constraint firstAttribute="bottom" secondItem="Gd4-DZ-Y3h" secondAttribute="bottom" constant="11" id="Mfi-To-WPu"/>
+                                    <constraint firstItem="Pxq-om-Akr" firstAttribute="top" secondItem="PB0-Hy-LEY" secondAttribute="bottom" constant="20" id="PiF-Er-r7U"/>
+                                    <constraint firstAttribute="trailing" secondItem="PB0-Hy-LEY" secondAttribute="trailing" constant="20" id="Utc-gb-1PJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="Pxq-om-Akr" secondAttribute="trailing" constant="20" id="Zag-f8-jfw"/>
+                                    <constraint firstAttribute="trailing" secondItem="LyK-Yx-RUB" secondAttribute="trailing" constant="20" id="dYf-tk-LeQ"/>
+                                    <constraint firstItem="LyK-Yx-RUB" firstAttribute="leading" secondItem="8bm-LY-Myj" secondAttribute="leading" constant="20" id="eF7-OL-Tfc"/>
+                                    <constraint firstItem="pFB-70-jo7" firstAttribute="top" secondItem="Pxq-om-Akr" secondAttribute="bottom" constant="20" id="iaQ-cG-ZZx"/>
+                                    <constraint firstItem="Gd4-DZ-Y3h" firstAttribute="leading" secondItem="8bm-LY-Myj" secondAttribute="leading" constant="20" id="izF-cQ-QXO"/>
+                                    <constraint firstItem="LyK-Yx-RUB" firstAttribute="top" secondItem="8bm-LY-Myj" secondAttribute="top" constant="20" id="jOr-Cb-bvN"/>
+                                    <constraint firstItem="Gd4-DZ-Y3h" firstAttribute="top" secondItem="pFB-70-jo7" secondAttribute="bottom" constant="20" id="jXQ-Zh-irc"/>
+                                    <constraint firstAttribute="trailing" secondItem="pFB-70-jo7" secondAttribute="trailing" constant="20" id="ouh-4y-J16"/>
+                                    <constraint firstItem="PB0-Hy-LEY" firstAttribute="leading" secondItem="8bm-LY-Myj" secondAttribute="leading" constant="20" id="vAv-6f-LHG"/>
+                                    <constraint firstItem="LyK-Yx-RUB" firstAttribute="centerX" secondItem="8bm-LY-Myj" secondAttribute="centerX" id="zkw-2D-A8J"/>
                                 </constraints>
-                                <color key="textColor" red="0.29803921570000003" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="Naste-Light" family="Naste" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <connections>
-                                    <outlet property="delegate" destination="4Ze-nd-O0I" id="cWT-rW-R1x"/>
-                                </connections>
-                            </textView>
-                            <textField opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Task title" placeholder="Task title" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="LyK-Yx-RUB">
-                                <rect key="frame" x="15" y="116" width="344" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="k7E-JU-gOL"/>
-                                </constraints>
-                                <color key="textColor" red="0.29803921570000003" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="Naste-Light" family="Naste" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="4Ze-nd-O0I" id="ASb-hH-Vx3"/>
-                                </connections>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pxq-om-Akr">
-                                <rect key="frame" x="16" y="434" width="343" height="50"/>
-                                <color key="backgroundColor" red="0.29803921570000003" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="2hf-sv-0cM"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Naste" family="Naste" pointSize="20"/>
-                                <state key="normal" title="Update task">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="saveTaskPressed:" destination="LzB-Wj-r9S" eventType="touchUpInside" id="0p4-PV-o5E"/>
-                                    <action selector="updateTask:" destination="4Ze-nd-O0I" eventType="touchUpInside" id="0eD-lQ-YUc"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pFB-70-jo7">
-                                <rect key="frame" x="16" y="504" width="343" height="50"/>
-                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="mfC-qV-b1R"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Naste" family="Naste" pointSize="20"/>
-                                <state key="normal" title="Delete task">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="deleteTask:" destination="4Ze-nd-O0I" eventType="touchUpInside" id="2b4-Eb-Ytw"/>
-                                    <action selector="saveTaskPressed:" destination="LzB-Wj-r9S" eventType="touchUpInside" id="MMa-u1-jCZ"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or go back to previous screen to discard all edits." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gd4-DZ-Y3h">
-                                <rect key="frame" x="16" y="574" width="343" height="13"/>
-                                <fontDescription key="fontDescription" name="Naste-Light" family="Naste" pointSize="13"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="LyK-Yx-RUB" firstAttribute="top" secondItem="Efi-kU-nIG" secondAttribute="top" id="7pI-fe-YJY"/>
-                            <constraint firstItem="pFB-70-jo7" firstAttribute="top" secondItem="Pxq-om-Akr" secondAttribute="bottom" constant="20" id="GiQ-mU-yUB"/>
-                            <constraint firstItem="PB0-Hy-LEY" firstAttribute="top" secondItem="LyK-Yx-RUB" secondAttribute="bottom" constant="8" id="Lxh-0M-GmG"/>
-                            <constraint firstItem="Gd4-DZ-Y3h" firstAttribute="top" secondItem="pFB-70-jo7" secondAttribute="bottom" constant="20" id="P6w-7U-Lk4"/>
-                            <constraint firstItem="pFB-70-jo7" firstAttribute="leading" secondItem="Efi-kU-nIG" secondAttribute="leading" constant="16" id="Pu1-dW-p7V"/>
-                            <constraint firstItem="LyK-Yx-RUB" firstAttribute="leading" secondItem="Efi-kU-nIG" secondAttribute="leading" constant="15" id="ad6-8V-D5E"/>
-                            <constraint firstItem="Gd4-DZ-Y3h" firstAttribute="leading" secondItem="Efi-kU-nIG" secondAttribute="leading" constant="16" id="cIA-up-hN9"/>
-                            <constraint firstItem="Efi-kU-nIG" firstAttribute="trailing" secondItem="LyK-Yx-RUB" secondAttribute="trailing" constant="16" id="fRe-ma-MaC"/>
-                            <constraint firstItem="Efi-kU-nIG" firstAttribute="trailing" secondItem="PB0-Hy-LEY" secondAttribute="trailing" constant="16" id="hN2-wI-dcD"/>
-                            <constraint firstItem="PB0-Hy-LEY" firstAttribute="leading" secondItem="Efi-kU-nIG" secondAttribute="leading" constant="15" id="l6a-Ul-ZVi"/>
-                            <constraint firstItem="Efi-kU-nIG" firstAttribute="trailing" secondItem="pFB-70-jo7" secondAttribute="trailing" constant="16" id="lp3-2T-FMb"/>
-                            <constraint firstItem="Efi-kU-nIG" firstAttribute="trailing" secondItem="Gd4-DZ-Y3h" secondAttribute="trailing" constant="16" id="m6a-3l-J3d"/>
-                            <constraint firstItem="Pxq-om-Akr" firstAttribute="top" secondItem="PB0-Hy-LEY" secondAttribute="bottom" constant="40" id="mMD-PT-zWJ"/>
-                            <constraint firstItem="Efi-kU-nIG" firstAttribute="trailing" secondItem="Pxq-om-Akr" secondAttribute="trailing" constant="16" id="scv-lQ-odo"/>
-                            <constraint firstItem="Pxq-om-Akr" firstAttribute="leading" secondItem="Efi-kU-nIG" secondAttribute="leading" constant="16" id="uNB-J6-aZk"/>
+                            <constraint firstAttribute="trailing" secondItem="8bm-LY-Myj" secondAttribute="trailing" id="EFl-kV-dJw"/>
+                            <constraint firstItem="8bm-LY-Myj" firstAttribute="top" secondItem="Efi-kU-nIG" secondAttribute="top" id="UpE-9N-KS0"/>
+                            <constraint firstItem="8bm-LY-Myj" firstAttribute="bottom" secondItem="Efi-kU-nIG" secondAttribute="bottom" id="brA-ai-Qf7"/>
+                            <constraint firstItem="8bm-LY-Myj" firstAttribute="leading" secondItem="TlJ-5B-9OP" secondAttribute="leading" id="gDf-m0-VlF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Efi-kU-nIG"/>
                     </view>
@@ -200,7 +224,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k8R-sO-2uu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2250.4000000000001" y="-1029.3103448275863"/>
+            <point key="canvasLocation" x="2250.4000000000001" y="-1029.5352323838081"/>
         </scene>
         <!--Add task-->
         <scene sceneID="qVb-TR-h2s">
@@ -210,62 +234,75 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Task title" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="UQD-ZD-0v2">
-                                <rect key="frame" x="15" y="116" width="344" height="60"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QrX-tm-9Gy">
+                                <rect key="frame" x="0.0" y="116" width="375" height="502"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Task title" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="UQD-ZD-0v2">
+                                        <rect key="frame" x="20" y="20" width="336" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="Ilu-zS-9a9"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.29803921570000003" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="Naste-Light" family="Naste" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="LzB-Wj-r9S" id="09L-3L-4uG"/>
+                                        </connections>
+                                    </textField>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Task description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ndw-6B-3zY">
+                                        <rect key="frame" x="20" y="88" width="336" height="210"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="210" id="jrH-KL-MTh"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.29803921570000003" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="Naste-Light" family="Naste" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="LzB-Wj-r9S" id="ezq-d6-0KQ"/>
+                                        </connections>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ib5-rG-ovn">
+                                        <rect key="frame" x="21" y="338" width="335" height="50"/>
+                                        <color key="backgroundColor" red="0.29803921570000003" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="OdW-CO-ElI"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Naste" family="Naste" pointSize="20"/>
+                                        <state key="normal" title="Add task">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="saveTaskPressed:" destination="LzB-Wj-r9S" eventType="touchUpInside" id="hbO-it-L8M"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="Ilu-zS-9a9"/>
+                                    <constraint firstAttribute="bottom" secondItem="UQD-ZD-0v2" secondAttribute="bottom" constant="422" id="5C7-lO-rKg"/>
+                                    <constraint firstItem="UQD-ZD-0v2" firstAttribute="centerX" secondItem="Ib5-rG-ovn" secondAttribute="centerX" id="5N9-cc-YWu"/>
+                                    <constraint firstItem="UQD-ZD-0v2" firstAttribute="trailing" secondItem="ndw-6B-3zY" secondAttribute="trailing" id="6jC-KC-Mz6"/>
+                                    <constraint firstItem="UQD-ZD-0v2" firstAttribute="leading" secondItem="ndw-6B-3zY" secondAttribute="leading" id="8q9-1b-fyE"/>
+                                    <constraint firstItem="ndw-6B-3zY" firstAttribute="top" secondItem="UQD-ZD-0v2" secondAttribute="bottom" constant="8" symbolic="YES" id="Eyi-eE-pFY"/>
+                                    <constraint firstItem="UQD-ZD-0v2" firstAttribute="leading" secondItem="QrX-tm-9Gy" secondAttribute="leading" constant="20" id="XfS-VI-Tse"/>
+                                    <constraint firstItem="Ib5-rG-ovn" firstAttribute="top" secondItem="ndw-6B-3zY" secondAttribute="bottom" constant="40" id="YJv-mc-YrR"/>
+                                    <constraint firstItem="UQD-ZD-0v2" firstAttribute="trailing" secondItem="Ib5-rG-ovn" secondAttribute="trailing" id="dy1-Yu-9h5"/>
+                                    <constraint firstItem="UQD-ZD-0v2" firstAttribute="top" secondItem="QrX-tm-9Gy" secondAttribute="top" constant="20" id="mdl-DC-QoG"/>
+                                    <constraint firstAttribute="trailing" secondItem="UQD-ZD-0v2" secondAttribute="trailing" constant="19" id="rFV-6Z-I6j"/>
+                                    <constraint firstItem="UQD-ZD-0v2" firstAttribute="centerX" secondItem="QrX-tm-9Gy" secondAttribute="centerX" id="z66-JV-NH1"/>
                                 </constraints>
-                                <color key="textColor" red="0.29803921570000003" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="Naste-Light" family="Naste" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="LzB-Wj-r9S" id="09L-3L-4uG"/>
-                                </connections>
-                            </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Task description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ndw-6B-3zY">
-                                <rect key="frame" x="15" y="184" width="344" height="210"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="210" id="jrH-KL-MTh"/>
-                                </constraints>
-                                <color key="textColor" red="0.29803921570000003" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="Naste-Light" family="Naste" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <connections>
-                                    <outlet property="delegate" destination="LzB-Wj-r9S" id="ezq-d6-0KQ"/>
-                                </connections>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ib5-rG-ovn">
-                                <rect key="frame" x="16" y="434" width="343" height="50"/>
-                                <color key="backgroundColor" red="0.29803921570000003" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="OdW-CO-ElI"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Naste" family="Naste" pointSize="20"/>
-                                <state key="normal" title="Add task">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="saveTaskPressed:" destination="LzB-Wj-r9S" eventType="touchUpInside" id="hbO-it-L8M"/>
-                                </connections>
-                            </button>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="SYZ-Vd-rhu" firstAttribute="trailing" secondItem="Ib5-rG-ovn" secondAttribute="trailing" constant="16" id="8RW-YJ-H3a"/>
-                            <constraint firstItem="ndw-6B-3zY" firstAttribute="leading" secondItem="SYZ-Vd-rhu" secondAttribute="leading" constant="15" id="BQi-YE-q4N"/>
-                            <constraint firstItem="ndw-6B-3zY" firstAttribute="top" secondItem="UQD-ZD-0v2" secondAttribute="bottom" constant="8" id="I1z-0d-jHX"/>
-                            <constraint firstItem="Ib5-rG-ovn" firstAttribute="top" secondItem="ndw-6B-3zY" secondAttribute="bottom" constant="40" id="I68-LG-gRa"/>
-                            <constraint firstItem="UQD-ZD-0v2" firstAttribute="leading" secondItem="SYZ-Vd-rhu" secondAttribute="leading" constant="15" id="TP9-sK-VAk"/>
-                            <constraint firstItem="SYZ-Vd-rhu" firstAttribute="trailing" secondItem="UQD-ZD-0v2" secondAttribute="trailing" constant="16" id="m36-cq-YWa"/>
-                            <constraint firstItem="SYZ-Vd-rhu" firstAttribute="trailing" secondItem="ndw-6B-3zY" secondAttribute="trailing" constant="16" id="pzK-Y4-FIu"/>
-                            <constraint firstItem="UQD-ZD-0v2" firstAttribute="top" secondItem="SYZ-Vd-rhu" secondAttribute="top" id="tHF-2P-nsk"/>
-                            <constraint firstItem="Ib5-rG-ovn" firstAttribute="leading" secondItem="SYZ-Vd-rhu" secondAttribute="leading" constant="16" id="zE5-5k-DN6"/>
+                            <constraint firstItem="QrX-tm-9Gy" firstAttribute="leading" secondItem="SYZ-Vd-rhu" secondAttribute="leading" id="4eH-6I-52L"/>
+                            <constraint firstItem="QrX-tm-9Gy" firstAttribute="bottom" secondItem="SYZ-Vd-rhu" secondAttribute="bottom" id="Bg8-45-Iko"/>
+                            <constraint firstItem="QrX-tm-9Gy" firstAttribute="top" secondItem="SYZ-Vd-rhu" secondAttribute="top" id="WLo-u9-Nub"/>
+                            <constraint firstItem="QrX-tm-9Gy" firstAttribute="trailing" secondItem="SYZ-Vd-rhu" secondAttribute="trailing" id="YbG-bO-qno"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SYZ-Vd-rhu"/>
                     </view>
@@ -276,7 +313,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zxa-Ee-UEp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2252" y="-322.90640394088672"/>
+            <point key="canvasLocation" x="2252" y="-323.38830584707648"/>
         </scene>
         <!--Some day-->
         <scene sceneID="wg7-f3-ORb">
