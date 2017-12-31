@@ -7,30 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1331D9931FF751A700B8D34F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1331D9921FF751A700B8D34F /* Assets.xcassets */; };
+		1331D9951FF77C0500B8D34F /* EditTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1331D9941FF77C0500B8D34F /* EditTaskViewController.swift */; };
+		135E36381FF718E600EF6F78 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 135E36361FF718E600EF6F78 /* Model.xcdatamodeld */; };
+		135E363A1FF71E7400EF6F78 /* TodayTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135E36391FF71E7400EF6F78 /* TodayTaskCell.swift */; };
 		13961C981FEB511100A9B2C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13961C971FEB511100A9B2C1 /* AppDelegate.swift */; };
 		13961C9A1FEB511100A9B2C1 /* TodayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13961C991FEB511100A9B2C1 /* TodayVC.swift */; };
 		13961C9C1FEB511100A9B2C1 /* TomorrowVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13961C9B1FEB511100A9B2C1 /* TomorrowVC.swift */; };
 		13961C9F1FEB511100A9B2C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13961C9D1FEB511100A9B2C1 /* Main.storyboard */; };
-		13961CA11FEB511100A9B2C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13961CA01FEB511100A9B2C1 /* Assets.xcassets */; };
 		13961CA41FEB511100A9B2C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13961CA21FEB511100A9B2C1 /* LaunchScreen.storyboard */; };
 		13961CAC1FEB6A5600A9B2C1 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 13961CA51FEB511100A9B2C1 /* Info.plist */; };
 		13961CAE1FEB6CFE00A9B2C1 /* Naste DemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 13961CAD1FEB6CFE00A9B2C1 /* Naste DemiBold.otf */; };
 		13961CB01FEB6D9C00A9B2C1 /* Naste.otf in Resources */ = {isa = PBXBuildFile; fileRef = 13961CAF1FEB6D9C00A9B2C1 /* Naste.otf */; };
 		13961CB21FEB6DA700A9B2C1 /* Naste Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 13961CB11FEB6DA600A9B2C1 /* Naste Light.otf */; };
+		13F2858F1FF74A4800E598A4 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F2858E1FF74A4800E598A4 /* AddTaskViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1331D9921FF751A700B8D34F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1331D9941FF77C0500B8D34F /* EditTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskViewController.swift; sourceTree = "<group>"; };
+		135E36371FF718E600EF6F78 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		135E36391FF71E7400EF6F78 /* TodayTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTaskCell.swift; sourceTree = "<group>"; };
 		13961C941FEB511100A9B2C1 /* TodayTomorrow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodayTomorrow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13961C971FEB511100A9B2C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13961C991FEB511100A9B2C1 /* TodayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayVC.swift; sourceTree = "<group>"; };
 		13961C9B1FEB511100A9B2C1 /* TomorrowVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TomorrowVC.swift; sourceTree = "<group>"; };
 		13961C9E1FEB511100A9B2C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		13961CA01FEB511100A9B2C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		13961CA31FEB511100A9B2C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		13961CA51FEB511100A9B2C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13961CAD1FEB6CFE00A9B2C1 /* Naste DemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Naste DemiBold.otf"; sourceTree = "<group>"; };
 		13961CAF1FEB6D9C00A9B2C1 /* Naste.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Naste.otf; sourceTree = "<group>"; };
 		13961CB11FEB6DA600A9B2C1 /* Naste Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Naste Light.otf"; sourceTree = "<group>"; };
+		13F2858E1FF74A4800E598A4 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,8 +75,12 @@
 				13961C991FEB511100A9B2C1 /* TodayVC.swift */,
 				13961C9B1FEB511100A9B2C1 /* TomorrowVC.swift */,
 				13961C9D1FEB511100A9B2C1 /* Main.storyboard */,
-				13961CA01FEB511100A9B2C1 /* Assets.xcassets */,
+				1331D9941FF77C0500B8D34F /* EditTaskViewController.swift */,
+				1331D9921FF751A700B8D34F /* Assets.xcassets */,
+				13F2858E1FF74A4800E598A4 /* AddTaskViewController.swift */,
+				135E36391FF71E7400EF6F78 /* TodayTaskCell.swift */,
 				13961CA21FEB511100A9B2C1 /* LaunchScreen.storyboard */,
+				135E36361FF718E600EF6F78 /* Model.xcdatamodeld */,
 				13961CA51FEB511100A9B2C1 /* Info.plist */,
 				13961CAD1FEB6CFE00A9B2C1 /* Naste DemiBold.otf */,
 				13961CAF1FEB6D9C00A9B2C1 /* Naste.otf */,
@@ -140,7 +152,7 @@
 				13961CB21FEB6DA700A9B2C1 /* Naste Light.otf in Resources */,
 				13961CAC1FEB6A5600A9B2C1 /* Info.plist in Resources */,
 				13961CA41FEB511100A9B2C1 /* LaunchScreen.storyboard in Resources */,
-				13961CA11FEB511100A9B2C1 /* Assets.xcassets in Resources */,
+				1331D9931FF751A700B8D34F /* Assets.xcassets in Resources */,
 				13961C9F1FEB511100A9B2C1 /* Main.storyboard in Resources */,
 				13961CB01FEB6D9C00A9B2C1 /* Naste.otf in Resources */,
 			);
@@ -154,8 +166,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				13961C9C1FEB511100A9B2C1 /* TomorrowVC.swift in Sources */,
+				13F2858F1FF74A4800E598A4 /* AddTaskViewController.swift in Sources */,
 				13961C981FEB511100A9B2C1 /* AppDelegate.swift in Sources */,
+				135E363A1FF71E7400EF6F78 /* TodayTaskCell.swift in Sources */,
 				13961C9A1FEB511100A9B2C1 /* TodayVC.swift in Sources */,
+				1331D9951FF77C0500B8D34F /* EditTaskViewController.swift in Sources */,
+				135E36381FF718E600EF6F78 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +356,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		135E36361FF718E600EF6F78 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				135E36371FF718E600EF6F78 /* Model.xcdatamodel */,
+			);
+			currentVersion = 135E36371FF718E600EF6F78 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 13961C8C1FEB511100A9B2C1 /* Project object */;
 }
