@@ -18,10 +18,25 @@ class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     @IBOutlet weak var taskNameField: UITextField!
     @IBOutlet weak var taskDescriptionField: UITextView!
     
+    // MARK: Done button implementation
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        let cancelButton = UIBarButtonItem.init(barButtonSystemItem: .cancel, target: self, action: #selector(cancelEdits))
+        let doneButton = UIBarButtonItem.init(barButtonSystemItem: .save, target: self, action: #selector(saveTaskPressed))
+        self.navigationItem.rightBarButtonItems = [doneButton, cancelButton]
+    }
+    
+    @objc func cancelEdits () {
+        let _ = navigationController?.popViewController(animated: true);
+    }
     
     // MARK: TextView placeholder and editing style
     
     func textViewDidBeginEditing(_ textView: UITextView) {
+        let cancelButton = UIBarButtonItem.init(barButtonSystemItem: .cancel, target: self, action: #selector(cancelEdits))
+        let doneButton = UIBarButtonItem.init(barButtonSystemItem: .save, target: self, action: #selector(saveTaskPressed))
+        self.navigationItem.rightBarButtonItems = [doneButton, cancelButton]
+        
         if taskDescriptionField.text == "Task description" {
             taskDescriptionField.text = ""
             taskDescriptionField.textColor = UIColor(red: 0.298, green: 0.498, blue: 0, alpha: 1)
@@ -56,19 +71,19 @@ class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         taskDescriptionField.textColor = UIColor.lightGray
         
         // TextField and Textview border
-        let border = CALayer()
-        let tVborder = CALayer()
-        let width = CGFloat(0.6)
-        border.borderColor = UIColor(red: 0.298, green: 0.498, blue: 0, alpha: 1).cgColor
-        tVborder.borderColor = UIColor(red: 0.298, green: 0.498, blue: 0, alpha: 1).cgColor
-        border.frame = CGRect(x: 0, y: taskNameField.frame.size.height - width, width:  taskNameField.frame.size.width, height: taskNameField.frame.size.height)
-        tVborder.frame = CGRect(x: 0, y: taskDescriptionField.frame.size.height - width, width:  taskDescriptionField.frame.size.width, height: taskDescriptionField.frame.size.height)
-        border.borderWidth = width
-        tVborder.borderWidth = width
-        taskNameField.layer.addSublayer(border)
-        taskNameField.layer.masksToBounds = true
-        taskDescriptionField.layer.addSublayer(tVborder)
-        taskDescriptionField.layer.masksToBounds = true
+//        let border = CALayer()
+//        let tVborder = CALayer()
+//        let width = CGFloat(0.6)
+//        border.borderColor = UIColor(red: 0.298, green: 0.498, blue: 0, alpha: 1).cgColor
+//        tVborder.borderColor = UIColor(red: 0.298, green: 0.498, blue: 0, alpha: 1).cgColor
+//        border.frame = CGRect(x: 0, y: taskNameField.frame.size.height - width, width:  taskNameField.frame.size.width, height: taskNameField.frame.size.height)
+//        tVborder.frame = CGRect(x: 0, y: taskDescriptionField.frame.size.height - width, width:  taskDescriptionField.frame.size.width, height: taskDescriptionField.frame.size.height)
+//        border.borderWidth = width
+//        tVborder.borderWidth = width
+//        taskNameField.layer.addSublayer(border)
+//        taskNameField.layer.masksToBounds = true
+//        taskDescriptionField.layer.addSublayer(tVborder)
+//        taskDescriptionField.layer.masksToBounds = true
         
     }
 
@@ -83,7 +98,7 @@ class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     @IBAction func saveTaskPressed(_ sender: UIButton) {
         
         if taskNameField.text == "" {
-            let alert = UIAlertController(title: "Oops", message: "Task name should not be empty", preferredStyle: .alert)
+            let alert = UIAlertController(title: "🤷‍♂️", message: "Task name should not be empty", preferredStyle: .alert)
             let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alert.addAction(action)
             self.present(alert, animated: true, completion: nil)

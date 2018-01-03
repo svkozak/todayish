@@ -42,20 +42,36 @@ class EditTaskViewController: UIViewController, UITextFieldDelegate, UITextViewD
 
         
         // TextField and Textview border
-        let border = CALayer()
-        let tVborder = CALayer()
-        let width = CGFloat(0.6)
-        border.borderColor = UIColor(red: 0.298, green: 0.498, blue: 0, alpha: 1).cgColor
-        tVborder.borderColor = UIColor(red: 0.298, green: 0.498, blue: 0, alpha: 1).cgColor
-        border.frame = CGRect(x: 0, y: taskNameField.frame.size.height - width, width:  taskNameField.frame.size.width, height: taskNameField.frame.size.height)
-        tVborder.frame = CGRect(x: 0, y: taskDescriptionField.frame.size.height - width, width:  taskDescriptionField.frame.size.width, height: taskDescriptionField.frame.size.height)
-        border.borderWidth = width
-        tVborder.borderWidth = width
-        taskNameField.layer.addSublayer(border)
-        taskNameField.layer.masksToBounds = true
-        taskDescriptionField.layer.addSublayer(tVborder)
-        taskDescriptionField.layer.masksToBounds = true
+//        let border = CALayer()
+//        let tVborder = CALayer()
+//        let width = CGFloat(0.6)
+//        border.borderColor = UIColor(red: 0.298, green: 0.498, blue: 0, alpha: 1).cgColor
+//        tVborder.borderColor = UIColor(red: 0.298, green: 0.498, blue: 0, alpha: 1).cgColor
+//        border.frame = CGRect(x: 0, y: taskNameField.frame.size.height - width, width:  taskNameField.frame.size.width, height: taskNameField.frame.size.height)
+//        tVborder.frame = CGRect(x: 0, y: taskDescriptionField.frame.size.height - width, width:  taskDescriptionField.frame.size.width, height: taskDescriptionField.frame.size.height)
+//        border.borderWidth = width
+//        tVborder.borderWidth = width
+//        taskNameField.layer.addSublayer(border)
+//        taskNameField.layer.masksToBounds = true
+//        taskDescriptionField.layer.addSublayer(tVborder)
+//        taskDescriptionField.layer.masksToBounds = true
 
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        let cancelButton = UIBarButtonItem.init(barButtonSystemItem: .cancel, target: self, action: #selector(cancelEdits))
+        let doneButton = UIBarButtonItem.init(barButtonSystemItem: .save, target: self, action: #selector(updateTask(_:)))
+        self.navigationItem.rightBarButtonItems = [doneButton, cancelButton]
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        let cancelButton = UIBarButtonItem.init(barButtonSystemItem: .cancel, target: self, action: #selector(cancelEdits))
+        let doneButton = UIBarButtonItem.init(barButtonSystemItem: .save, target: self, action: #selector(updateTask(_:)))
+        self.navigationItem.rightBarButtonItems = [doneButton, cancelButton]
+    }
+    
+    @objc func cancelEdits () {
+        let _ = navigationController?.popViewController(animated: true);
     }
     
     // MARK: Button actions
