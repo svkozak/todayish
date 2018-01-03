@@ -12,13 +12,20 @@ import CoreData
 
 class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    let todayGreen = UIColor(red: 0.298, green: 0.498, blue: 0, alpha: 1)
+
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var tasks: [Task] = []
+    var completedTasks: [Task] = []
     
    @IBOutlet weak var tableView: UITableView!
     
     
     // TableView implementation
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tasks.count
@@ -28,6 +35,11 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TodayTaskCell") as! TodayTaskCell
         cell.todayTaskNameLabel.text = tasks[indexPath.row].taskName
+        if tasks[indexPath.row].taskDescription == "Task description" {
+            cell.descriptionLabel.text = ""
+        } else {
+            cell.descriptionLabel.text = tasks[indexPath.row].taskDescription
+        }
         return cell
     }
     
@@ -79,15 +91,24 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     
-    // Tap on checkbox button
+    // MARK: Tap on checkbox button
     
     @IBAction func checkBoxCheck(sender: UIButton) {
         let cell = sender.superview?.superview as! TodayTaskCell
-        // let indexPath = tableView.indexPath(for: cell)
+        let indexPath = tableView.indexPath(for: cell)
+        let task = tasks[(indexPath?.row)!]
         if sender.imageView?.image == UIImage(named: "green-deselected") {
             cell.setChecked()
+            cell.todayTaskNameLabel.textColor = UIColor.lightGray
+            cell.descriptionLabel.textColor = UIColor.lightGray
+            task.isCompleted = true
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
         } else {
             cell.setUnchecked()
+            cell.todayTaskNameLabel.textColor = todayGreen
+            cell.descriptionLabel.textColor = todayGreen
+            task.isCompleted = false
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
         }
     }
     

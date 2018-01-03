@@ -6,6 +6,7 @@
         <attribute name="taskName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <fetchRequest name="fetchCompleted" entity="Task" predicateString="isCompleted == 1"/>
+    <fetchRequest name="fetchUncompleted" entity="Task" predicateString="isCompleted == 0"/>
     <elements>
         <element name="Task" positionX="-54" positionY="-9" width="128" height="90"/>
     </elements>

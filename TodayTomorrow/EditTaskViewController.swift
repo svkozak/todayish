@@ -68,6 +68,22 @@ class EditTaskViewController: UIViewController, UITextFieldDelegate, UITextViewD
         let cancelButton = UIBarButtonItem.init(barButtonSystemItem: .cancel, target: self, action: #selector(cancelEdits))
         let doneButton = UIBarButtonItem.init(barButtonSystemItem: .save, target: self, action: #selector(updateTask(_:)))
         self.navigationItem.rightBarButtonItems = [doneButton, cancelButton]
+        
+        if taskDescriptionField.text == "Task description" {
+            taskDescriptionField.text = ""
+            taskDescriptionField.textColor = UIColor(red: 0.298, green: 0.498, blue: 0, alpha: 1)
+        } else {
+            print("began editing")
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if taskDescriptionField.text == "" {
+            taskDescriptionField.textColor = UIColor(red: 0.298, green: 0.498, blue: 0, alpha: 1)
+            taskDescriptionField.text = "Task description"
+        } else {
+            print("began editing")
+        }
     }
     
     @objc func cancelEdits () {

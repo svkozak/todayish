@@ -13,6 +13,7 @@ class TodayTaskCell: UITableViewCell {
     
     @IBOutlet weak var todayTaskNameLabel: UILabel!
     @IBOutlet weak var checkBox: UIButton!
+    @IBOutlet weak var descriptionLabel: UILabel!
     
     
     func checkBoxCheck() {
@@ -20,7 +21,7 @@ class TodayTaskCell: UITableViewCell {
     }
     
     func setChecked () {
-        checkBox.setImage(UIImage(named: "green-selected"), for: UIControlState.normal)
+        checkBox.setImage(UIImage(named: "grey-selected"), for: UIControlState.normal)
     }
     
     func setUnchecked() {

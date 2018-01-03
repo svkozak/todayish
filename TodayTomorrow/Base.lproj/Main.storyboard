@@ -28,20 +28,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="60" estimatedRowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="B7D-ct-Pgv">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" estimatedRowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="B7D-ct-Pgv">
                                 <rect key="frame" x="0.0" y="116" width="375" height="502"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" red="0.29803921570000003" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TodayTaskCell" rowHeight="60" id="dbK-gs-bov" customClass="TodayTaskCell" customModule="TodayTomorrow" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TodayTaskCell" rowHeight="80" id="dbK-gs-bov" customClass="TodayTaskCell" customModule="TodayTomorrow" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dbK-gs-bov" id="Uz1-Pd-XpX">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e8v-lg-4U7">
-                                                    <rect key="frame" x="326" y="0.0" width="49" height="60"/>
+                                                    <rect key="frame" x="326" y="0.0" width="49" height="80"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="49" id="3PE-q5-7cR"/>
                                                     </constraints>
@@ -51,25 +51,47 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EcD-uD-bFg">
-                                                    <rect key="frame" x="15" y="26" width="254" height="20"/>
+                                                    <rect key="frame" x="15" y="31" width="51.5" height="20"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="254" id="izZ-hP-K3t"/>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="254" id="izZ-hP-K3t"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Naste-Light" family="Naste" pointSize="20"/>
+                                                    <fontDescription key="fontDescription" name="Naste" family="Naste" pointSize="20"/>
+                                                    <color key="textColor" red="0.29803921570000003" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C9k-SA-DNs">
+                                                    <rect key="frame" x="15" y="82" width="350" height="0.5"/>
+                                                    <color key="backgroundColor" red="0.29803921570000003" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="0.5" id="x6j-u3-rFG"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="stj-ID-I8d">
+                                                    <rect key="frame" x="15" y="59" width="63" height="12"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="254" id="OPd-cq-UDW"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Naste-Light" family="Naste" pointSize="12"/>
                                                     <color key="textColor" red="0.29803921570000003" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="e8v-lg-4U7" firstAttribute="top" secondItem="Uz1-Pd-XpX" secondAttribute="top" id="50j-Mf-QK5"/>
-                                                <constraint firstItem="EcD-uD-bFg" firstAttribute="top" secondItem="Uz1-Pd-XpX" secondAttribute="topMargin" constant="15" id="R9t-Ei-SXu"/>
+                                                <constraint firstItem="stj-ID-I8d" firstAttribute="leading" secondItem="Uz1-Pd-XpX" secondAttribute="leading" constant="15" id="EZ3-kf-fB7"/>
+                                                <constraint firstItem="C9k-SA-DNs" firstAttribute="top" secondItem="EcD-uD-bFg" secondAttribute="bottom" constant="31" id="FyW-5L-F0J"/>
+                                                <constraint firstItem="EcD-uD-bFg" firstAttribute="top" secondItem="Uz1-Pd-XpX" secondAttribute="topMargin" constant="20" id="R9t-Ei-SXu"/>
+                                                <constraint firstAttribute="trailing" secondItem="C9k-SA-DNs" secondAttribute="trailing" constant="10" id="YYY-Az-eBD"/>
                                                 <constraint firstAttribute="trailing" secondItem="e8v-lg-4U7" secondAttribute="trailing" id="ef1-Ht-z7y"/>
                                                 <constraint firstAttribute="bottom" secondItem="e8v-lg-4U7" secondAttribute="bottom" id="iwC-qH-ocw"/>
+                                                <constraint firstItem="stj-ID-I8d" firstAttribute="top" secondItem="EcD-uD-bFg" secondAttribute="bottom" constant="8" id="k0w-4z-AFQ"/>
+                                                <constraint firstItem="C9k-SA-DNs" firstAttribute="leading" secondItem="Uz1-Pd-XpX" secondAttribute="leading" constant="15" id="tA4-Rt-K5F"/>
                                                 <constraint firstItem="EcD-uD-bFg" firstAttribute="leading" secondItem="Uz1-Pd-XpX" secondAttribute="leadingMargin" id="uue-p4-tKI"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="checkBox" destination="e8v-lg-4U7" id="iMZ-JN-wUS"/>
+                                            <outlet property="descriptionLabel" destination="stj-ID-I8d" id="1Cu-I5-3bW"/>
                                             <outlet property="todayTaskNameLabel" destination="EcD-uD-bFg" id="kXZ-Jw-OZ8"/>
                                             <segue destination="4Ze-nd-O0I" kind="show" identifier="showEditTask" id="eM8-HW-cbi">
                                                 <segue key="commit" inheritsFrom="parent" id="KCU-D3-8xn"/>
