@@ -15,9 +15,16 @@ class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+    let someDayBlue = UIColor(red: 0.161, green: 0.502, blue: 0.725, alpha: 1)
+    let todayGreen = UIColor(red: 0.298, green: 0.498, blue: 0, alpha: 1)
+
+    
     @IBOutlet weak var taskNameField: UITextField!
     @IBOutlet weak var taskDescriptionField: UITextView!
     @IBOutlet weak var dueTodaySwitch: UISwitch!
+    @IBOutlet weak var navigationBar: UIView!
+    @IBOutlet weak var dueTodayLabel: UILabel!
+    @IBOutlet weak var saveButton: UIButton!
     
     
     // MARK: TextView placeholder and editing style
@@ -97,6 +104,7 @@ class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         
     }
     
+    
     // MARK: Keyboard
 
     
@@ -110,6 +118,31 @@ class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func switchFlipped(_ sender: UISwitch) {
+        if sender.isOn {
+          setGreenColour()
+        } else {
+            setBlueColour()
+        }
+    }
+    
+    
+    func setBlueColour () {
+        navigationBar.backgroundColor = someDayBlue
+        dueTodayLabel.textColor = someDayBlue
+        saveButton.backgroundColor = someDayBlue
+        taskNameField.textColor = someDayBlue
+        taskDescriptionField.textColor = someDayBlue
+        
+    }
+    
+    func setGreenColour() {
+        navigationBar.backgroundColor = todayGreen
+        dueTodayLabel.textColor = todayGreen
+        saveButton.backgroundColor = todayGreen
+        taskNameField.textColor = todayGreen
+        taskDescriptionField.textColor = todayGreen
+    }
     
 
     /*

@@ -11,12 +11,18 @@ import CoreData
 
 class EditTaskViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
+    let someDayBlue = UIColor(red: 0.161, green: 0.502, blue: 0.725, alpha: 1)
+    let todayGreen = UIColor(red: 0.298, green: 0.498, blue: 0, alpha: 1)
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var taskToEdit: Task?
     
     @IBOutlet weak var taskNameField: UITextField!
     @IBOutlet weak var taskDescriptionField: UITextView!
     @IBOutlet weak var dueTodaySwitch: UISwitch!
+    @IBOutlet weak var navigationBar: UIView!
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var dueTodayLabel: UILabel!
+    
     
     override func viewWillAppear(_ animated: Bool) {
         taskNameField.text = taskToEdit?.taskName
@@ -29,6 +35,12 @@ class EditTaskViewController: UIViewController, UITextFieldDelegate, UITextViewD
         } else {
             taskDescriptionField.text = taskToEdit?.taskDescription
             taskDescriptionField.textColor = UIColor(red: 0.298, green: 0.498, blue: 0, alpha: 1)
+        }
+        
+        if (taskToEdit?.dueToday)! {
+            setGreenColour()
+        } else {
+            setBlueColour()
         }
     }
     
@@ -127,7 +139,34 @@ class EditTaskViewController: UIViewController, UITextFieldDelegate, UITextViewD
         dismiss(animated: true, completion: nil)
     }
     
+    
+    @IBAction func switchFlipped(_ sender: UISwitch) {
+        if sender.isOn {
+            setGreenColour()
+        } else {
+            setBlueColour()
+        }
+    }
+    
+    
+    
 
+    func setBlueColour () {
+        navigationBar.backgroundColor = someDayBlue
+        dueTodayLabel.textColor = someDayBlue
+        saveButton.backgroundColor = someDayBlue
+        taskNameField.textColor = someDayBlue
+        taskDescriptionField.textColor = someDayBlue
+        
+    }
+    
+    func setGreenColour() {
+        navigationBar.backgroundColor = todayGreen
+        dueTodayLabel.textColor = todayGreen
+        saveButton.backgroundColor = todayGreen
+        taskNameField.textColor = todayGreen
+        taskDescriptionField.textColor = todayGreen
+    }
     
     
 

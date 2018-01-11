@@ -13,6 +13,7 @@ import CoreData
 class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let todayGreen = UIColor(red: 0.298, green: 0.498, blue: 0, alpha: 1)
+    let someDayBlue = UIColor(red: 0.161, green: 0.502, blue: 0.725, alpha: 1)
 
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var tasks: [Task] = []
@@ -28,7 +29,14 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tasks.count
+        
+        if tasks.count == 0 {
+            tableView.isHidden = true
+            return 0
+        } else {
+            tableView.isHidden = false
+            return tasks.count
+        }
     }
     
     
@@ -63,12 +71,14 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // Add action when table row is swiped
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
         let moveToSomeDay = UITableViewRowAction(style: .normal, title: "Some day") { (moveToSomeday, indexPath) in
             self.moveTaskToSomeDay(atIndexPath: indexPath)
-        }
+            }
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (deleteAction, indexPath) in
             self.deleteTask(atIndexPath: indexPath)
         }
+        moveToSomeDay.backgroundColor = someDayBlue
         return [deleteAction, moveToSomeDay]
     }
     
@@ -105,11 +115,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             let task = tasks[indexPath.row]
             context.delete(task)
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
-            do {
-                tasks = try context.fetch(Task.fetchRequest())
-            } catch {
-                print("fetching failed")
-            }
+            getData()
             tableView.reloadData()
         }
     }
@@ -198,4 +204,5 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
 
 }
+
 

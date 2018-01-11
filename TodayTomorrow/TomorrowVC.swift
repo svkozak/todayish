@@ -11,6 +11,9 @@ import CoreData
 
 class TomorrowVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    let todayGreen = UIColor(red: 0.298, green: 0.498, blue: 0, alpha: 1)
+    let someDayBlue = UIColor(red: 0.161, green: 0.502, blue: 0.725, alpha: 1)
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var tasks: [Task] = []
     
@@ -21,7 +24,13 @@ class TomorrowVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     // MARK: ---- TableView Implementation
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tasks.count
+        if tasks.count == 0 {
+            tableView.isHidden = true
+            return 0
+        } else {
+            tableView.isHidden = false
+            return tasks.count
+        }
     }
     
     func setSelectedCell(cell: SomeDayTaskCell, checked: Bool) {
@@ -59,6 +68,7 @@ class TomorrowVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (deleteAction, indexPath) in
             self.deleteTask(atIndexPath: indexPath)
         }
+        moveToToday.backgroundColor = todayGreen
         return [deleteAction, moveToToday]
     }
     
@@ -69,11 +79,7 @@ class TomorrowVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         let task = tasks[indexPath.row]
         context.delete(task)
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
-        do {
-            tasks = try context.fetch(Task.fetchRequest())
-        } catch {
-            print("fetching failed")
-        }
+        getData()
         tableView.reloadData()
     }
     
@@ -106,6 +112,16 @@ class TomorrowVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         })
     }
     
+    
+    @IBAction func deleteCompletedTasks(_ sender: UIButton) {
+        for task in tasks {
+            if(task.isCompleted){
+                context.delete(task)
+            }
+        }
+        getData()
+        tableView.reloadData()
+    }
     
 
     

@@ -34,7 +34,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ewv-lD-DYw">
-                                        <rect key="frame" x="139.5" y="50" width="96.5" height="35"/>
+                                        <rect key="frame" x="140" y="50" width="96.5" height="35"/>
                                         <fontDescription key="fontDescription" name="Naste-DemiBold" family="Naste" pointSize="34"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -74,7 +74,25 @@
                                     <constraint firstItem="KsV-mg-8OB" firstAttribute="top" secondItem="dtk-zj-NxK" secondAttribute="top" constant="45" id="whB-50-VGE"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" estimatedRowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="B7D-ct-Pgv">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No tasks today!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T8D-Uk-um3">
+                                <rect key="frame" x="37" y="323.5" width="301" height="20"/>
+                                <fontDescription key="fontDescription" name="Naste" family="Naste" pointSize="20"/>
+                                <color key="textColor" red="0.30840110780000002" green="0.5618229508" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can add a new one above." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHn-GD-z6u">
+                                <rect key="frame" x="69" y="350" width="237.5" height="17"/>
+                                <fontDescription key="fontDescription" name="Naste-Light" family="Naste" pointSize="17"/>
+                                <color key="textColor" red="0.30840110780000002" green="0.5618229508" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe the postponed task to move it to Today." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bou-pm-aff">
+                                <rect key="frame" x="30" y="373.5" width="315" height="34"/>
+                                <fontDescription key="fontDescription" name="Naste-Light" family="Naste" pointSize="17"/>
+                                <color key="textColor" red="0.30840110780000002" green="0.5618229508" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" estimatedRowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="B7D-ct-Pgv">
                                 <rect key="frame" x="0.0" y="100" width="375" height="518"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" red="0.29803921570000003" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -152,10 +170,20 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Bou-pm-aff" secondAttribute="trailing" constant="30" id="8KC-BL-RR8"/>
+                            <constraint firstItem="Bou-pm-aff" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" constant="30" id="Abe-TK-sga"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="T8D-Uk-um3" secondAttribute="trailing" constant="37" id="BAT-oL-aRD"/>
                             <constraint firstItem="B7D-ct-Pgv" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="CFj-c4-VsJ"/>
+                            <constraint firstItem="PHn-GD-z6u" firstAttribute="top" secondItem="dtk-zj-NxK" secondAttribute="bottom" constant="250" id="CKh-eY-DhW"/>
+                            <constraint firstItem="Bou-pm-aff" firstAttribute="top" secondItem="T8D-Uk-um3" secondAttribute="bottom" constant="30" id="M2H-Oa-yPY"/>
                             <constraint firstItem="B7D-ct-Pgv" firstAttribute="bottom" secondItem="PQr-Ze-W5v" secondAttribute="bottom" id="O4S-n4-23H"/>
+                            <constraint firstItem="T8D-Uk-um3" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="QjK-VJ-RVI"/>
+                            <constraint firstItem="T8D-Uk-um3" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="SVe-pM-Kgd"/>
                             <constraint firstItem="dtk-zj-NxK" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="Xyu-Bk-JAg"/>
+                            <constraint firstItem="Bou-pm-aff" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="ZWW-sh-JX4"/>
                             <constraint firstItem="dtk-zj-NxK" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="ha8-dw-fC7"/>
+                            <constraint firstItem="T8D-Uk-um3" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="37" id="hin-b3-xaU"/>
+                            <constraint firstItem="PHn-GD-z6u" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="ogc-Pu-Qf8"/>
                             <constraint firstItem="B7D-ct-Pgv" firstAttribute="top" secondItem="dtk-zj-NxK" secondAttribute="bottom" id="ppH-Zz-1oi"/>
                             <constraint firstItem="B7D-ct-Pgv" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="rT2-Lt-Rjf"/>
                             <constraint firstItem="dtk-zj-NxK" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" id="ymn-WB-Pz8"/>
@@ -304,6 +332,9 @@
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hmj-KC-eBw">
                                         <rect key="frame" x="306" y="211" width="51" height="31"/>
                                         <color key="onTintColor" red="0.30840110780000002" green="0.5618229508" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="switchFlipped:" destination="G0V-Qg-aGK" eventType="valueChanged" id="Nt2-hG-aQ6"/>
+                                        </connections>
                                     </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due today" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IeU-n1-Bpt">
                                         <rect key="frame" x="218" y="216" width="82" height="21"/>
@@ -351,7 +382,10 @@
                         <viewLayoutGuide key="safeArea" id="ynC-HI-6h9"/>
                     </view>
                     <connections>
+                        <outlet property="dueTodayLabel" destination="IeU-n1-Bpt" id="M2y-pk-HkR"/>
                         <outlet property="dueTodaySwitch" destination="hmj-KC-eBw" id="pLp-mg-w4k"/>
+                        <outlet property="navigationBar" destination="hhz-PU-bcr" id="Mik-Lt-iTX"/>
+                        <outlet property="saveButton" destination="SrF-4g-BB7" id="Fm6-dw-vdx"/>
                         <outlet property="taskDescriptionField" destination="edd-gA-k7Y" id="IKQ-cx-bQT"/>
                         <outlet property="taskNameField" destination="2oz-lC-Nhk" id="q7u-uG-ygr"/>
                     </connections>
@@ -467,6 +501,9 @@
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ibb-nQ-Kce">
                                         <rect key="frame" x="306" y="211" width="51" height="31"/>
                                         <color key="onTintColor" red="0.30840110780000002" green="0.5618229508" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="switchFlipped:" destination="LzB-Wj-r9S" eventType="valueChanged" id="nwq-oz-O7S"/>
+                                        </connections>
                                     </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due today" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w5C-nt-bz9">
                                         <rect key="frame" x="218" y="216" width="82" height="21"/>
@@ -513,7 +550,10 @@
                         <viewLayoutGuide key="safeArea" id="SYZ-Vd-rhu"/>
                     </view>
                     <connections>
+                        <outlet property="dueTodayLabel" destination="w5C-nt-bz9" id="7a5-tO-2ff"/>
                         <outlet property="dueTodaySwitch" destination="Ibb-nQ-Kce" id="U7O-d1-N3e"/>
+                        <outlet property="navigationBar" destination="ftd-4Y-qYo" id="qVl-4V-oml"/>
+                        <outlet property="saveButton" destination="Ib5-rG-ovn" id="Ktg-IH-jGM"/>
                         <outlet property="taskDescriptionField" destination="ndw-6B-3zY" id="UfK-Oe-1SQ"/>
                         <outlet property="taskNameField" destination="UQD-ZD-0v2" id="aCK-2h-6bY"/>
                     </connections>
@@ -549,20 +589,50 @@
                                             <segue destination="LzB-Wj-r9S" kind="presentation" identifier="addFromSomeDay" id="nSh-YK-vME"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xet-DS-yZQ">
+                                        <rect key="frame" x="8" y="45" width="45" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="45" id="De5-Cq-JDX"/>
+                                            <constraint firstAttribute="width" constant="45" id="fQt-JN-q5g"/>
+                                            <constraint firstAttribute="height" constant="45" id="tmF-DC-tKm"/>
+                                        </constraints>
+                                        <state key="normal" image="Trash"/>
+                                        <connections>
+                                            <action selector="deleteCompletedTasks:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="RIW-En-n7W"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.16078431369999999" green="0.50196078430000002" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="6vG-AH-LcA"/>
                                     <constraint firstAttribute="trailing" secondItem="O4Q-uM-ZO5" secondAttribute="trailing" constant="8" id="9kh-M8-nNr"/>
+                                    <constraint firstItem="xet-DS-yZQ" firstAttribute="leading" secondItem="SOt-Sy-Ttv" secondAttribute="leading" constant="8" id="Rb2-VE-Jln"/>
+                                    <constraint firstItem="xet-DS-yZQ" firstAttribute="top" secondItem="SOt-Sy-Ttv" secondAttribute="top" constant="45" id="TL6-z0-wsf"/>
                                     <constraint firstAttribute="bottom" secondItem="O4Q-uM-ZO5" secondAttribute="bottom" constant="10" id="VqE-2P-FOT"/>
                                     <constraint firstItem="27a-Q4-uRH" firstAttribute="top" secondItem="SOt-Sy-Ttv" secondAttribute="top" constant="50" id="YLb-ht-smk"/>
                                     <constraint firstItem="27a-Q4-uRH" firstAttribute="centerX" secondItem="SOt-Sy-Ttv" secondAttribute="centerX" id="aZt-jI-z2r"/>
                                     <constraint firstAttribute="height" constant="100" id="f0H-vV-qtS"/>
                                     <constraint firstAttribute="bottom" secondItem="27a-Q4-uRH" secondAttribute="bottom" constant="15" id="gAi-73-bn2"/>
                                     <constraint firstItem="O4Q-uM-ZO5" firstAttribute="top" secondItem="SOt-Sy-Ttv" secondAttribute="top" constant="45" id="v9h-0T-QWD"/>
+                                    <constraint firstAttribute="bottom" secondItem="xet-DS-yZQ" secondAttribute="bottom" constant="10" id="zi5-qy-q80"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0xb-mr-ekj">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No postponed tasks." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fcd-vJ-Pui">
+                                <rect key="frame" x="90.5" y="323" width="194.5" height="20"/>
+                                <fontDescription key="fontDescription" name="Naste" family="Naste" pointSize="20"/>
+                                <color key="textColor" red="0.16078431369999999" green="0.50196078430000002" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a new task or swipe the Today task to move it to here." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53u-lj-Ceg">
+                                <rect key="frame" x="30" y="350" width="315" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="fwb-IN-vbz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Naste-Light" family="Naste" pointSize="17"/>
+                                <color key="textColor" red="0.16078431369999999" green="0.50196078430000002" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0xb-mr-ekj">
                                 <rect key="frame" x="0.0" y="100" width="375" height="518"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -640,9 +710,16 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="53u-lj-Ceg" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="30" id="36A-XQ-vLh"/>
                             <constraint firstItem="0xb-mr-ekj" firstAttribute="top" secondItem="SOt-Sy-Ttv" secondAttribute="top" constant="100" id="6U1-fP-kuW"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="53u-lj-Ceg" secondAttribute="trailing" constant="30" id="7iJ-If-Js5"/>
                             <constraint firstItem="SOt-Sy-Ttv" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" id="NkM-y1-5oM"/>
+                            <constraint firstItem="53u-lj-Ceg" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="S0B-zG-lBx"/>
                             <constraint firstItem="SOt-Sy-Ttv" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="Tug-fl-K89"/>
+                            <constraint firstItem="Fcd-vJ-Pui" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" id="U1R-VX-CZL"/>
+                            <constraint firstItem="53u-lj-Ceg" firstAttribute="top" secondItem="Fcd-vJ-Pui" secondAttribute="bottom" constant="7" id="cvL-ab-y7n"/>
+                            <constraint firstItem="53u-lj-Ceg" firstAttribute="top" secondItem="Fcd-vJ-Pui" secondAttribute="bottom" constant="7" id="d1k-wW-cy6"/>
+                            <constraint firstItem="Fcd-vJ-Pui" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="eIG-4f-okW"/>
                             <constraint firstItem="0xb-mr-ekj" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="tDM-ie-92Q"/>
                             <constraint firstItem="SOt-Sy-Ttv" firstAttribute="trailing" secondItem="O1u-W8-tvY" secondAttribute="trailing" id="tZJ-dm-Afb"/>
                             <constraint firstItem="0xb-mr-ekj" firstAttribute="trailing" secondItem="O1u-W8-tvY" secondAttribute="trailing" id="vPl-FQ-bTR"/>
