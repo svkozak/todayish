@@ -55,6 +55,9 @@
                                             <constraint firstAttribute="width" constant="45" id="HRE-r9-WVl"/>
                                         </constraints>
                                         <state key="normal" image="Trash"/>
+                                        <connections>
+                                            <action selector="deleteCompletedTasks:" destination="9pv-A4-QxB" eventType="touchUpInside" id="FGD-bM-czp"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.30840110780000002" green="0.5618229508" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

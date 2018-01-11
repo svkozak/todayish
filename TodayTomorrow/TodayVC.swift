@@ -162,6 +162,20 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         })
     }
     
+    @IBAction func deleteCompletedTasks(_ sender: UIButton) {
+        for task in tasks {
+            if(task.isCompleted){
+                context.delete(task)
+            }
+        }
+        getData()
+        tableView.reloadData()
+    }
+    
+    
+    
+    
+    
     // Reload data before view appears
     
     override func viewWillAppear(_ animated: Bool) {
