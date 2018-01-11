@@ -86,8 +86,8 @@
                                 <color key="textColor" red="0.30840110780000002" green="0.5618229508" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe the postponed task to move it to Today." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bou-pm-aff">
-                                <rect key="frame" x="30" y="373.5" width="315" height="34"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe existing tasks for more options." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bou-pm-aff">
+                                <rect key="frame" x="30" y="373.5" width="315" height="17"/>
                                 <fontDescription key="fontDescription" name="Naste-Light" family="Naste" pointSize="17"/>
                                 <color key="textColor" red="0.30840110780000002" green="0.5618229508" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -174,7 +174,7 @@
                             <constraint firstItem="Bou-pm-aff" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" constant="30" id="Abe-TK-sga"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="T8D-Uk-um3" secondAttribute="trailing" constant="37" id="BAT-oL-aRD"/>
                             <constraint firstItem="B7D-ct-Pgv" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="CFj-c4-VsJ"/>
-                            <constraint firstItem="PHn-GD-z6u" firstAttribute="top" secondItem="dtk-zj-NxK" secondAttribute="bottom" constant="250" id="CKh-eY-DhW"/>
+                            <constraint firstItem="PHn-GD-z6u" firstAttribute="top" secondItem="T8D-Uk-um3" secondAttribute="bottom" constant="6.5" id="CKh-eY-DhW"/>
                             <constraint firstItem="Bou-pm-aff" firstAttribute="top" secondItem="T8D-Uk-um3" secondAttribute="bottom" constant="30" id="M2H-Oa-yPY"/>
                             <constraint firstItem="B7D-ct-Pgv" firstAttribute="bottom" secondItem="PQr-Ze-W5v" secondAttribute="bottom" id="O4S-n4-23H"/>
                             <constraint firstItem="T8D-Uk-um3" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="QjK-VJ-RVI"/>
@@ -623,7 +623,7 @@
                                 <color key="textColor" red="0.16078431369999999" green="0.50196078430000002" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a new task or swipe the Today task to move it to here." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53u-lj-Ceg">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a new task above. Swipe existing tasks for more options." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53u-lj-Ceg">
                                 <rect key="frame" x="30" y="350" width="315" height="54"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="fwb-IN-vbz"/>
@@ -768,7 +768,7 @@
         <image name="tomorrow" width="27" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nSh-YK-vME"/>
-        <segue reference="9jr-El-qM7"/>
+        <segue reference="isP-nh-K72"/>
+        <segue reference="gyP-kK-KfG"/>
     </inferredMetricsTieBreakers>
 </document>

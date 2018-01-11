@@ -54,6 +54,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		134E04BF2008058C00A4410F /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				13961C991FEB511100A9B2C1 /* TodayVC.swift */,
+				13961C9B1FEB511100A9B2C1 /* TomorrowVC.swift */,
+				13F2858E1FF74A4800E598A4 /* AddTaskViewController.swift */,
+				1331D9941FF77C0500B8D34F /* EditTaskViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		134E04C0200805B100A4410F /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				135E36391FF71E7400EF6F78 /* TodayTaskCell.swift */,
+				13338C53200726DB00D2FC39 /* SomeDayTaskCell.swift */,
+			);
+			path = "Custom Cells";
+			sourceTree = "<group>";
+		};
+		134E04C1200805CA00A4410F /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				13961CAD1FEB6CFE00A9B2C1 /* Naste DemiBold.otf */,
+				13961CAF1FEB6D9C00A9B2C1 /* Naste.otf */,
+				13961CB11FEB6DA600A9B2C1 /* Naste Light.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		13961C8B1FEB511100A9B2C1 = {
 			isa = PBXGroup;
 			children = (
@@ -74,20 +104,14 @@
 			isa = PBXGroup;
 			children = (
 				13961C971FEB511100A9B2C1 /* AppDelegate.swift */,
-				13961C991FEB511100A9B2C1 /* TodayVC.swift */,
-				13961C9B1FEB511100A9B2C1 /* TomorrowVC.swift */,
+				134E04C1200805CA00A4410F /* Fonts */,
+				134E04C0200805B100A4410F /* Custom Cells */,
+				134E04BF2008058C00A4410F /* View Controllers */,
 				13961C9D1FEB511100A9B2C1 /* Main.storyboard */,
-				1331D9941FF77C0500B8D34F /* EditTaskViewController.swift */,
 				1331D9921FF751A700B8D34F /* Assets.xcassets */,
-				13F2858E1FF74A4800E598A4 /* AddTaskViewController.swift */,
-				135E36391FF71E7400EF6F78 /* TodayTaskCell.swift */,
-				13338C53200726DB00D2FC39 /* SomeDayTaskCell.swift */,
 				13961CA21FEB511100A9B2C1 /* LaunchScreen.storyboard */,
 				135E36361FF718E600EF6F78 /* Model.xcdatamodeld */,
 				13961CA51FEB511100A9B2C1 /* Info.plist */,
-				13961CAD1FEB6CFE00A9B2C1 /* Naste DemiBold.otf */,
-				13961CAF1FEB6D9C00A9B2C1 /* Naste.otf */,
-				13961CB11FEB6DA600A9B2C1 /* Naste Light.otf */,
 			);
 			path = TodayTomorrow;
 			sourceTree = "<group>";

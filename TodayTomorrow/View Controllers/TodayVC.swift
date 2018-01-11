@@ -12,6 +12,7 @@ import CoreData
 
 class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    let deselectedGrey = UIColor(displayP3Red: 0.921, green: 0.921, blue: 0.921, alpha: 0.9)
     let todayGreen = UIColor(red: 0.298, green: 0.498, blue: 0, alpha: 1)
     let someDayBlue = UIColor(red: 0.161, green: 0.502, blue: 0.725, alpha: 1)
 
@@ -185,7 +186,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // Reload data before view appears
     
     override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.tabBar.unselectedItemTintColor = UIColor.white
+        self.tabBarController?.tabBar.unselectedItemTintColor = deselectedGrey
         getData()
         tableView.reloadData()
     }
