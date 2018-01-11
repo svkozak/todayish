@@ -49,12 +49,8 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func setSelectedCell(cell: TodayTaskCell, checked: Bool) {
         if checked {
             cell.setChecked()
-            cell.todayTaskNameLabel.textColor = UIColor.lightGray
-            cell.descriptionLabel.textColor = UIColor.lightGray
         } else{
             cell.setUnchecked()
-            cell.todayTaskNameLabel.textColor = todayGreen
-            cell.descriptionLabel.textColor = todayGreen
         }
     }
     
@@ -113,17 +109,12 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let cell = sender.superview?.superview as! TodayTaskCell
         let indexPath = tableView.indexPath(for: cell)
         let task = tasks[(indexPath?.row)!]
-        if sender.imageView?.image == UIImage(named: "green-deselected") {
+        if task.isCompleted == false {
             cell.setChecked()
-            cell.todayTaskNameLabel.textColor = UIColor.lightGray
-            cell.descriptionLabel.textColor = UIColor.lightGray
-            //setSelectedCell(cell: cell, checked: true)
             task.isCompleted = true
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
         } else {
             cell.setUnchecked()
-            cell.todayTaskNameLabel.textColor = todayGreen
-            cell.descriptionLabel.textColor = todayGreen
             //setSelectedCell(cell: cell, checked: false)
             task.isCompleted = false
             (UIApplication.shared.delegate as! AppDelegate).saveContext()

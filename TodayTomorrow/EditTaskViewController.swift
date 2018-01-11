@@ -111,8 +111,7 @@ class EditTaskViewController: UIViewController, UITextFieldDelegate, UITextViewD
         alert.addAction(cancelAction)
         alert.addAction(deleteAction)
         present(alert, animated: true, completion: nil)
-        
-        
+   
     }
     
     
