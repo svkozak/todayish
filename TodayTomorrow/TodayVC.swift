@@ -152,14 +152,17 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             task.isCompleted = true
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
             getData()
-            tableView.reloadData()
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                self.tableView.reloadData()
+            })
         } else {
             cell.setUnchecked()
-            //setSelectedCell(cell: cell, checked: false)
             task.isCompleted = false
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
             getData()
-            tableView.reloadData()
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                self.tableView.reloadData()
+            })
         }
     }
     
