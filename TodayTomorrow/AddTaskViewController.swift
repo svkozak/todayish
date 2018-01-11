@@ -64,26 +64,10 @@ class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
         self.navigationController?.navigationBar.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
         
-        // Back button color
-        self.navigationController?.navigationBar.tintColor = UIColor.white
         
         // Set placeholder text color
         taskDescriptionField.textColor = UIColor.lightGray
-        
-        // TextField and Textview border
-//        let border = CALayer()
-//        let tVborder = CALayer()
-//        let width = CGFloat(0.6)
-//        border.borderColor = UIColor(red: 0.298, green: 0.498, blue: 0, alpha: 1).cgColor
-//        tVborder.borderColor = UIColor(red: 0.298, green: 0.498, blue: 0, alpha: 1).cgColor
-//        border.frame = CGRect(x: 0, y: taskNameField.frame.size.height - width, width:  taskNameField.frame.size.width, height: taskNameField.frame.size.height)
-//        tVborder.frame = CGRect(x: 0, y: taskDescriptionField.frame.size.height - width, width:  taskDescriptionField.frame.size.width, height: taskDescriptionField.frame.size.height)
-//        border.borderWidth = width
-//        tVborder.borderWidth = width
-//        taskNameField.layer.addSublayer(border)
-//        taskNameField.layer.masksToBounds = true
-//        taskDescriptionField.layer.addSublayer(tVborder)
-//        taskDescriptionField.layer.masksToBounds = true
+    
         
     }
 
@@ -114,7 +98,7 @@ class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDe
                 task.taskDescription = taskDescriptionField.text
             }
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
-            let _ = navigationController?.popViewController(animated: true);
+            dismiss(animated: true, completion: nil)
         }
         
     }
