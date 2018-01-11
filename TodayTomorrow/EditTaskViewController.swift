@@ -16,9 +16,11 @@ class EditTaskViewController: UIViewController, UITextFieldDelegate, UITextViewD
     
     @IBOutlet weak var taskNameField: UITextField!
     @IBOutlet weak var taskDescriptionField: UITextView!
+    @IBOutlet weak var dueTodaySwitch: UISwitch!
     
     override func viewWillAppear(_ animated: Bool) {
         taskNameField.text = taskToEdit?.taskName
+        dueTodaySwitch.setOn((taskToEdit?.dueToday)!, animated: true)
         
         if taskToEdit?.taskDescription == "" {
             taskDescriptionField.text = "Task description"
@@ -30,6 +32,7 @@ class EditTaskViewController: UIViewController, UITextFieldDelegate, UITextViewD
         }
     }
     
+
 
     override func viewDidLoad() {
         super.viewDidLoad()

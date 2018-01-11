@@ -46,6 +46,48 @@ class TomorrowVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    // Add action when table row is swiped
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let moveToToday = UITableViewRowAction(style: .normal, title: "Today") { (moveToToday, indexPath) in
+            self.moveTaskToToday(atIndexPath: indexPath)
+        }
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (deleteAction, indexPath) in
+            self.deleteTask(atIndexPath: indexPath)
+        }
+        return [deleteAction, moveToToday]
+    }
+    
+    
+    // Delete row and task from database
+    
+    func deleteTask(atIndexPath indexPath: IndexPath) {
+        let task = tasks[indexPath.row]
+        context.delete(task)
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        do {
+            tasks = try context.fetch(Task.fetchRequest())
+        } catch {
+            print("fetching failed")
+        }
+        tableView.reloadData()
+    }
+    
+    
+    // Change task to Some day
+    
+    func moveTaskToToday(atIndexPath indexPath: IndexPath) {
+        let task = tasks[indexPath.row]
+        task.dueToday = true
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        getData()
+        tableView.reloadData()
+    }
+    
     
     // Check box action
     
@@ -79,6 +121,18 @@ class TomorrowVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             tasks = try context.fetch(fetchRequest)
         } catch {
             print("Cannot fetch")
+        }
+    }
+    
+    // MARK: ---- SEGUE - Prepare for segue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editFromSomeDay" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let selectedTask = tasks[indexPath.row]
+                let editTaskVC = segue.destination as! EditTaskViewController
+                editTaskVC.taskToEdit = selectedTask
+            }
         }
     }
     

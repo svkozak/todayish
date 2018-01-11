@@ -303,6 +303,7 @@
                                     </button>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hmj-KC-eBw">
                                         <rect key="frame" x="306" y="211" width="51" height="31"/>
+                                        <color key="onTintColor" red="0.30840110780000002" green="0.5618229508" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due today" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IeU-n1-Bpt">
                                         <rect key="frame" x="218" y="216" width="82" height="21"/>
@@ -350,13 +351,14 @@
                         <viewLayoutGuide key="safeArea" id="ynC-HI-6h9"/>
                     </view>
                     <connections>
+                        <outlet property="dueTodaySwitch" destination="hmj-KC-eBw" id="pLp-mg-w4k"/>
                         <outlet property="taskDescriptionField" destination="edd-gA-k7Y" id="IKQ-cx-bQT"/>
                         <outlet property="taskNameField" destination="2oz-lC-Nhk" id="q7u-uG-ygr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DL1-Xn-2cD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2589.5999999999999" y="-1021.4392803598201"/>
+            <point key="canvasLocation" x="2948" y="-997"/>
         </scene>
         <!--Add task-->
         <scene sceneID="qVb-TR-h2s">
@@ -464,6 +466,7 @@
                                     </button>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ibb-nQ-Kce">
                                         <rect key="frame" x="306" y="211" width="51" height="31"/>
+                                        <color key="onTintColor" red="0.30840110780000002" green="0.5618229508" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due today" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w5C-nt-bz9">
                                         <rect key="frame" x="218" y="216" width="82" height="21"/>
@@ -510,13 +513,14 @@
                         <viewLayoutGuide key="safeArea" id="SYZ-Vd-rhu"/>
                     </view>
                     <connections>
+                        <outlet property="dueTodaySwitch" destination="Ibb-nQ-Kce" id="U7O-d1-N3e"/>
                         <outlet property="taskDescriptionField" destination="ndw-6B-3zY" id="UfK-Oe-1SQ"/>
                         <outlet property="taskNameField" destination="UQD-ZD-0v2" id="aCK-2h-6bY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zxa-Ee-UEp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2591.1999999999998" y="-323.38830584707648"/>
+            <point key="canvasLocation" x="2948" y="-294"/>
         </scene>
         <!--Some day-->
         <scene sceneID="wg7-f3-ORb">
@@ -541,6 +545,9 @@
                                             <constraint firstAttribute="width" constant="45" id="tZJ-fF-b6w"/>
                                         </constraints>
                                         <state key="normal" image="Add"/>
+                                        <connections>
+                                            <segue destination="LzB-Wj-r9S" kind="presentation" identifier="addFromSomeDay" id="nSh-YK-vME"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.16078431369999999" green="0.50196078430000002" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -620,6 +627,7 @@
                                             <outlet property="checkBox" destination="iGf-Wi-DVS" id="8iX-4G-1wd"/>
                                             <outlet property="descriptionLabel" destination="akX-Ye-JrA" id="nkf-ob-RQZ"/>
                                             <outlet property="todayTaskNameLabel" destination="7J0-cZ-KTP" id="Dgq-AC-61L"/>
+                                            <segue destination="G0V-Qg-aGK" kind="presentation" identifier="editFromSomeDay" id="9jr-El-qM7"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -682,4 +690,8 @@
         <image name="today" width="26" height="26"/>
         <image name="tomorrow" width="27" height="26"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="nSh-YK-vME"/>
+        <segue reference="9jr-El-qM7"/>
+    </inferredMetricsTieBreakers>
 </document>

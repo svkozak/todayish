@@ -17,6 +17,7 @@ class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     
     @IBOutlet weak var taskNameField: UITextField!
     @IBOutlet weak var taskDescriptionField: UITextView!
+    @IBOutlet weak var dueTodaySwitch: UISwitch!
     
     
     // MARK: TextView placeholder and editing style
@@ -80,6 +81,11 @@ class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDe
             
             let task = Task(context: context)
             task.taskName = taskNameField.text
+            if dueTodaySwitch.isOn {
+                task.dueToday = true
+            } else {
+                task.dueToday = false
+            }
             if taskDescriptionField.text == "" {
                 task.taskDescription = ""
             } else {
