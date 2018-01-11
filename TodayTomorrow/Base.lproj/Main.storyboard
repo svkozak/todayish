@@ -34,7 +34,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ewv-lD-DYw">
-                                        <rect key="frame" x="143" y="50" width="91" height="35"/>
+                                        <rect key="frame" x="139.5" y="50" width="96.5" height="35"/>
                                         <fontDescription key="fontDescription" name="Naste-DemiBold" family="Naste" pointSize="34"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -209,7 +209,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Update" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHe-Fa-S5s">
-                                        <rect key="frame" x="131.5" y="47" width="112.5" height="40"/>
+                                        <rect key="frame" x="128.5" y="50" width="118.5" height="34"/>
                                         <fontDescription key="fontDescription" name="Naste-DemiBold" family="Naste" pointSize="34"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -485,7 +485,7 @@
         <!--Some day-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="Tomorrow" customModule="TodayTomorrow" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8rJ-Kc-sve" customClass="TomorrowVC" customModule="TodayTomorrow" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -494,7 +494,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some day" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="27a-Q4-uRH">
-                                        <rect key="frame" x="111" y="50" width="154" height="35"/>
+                                        <rect key="frame" x="108" y="50" width="160" height="35"/>
                                         <fontDescription key="fontDescription" name="Naste-DemiBold" family="Naste" pointSize="34"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -519,14 +519,81 @@
                                     <constraint firstItem="O4Q-uM-ZO5" firstAttribute="top" secondItem="SOt-Sy-Ttv" secondAttribute="top" constant="45" id="v9h-0T-QWD"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0xb-mr-ekj">
-                                <rect key="frame" x="0.0" y="99" width="375" height="519"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0xb-mr-ekj">
+                                <rect key="frame" x="0.0" y="100" width="375" height="518"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="someDayTaskCell" rowHeight="80" id="czE-56-CC1" userLabel="SomeDayTaskCell" customClass="SomeDayTaskCell" customModule="TodayTomorrow" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="czE-56-CC1" id="HSj-9W-Mpj">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iGf-Wi-DVS">
+                                                    <rect key="frame" x="312" y="0.0" width="63" height="80"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="63" id="7Tu-x1-dQS"/>
+                                                    </constraints>
+                                                    <state key="normal" image="blue-deselected"/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7J0-cZ-KTP">
+                                                    <rect key="frame" x="15" y="34" width="51.5" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="254" id="g0S-gq-jOn"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Naste" family="Naste" pointSize="20"/>
+                                                    <color key="textColor" red="0.16078431369999999" green="0.50196078430000002" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="akX-Ye-JrA">
+                                                    <rect key="frame" x="15" y="62" width="63" height="12"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="254" id="Crw-AI-rUw"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Naste-Light" family="Naste" pointSize="12"/>
+                                                    <color key="textColor" red="0.16078431369999999" green="0.50196078430000002" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hXY-4e-iME">
+                                                    <rect key="frame" x="15" y="81" width="350" height="0.5"/>
+                                                    <color key="backgroundColor" red="0.29803921570000003" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="0.5" id="laT-eF-4nc"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="7J0-cZ-KTP" firstAttribute="leading" secondItem="HSj-9W-Mpj" secondAttribute="leadingMargin" id="3bu-yC-6IK"/>
+                                                <constraint firstItem="akX-Ye-JrA" firstAttribute="top" secondItem="7J0-cZ-KTP" secondAttribute="bottom" constant="8" id="3w1-SJ-334"/>
+                                                <constraint firstItem="iGf-Wi-DVS" firstAttribute="top" secondItem="HSj-9W-Mpj" secondAttribute="top" id="5Yq-vr-CPF"/>
+                                                <constraint firstAttribute="bottom" secondItem="iGf-Wi-DVS" secondAttribute="bottom" id="6HJ-9t-QhZ"/>
+                                                <constraint firstItem="hXY-4e-iME" firstAttribute="leading" secondItem="HSj-9W-Mpj" secondAttribute="leading" constant="15" id="9py-lO-Ccc"/>
+                                                <constraint firstAttribute="trailing" secondItem="iGf-Wi-DVS" secondAttribute="trailing" id="AvT-vB-jpU"/>
+                                                <constraint firstItem="7J0-cZ-KTP" firstAttribute="top" secondItem="HSj-9W-Mpj" secondAttribute="topMargin" constant="23" id="H39-tT-Vc4"/>
+                                                <constraint firstItem="akX-Ye-JrA" firstAttribute="leading" secondItem="HSj-9W-Mpj" secondAttribute="leading" constant="15" id="LEG-nm-3Nt"/>
+                                                <constraint firstAttribute="trailing" secondItem="hXY-4e-iME" secondAttribute="trailing" constant="10" id="Lyr-t0-aNI"/>
+                                                <constraint firstItem="hXY-4e-iME" firstAttribute="top" secondItem="7J0-cZ-KTP" secondAttribute="bottom" constant="27" id="gam-wc-cXr"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="bottomBorder" destination="hXY-4e-iME" id="TFh-ca-a0d"/>
+                                            <outlet property="checkBox" destination="iGf-Wi-DVS" id="8iX-4G-1wd"/>
+                                            <outlet property="descriptionLabel" destination="akX-Ye-JrA" id="nkf-ob-RQZ"/>
+                                            <outlet property="todayTaskNameLabel" destination="7J0-cZ-KTP" id="Dgq-AC-61L"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="8rJ-Kc-sve" id="Ft8-L8-CoO"/>
+                                    <outlet property="delegate" destination="8rJ-Kc-sve" id="SWB-VL-TSE"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="0xb-mr-ekj" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="79" id="6U1-fP-kuW"/>
+                            <constraint firstItem="0xb-mr-ekj" firstAttribute="top" secondItem="SOt-Sy-Ttv" secondAttribute="top" constant="100" id="6U1-fP-kuW"/>
                             <constraint firstItem="SOt-Sy-Ttv" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" id="NkM-y1-5oM"/>
                             <constraint firstItem="SOt-Sy-Ttv" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="Tug-fl-K89"/>
                             <constraint firstItem="0xb-mr-ekj" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="tDM-ie-92Q"/>
@@ -538,6 +605,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Some day" image="tomorrow" id="jtZ-zB-pcr"/>
                     <navigationItem key="navigationItem" title="Some day" largeTitleDisplayMode="always" id="CkM-Fa-2gB"/>
+                    <connections>
+                        <outlet property="tableView" destination="0xb-mr-ekj" id="8qv-ub-464"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
@@ -568,6 +638,7 @@
         <image name="Add" width="26" height="26"/>
         <image name="Tab bar" width="375" height="49"/>
         <image name="Trash" width="22" height="24"/>
+        <image name="blue-deselected" width="28" height="28"/>
         <image name="green-deselected" width="28" height="28"/>
         <image name="today" width="26" height="26"/>
         <image name="tomorrow" width="27" height="26"/>
