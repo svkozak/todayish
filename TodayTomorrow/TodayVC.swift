@@ -64,16 +64,39 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let moveToSomeDay = UITableViewRowAction(style: .normal, title: "Some day") { (moveToSomeday, indexPath) in
-            print("action shown")
+            self.moveTaskToSomeDay(atIndexPath: indexPath)
         }
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (deleteAction, indexPath) in
-            print("delete shown")
+            self.deleteTask(atIndexPath: indexPath)
         }
         return [deleteAction, moveToSomeDay]
     }
     
     
     // Delete row and task from database
+    
+    func deleteTask(atIndexPath indexPath: IndexPath) {
+        let task = tasks[indexPath.row]
+        context.delete(task)
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        do {
+            tasks = try context.fetch(Task.fetchRequest())
+        } catch {
+            print("fetching failed")
+        }
+        tableView.reloadData()
+    }
+    
+    
+    // Change task to Some day
+    
+    func moveTaskToSomeDay(atIndexPath indexPath: IndexPath) {
+        let task = tasks[indexPath.row]
+        task.dueToday = false
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+    }
+    
+    
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
