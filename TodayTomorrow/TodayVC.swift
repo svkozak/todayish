@@ -128,11 +128,15 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             cell.setChecked()
             task.isCompleted = true
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            getData()
+            tableView.reloadData()
         } else {
             cell.setUnchecked()
             //setSelectedCell(cell: cell, checked: false)
             task.isCompleted = false
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            getData()
+            tableView.reloadData()
         }
     }
     
