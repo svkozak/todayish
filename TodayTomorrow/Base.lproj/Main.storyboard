@@ -34,7 +34,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ewv-lD-DYw">
-                                        <rect key="frame" x="139.5" y="50" width="96.5" height="35"/>
+                                        <rect key="frame" x="140" y="50" width="96.5" height="35"/>
                                         <fontDescription key="fontDescription" name="Naste-DemiBold" family="Naste" pointSize="34"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -84,7 +84,7 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EcD-uD-bFg">
-                                                    <rect key="frame" x="15" y="31" width="51.5" height="20"/>
+                                                    <rect key="frame" x="15" y="34" width="51.5" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="254" id="izZ-hP-K3t"/>
                                                     </constraints>
@@ -92,15 +92,8 @@
                                                     <color key="textColor" red="0.29803921570000003" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C9k-SA-DNs">
-                                                    <rect key="frame" x="15" y="82" width="350" height="0.5"/>
-                                                    <color key="backgroundColor" red="0.29803921570000003" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="0.5" id="x6j-u3-rFG"/>
-                                                    </constraints>
-                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="stj-ID-I8d">
-                                                    <rect key="frame" x="15" y="59" width="63" height="12"/>
+                                                    <rect key="frame" x="15" y="62" width="63" height="12"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="254" id="OPd-cq-UDW"/>
                                                     </constraints>
@@ -108,12 +101,19 @@
                                                     <color key="textColor" red="0.29803921570000003" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C9k-SA-DNs">
+                                                    <rect key="frame" x="15" y="81" width="350" height="0.5"/>
+                                                    <color key="backgroundColor" red="0.29803921570000003" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="0.5" id="x6j-u3-rFG"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="e8v-lg-4U7" firstAttribute="top" secondItem="Uz1-Pd-XpX" secondAttribute="top" id="50j-Mf-QK5"/>
                                                 <constraint firstItem="stj-ID-I8d" firstAttribute="leading" secondItem="Uz1-Pd-XpX" secondAttribute="leading" constant="15" id="EZ3-kf-fB7"/>
-                                                <constraint firstItem="C9k-SA-DNs" firstAttribute="top" secondItem="EcD-uD-bFg" secondAttribute="bottom" constant="31" id="FyW-5L-F0J"/>
-                                                <constraint firstItem="EcD-uD-bFg" firstAttribute="top" secondItem="Uz1-Pd-XpX" secondAttribute="topMargin" constant="20" id="R9t-Ei-SXu"/>
+                                                <constraint firstItem="C9k-SA-DNs" firstAttribute="top" secondItem="EcD-uD-bFg" secondAttribute="bottom" constant="27" id="FyW-5L-F0J"/>
+                                                <constraint firstItem="EcD-uD-bFg" firstAttribute="top" secondItem="Uz1-Pd-XpX" secondAttribute="topMargin" constant="23" id="R9t-Ei-SXu"/>
                                                 <constraint firstAttribute="trailing" secondItem="C9k-SA-DNs" secondAttribute="trailing" constant="10" id="YYY-Az-eBD"/>
                                                 <constraint firstAttribute="trailing" secondItem="e8v-lg-4U7" secondAttribute="trailing" id="ef1-Ht-z7y"/>
                                                 <constraint firstAttribute="bottom" secondItem="e8v-lg-4U7" secondAttribute="bottom" id="iwC-qH-ocw"/>
@@ -123,6 +123,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="bottomBorder" destination="C9k-SA-DNs" id="nYp-VT-2hH"/>
                                             <outlet property="checkBox" destination="e8v-lg-4U7" id="iMZ-JN-wUS"/>
                                             <outlet property="descriptionLabel" destination="stj-ID-I8d" id="1Cu-I5-3bW"/>
                                             <outlet property="todayTaskNameLabel" destination="EcD-uD-bFg" id="kXZ-Jw-OZ8"/>
@@ -222,7 +223,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X6n-9k-Zm7">
                                 <rect key="frame" x="0.0" y="99" width="375" height="568"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Task title" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2oz-lC-Nhk">
+                                    <textField opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Task title" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2oz-lC-Nhk">
                                         <rect key="frame" x="20" y="23" width="335" height="60"/>
                                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="0.30150363870000002" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -232,7 +233,7 @@
                                         <fontDescription key="fontDescription" name="Naste-Light" family="Naste" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
-                                            <outlet property="delegate" destination="LzB-Wj-r9S" id="b9Z-kV-54P"/>
+                                            <outlet property="delegate" destination="G0V-Qg-aGK" id="cyI-yW-sHx"/>
                                         </connections>
                                     </textField>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" text="Task description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="edd-gA-k7Y">
@@ -246,7 +247,7 @@
                                         <fontDescription key="fontDescription" name="Naste-Light" family="Naste" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         <connections>
-                                            <outlet property="delegate" destination="LzB-Wj-r9S" id="trv-1X-p6B"/>
+                                            <outlet property="delegate" destination="G0V-Qg-aGK" id="idg-mb-EIp"/>
                                         </connections>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SrF-4g-BB7">
@@ -387,7 +388,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7hR-CR-a8y">
                                 <rect key="frame" x="0.0" y="99" width="375" height="568"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Task title" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="UQD-ZD-0v2">
+                                    <textField opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Task title" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="UQD-ZD-0v2">
                                         <rect key="frame" x="20" y="23" width="335" height="60"/>
                                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="0.30150363869863012" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -483,7 +484,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some day" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="27a-Q4-uRH">
-                                        <rect key="frame" x="107.5" y="50" width="160" height="35"/>
+                                        <rect key="frame" x="108" y="50" width="160" height="35"/>
                                         <fontDescription key="fontDescription" name="Naste-DemiBold" family="Naste" pointSize="34"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>

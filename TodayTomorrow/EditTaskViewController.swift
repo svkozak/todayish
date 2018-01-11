@@ -33,11 +33,14 @@ class EditTaskViewController: UIViewController, UITextFieldDelegate, UITextViewD
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.tintColor = UIColor.white
+        
+        // Set textfield padding
+        let padding = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 10))
+        taskNameField.leftViewMode = UITextFieldViewMode.always
+        taskNameField.leftView = padding
 
         // Add gesture recognizers for dismissing the keyboard
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
-        self.navigationController?.navigationBar.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
         
 
 
@@ -128,15 +131,5 @@ class EditTaskViewController: UIViewController, UITextFieldDelegate, UITextViewD
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -18,24 +18,10 @@ class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     @IBOutlet weak var taskNameField: UITextField!
     @IBOutlet weak var taskDescriptionField: UITextView!
     
-    // MARK: Done button implementation
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        let cancelButton = UIBarButtonItem.init(barButtonSystemItem: .cancel, target: self, action: #selector(cancelEdits))
-        let doneButton = UIBarButtonItem.init(barButtonSystemItem: .save, target: self, action: #selector(saveTaskPressed))
-        self.navigationItem.rightBarButtonItems = [doneButton, cancelButton]
-    }
-    
-    @objc func cancelEdits () {
-        let _ = navigationController?.popViewController(animated: true);
-    }
     
     // MARK: TextView placeholder and editing style
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        let cancelButton = UIBarButtonItem.init(barButtonSystemItem: .cancel, target: self, action: #selector(cancelEdits))
-        let doneButton = UIBarButtonItem.init(barButtonSystemItem: .save, target: self, action: #selector(saveTaskPressed))
-        self.navigationItem.rightBarButtonItems = [doneButton, cancelButton]
         
         if taskDescriptionField.text == "Task description" {
             taskDescriptionField.text = ""
@@ -62,11 +48,14 @@ class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         
         // Add gesture recognizers for dismissing the keyboard
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
-        self.navigationController?.navigationBar.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
-        
         
         // Set placeholder text color
         taskDescriptionField.textColor = UIColor.lightGray
+        
+        // Set textfield padding
+        let padding = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 10))
+        taskNameField.leftViewMode = UITextFieldViewMode.always
+        taskNameField.leftView = padding
     
         
     }
@@ -88,7 +77,6 @@ class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDe
             self.present(alert, animated: true, completion: nil)
             
         } else {
-            
             
             let task = Task(context: context)
             task.taskName = taskNameField.text

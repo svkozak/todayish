@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17C88" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Task" representedClassName="Task" syncable="YES" codeGenerationType="class">
+        <attribute name="dueToday" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="isCompleted" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="taskDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="taskName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <fetchRequest name="fetchCompleted" entity="Task" predicateString="isCompleted == 1"/>
-    <fetchRequest name="fetchUncompleted" entity="Task" predicateString="isCompleted == 0"/>
     <elements>
-        <element name="Task" positionX="-54" positionY="-9" width="128" height="90"/>
+        <element name="Task" positionX="-54" positionY="-9" width="128" height="105"/>
     </elements>
 </model>
