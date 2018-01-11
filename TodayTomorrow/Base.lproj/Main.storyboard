@@ -539,6 +539,9 @@
                                                         <constraint firstAttribute="width" constant="63" id="7Tu-x1-dQS"/>
                                                     </constraints>
                                                     <state key="normal" image="blue-deselected"/>
+                                                    <connections>
+                                                        <action selector="checkBoxChecked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="itq-mK-zd7"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7J0-cZ-KTP">
                                                     <rect key="frame" x="15" y="34" width="51.5" height="20"/>

@@ -47,6 +47,24 @@ class TomorrowVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     
+    // Check box action
+    
+    @IBAction func checkBoxChecked(_ sender: UIButton) {
+        let cell = sender.superview?.superview as! SomeDayTaskCell
+        let indexPath = tableView.indexPath(for: cell)
+        let task = tasks[(indexPath?.row)!]
+        
+        task.isCompleted = !task.isCompleted
+        setSelectedCell(cell: cell, checked: task.isCompleted)
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        getData()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            self.tableView.reloadData()
+        })
+    }
+    
+    
 
     
     // Get data from database
@@ -67,6 +85,7 @@ class TomorrowVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         getData()
+        tableView.reloadData()
     }
     
     
