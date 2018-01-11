@@ -106,7 +106,7 @@ class EditTaskViewController: UIViewController, UITextFieldDelegate, UITextViewD
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
             self.context.delete(self.taskToEdit!)
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
-            let _ = self.navigationController?.popViewController(animated: true);
+            self.dismiss(animated: true, completion: nil)
         }
         alert.addAction(cancelAction)
         alert.addAction(deleteAction)
