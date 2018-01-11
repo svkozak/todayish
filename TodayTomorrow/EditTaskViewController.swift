@@ -94,6 +94,8 @@ class EditTaskViewController: UIViewController, UITextFieldDelegate, UITextViewD
         } else {
             
             taskToEdit?.taskName = taskNameField.text
+            taskToEdit?.dueToday = dueTodaySwitch.isOn
+            
             if taskDescriptionField.text == "" {
                 taskToEdit?.taskDescription = ""
             } else {
