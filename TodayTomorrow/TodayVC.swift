@@ -133,7 +133,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func getData() {
         let fetchRequest = NSFetchRequest<Task>(entityName: "Task")
-        let sort = NSSortDescriptor(key: #keyPath(Task.dueToday), ascending: true)
+        let sort = NSSortDescriptor(key: #keyPath(Task.isCompleted), ascending: true)
         let predicate = NSPredicate(format: "dueToday == TRUE")
         fetchRequest.predicate = predicate
         fetchRequest.sortDescriptors = [sort]
