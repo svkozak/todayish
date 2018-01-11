@@ -31,7 +31,7 @@ class SomeDayTaskCell: UITableViewCell {
     }
     
     func setUnchecked() {
-        checkBox.setImage(UIImage(named: "green-deselected"), for: UIControlState.normal)
+        checkBox.setImage(UIImage(named: "blue-deselected"), for: UIControlState.normal)
         todayTaskNameLabel.textColor = someDayBlue
         descriptionLabel.textColor = someDayBlue
         bottomBorder.backgroundColor = someDayBlue
