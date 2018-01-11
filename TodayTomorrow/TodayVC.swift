@@ -94,6 +94,8 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let task = tasks[indexPath.row]
         task.dueToday = false
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        getData()
+        tableView.reloadData()
     }
     
     
@@ -131,7 +133,9 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func getData() {
         let fetchRequest = NSFetchRequest<Task>(entityName: "Task")
-        let sort = NSSortDescriptor(key: #keyPath(Task.isCompleted), ascending: true)
+        let sort = NSSortDescriptor(key: #keyPath(Task.dueToday), ascending: true)
+        let predicate = NSPredicate(format: "dueToday == TRUE")
+        fetchRequest.predicate = predicate
         fetchRequest.sortDescriptors = [sort]
         do {
             tasks = try context.fetch(fetchRequest)
@@ -147,23 +151,15 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let cell = sender.superview?.superview as! TodayTaskCell
         let indexPath = tableView.indexPath(for: cell)
         let task = tasks[(indexPath?.row)!]
-        if task.isCompleted == false {
-            cell.setChecked()
-            task.isCompleted = true
-            (UIApplication.shared.delegate as! AppDelegate).saveContext()
-            getData()
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-                self.tableView.reloadData()
-            })
-        } else {
-            cell.setUnchecked()
-            task.isCompleted = false
-            (UIApplication.shared.delegate as! AppDelegate).saveContext()
-            getData()
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-                self.tableView.reloadData()
-            })
-        }
+        
+        task.isCompleted = !task.isCompleted
+        setSelectedCell(cell: cell, checked: task.isCompleted)
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        getData()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            self.tableView.reloadData()
+        })
     }
     
     // Reload data before view appears
