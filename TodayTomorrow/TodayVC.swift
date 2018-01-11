@@ -21,7 +21,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
    @IBOutlet weak var tableView: UITableView!
     
     
-    // TableView implementation
+    // MARK: ---- TableView implementation
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -60,6 +60,18 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return true
     }
     
+    // Add action when table row is swiped
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let moveToSomeDay = UITableViewRowAction(style: .normal, title: "Some day") { (moveToSomeday, indexPath) in
+            print("action shown")
+        }
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (deleteAction, indexPath) in
+            print("delete shown")
+        }
+        return [deleteAction, moveToSomeDay]
+    }
+    
     
     // Delete row and task from database
     
@@ -77,7 +89,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    // MARK: -- SEGUE - Prepare for segue
+    // MARK: ---- SEGUE - Prepare for segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showEditTask" {
@@ -95,15 +107,18 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // Get data from database
     
     func getData() {
+        let fetchRequest = NSFetchRequest<Task>(entityName: "Task")
+        let sort = NSSortDescriptor(key: #keyPath(Task.isCompleted), ascending: true)
+        fetchRequest.sortDescriptors = [sort]
         do {
-            tasks = try context.fetch(Task.fetchRequest())
+            tasks = try context.fetch(fetchRequest)
         } catch {
-            print("Fetching Failed")
+            print("Cannot fetch")
         }
     }
     
     
-    // MARK: Tap on checkbox button
+    // MARK: ---- Action - Tap on checkbox button
     
     @IBAction func checkBoxCheck(sender: UIButton) {
         let cell = sender.superview?.superview as! TodayTaskCell
