@@ -35,12 +35,27 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TodayTaskCell") as! TodayTaskCell
         cell.todayTaskNameLabel.text = tasks[indexPath.row].taskName
+        
+        setSelectedCell(cell: cell, checked: tasks[indexPath.row].isCompleted)
+        
         if tasks[indexPath.row].taskDescription == "Task description" {
             cell.descriptionLabel.text = ""
         } else {
             cell.descriptionLabel.text = tasks[indexPath.row].taskDescription
         }
         return cell
+    }
+    
+    func setSelectedCell(cell: TodayTaskCell, checked: Bool) {
+        if checked {
+            cell.setChecked()
+            cell.todayTaskNameLabel.textColor = UIColor.lightGray
+            cell.descriptionLabel.textColor = UIColor.lightGray
+        } else{
+            cell.setUnchecked()
+            cell.todayTaskNameLabel.textColor = todayGreen
+            cell.descriptionLabel.textColor = todayGreen
+        }
     }
     
     // Allow table editing
@@ -80,6 +95,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     
+    
     // Get data from database
     
     func getData() {
@@ -101,12 +117,14 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             cell.setChecked()
             cell.todayTaskNameLabel.textColor = UIColor.lightGray
             cell.descriptionLabel.textColor = UIColor.lightGray
+            //setSelectedCell(cell: cell, checked: true)
             task.isCompleted = true
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
         } else {
             cell.setUnchecked()
             cell.todayTaskNameLabel.textColor = todayGreen
             cell.descriptionLabel.textColor = todayGreen
+            //setSelectedCell(cell: cell, checked: false)
             task.isCompleted = false
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
         }

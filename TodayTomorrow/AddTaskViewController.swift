@@ -128,7 +128,10 @@ class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     }
     
     
-
+    @IBAction func cancelAddingTask(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     
 
     /*
