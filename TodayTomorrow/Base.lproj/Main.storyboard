@@ -1,26 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="T8u-18-ecZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="T8u-18-ecZ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Naste DemiBold.otf">
-            <string>Naste-DemiBold</string>
-        </array>
-        <array key="Naste Light.otf">
-            <string>Naste-Light</string>
-        </array>
-        <array key="Naste.otf">
-            <string>Naste</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Today-->
         <scene sceneID="hNz-n2-bh7">
@@ -34,8 +23,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ewv-lD-DYw">
-                                        <rect key="frame" x="140" y="50" width="96.5" height="35"/>
-                                        <fontDescription key="fontDescription" name="Naste-DemiBold" family="Naste" pointSize="34"/>
+                                        <rect key="frame" x="144" y="50" width="88" height="35"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -74,24 +63,26 @@
                                     <constraint firstItem="KsV-mg-8OB" firstAttribute="top" secondItem="dtk-zj-NxK" secondAttribute="top" constant="45" id="whB-50-VGE"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No tasks today!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T8D-Uk-um3">
-                                <rect key="frame" x="37" y="323.5" width="301" height="20"/>
-                                <fontDescription key="fontDescription" name="Naste" family="Naste" pointSize="20"/>
-                                <color key="textColor" red="0.30840110780000002" green="0.5618229508" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can add a new one above." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHn-GD-z6u">
-                                <rect key="frame" x="69" y="350" width="237.5" height="17"/>
-                                <fontDescription key="fontDescription" name="Naste-Light" family="Naste" pointSize="17"/>
-                                <color key="textColor" red="0.30840110780000002" green="0.5618229508" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe existing tasks for more options." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bou-pm-aff">
-                                <rect key="frame" x="30" y="373.5" width="315" height="17"/>
-                                <fontDescription key="fontDescription" name="Naste-Light" family="Naste" pointSize="17"/>
-                                <color key="textColor" red="0.30840110780000002" green="0.5618229508" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Hqf-Ym-cqS">
+                                <rect key="frame" x="58" y="296" width="260" height="75"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No tasks today!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T8D-Uk-um3">
+                                        <rect key="frame" x="56.5" y="0.0" width="147" height="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <color key="textColor" red="0.30840110780000002" green="0.5618229508" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a new task above and swipe existing tasks for more options." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHn-GD-z6u">
+                                        <rect key="frame" x="0.0" y="34" width="260" height="41"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="260" id="ecK-Zy-GcB"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                        <color key="textColor" red="0.30840110780000002" green="0.5618229508" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" estimatedRowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="B7D-ct-Pgv">
                                 <rect key="frame" x="0.0" y="100" width="375" height="518"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -114,26 +105,31 @@
                                                         <action selector="checkBoxCheckWithSender:" destination="9pv-A4-QxB" eventType="touchUpInside" id="qRT-JK-YKE"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EcD-uD-bFg">
-                                                    <rect key="frame" x="15" y="34" width="51.5" height="20"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="254" id="izZ-hP-K3t"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="Naste" family="Naste" pointSize="20"/>
-                                                    <color key="textColor" red="0.29803921570000003" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="stj-ID-I8d">
-                                                    <rect key="frame" x="15" y="62" width="63" height="12"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="254" id="OPd-cq-UDW"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="Naste-Light" family="Naste" pointSize="12"/>
-                                                    <color key="textColor" red="0.29803921570000003" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="FoL-kx-KNH">
+                                                    <rect key="frame" x="15" y="18.5" width="64.5" height="43.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EcD-uD-bFg">
+                                                            <rect key="frame" x="0.0" y="0.0" width="64.5" height="24"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="254" id="izZ-hP-K3t"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                            <color key="textColor" red="0.29803921570000003" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="stj-ID-I8d">
+                                                            <rect key="frame" x="0.0" y="29" width="64.5" height="14.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="254" id="OPd-cq-UDW"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
+                                                            <color key="textColor" red="0.29803921570000003" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C9k-SA-DNs">
-                                                    <rect key="frame" x="15" y="81" width="350" height="0.5"/>
+                                                    <rect key="frame" x="15" y="75.5" width="350" height="0.5"/>
                                                     <color key="backgroundColor" red="0.29803921570000003" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="0.5" id="x6j-u3-rFG"/>
@@ -142,15 +138,13 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="e8v-lg-4U7" firstAttribute="top" secondItem="Uz1-Pd-XpX" secondAttribute="top" id="50j-Mf-QK5"/>
-                                                <constraint firstItem="stj-ID-I8d" firstAttribute="leading" secondItem="Uz1-Pd-XpX" secondAttribute="leading" constant="15" id="EZ3-kf-fB7"/>
-                                                <constraint firstItem="C9k-SA-DNs" firstAttribute="top" secondItem="EcD-uD-bFg" secondAttribute="bottom" constant="27" id="FyW-5L-F0J"/>
-                                                <constraint firstItem="EcD-uD-bFg" firstAttribute="top" secondItem="Uz1-Pd-XpX" secondAttribute="topMargin" constant="23" id="R9t-Ei-SXu"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="C9k-SA-DNs" secondAttribute="bottom" constant="-7" id="Jyh-a7-ect"/>
+                                                <constraint firstItem="FoL-kx-KNH" firstAttribute="centerY" secondItem="Uz1-Pd-XpX" secondAttribute="centerY" id="LqM-Zt-QBI"/>
                                                 <constraint firstAttribute="trailing" secondItem="C9k-SA-DNs" secondAttribute="trailing" constant="10" id="YYY-Az-eBD"/>
                                                 <constraint firstAttribute="trailing" secondItem="e8v-lg-4U7" secondAttribute="trailing" id="ef1-Ht-z7y"/>
                                                 <constraint firstAttribute="bottom" secondItem="e8v-lg-4U7" secondAttribute="bottom" id="iwC-qH-ocw"/>
-                                                <constraint firstItem="stj-ID-I8d" firstAttribute="top" secondItem="EcD-uD-bFg" secondAttribute="bottom" constant="8" id="k0w-4z-AFQ"/>
                                                 <constraint firstItem="C9k-SA-DNs" firstAttribute="leading" secondItem="Uz1-Pd-XpX" secondAttribute="leading" constant="15" id="tA4-Rt-K5F"/>
-                                                <constraint firstItem="EcD-uD-bFg" firstAttribute="leading" secondItem="Uz1-Pd-XpX" secondAttribute="leadingMargin" id="uue-p4-tKI"/>
+                                                <constraint firstItem="FoL-kx-KNH" firstAttribute="leading" secondItem="Uz1-Pd-XpX" secondAttribute="leadingMargin" id="xmw-rB-ce5"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -170,27 +164,21 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Bou-pm-aff" secondAttribute="trailing" constant="30" id="8KC-BL-RR8"/>
-                            <constraint firstItem="Bou-pm-aff" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" constant="30" id="Abe-TK-sga"/>
-                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="T8D-Uk-um3" secondAttribute="trailing" constant="37" id="BAT-oL-aRD"/>
+                            <constraint firstItem="Hqf-Ym-cqS" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="5cn-dv-QOL"/>
                             <constraint firstItem="B7D-ct-Pgv" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="CFj-c4-VsJ"/>
-                            <constraint firstItem="PHn-GD-z6u" firstAttribute="top" secondItem="T8D-Uk-um3" secondAttribute="bottom" constant="6.5" id="CKh-eY-DhW"/>
-                            <constraint firstItem="Bou-pm-aff" firstAttribute="top" secondItem="T8D-Uk-um3" secondAttribute="bottom" constant="30" id="M2H-Oa-yPY"/>
                             <constraint firstItem="B7D-ct-Pgv" firstAttribute="bottom" secondItem="PQr-Ze-W5v" secondAttribute="bottom" id="O4S-n4-23H"/>
-                            <constraint firstItem="T8D-Uk-um3" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="QjK-VJ-RVI"/>
-                            <constraint firstItem="T8D-Uk-um3" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="SVe-pM-Kgd"/>
                             <constraint firstItem="dtk-zj-NxK" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="Xyu-Bk-JAg"/>
-                            <constraint firstItem="Bou-pm-aff" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="ZWW-sh-JX4"/>
                             <constraint firstItem="dtk-zj-NxK" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="ha8-dw-fC7"/>
-                            <constraint firstItem="T8D-Uk-um3" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="37" id="hin-b3-xaU"/>
-                            <constraint firstItem="PHn-GD-z6u" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="ogc-Pu-Qf8"/>
                             <constraint firstItem="B7D-ct-Pgv" firstAttribute="top" secondItem="dtk-zj-NxK" secondAttribute="bottom" id="ppH-Zz-1oi"/>
                             <constraint firstItem="B7D-ct-Pgv" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="rT2-Lt-Rjf"/>
+                            <constraint firstItem="Hqf-Ym-cqS" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="uVp-MD-5Pn"/>
                             <constraint firstItem="dtk-zj-NxK" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" id="ymn-WB-Pz8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Today" image="today" id="rlW-TH-F2U"/>
+                    <tabBarItem key="tabBarItem" title="Today" image="today" id="rlW-TH-F2U">
+                        <color key="badgeColor" red="0.30840110780000002" green="0.5618229508" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" title="Today" largeTitleDisplayMode="always" id="EJQ-L9-XVo">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="KcU-DC-js6">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -240,8 +228,8 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Update" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHe-Fa-S5s">
-                                        <rect key="frame" x="128.5" y="50" width="118.5" height="34"/>
-                                        <fontDescription key="fontDescription" name="Naste-DemiBold" family="Naste" pointSize="34"/>
+                                        <rect key="frame" x="135" y="49.5" width="106.5" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -271,7 +259,7 @@
                                             <constraint firstAttribute="height" constant="60" id="5XS-sv-H6H"/>
                                         </constraints>
                                         <color key="textColor" red="0.29803921570000003" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name="Naste-Light" family="Naste" pointSize="20"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
                                             <outlet property="delegate" destination="G0V-Qg-aGK" id="cyI-yW-sHx"/>
@@ -284,7 +272,7 @@
                                             <constraint firstAttribute="height" constant="100" id="O2i-1V-MDr"/>
                                         </constraints>
                                         <color key="textColor" red="0.29803921570000003" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name="Naste-Light" family="Naste" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         <connections>
                                             <outlet property="delegate" destination="G0V-Qg-aGK" id="idg-mb-EIp"/>
@@ -296,7 +284,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="dKS-ob-BLE"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Naste" family="Naste" pointSize="20"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                         <state key="normal" title="Save">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -316,7 +304,7 @@
                                             <constraint firstAttribute="height" constant="60" id="10X-Pt-Jp0"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="CUo-Cd-PG1"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Naste" family="Naste" pointSize="20"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                         <state key="normal" title="Delete task">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -341,7 +329,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="82" id="eyr-8X-o5k"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Naste" family="Naste" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <color key="textColor" red="0.30840110780000002" green="0.5618229508" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -408,7 +396,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add new" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W7T-1z-wTe">
                                         <rect key="frame" x="116" y="50" width="143" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Naste-DemiBold" family="Naste" pointSize="34"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -460,7 +448,7 @@
                                             <constraint firstAttribute="height" constant="60" id="SsM-hU-V6a"/>
                                         </constraints>
                                         <color key="textColor" red="0.29803921570000003" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name="Naste-Light" family="Naste" pointSize="20"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
                                             <outlet property="delegate" destination="LzB-Wj-r9S" id="09L-3L-4uG"/>
@@ -473,7 +461,7 @@
                                             <constraint firstAttribute="height" constant="100" id="QLH-Ye-d83"/>
                                         </constraints>
                                         <color key="textColor" red="0.29803921570000003" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name="Naste-Light" family="Naste" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         <connections>
                                             <outlet property="delegate" destination="LzB-Wj-r9S" id="ezq-d6-0KQ"/>
@@ -485,7 +473,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="oqZ-IS-AWH"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Naste" family="Naste" pointSize="20"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                         <state key="normal" title="Save">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -510,7 +498,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="82" id="DIJ-pK-MIr"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Naste" family="Naste" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <color key="textColor" red="0.30840110780000002" green="0.5618229508" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -574,8 +562,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some day" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="27a-Q4-uRH">
-                                        <rect key="frame" x="108" y="50" width="160" height="35"/>
-                                        <fontDescription key="fontDescription" name="Naste-DemiBold" family="Naste" pointSize="34"/>
+                                        <rect key="frame" x="116.5" y="50" width="143.5" height="35"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -617,21 +605,26 @@
                                     <constraint firstAttribute="bottom" secondItem="xet-DS-yZQ" secondAttribute="bottom" constant="10" id="zi5-qy-q80"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No postponed tasks." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fcd-vJ-Pui">
-                                <rect key="frame" x="90.5" y="323" width="194.5" height="20"/>
-                                <fontDescription key="fontDescription" name="Naste" family="Naste" pointSize="20"/>
-                                <color key="textColor" red="0.16078431369999999" green="0.50196078430000002" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a new task above. Swipe existing tasks for more options." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53u-lj-Ceg">
-                                <rect key="frame" x="30" y="350" width="315" height="54"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="54" id="fwb-IN-vbz"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Naste-Light" family="Naste" pointSize="17"/>
-                                <color key="textColor" red="0.16078431369999999" green="0.50196078430000002" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="22t-zG-vYS">
+                                <rect key="frame" x="57.5" y="296" width="260" height="75"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No postponed tasks." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fcd-vJ-Pui">
+                                        <rect key="frame" x="33" y="0.0" width="194" height="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <color key="textColor" red="0.16078431369999999" green="0.50196078430000002" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a new task above and swipe existing tasks for more options." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53u-lj-Ceg">
+                                        <rect key="frame" x="0.0" y="34" width="260" height="41"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="260" id="lCc-0a-lI3"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                        <color key="textColor" red="0.16078431369999999" green="0.50196078430000002" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0xb-mr-ekj">
                                 <rect key="frame" x="0.0" y="100" width="375" height="518"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -653,26 +646,31 @@
                                                         <action selector="checkBoxChecked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="itq-mK-zd7"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7J0-cZ-KTP">
-                                                    <rect key="frame" x="15" y="34" width="51.5" height="20"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="254" id="g0S-gq-jOn"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="Naste" family="Naste" pointSize="20"/>
-                                                    <color key="textColor" red="0.16078431369999999" green="0.50196078430000002" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="akX-Ye-JrA">
-                                                    <rect key="frame" x="15" y="62" width="63" height="12"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="254" id="Crw-AI-rUw"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="Naste-Light" family="Naste" pointSize="12"/>
-                                                    <color key="textColor" red="0.16078431369999999" green="0.50196078430000002" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="HgB-Tt-kcv">
+                                                    <rect key="frame" x="15" y="18.5" width="64.5" height="43.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7J0-cZ-KTP">
+                                                            <rect key="frame" x="0.0" y="0.0" width="64.5" height="24"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="254" id="g0S-gq-jOn"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                            <color key="textColor" red="0.16078431369999999" green="0.50196078430000002" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="akX-Ye-JrA">
+                                                            <rect key="frame" x="0.0" y="29" width="64.5" height="14.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="254" id="Crw-AI-rUw"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
+                                                            <color key="textColor" red="0.16078431369999999" green="0.50196078430000002" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hXY-4e-iME">
-                                                    <rect key="frame" x="15" y="81" width="350" height="0.5"/>
+                                                    <rect key="frame" x="15" y="79" width="350" height="0.5"/>
                                                     <color key="backgroundColor" red="0.29803921570000003" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="0.5" id="laT-eF-4nc"/>
@@ -680,16 +678,14 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="7J0-cZ-KTP" firstAttribute="leading" secondItem="HSj-9W-Mpj" secondAttribute="leadingMargin" id="3bu-yC-6IK"/>
-                                                <constraint firstItem="akX-Ye-JrA" firstAttribute="top" secondItem="7J0-cZ-KTP" secondAttribute="bottom" constant="8" id="3w1-SJ-334"/>
                                                 <constraint firstItem="iGf-Wi-DVS" firstAttribute="top" secondItem="HSj-9W-Mpj" secondAttribute="top" id="5Yq-vr-CPF"/>
                                                 <constraint firstAttribute="bottom" secondItem="iGf-Wi-DVS" secondAttribute="bottom" id="6HJ-9t-QhZ"/>
+                                                <constraint firstAttribute="bottom" secondItem="hXY-4e-iME" secondAttribute="bottom" constant="0.5" id="9eo-Fh-jGb"/>
                                                 <constraint firstItem="hXY-4e-iME" firstAttribute="leading" secondItem="HSj-9W-Mpj" secondAttribute="leading" constant="15" id="9py-lO-Ccc"/>
                                                 <constraint firstAttribute="trailing" secondItem="iGf-Wi-DVS" secondAttribute="trailing" id="AvT-vB-jpU"/>
-                                                <constraint firstItem="7J0-cZ-KTP" firstAttribute="top" secondItem="HSj-9W-Mpj" secondAttribute="topMargin" constant="23" id="H39-tT-Vc4"/>
-                                                <constraint firstItem="akX-Ye-JrA" firstAttribute="leading" secondItem="HSj-9W-Mpj" secondAttribute="leading" constant="15" id="LEG-nm-3Nt"/>
                                                 <constraint firstAttribute="trailing" secondItem="hXY-4e-iME" secondAttribute="trailing" constant="10" id="Lyr-t0-aNI"/>
-                                                <constraint firstItem="hXY-4e-iME" firstAttribute="top" secondItem="7J0-cZ-KTP" secondAttribute="bottom" constant="27" id="gam-wc-cXr"/>
+                                                <constraint firstItem="HgB-Tt-kcv" firstAttribute="leading" secondItem="HSj-9W-Mpj" secondAttribute="leadingMargin" id="T4n-n0-7L5"/>
+                                                <constraint firstItem="HgB-Tt-kcv" firstAttribute="centerY" secondItem="HSj-9W-Mpj" secondAttribute="centerY" id="cnq-G5-MPn"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -710,24 +706,21 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="53u-lj-Ceg" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="30" id="36A-XQ-vLh"/>
                             <constraint firstItem="0xb-mr-ekj" firstAttribute="top" secondItem="SOt-Sy-Ttv" secondAttribute="top" constant="100" id="6U1-fP-kuW"/>
-                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="53u-lj-Ceg" secondAttribute="trailing" constant="30" id="7iJ-If-Js5"/>
                             <constraint firstItem="SOt-Sy-Ttv" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" id="NkM-y1-5oM"/>
-                            <constraint firstItem="53u-lj-Ceg" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="S0B-zG-lBx"/>
                             <constraint firstItem="SOt-Sy-Ttv" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="Tug-fl-K89"/>
-                            <constraint firstItem="Fcd-vJ-Pui" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" id="U1R-VX-CZL"/>
-                            <constraint firstItem="53u-lj-Ceg" firstAttribute="top" secondItem="Fcd-vJ-Pui" secondAttribute="bottom" constant="7" id="cvL-ab-y7n"/>
-                            <constraint firstItem="53u-lj-Ceg" firstAttribute="top" secondItem="Fcd-vJ-Pui" secondAttribute="bottom" constant="7" id="d1k-wW-cy6"/>
-                            <constraint firstItem="Fcd-vJ-Pui" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="eIG-4f-okW"/>
+                            <constraint firstItem="22t-zG-vYS" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="Ve0-y6-1n0"/>
                             <constraint firstItem="0xb-mr-ekj" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="tDM-ie-92Q"/>
                             <constraint firstItem="SOt-Sy-Ttv" firstAttribute="trailing" secondItem="O1u-W8-tvY" secondAttribute="trailing" id="tZJ-dm-Afb"/>
+                            <constraint firstItem="22t-zG-vYS" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" id="uNv-fW-umX"/>
                             <constraint firstItem="0xb-mr-ekj" firstAttribute="trailing" secondItem="O1u-W8-tvY" secondAttribute="trailing" id="vPl-FQ-bTR"/>
                             <constraint firstItem="0xb-mr-ekj" firstAttribute="bottom" secondItem="O1u-W8-tvY" secondAttribute="bottom" id="vjn-P1-ePT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Some day" image="tomorrow" id="jtZ-zB-pcr"/>
+                    <tabBarItem key="tabBarItem" title="Some day" image="tomorrow" id="jtZ-zB-pcr">
+                        <color key="badgeColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" title="Some day" largeTitleDisplayMode="always" id="CkM-Fa-2gB"/>
                     <connections>
                         <outlet property="tableView" destination="0xb-mr-ekj" id="8qv-ub-464"/>
@@ -742,11 +735,10 @@
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="T8u-18-ecZ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" backgroundImage="Tab bar" id="U8Y-CG-DY7">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="U8Y-CG-DY7">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="selectedImageTintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="omn-yb-U0G"/>
@@ -760,7 +752,6 @@
     </scenes>
     <resources>
         <image name="Add" width="26" height="26"/>
-        <image name="Tab bar" width="375" height="49"/>
         <image name="Trash" width="22" height="24"/>
         <image name="blue-deselected" width="28" height="28"/>
         <image name="green-deselected" width="28" height="28"/>
@@ -768,7 +759,7 @@
         <image name="tomorrow" width="27" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="isP-nh-K72"/>
-        <segue reference="gyP-kK-KfG"/>
+        <segue reference="nSh-YK-vME"/>
+        <segue reference="9jr-El-qM7"/>
     </inferredMetricsTieBreakers>
 </document>

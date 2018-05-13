@@ -164,7 +164,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
         getData()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(800), execute: {
             self.tableView.reloadData()
         })
     }
@@ -186,7 +186,8 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // Reload data before view appears
     
     override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.tabBar.unselectedItemTintColor = deselectedGrey
+		self.tabBarController?.tabBar.tintColor = todayGreen
+        // self.tabBarController?.tabBar.unselectedItemTintColor = deselectedGrey
         getData()
         tableView.reloadData()
     }
@@ -196,6 +197,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+		
     }
 
     override func didReceiveMemoryWarning() {

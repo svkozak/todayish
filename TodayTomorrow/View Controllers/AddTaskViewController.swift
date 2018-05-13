@@ -53,6 +53,8 @@ class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		taskNameField.becomeFirstResponder()
         
         // Add gesture recognizers for dismissing the keyboard
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))

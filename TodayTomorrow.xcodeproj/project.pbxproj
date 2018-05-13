@@ -18,9 +18,6 @@
 		13961C9F1FEB511100A9B2C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13961C9D1FEB511100A9B2C1 /* Main.storyboard */; };
 		13961CA41FEB511100A9B2C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13961CA21FEB511100A9B2C1 /* LaunchScreen.storyboard */; };
 		13961CAC1FEB6A5600A9B2C1 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 13961CA51FEB511100A9B2C1 /* Info.plist */; };
-		13961CAE1FEB6CFE00A9B2C1 /* Naste DemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 13961CAD1FEB6CFE00A9B2C1 /* Naste DemiBold.otf */; };
-		13961CB01FEB6D9C00A9B2C1 /* Naste.otf in Resources */ = {isa = PBXBuildFile; fileRef = 13961CAF1FEB6D9C00A9B2C1 /* Naste.otf */; };
-		13961CB21FEB6DA700A9B2C1 /* Naste Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 13961CB11FEB6DA600A9B2C1 /* Naste Light.otf */; };
 		13F2858F1FF74A4800E598A4 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F2858E1FF74A4800E598A4 /* AddTaskViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,9 +34,6 @@
 		13961C9E1FEB511100A9B2C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		13961CA31FEB511100A9B2C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		13961CA51FEB511100A9B2C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		13961CAD1FEB6CFE00A9B2C1 /* Naste DemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Naste DemiBold.otf"; sourceTree = "<group>"; };
-		13961CAF1FEB6D9C00A9B2C1 /* Naste.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Naste.otf; sourceTree = "<group>"; };
-		13961CB11FEB6DA600A9B2C1 /* Naste Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Naste Light.otf"; sourceTree = "<group>"; };
 		13F2858E1FF74A4800E598A4 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -74,16 +68,6 @@
 			path = "Custom Cells";
 			sourceTree = "<group>";
 		};
-		134E04C1200805CA00A4410F /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				13961CAD1FEB6CFE00A9B2C1 /* Naste DemiBold.otf */,
-				13961CAF1FEB6D9C00A9B2C1 /* Naste.otf */,
-				13961CB11FEB6DA600A9B2C1 /* Naste Light.otf */,
-			);
-			path = Fonts;
-			sourceTree = "<group>";
-		};
 		13961C8B1FEB511100A9B2C1 = {
 			isa = PBXGroup;
 			children = (
@@ -104,7 +88,6 @@
 			isa = PBXGroup;
 			children = (
 				13961C971FEB511100A9B2C1 /* AppDelegate.swift */,
-				134E04C1200805CA00A4410F /* Fonts */,
 				134E04C0200805B100A4410F /* Custom Cells */,
 				134E04BF2008058C00A4410F /* View Controllers */,
 				13961C9D1FEB511100A9B2C1 /* Main.storyboard */,
@@ -175,13 +158,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13961CAE1FEB6CFE00A9B2C1 /* Naste DemiBold.otf in Resources */,
-				13961CB21FEB6DA700A9B2C1 /* Naste Light.otf in Resources */,
 				13961CAC1FEB6A5600A9B2C1 /* Info.plist in Resources */,
 				13961CA41FEB511100A9B2C1 /* LaunchScreen.storyboard in Resources */,
 				1331D9931FF751A700B8D34F /* Assets.xcassets in Resources */,
 				13961C9F1FEB511100A9B2C1 /* Main.storyboard in Resources */,
-				13961CB01FEB6D9C00A9B2C1 /* Naste.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

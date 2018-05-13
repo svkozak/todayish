@@ -154,6 +154,7 @@ class TomorrowVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
     override func viewWillAppear(_ animated: Bool) {
+		self.tabBarController?.tabBar.tintColor = someDayBlue
         getData()
         tableView.reloadData()
     }
@@ -162,6 +163,7 @@ class TomorrowVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
 
     override func viewDidLoad() {
+		
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
