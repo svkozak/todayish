@@ -10,8 +10,16 @@
 import UIKit
 import CoreData
 
-class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
+// Protocol to handle dismissal of presented viewcontroller
+
+protocol ModalHandlerDelegate: AnyObject {
+	func modalDismissed()
+}
+
+
+class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarControllerDelegate, ModalHandlerDelegate {
+
+
     let deselectedGrey = UIColor(displayP3Red: 0.921, green: 0.921, blue: 0.921, alpha: 0.9)
     let todayGreen = UIColor(red: 0.298, green: 0.498, blue: 0, alpha: 1)
     let someDayBlue = UIColor(red: 0.161, green: 0.502, blue: 0.725, alpha: 1)
@@ -20,10 +28,33 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var tasks: [Task] = []
     var completedTasks: [Task] = []
     
-   @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
+	@IBOutlet weak var blurEffect: UIVisualEffectView!
+	
+	
+	// Reload data before view appears
+	
+	override func viewWillAppear(_ animated: Bool) {
+		
+		self.tabBarController?.tabBar.tintColor = todayGreen
+		self.tabBarController?.tabBar.unselectedItemTintColor = UIColor.darkGray
+		tableView.rowHeight = UITableViewAutomaticDimension
+		getData()
+		configureTable()
+	}
+	
+	
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		// Do any additional setup after loading the view, typically from a nib.
+		self.tabBarController?.delegate = self
+		
+	}
+	
+	
     
-    
-    // MARK: ---- TableView implementation
+    // MARK: -- TableView implementation --
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -95,7 +126,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         } catch {
             print("fetching failed")
         }
-        tableView.reloadData()
+        configureTable()
     }
     
     
@@ -106,7 +137,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         task.dueToday = false
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
         getData()
-        tableView.reloadData()
+        configureTable()
     }
     
     
@@ -117,9 +148,11 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             context.delete(task)
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
             getData()
-            tableView.reloadData()
+            configureTable()
         }
     }
+	
+	
     
     // MARK: ---- SEGUE - Prepare for segue
     
@@ -131,6 +164,13 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 editTaskVC.taskToEdit = selectedTask
             }
         }
+		
+		if segue.identifier == "showAddTask" {
+			
+			let addTaskVC = segue.destination as! AddTaskViewController
+			addTaskVC.delegate = self
+			applyBlur()
+		}
     }
     
     
@@ -165,7 +205,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         getData()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(800), execute: {
-            self.tableView.reloadData()
+            self.configureTable()
         })
     }
     
@@ -176,35 +216,60 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             }
         }
         getData()
-        tableView.reloadData()
+        configureTable()
     }
     
+    // helper method to reload table
+	
+	func configureTable() {
+		// tableView.estimatedRowHeight = 100
+		tableView.rowHeight = UITableViewAutomaticDimension
+		tableView.reloadData()
+	}
     
-    
-    
-    
-    // Reload data before view appears
-    
-    override func viewWillAppear(_ animated: Bool) {
-		self.tabBarController?.tabBar.tintColor = todayGreen
-        // self.tabBarController?.tabBar.unselectedItemTintColor = deselectedGrey
-        getData()
-        tableView.reloadData()
-    }
     
     
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+
+
+	// MARK: -- Tabbar controller methods --
+	
+	func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
 		
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+		if viewController is AddTaskViewController {
+			performSegue(withIdentifier: "showAddTask", sender: self)
+			return false
+		} else {
+			return true
+		}
+	}
+	
+	
+	// MARK: -- Helper functions --
+	
+	func applyBlur() {
+		UIView.animate(withDuration: 0.3) {
+			self.blurEffect.alpha = 1
+		}
+	}
+	
+	func removeBlur() {
+		UIView.animate(withDuration: 0.3) {
+			self.blurEffect.alpha = 0
+		}
+	}
+	
+	func modalDismissed() {
+		removeBlur()
+		getData()
+		configureTable()
+	}
+	
+	override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
+		// Dispose of any resources that can be recreated.
+	}
 
 }
 

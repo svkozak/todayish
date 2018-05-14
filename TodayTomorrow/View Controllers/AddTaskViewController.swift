@@ -9,7 +9,11 @@
 import UIKit
 import CoreData
 
+
+
 class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
+	
+	
     
     // Context for CoreData
     
@@ -19,19 +23,22 @@ class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     let todayGreen = UIColor(red: 0.298, green: 0.498, blue: 0, alpha: 1)
 
     
-    @IBOutlet weak var taskNameField: UITextField!
+	@IBOutlet weak var modalView: UIView!
+	@IBOutlet weak var taskNameField: UITextField!
     @IBOutlet weak var taskDescriptionField: UITextView!
     @IBOutlet weak var dueTodaySwitch: UISwitch!
     @IBOutlet weak var navigationBar: UIView!
     @IBOutlet weak var dueTodayLabel: UILabel!
     @IBOutlet weak var saveButton: UIButton!
-    
+
+	// delegate will be called when viewcontroller is dismissed
+	weak var delegate: ModalHandlerDelegate?
     
     // MARK: TextView placeholder and editing style
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         
-        if taskDescriptionField.text == "Task description" {
+        if taskDescriptionField.text == "Description (optional)" {
             taskDescriptionField.text = ""
             taskDescriptionField.textColor = UIColor(red: 0.298, green: 0.498, blue: 0, alpha: 1)
         } else {
@@ -43,16 +50,21 @@ class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         taskDescriptionField.resignFirstResponder()
         if taskDescriptionField.text == "" {
             taskDescriptionField.textColor = UIColor.lightGray
-            taskDescriptionField.text = "Task description"
+            taskDescriptionField.text = "Description (optional)"
         } else {
             print("description entered")
         }
     }
 
-    
+	override func viewWillAppear(_ animated: Bool) {
+		modalView.layer.cornerRadius = 5
+		
+	}
     
     override func viewDidLoad() {
         super.viewDidLoad()
+		self.tabBarController?.tabBar.isHidden = true
+		
 		
 		taskNameField.becomeFirstResponder()
         
@@ -81,7 +93,7 @@ class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     @IBAction func saveTaskPressed(_ sender: UIButton) {
         
         if taskNameField.text == "" {
-            let alert = UIAlertController(title: "🤷‍♂️", message: "Task name should not be empty", preferredStyle: .alert)
+            let alert = UIAlertController(title: "🤷‍♂️", message: "Task name shouldn't be empty", preferredStyle: .alert)
             let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alert.addAction(action)
             self.present(alert, animated: true, completion: nil)
@@ -101,10 +113,15 @@ class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDe
                 task.taskDescription = taskDescriptionField.text
             }
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
-            dismiss(animated: true, completion: nil)
+			
+			
+			dismiss(animated: false) {
+				self.delegate?.modalDismissed()
+			}
         }
         
     }
+	
     
     
     // MARK: Keyboard
@@ -117,7 +134,10 @@ class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     
     
     @IBAction func cancelAddingTask(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+		taskNameField.resignFirstResponder()
+		dismiss(animated: false) {
+			self.delegate?.modalDismissed()
+		}
     }
     
     @IBAction func switchFlipped(_ sender: UISwitch) {
@@ -145,16 +165,6 @@ class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         taskNameField.textColor = todayGreen
         taskDescriptionField.textColor = todayGreen
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+	
 
 }
