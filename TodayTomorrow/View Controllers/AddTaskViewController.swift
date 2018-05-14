@@ -90,37 +90,40 @@ class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     
     // MARK: Save task
     
-    @IBAction func saveTaskPressed(_ sender: UIButton) {
-        
-        if taskNameField.text == "" {
-            let alert = UIAlertController(title: "🤷‍♂️", message: "Task name shouldn't be empty", preferredStyle: .alert)
-            let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alert.addAction(action)
-            self.present(alert, animated: true, completion: nil)
-            
-        } else {
-            
-            let task = Task(context: context)
-            task.taskName = taskNameField.text
-            if dueTodaySwitch.isOn {
-                task.dueToday = true
-            } else {
-                task.dueToday = false
-            }
-            if taskDescriptionField.text == "" {
-                task.taskDescription = ""
-            } else {
-                task.taskDescription = taskDescriptionField.text
-            }
-            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+	@IBAction func saveTaskPressed(_ sender: UIButton) {
+        saveTask()
+    }
+	
+	func saveTask() {
+		
+		if taskNameField.text == "" {
+			let alert = UIAlertController(title: "🤷‍♂️", message: "Task name shouldn't be empty", preferredStyle: .alert)
+			let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+			alert.addAction(action)
+			self.present(alert, animated: true, completion: nil)
+			
+		} else {
+			
+			let task = Task(context: context)
+			task.taskName = taskNameField.text
+			if dueTodaySwitch.isOn {
+				task.dueToday = true
+			} else {
+				task.dueToday = false
+			}
+			if taskDescriptionField.text == "" {
+				task.taskDescription = ""
+			} else {
+				task.taskDescription = taskDescriptionField.text
+			}
+			(UIApplication.shared.delegate as! AppDelegate).saveContext()
 			
 			
 			dismiss(animated: false) {
 				self.delegate?.modalDismissed()
 			}
-        }
-        
-    }
+		}
+	}
 	
     
     
