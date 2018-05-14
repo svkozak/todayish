@@ -28,7 +28,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qqU-RD-bFS">
                                         <rect key="frame" x="8" y="48" width="359" height="36"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KsV-mg-8OB">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KsV-mg-8OB">
                                                 <rect key="frame" x="0.0" y="0.0" width="45" height="36"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="45" id="Jff-fM-BAd"/>
@@ -157,7 +157,6 @@
                                             <outlet property="checkBox" destination="e8v-lg-4U7" id="iMZ-JN-wUS"/>
                                             <outlet property="descriptionLabel" destination="stj-ID-I8d" id="1Cu-I5-3bW"/>
                                             <outlet property="todayTaskNameLabel" destination="EcD-uD-bFg" id="kXZ-Jw-OZ8"/>
-                                            <segue destination="G0V-Qg-aGK" kind="presentation" identifier="showEditTask" id="gyP-kK-KfG"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -204,6 +203,7 @@
                     <connections>
                         <outlet property="blurEffect" destination="sgy-DE-q72" id="2ZI-wg-ko9"/>
                         <outlet property="tableView" destination="B7D-ct-Pgv" id="5Ad-sQ-Rx7"/>
+                        <segue destination="G0V-Qg-aGK" kind="presentation" identifier="showEditTask" modalPresentationStyle="overCurrentContext" id="JBY-o7-3f4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -423,7 +423,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="faA-51-MfK"/>
                                                         </constraints>
-                                                        <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <connections>
@@ -436,7 +436,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="100" id="0lh-to-p6a"/>
                                                         </constraints>
-                                                        <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                         <connections>
@@ -452,7 +452,7 @@
                                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="82" id="DIJ-pK-MIr"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                                <color key="textColor" red="0.30840110780000002" green="0.5618229508" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ibb-nQ-Kce">
@@ -770,7 +770,7 @@
         <image name="tomorrow" width="27" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nSh-YK-vME"/>
-        <segue reference="gyP-kK-KfG"/>
+        <segue reference="isP-nh-K72"/>
+        <segue reference="JBY-o7-3f4"/>
     </inferredMetricsTieBreakers>
 </document>

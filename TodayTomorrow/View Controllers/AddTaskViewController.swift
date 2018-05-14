@@ -9,14 +9,11 @@
 import UIKit
 import CoreData
 
-
-
 class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 	
-	
-    
     // Context for CoreData
-    
+	
+	let database = (UIApplication.shared.delegate as! AppDelegate)
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     let someDayBlue = UIColor(red: 0.161, green: 0.502, blue: 0.725, alpha: 1)
@@ -33,14 +30,15 @@ class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDe
 
 	// delegate will be called when viewcontroller is dismissed
 	weak var delegate: ModalHandlerDelegate?
+	
+	
     
     // MARK: TextView placeholder and editing style
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        
         if taskDescriptionField.text == "Description (optional)" {
+			taskDescriptionField.textColor = UIColor.darkGray
             taskDescriptionField.text = ""
-            taskDescriptionField.textColor = UIColor(red: 0.298, green: 0.498, blue: 0, alpha: 1)
         } else {
             print("began editing")
         }
@@ -49,7 +47,6 @@ class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     func textViewDidEndEditing(_ textView: UITextView) {
         taskDescriptionField.resignFirstResponder()
         if taskDescriptionField.text == "" {
-            taskDescriptionField.textColor = UIColor.lightGray
             taskDescriptionField.text = "Description (optional)"
         } else {
             print("description entered")
@@ -63,9 +60,8 @@ class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-		self.tabBarController?.tabBar.isHidden = true
-		
-		
+
+		// activate keyboard on load
 		taskNameField.becomeFirstResponder()
         
         // Add gesture recognizers for dismissing the keyboard
@@ -88,7 +84,7 @@ class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     }
     
     
-    // MARK: Save task
+    // MARK: -- Save task --
     
 	@IBAction func saveTaskPressed(_ sender: UIButton) {
         saveTask()
@@ -106,19 +102,15 @@ class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDe
 			
 			let task = Task(context: context)
 			task.taskName = taskNameField.text
-			if dueTodaySwitch.isOn {
-				task.dueToday = true
-			} else {
-				task.dueToday = false
-			}
-			if taskDescriptionField.text == "" {
+			task.dueToday = dueTodaySwitch.isOn ? true : false
+			
+			if taskDescriptionField.text == "" || taskDescriptionField.text == "Description (optional)" {
 				task.taskDescription = ""
 			} else {
 				task.taskDescription = taskDescriptionField.text
 			}
-			(UIApplication.shared.delegate as! AppDelegate).saveContext()
-			
-			
+			database.saveContext()
+
 			dismiss(animated: false) {
 				self.delegate?.modalDismissed()
 			}
@@ -146,29 +138,12 @@ class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     
     @IBAction func switchFlipped(_ sender: UISwitch) {
         if sender.isOn {
-          setGreenColour()
+			print("today")
         } else {
-            setBlueColour()
+			print("not today")
         }
     }
-    
-    
-    func setBlueColour () {
-        navigationBar.backgroundColor = someDayBlue
-        dueTodayLabel.textColor = someDayBlue
-        saveButton.backgroundColor = someDayBlue
-        taskNameField.textColor = someDayBlue
-        taskDescriptionField.textColor = someDayBlue
-        
-    }
-    
-    func setGreenColour() {
-        navigationBar.backgroundColor = todayGreen
-        dueTodayLabel.textColor = todayGreen
-        saveButton.backgroundColor = todayGreen
-        taskNameField.textColor = todayGreen
-        taskDescriptionField.textColor = todayGreen
-    }
+	
 	
 
 }

@@ -25,6 +25,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
     let someDayBlue = UIColor(red: 0.161, green: 0.502, blue: 0.725, alpha: 1)
 
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+	let database = (UIApplication.shared.delegate as! AppDelegate)
     var tasks: [Task] = []
     var completedTasks: [Task] = []
     
@@ -100,56 +101,69 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
         return true
     }
     
-    // Add action when table row is swiped
-    
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        
-        let moveToSomeDay = UITableViewRowAction(style: .normal, title: "Some day") { (moveToSomeday, indexPath) in
-            self.moveTaskToSomeDay(atIndexPath: indexPath)
-            }
-        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (deleteAction, indexPath) in
-            self.deleteTask(atIndexPath: indexPath)
-        }
-        moveToSomeDay.backgroundColor = someDayBlue
-        return [deleteAction, moveToSomeDay]
-    }
-    
+    // Add actions when table row is swiped from left or right
+	
+	func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+		let moveTaskToSomeDay = UIContextualAction(style: .destructive, title: "Some day") { (action, view, handler) in
+			print("left swipe performed")
+			self.moveTaskToSomeDay(atIndexPath: indexPath)
+		}
+		moveTaskToSomeDay.backgroundColor = someDayBlue
+		let configuration = UISwipeActionsConfiguration(actions: [moveTaskToSomeDay])
+		configuration.performsFirstActionWithFullSwipe = true
+		return configuration
+	}
+	
+	func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+		let deleteTask = UIContextualAction(style: .destructive, title: "Delete") { (action, view, handler) in
+			print("delete performed")
+			self.deleteTask(atIndexPath: indexPath)
+		}
+
+		let editTask = UIContextualAction(style: .normal, title: "Edit") { (action, view, handler) in
+			print("edit task performed")
+			let cell = self.tableView.cellForRow(at: indexPath) as! TodayTaskCell
+			self.performSegue(withIdentifier: "showEditTask", sender: cell)
+		}
+		let configuration = UISwipeActionsConfiguration(actions: [deleteTask, editTask])
+		configuration.performsFirstActionWithFullSwipe = true
+		return configuration
+	}
+	
+	
     
     // Delete row and task from database
     
     func deleteTask(atIndexPath indexPath: IndexPath) {
-        let task = tasks[indexPath.row]
-        context.delete(task)
-        (UIApplication.shared.delegate as! AppDelegate).saveContext()
-        do {
-            tasks = try context.fetch(Task.fetchRequest())
-        } catch {
-            print("fetching failed")
-        }
-        configureTable()
+		
+		tableView.performBatchUpdates({
+			let task = self.tasks[indexPath.row]
+			tasks.remove(at: indexPath.row)
+			self.context.delete(task)
+			self.database.saveContext()
+			self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+		}) { (true) in
+			self.getData()
+			self.configureTable()
+		}
+
     }
     
     
-    // Change task to Some day
+    // Move task to Some day
     
     func moveTaskToSomeDay(atIndexPath indexPath: IndexPath) {
-        let task = tasks[indexPath.row]
-        task.dueToday = false
-        (UIApplication.shared.delegate as! AppDelegate).saveContext()
-        getData()
-        configureTable()
-    }
-    
-    
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let task = tasks[indexPath.row]
-            context.delete(task)
-            (UIApplication.shared.delegate as! AppDelegate).saveContext()
-            getData()
-            configureTable()
-        }
+		
+		tableView.performBatchUpdates({
+			let task = self.tasks[indexPath.row]
+			task.dueToday = false
+			tasks.remove(at: indexPath.row)
+			self.database.saveContext()
+			self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+		}) { (true) in
+			self.getData()
+			self.configureTable()
+		}
     }
 	
 	
@@ -158,15 +172,16 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showEditTask" {
-            if let indexPath = tableView.indexPathForSelectedRow {
-                let selectedTask = tasks[indexPath.row]
-                let editTaskVC = segue.destination as! EditTaskViewController
-                editTaskVC.taskToEdit = selectedTask
-            }
+			
+			let indexPathForCell = tableView.indexPath(for: sender as! TodayTaskCell)
+			let selectedTask = tasks[(indexPathForCell?.row)!]
+			let editTaskVC = segue.destination as! EditTaskViewController
+			editTaskVC.taskToEdit = selectedTask
+			editTaskVC.delegate = self
+			applyBlur()
         }
 		
 		if segue.identifier == "showAddTask" {
-			
 			let addTaskVC = segue.destination as! AddTaskViewController
 			addTaskVC.delegate = self
 			applyBlur()
@@ -226,11 +241,6 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 		tableView.rowHeight = UITableViewAutomaticDimension
 		tableView.reloadData()
 	}
-    
-    
-    
-
-
 
 
 	// MARK: -- Tabbar controller methods --

@@ -22,21 +22,25 @@ class EditTaskViewController: UIViewController, UITextFieldDelegate, UITextViewD
     @IBOutlet weak var navigationBar: UIView!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var dueTodayLabel: UILabel!
+	
+	// delegate will be called when viewcontroller is dismissed
+	weak var delegate: ModalHandlerDelegate?
     
     
     override func viewWillAppear(_ animated: Bool) {
+		
         taskNameField.text = taskToEdit?.taskName
         dueTodaySwitch.setOn((taskToEdit?.dueToday)!, animated: true)
-        
+
         if taskToEdit?.taskDescription == "" {
             taskDescriptionField.text = "Task description"
             taskDescriptionField.textColor = UIColor.lightGray
-            
+
         } else {
             taskDescriptionField.text = taskToEdit?.taskDescription
             taskDescriptionField.textColor = UIColor(red: 0.298, green: 0.498, blue: 0, alpha: 1)
         }
-        
+
         if (taskToEdit?.dueToday)! {
             setGreenColour()
         } else {
