@@ -25,49 +25,48 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="todayback" translatesAutoresizingMaskIntoConstraints="NO" id="jID-iO-YXf">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ewv-lD-DYw">
-                                        <rect key="frame" x="143.5" y="50" width="88" height="35"/>
-                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
-                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KsV-mg-8OB">
-                                        <rect key="frame" x="8" y="47" width="45" height="45"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="45" id="Jff-fM-BAd"/>
-                                        </constraints>
-                                        <state key="normal" image="Add"/>
-                                        <connections>
-                                            <segue destination="LzB-Wj-r9S" kind="presentation" identifier="showAddTask" modalPresentationStyle="overCurrentContext" id="isP-nh-K72"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ea-e0-LD5">
-                                        <rect key="frame" x="322" y="47" width="45" height="45"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="45" id="HRE-r9-WVl"/>
-                                        </constraints>
-                                        <state key="normal" image="Trash"/>
-                                        <connections>
-                                            <action selector="deleteCompletedTasks:" destination="9pv-A4-QxB" eventType="touchUpInside" id="FGD-bM-czp"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qqU-RD-bFS">
+                                        <rect key="frame" x="8" y="48" width="359" height="36"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KsV-mg-8OB">
+                                                <rect key="frame" x="0.0" y="0.0" width="45" height="36"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="45" id="Jff-fM-BAd"/>
+                                                </constraints>
+                                                <state key="normal" image="Add"/>
+                                                <connections>
+                                                    <segue destination="LzB-Wj-r9S" kind="presentation" identifier="showAddTask" modalPresentationStyle="overCurrentContext" id="isP-nh-K72"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ewv-lD-DYw">
+                                                <rect key="frame" x="45" y="0.0" width="269" height="36"/>
+                                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
+                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ea-e0-LD5">
+                                                <rect key="frame" x="314" y="0.0" width="45" height="36"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="45" id="HRE-r9-WVl"/>
+                                                </constraints>
+                                                <state key="normal" image="Trash"/>
+                                                <connections>
+                                                    <action selector="deleteCompletedTasks:" destination="9pv-A4-QxB" eventType="touchUpInside" id="FGD-bM-czp"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.30840110780000002" green="0.5618229508" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="Ewv-lD-DYw" firstAttribute="centerX" secondItem="dtk-zj-NxK" secondAttribute="centerX" id="49d-a8-YZb"/>
                                     <constraint firstItem="jID-iO-YXf" firstAttribute="leading" secondItem="dtk-zj-NxK" secondAttribute="leading" id="5CW-PB-6cR"/>
-                                    <constraint firstAttribute="bottom" secondItem="KsV-mg-8OB" secondAttribute="bottom" constant="8" id="8nB-mH-QaP"/>
+                                    <constraint firstItem="qqU-RD-bFS" firstAttribute="leading" secondItem="dtk-zj-NxK" secondAttribute="leading" constant="8" id="8Fw-a4-Oif"/>
                                     <constraint firstAttribute="trailing" secondItem="jID-iO-YXf" secondAttribute="trailing" id="HDG-4M-4BW"/>
                                     <constraint firstAttribute="height" constant="100" id="Hxh-dl-Qcs"/>
-                                    <constraint firstItem="7ea-e0-LD5" firstAttribute="top" secondItem="dtk-zj-NxK" secondAttribute="top" constant="47" id="Owv-xx-pK0"/>
-                                    <constraint firstItem="Ewv-lD-DYw" firstAttribute="top" secondItem="dtk-zj-NxK" secondAttribute="top" constant="50" id="Pnt-Ve-sjI"/>
-                                    <constraint firstItem="7ea-e0-LD5" firstAttribute="leading" secondItem="dtk-zj-NxK" secondAttribute="leading" constant="322" id="ROU-DG-SIC"/>
-                                    <constraint firstAttribute="bottom" secondItem="7ea-e0-LD5" secondAttribute="bottom" constant="8" id="SzC-JA-DqX"/>
+                                    <constraint firstAttribute="bottom" secondItem="qqU-RD-bFS" secondAttribute="bottom" constant="16" id="KpG-kK-7Ev"/>
                                     <constraint firstAttribute="bottom" secondItem="jID-iO-YXf" secondAttribute="bottom" id="U0m-WM-S7l"/>
-                                    <constraint firstAttribute="bottom" secondItem="Ewv-lD-DYw" secondAttribute="bottom" constant="15" id="bCA-m6-efq"/>
                                     <constraint firstItem="jID-iO-YXf" firstAttribute="top" secondItem="dtk-zj-NxK" secondAttribute="top" id="f2g-Xw-ITi"/>
-                                    <constraint firstAttribute="trailing" secondItem="KsV-mg-8OB" secondAttribute="trailing" constant="322" id="kbO-fJ-cdR"/>
-                                    <constraint firstItem="KsV-mg-8OB" firstAttribute="top" secondItem="dtk-zj-NxK" secondAttribute="top" constant="47" id="whB-50-VGE"/>
+                                    <constraint firstAttribute="trailing" secondItem="qqU-RD-bFS" secondAttribute="trailing" constant="8" id="haU-nY-KNO"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Hqf-Ym-cqS">
@@ -771,7 +770,7 @@
         <image name="tomorrow" width="27" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="isP-nh-K72"/>
+        <segue reference="nSh-YK-vME"/>
         <segue reference="gyP-kK-KfG"/>
     </inferredMetricsTieBreakers>
 </document>

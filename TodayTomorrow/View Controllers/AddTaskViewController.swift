@@ -131,6 +131,7 @@ class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDe
 
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		saveTask()
         taskNameField.resignFirstResponder()
         return true
     }
