@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
+class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 	
     // Context for CoreData
 	
@@ -18,19 +18,17 @@ class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     
     let someDayBlue = UIColor(red: 0.161, green: 0.502, blue: 0.725, alpha: 1)
     let todayGreen = UIColor(red: 0.298, green: 0.498, blue: 0, alpha: 1)
+	
+	// delegate will be called when viewcontroller is dismissed
+	weak var delegate: ModalHandlerDelegate?
+	var taskToEdit: Task?
+	var editingTask: Bool = false
 
     
 	@IBOutlet weak var modalView: UIView!
 	@IBOutlet weak var taskNameField: UITextField!
     @IBOutlet weak var taskDescriptionField: UITextView!
     @IBOutlet weak var dueTodaySwitch: UISwitch!
-    @IBOutlet weak var navigationBar: UIView!
-    @IBOutlet weak var dueTodayLabel: UILabel!
-    @IBOutlet weak var saveButton: UIButton!
-
-	// delegate will be called when viewcontroller is dismissed
-	weak var delegate: ModalHandlerDelegate?
-	
 	
     
     // MARK: TextView placeholder and editing style
@@ -39,17 +37,15 @@ class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         if taskDescriptionField.text == "Description (optional)" {
 			taskDescriptionField.textColor = UIColor.darkGray
             taskDescriptionField.text = ""
-        } else {
-            print("began editing")
-        }
+		} else {
+			taskDescriptionField.textColor = UIColor.darkGray
+		}
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         taskDescriptionField.resignFirstResponder()
         if taskDescriptionField.text == "" {
             taskDescriptionField.text = "Description (optional)"
-        } else {
-            print("description entered")
         }
     }
 
@@ -60,6 +56,12 @@ class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		if editingTask {
+			taskNameField.text = taskToEdit?.taskName
+			taskDescriptionField.text = (taskToEdit?.taskDescription == "") ? "Description (optional)" : taskToEdit?.taskDescription
+			dueTodaySwitch.isOn = (taskToEdit?.dueToday)! ? true : false
+		}
 
 		// activate keyboard on load
 		taskNameField.becomeFirstResponder()
@@ -74,7 +76,7 @@ class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         let padding = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 10))
         taskNameField.leftViewMode = UITextFieldViewMode.always
         taskNameField.leftView = padding
-    
+
         
     }
 
@@ -100,14 +102,15 @@ class AddTaskViewController: UIViewController, UITextViewDelegate, UITextFieldDe
 			
 		} else {
 			
-			let task = Task(context: context)
-			task.taskName = taskNameField.text
-			task.dueToday = dueTodaySwitch.isOn ? true : false
+			let task = editingTask ? taskToEdit : Task(context: context)
+			
+			task?.taskName = taskNameField.text
+			task?.dueToday = dueTodaySwitch.isOn ? true : false
 			
 			if taskDescriptionField.text == "" || taskDescriptionField.text == "Description (optional)" {
-				task.taskDescription = ""
+				task?.taskDescription = ""
 			} else {
-				task.taskDescription = taskDescriptionField.text
+				task?.taskDescription = taskDescriptionField.text
 			}
 			database.saveContext()
 

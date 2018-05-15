@@ -7,34 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1331D9951FF77C0500B8D34F /* EditTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1331D9941FF77C0500B8D34F /* EditTaskViewController.swift */; };
 		13338C54200726DB00D2FC39 /* SomeDayTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13338C53200726DB00D2FC39 /* SomeDayTaskCell.swift */; };
 		1348D03320A94A2700C20191 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1348D03220A94A2700C20191 /* Assets.xcassets */; };
+		1348D03520AA36ED00C20191 /* ModalHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1348D03420AA36ED00C20191 /* ModalHandler.swift */; };
+		1348D03820AA912800C20191 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1348D03720AA912800C20191 /* Constants.swift */; };
 		135E36381FF718E600EF6F78 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 135E36361FF718E600EF6F78 /* Model.xcdatamodeld */; };
 		135E363A1FF71E7400EF6F78 /* TodayTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135E36391FF71E7400EF6F78 /* TodayTaskCell.swift */; };
 		13961C981FEB511100A9B2C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13961C971FEB511100A9B2C1 /* AppDelegate.swift */; };
 		13961C9A1FEB511100A9B2C1 /* TodayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13961C991FEB511100A9B2C1 /* TodayVC.swift */; };
-		13961C9C1FEB511100A9B2C1 /* TomorrowVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13961C9B1FEB511100A9B2C1 /* TomorrowVC.swift */; };
+		13961C9C1FEB511100A9B2C1 /* SomeDayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13961C9B1FEB511100A9B2C1 /* SomeDayVC.swift */; };
 		13961C9F1FEB511100A9B2C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13961C9D1FEB511100A9B2C1 /* Main.storyboard */; };
 		13961CA41FEB511100A9B2C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13961CA21FEB511100A9B2C1 /* LaunchScreen.storyboard */; };
-		13961CAC1FEB6A5600A9B2C1 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 13961CA51FEB511100A9B2C1 /* Info.plist */; };
-		13F2858F1FF74A4800E598A4 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F2858E1FF74A4800E598A4 /* AddTaskViewController.swift */; };
+		13F2858F1FF74A4800E598A4 /* TaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F2858E1FF74A4800E598A4 /* TaskVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1331D9941FF77C0500B8D34F /* EditTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskViewController.swift; sourceTree = "<group>"; };
 		13338C53200726DB00D2FC39 /* SomeDayTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeDayTaskCell.swift; sourceTree = "<group>"; };
 		1348D03220A94A2700C20191 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1348D03420AA36ED00C20191 /* ModalHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalHandler.swift; sourceTree = "<group>"; };
+		1348D03720AA912800C20191 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		135E36371FF718E600EF6F78 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		135E36391FF71E7400EF6F78 /* TodayTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTaskCell.swift; sourceTree = "<group>"; };
 		13961C941FEB511100A9B2C1 /* TodayTomorrow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodayTomorrow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13961C971FEB511100A9B2C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13961C991FEB511100A9B2C1 /* TodayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayVC.swift; sourceTree = "<group>"; };
-		13961C9B1FEB511100A9B2C1 /* TomorrowVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TomorrowVC.swift; sourceTree = "<group>"; };
+		13961C9B1FEB511100A9B2C1 /* SomeDayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeDayVC.swift; sourceTree = "<group>"; };
 		13961C9E1FEB511100A9B2C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		13961CA31FEB511100A9B2C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		13961CA51FEB511100A9B2C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		13F2858E1FF74A4800E598A4 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
+		13F2858E1FF74A4800E598A4 /* TaskVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,13 +49,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1348D03620AA370000C20191 /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				1348D03720AA912800C20191 /* Constants.swift */,
+				1348D03420AA36ED00C20191 /* ModalHandler.swift */,
+			);
+			path = "Supporting files";
+			sourceTree = "<group>";
+		};
 		134E04BF2008058C00A4410F /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				13961C991FEB511100A9B2C1 /* TodayVC.swift */,
-				13961C9B1FEB511100A9B2C1 /* TomorrowVC.swift */,
-				13F2858E1FF74A4800E598A4 /* AddTaskViewController.swift */,
-				1331D9941FF77C0500B8D34F /* EditTaskViewController.swift */,
+				13961C9B1FEB511100A9B2C1 /* SomeDayVC.swift */,
+				13F2858E1FF74A4800E598A4 /* TaskVC.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -90,6 +99,7 @@
 				13961C971FEB511100A9B2C1 /* AppDelegate.swift */,
 				134E04C0200805B100A4410F /* Custom Cells */,
 				134E04BF2008058C00A4410F /* View Controllers */,
+				1348D03620AA370000C20191 /* Supporting files */,
 				13961C9D1FEB511100A9B2C1 /* Main.storyboard */,
 				1348D03220A94A2700C20191 /* Assets.xcassets */,
 				13961CA21FEB511100A9B2C1 /* LaunchScreen.storyboard */,
@@ -126,7 +136,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = Centennial;
 				TargetAttributes = {
 					13961C931FEB511100A9B2C1 = {
@@ -158,7 +168,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13961CAC1FEB6A5600A9B2C1 /* Info.plist in Resources */,
 				13961CA41FEB511100A9B2C1 /* LaunchScreen.storyboard in Resources */,
 				1348D03320A94A2700C20191 /* Assets.xcassets in Resources */,
 				13961C9F1FEB511100A9B2C1 /* Main.storyboard in Resources */,
@@ -172,14 +181,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13961C9C1FEB511100A9B2C1 /* TomorrowVC.swift in Sources */,
-				13F2858F1FF74A4800E598A4 /* AddTaskViewController.swift in Sources */,
+				13961C9C1FEB511100A9B2C1 /* SomeDayVC.swift in Sources */,
+				13F2858F1FF74A4800E598A4 /* TaskVC.swift in Sources */,
 				13961C981FEB511100A9B2C1 /* AppDelegate.swift in Sources */,
 				135E363A1FF71E7400EF6F78 /* TodayTaskCell.swift in Sources */,
 				13961C9A1FEB511100A9B2C1 /* TodayVC.swift in Sources */,
 				13338C54200726DB00D2FC39 /* SomeDayTaskCell.swift in Sources */,
-				1331D9951FF77C0500B8D34F /* EditTaskViewController.swift in Sources */,
+				1348D03520AA36ED00C20191 /* ModalHandler.swift in Sources */,
 				135E36381FF718E600EF6F78 /* Model.xcdatamodeld in Sources */,
+				1348D03820AA912800C20191 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +229,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -226,6 +237,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -276,6 +288,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -283,6 +296,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

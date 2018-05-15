@@ -10,8 +10,8 @@ import UIKit
 
 class SomeDayTaskCell: UITableViewCell {
 
-    let someDayBlue = UIColor(red: 0.161, green: 0.502, blue: 0.725, alpha: 1)
-    
+    // let someDayBlue = UIColor(red: 0.161, green: 0.502, blue: 0.725, alpha: 1)
+    let someDayBlue = UIColor(red: 0.071, green: 0.208, blue: 0.357, alpha: 1)
     
     @IBOutlet weak var todayTaskNameLabel: UILabel!
     @IBOutlet weak var checkBox: UIButton!

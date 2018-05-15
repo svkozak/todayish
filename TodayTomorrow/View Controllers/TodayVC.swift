@@ -10,19 +10,10 @@
 import UIKit
 import CoreData
 
-// Protocol to handle dismissal of presented viewcontroller
-
-protocol ModalHandlerDelegate: AnyObject {
-	func modalDismissed()
-}
-
-
 class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarControllerDelegate, ModalHandlerDelegate {
 
-
-    let deselectedGrey = UIColor(displayP3Red: 0.921, green: 0.921, blue: 0.921, alpha: 0.9)
-    let todayGreen = UIColor(red: 0.298, green: 0.498, blue: 0, alpha: 1)
-    let someDayBlue = UIColor(red: 0.161, green: 0.502, blue: 0.725, alpha: 1)
+    let todayGreen = Colours.mainGreen
+    let someDayBlue = Colours.mainBlue
 
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 	let database = (UIApplication.shared.delegate as! AppDelegate)
@@ -38,8 +29,8 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 	override func viewWillAppear(_ animated: Bool) {
 		
 		self.tabBarController?.tabBar.tintColor = todayGreen
+		self.tabBarController?.delegate = self
 		self.tabBarController?.tabBar.unselectedItemTintColor = UIColor.darkGray
-		tableView.rowHeight = UITableViewAutomaticDimension
 		getData()
 		configureTable()
 	}
@@ -49,7 +40,6 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib
-		self.tabBarController?.delegate = self
 		
 	}
 	
@@ -77,7 +67,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
         let cell = tableView.dequeueReusableCell(withIdentifier: "TodayTaskCell") as! TodayTaskCell
         cell.todayTaskNameLabel.text = tasks[indexPath.row].taskName
         
-        setSelectedCell(cell: cell, checked: tasks[indexPath.row].isCompleted)
+        setSelectionStatus(cell: cell, checked: tasks[indexPath.row].isCompleted)
         
         if tasks[indexPath.row].taskDescription == "Task description" {
             cell.descriptionLabel.text = ""
@@ -86,14 +76,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
         }
         return cell
     }
-    
-    func setSelectedCell(cell: TodayTaskCell, checked: Bool) {
-        if checked {
-            cell.setChecked()
-        } else{
-            cell.setUnchecked()
-        }
-    }
+	
     
     // Allow table editing
     
@@ -105,7 +88,6 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 	
 	func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 		let moveTaskToSomeDay = UIContextualAction(style: .destructive, title: "Some day") { (action, view, handler) in
-			print("left swipe performed")
 			self.moveTaskToSomeDay(atIndexPath: indexPath)
 		}
 		moveTaskToSomeDay.backgroundColor = someDayBlue
@@ -159,7 +141,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 			task.dueToday = false
 			tasks.remove(at: indexPath.row)
 			self.database.saveContext()
-			self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+			self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.bottom)
 		}) { (true) in
 			self.getData()
 			self.configureTable()
@@ -168,21 +150,22 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 	
 	
     
-    // MARK: ---- SEGUE - Prepare for segue
+    // MARK: -- Segue setup --
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		
         if segue.identifier == "showEditTask" {
-			
 			let indexPathForCell = tableView.indexPath(for: sender as! TodayTaskCell)
 			let selectedTask = tasks[(indexPathForCell?.row)!]
-			let editTaskVC = segue.destination as! EditTaskViewController
+			let editTaskVC = segue.destination as! TaskVC
 			editTaskVC.taskToEdit = selectedTask
+			editTaskVC.editingTask = true
 			editTaskVC.delegate = self
 			applyBlur()
         }
 		
 		if segue.identifier == "showAddTask" {
-			let addTaskVC = segue.destination as! AddTaskViewController
+			let addTaskVC = segue.destination as! TaskVC
 			addTaskVC.delegate = self
 			applyBlur()
 		}
@@ -210,16 +193,16 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
     // MARK: ---- Action - Tap on checkbox button
     
     @IBAction func checkBoxCheck(sender: UIButton) {
-        let cell = sender.superview?.superview as! TodayTaskCell
+        let cell = sender.superview?.superview?.superview as! TodayTaskCell
         let indexPath = tableView.indexPath(for: cell)
         let task = tasks[(indexPath?.row)!]
         
         task.isCompleted = !task.isCompleted
-        setSelectedCell(cell: cell, checked: task.isCompleted)
+        setSelectionStatus(cell: cell, checked: task.isCompleted)
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
         getData()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(800), execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500), execute: {
             self.configureTable()
         })
     }
@@ -237,7 +220,6 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
     // helper method to reload table
 	
 	func configureTable() {
-		// tableView.estimatedRowHeight = 100
 		tableView.rowHeight = UITableViewAutomaticDimension
 		tableView.reloadData()
 	}
@@ -247,7 +229,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 	
 	func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
 		
-		if viewController is AddTaskViewController {
+		if viewController is TaskVC {
 			performSegue(withIdentifier: "showAddTask", sender: self)
 			return false
 		} else {
@@ -274,6 +256,14 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 		removeBlur()
 		getData()
 		configureTable()
+	}
+	
+	func setSelectionStatus(cell: TodayTaskCell, checked: Bool) {
+		if checked {
+			cell.setChecked()
+		} else{
+			cell.setUnchecked()
+		}
 	}
 	
 	override func didReceiveMemoryWarning() {
