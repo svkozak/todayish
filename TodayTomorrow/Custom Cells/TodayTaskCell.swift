@@ -10,10 +10,6 @@ import UIKit
 
 class TodayTaskCell: UITableViewCell {
     
-    // let todayGreen = UIColor(red: 0.298, green: 0.498, blue: 0, alpha: 1)
-	
-	let todayGreen = UIColor(red: 0.267, green: 0.341, blue: 0.0, alpha: 1)
-    
     
     @IBOutlet weak var todayTaskNameLabel: UILabel!
     @IBOutlet weak var checkBox: UIButton!
@@ -35,9 +31,9 @@ class TodayTaskCell: UITableViewCell {
     
     func setUnchecked() {
         checkBox.setImage(UIImage(named: "green-deselected"), for: UIControlState.normal)
-        todayTaskNameLabel.textColor = Colours.mainGreen
-        descriptionLabel.textColor = Colours.mainGreen
-        bottomBorder.backgroundColor = Colours.mainGreen
+        todayTaskNameLabel.textColor = Colours.mainLightGreen
+        descriptionLabel.textColor = Colours.mainLightGreen
+        bottomBorder.backgroundColor = Colours.mainLightGreen
     }
     
     

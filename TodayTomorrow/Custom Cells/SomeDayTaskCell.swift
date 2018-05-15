@@ -10,8 +10,7 @@ import UIKit
 
 class SomeDayTaskCell: UITableViewCell {
 
-    // let someDayBlue = UIColor(red: 0.161, green: 0.502, blue: 0.725, alpha: 1)
-    let someDayBlue = UIColor(red: 0.071, green: 0.208, blue: 0.357, alpha: 1)
+
     
     @IBOutlet weak var todayTaskNameLabel: UILabel!
     @IBOutlet weak var checkBox: UIButton!
@@ -32,9 +31,9 @@ class SomeDayTaskCell: UITableViewCell {
     
     func setUnchecked() {
         checkBox.setImage(UIImage(named: "blue-deselected"), for: UIControlState.normal)
-        todayTaskNameLabel.textColor = someDayBlue
-        descriptionLabel.textColor = someDayBlue
-        bottomBorder.backgroundColor = someDayBlue
+        todayTaskNameLabel.textColor = Colours.mainLightBlue
+        descriptionLabel.textColor = Colours.mainLightBlue
+        bottomBorder.backgroundColor = Colours.mainLightBlue
     }
     
     

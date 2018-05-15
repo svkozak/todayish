@@ -11,8 +11,8 @@ import CoreData
 
 class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarControllerDelegate, ModalHandlerDelegate {
 	
-    let todayGreen = Colours.mainGreen
-    let someDayBlue = Colours.mainBlue
+    let todayGreen = Colours.mainLightGreen
+    let someDayBlue = Colours.mainLightBlue
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 	let database = (UIApplication.shared.delegate as! AppDelegate)
