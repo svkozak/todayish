@@ -11,6 +11,12 @@
 		1348D03320A94A2700C20191 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1348D03220A94A2700C20191 /* Assets.xcassets */; };
 		1348D03520AA36ED00C20191 /* ModalHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1348D03420AA36ED00C20191 /* ModalHandler.swift */; };
 		1348D03820AA912800C20191 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1348D03720AA912800C20191 /* Constants.swift */; };
+		1348D04220AB6DD700C20191 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1348D04120AB6DD700C20191 /* NotificationCenter.framework */; };
+		1348D04520AB6DD800C20191 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1348D04420AB6DD800C20191 /* TodayViewController.swift */; };
+		1348D04820AB6DD800C20191 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1348D04620AB6DD800C20191 /* MainInterface.storyboard */; };
+		1348D04C20AB6DD800C20191 /* Today tasks.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 1348D03F20AB6DD700C20191 /* Today tasks.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		1348D05320AB76E500C20191 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 135E36361FF718E600EF6F78 /* Model.xcdatamodeld */; };
+		1348D05520AB775700C20191 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1348D05420AB775700C20191 /* Database.swift */; };
 		135E36381FF718E600EF6F78 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 135E36361FF718E600EF6F78 /* Model.xcdatamodeld */; };
 		135E363A1FF71E7400EF6F78 /* TodayTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135E36391FF71E7400EF6F78 /* TodayTaskCell.swift */; };
 		13961C981FEB511100A9B2C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13961C971FEB511100A9B2C1 /* AppDelegate.swift */; };
@@ -21,11 +27,43 @@
 		13F2858F1FF74A4800E598A4 /* TaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F2858E1FF74A4800E598A4 /* TaskVC.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		1348D04A20AB6DD800C20191 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 13961C8C1FEB511100A9B2C1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1348D03E20AB6DD700C20191;
+			remoteInfo = "Today tasks";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1348D05020AB6DD800C20191 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				1348D04C20AB6DD800C20191 /* Today tasks.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		13338C53200726DB00D2FC39 /* SomeDayTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeDayTaskCell.swift; sourceTree = "<group>"; };
 		1348D03220A94A2700C20191 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1348D03420AA36ED00C20191 /* ModalHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalHandler.swift; sourceTree = "<group>"; };
 		1348D03720AA912800C20191 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1348D03F20AB6DD700C20191 /* Today tasks.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Today tasks.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1348D04120AB6DD700C20191 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		1348D04420AB6DD800C20191 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		1348D04720AB6DD800C20191 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		1348D04920AB6DD800C20191 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1348D05120AB752100C20191 /* Today tasks.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Today tasks.entitlements"; sourceTree = "<group>"; };
+		1348D05220AB756B00C20191 /* TodayTomorrow.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TodayTomorrow.entitlements; sourceTree = "<group>"; };
+		1348D05420AB775700C20191 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		135E36371FF718E600EF6F78 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		135E36391FF71E7400EF6F78 /* TodayTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTaskCell.swift; sourceTree = "<group>"; };
 		13961C941FEB511100A9B2C1 /* TodayTomorrow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodayTomorrow.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -39,6 +77,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1348D03C20AB6DD700C20191 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1348D04220AB6DD700C20191 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		13961C911FEB511100A9B2C1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -56,6 +102,26 @@
 				1348D03420AA36ED00C20191 /* ModalHandler.swift */,
 			);
 			path = "Supporting files";
+			sourceTree = "<group>";
+		};
+		1348D04020AB6DD700C20191 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1348D04120AB6DD700C20191 /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1348D04320AB6DD800C20191 /* Today tasks */ = {
+			isa = PBXGroup;
+			children = (
+				1348D05120AB752100C20191 /* Today tasks.entitlements */,
+				1348D04420AB6DD800C20191 /* TodayViewController.swift */,
+				1348D05420AB775700C20191 /* Database.swift */,
+				1348D04620AB6DD800C20191 /* MainInterface.storyboard */,
+				1348D04920AB6DD800C20191 /* Info.plist */,
+			);
+			path = "Today tasks";
 			sourceTree = "<group>";
 		};
 		134E04BF2008058C00A4410F /* View Controllers */ = {
@@ -81,6 +147,8 @@
 			isa = PBXGroup;
 			children = (
 				13961C961FEB511100A9B2C1 /* TodayTomorrow */,
+				1348D04320AB6DD800C20191 /* Today tasks */,
+				1348D04020AB6DD700C20191 /* Frameworks */,
 				13961C951FEB511100A9B2C1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -89,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				13961C941FEB511100A9B2C1 /* TodayTomorrow.app */,
+				1348D03F20AB6DD700C20191 /* Today tasks.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -96,6 +165,7 @@
 		13961C961FEB511100A9B2C1 /* TodayTomorrow */ = {
 			isa = PBXGroup;
 			children = (
+				1348D05220AB756B00C20191 /* TodayTomorrow.entitlements */,
 				13961C971FEB511100A9B2C1 /* AppDelegate.swift */,
 				134E04C0200805B100A4410F /* Custom Cells */,
 				134E04BF2008058C00A4410F /* View Controllers */,
@@ -112,6 +182,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		1348D03E20AB6DD700C20191 /* Today tasks */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1348D04D20AB6DD800C20191 /* Build configuration list for PBXNativeTarget "Today tasks" */;
+			buildPhases = (
+				1348D03B20AB6DD700C20191 /* Sources */,
+				1348D03C20AB6DD700C20191 /* Frameworks */,
+				1348D03D20AB6DD700C20191 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Today tasks";
+			productName = "Today tasks";
+			productReference = 1348D03F20AB6DD700C20191 /* Today tasks.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		13961C931FEB511100A9B2C1 /* TodayTomorrow */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13961CA81FEB511100A9B2C1 /* Build configuration list for PBXNativeTarget "TodayTomorrow" */;
@@ -119,10 +206,12 @@
 				13961C901FEB511100A9B2C1 /* Sources */,
 				13961C911FEB511100A9B2C1 /* Frameworks */,
 				13961C921FEB511100A9B2C1 /* Resources */,
+				1348D05020AB6DD800C20191 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				1348D04B20AB6DD800C20191 /* PBXTargetDependency */,
 			);
 			name = TodayTomorrow;
 			productName = TodayTomorrow;
@@ -135,13 +224,27 @@
 		13961C8C1FEB511100A9B2C1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
+				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = Centennial;
 				TargetAttributes = {
+					1348D03E20AB6DD700C20191 = {
+						CreatedOnToolsVersion = 9.3;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 					13961C931FEB511100A9B2C1 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -159,11 +262,20 @@
 			projectRoot = "";
 			targets = (
 				13961C931FEB511100A9B2C1 /* TodayTomorrow */,
+				1348D03E20AB6DD700C20191 /* Today tasks */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1348D03D20AB6DD700C20191 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1348D04820AB6DD800C20191 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		13961C921FEB511100A9B2C1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -177,6 +289,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1348D03B20AB6DD700C20191 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1348D05520AB775700C20191 /* Database.swift in Sources */,
+				1348D04520AB6DD800C20191 /* TodayViewController.swift in Sources */,
+				1348D05320AB76E500C20191 /* Model.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		13961C901FEB511100A9B2C1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -195,7 +317,23 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		1348D04B20AB6DD800C20191 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1348D03E20AB6DD700C20191 /* Today tasks */;
+			targetProxy = 1348D04A20AB6DD800C20191 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		1348D04620AB6DD800C20191 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1348D04720AB6DD800C20191 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		13961C9D1FEB511100A9B2C1 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -215,6 +353,42 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		1348D04E20AB6DD800C20191 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = "Today tasks/Today tasks.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AM6YCEQCTE;
+				INFOPLIST_FILE = "Today tasks/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ca.centennialcollege.TodayTomorrow.Today-tasks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1348D04F20AB6DD800C20191 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = "Today tasks/Today tasks.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AM6YCEQCTE;
+				INFOPLIST_FILE = "Today tasks/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ca.centennialcollege.TodayTomorrow.Today-tasks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		13961CA61FEB511100A9B2C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -329,9 +503,11 @@
 		13961CA91FEB511100A9B2C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TodayTomorrow/TodayTomorrow.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2BULHRS882;
+				DEVELOPMENT_TEAM = AM6YCEQCTE;
 				INFOPLIST_FILE = TodayTomorrow/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ca.centennialcollege.TodayTomorrow;
@@ -344,9 +520,11 @@
 		13961CAA1FEB511100A9B2C1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TodayTomorrow/TodayTomorrow.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2BULHRS882;
+				DEVELOPMENT_TEAM = AM6YCEQCTE;
 				INFOPLIST_FILE = TodayTomorrow/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ca.centennialcollege.TodayTomorrow;
@@ -359,6 +537,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1348D04D20AB6DD800C20191 /* Build configuration list for PBXNativeTarget "Today tasks" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1348D04E20AB6DD800C20191 /* Debug */,
+				1348D04F20AB6DD800C20191 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		13961C8F1FEB511100A9B2C1 /* Build configuration list for PBXProject "TodayTomorrow" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

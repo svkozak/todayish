@@ -22,7 +22,7 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
 	@IBOutlet weak var blurEffect: UIVisualEffectView!
 	
 	override func viewWillAppear(_ animated: Bool) {
-		self.tabBarController?.tabBar.tintColor = someDayBlue
+		self.tabBarController?.tabBar.tintColor = UIColor.darkGray
 		self.tabBarController?.delegate = self
 		getData()
 		configureTable()

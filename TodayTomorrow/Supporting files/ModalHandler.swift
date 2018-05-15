@@ -7,9 +7,12 @@
 //
 
 import Foundation
+import UIKit
 
 // Protocol to handle dismissal of presented viewcontroller
 
 protocol ModalHandlerDelegate: AnyObject {
 	func modalDismissed()
 }
+
+

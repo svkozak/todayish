@@ -28,9 +28,9 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 	
 	override func viewWillAppear(_ animated: Bool) {
 		
-		self.tabBarController?.tabBar.tintColor = todayGreen
+		self.tabBarController?.tabBar.tintColor = UIColor.darkGray
 		self.tabBarController?.delegate = self
-		self.tabBarController?.tabBar.unselectedItemTintColor = UIColor.darkGray
+		self.tabBarController?.tabBar.unselectedItemTintColor = UIColor.lightGray
 		getData()
 		configureTable()
 	}
@@ -40,7 +40,9 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib
-		
+		let add: UITabBarItem = (self.tabBarController?.tabBar.items![1])!
+		let button: UIImage = (UIImage(named: "add-tab")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal))!
+		add.image = button
 	}
 	
 	
