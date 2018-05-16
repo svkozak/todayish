@@ -16,7 +16,11 @@
 		1348D04820AB6DD800C20191 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1348D04620AB6DD800C20191 /* MainInterface.storyboard */; };
 		1348D04C20AB6DD800C20191 /* Today tasks.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 1348D03F20AB6DD700C20191 /* Today tasks.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		1348D05320AB76E500C20191 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 135E36361FF718E600EF6F78 /* Model.xcdatamodeld */; };
-		1348D05520AB775700C20191 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1348D05420AB775700C20191 /* Database.swift */; };
+		1348D07820AB90BD00C20191 /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1348D07720AB90BD00C20191 /* PersistentContainer.swift */; };
+		1348D07920AB90BD00C20191 /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1348D07720AB90BD00C20191 /* PersistentContainer.swift */; };
+		1348D07A20AB94B300C20191 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1348D03220A94A2700C20191 /* Assets.xcassets */; };
+		1348D07B20AB94BC00C20191 /* TodayTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135E36391FF71E7400EF6F78 /* TodayTaskCell.swift */; };
+		1348D07D20AB9C8000C20191 /* WidgetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1348D07C20AB9C8000C20191 /* WidgetTableViewCell.swift */; };
 		135E36381FF718E600EF6F78 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 135E36361FF718E600EF6F78 /* Model.xcdatamodeld */; };
 		135E363A1FF71E7400EF6F78 /* TodayTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135E36391FF71E7400EF6F78 /* TodayTaskCell.swift */; };
 		13961C981FEB511100A9B2C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13961C971FEB511100A9B2C1 /* AppDelegate.swift */; };
@@ -63,7 +67,8 @@
 		1348D04920AB6DD800C20191 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1348D05120AB752100C20191 /* Today tasks.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Today tasks.entitlements"; sourceTree = "<group>"; };
 		1348D05220AB756B00C20191 /* TodayTomorrow.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TodayTomorrow.entitlements; sourceTree = "<group>"; };
-		1348D05420AB775700C20191 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		1348D07720AB90BD00C20191 /* PersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainer.swift; sourceTree = "<group>"; };
+		1348D07C20AB9C8000C20191 /* WidgetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetTableViewCell.swift; sourceTree = "<group>"; };
 		135E36371FF718E600EF6F78 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		135E36391FF71E7400EF6F78 /* TodayTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTaskCell.swift; sourceTree = "<group>"; };
 		13961C941FEB511100A9B2C1 /* TodayTomorrow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodayTomorrow.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +105,7 @@
 			children = (
 				1348D03720AA912800C20191 /* Constants.swift */,
 				1348D03420AA36ED00C20191 /* ModalHandler.swift */,
+				1348D07720AB90BD00C20191 /* PersistentContainer.swift */,
 			);
 			path = "Supporting files";
 			sourceTree = "<group>";
@@ -117,9 +123,9 @@
 			children = (
 				1348D05120AB752100C20191 /* Today tasks.entitlements */,
 				1348D04420AB6DD800C20191 /* TodayViewController.swift */,
-				1348D05420AB775700C20191 /* Database.swift */,
 				1348D04620AB6DD800C20191 /* MainInterface.storyboard */,
 				1348D04920AB6DD800C20191 /* Info.plist */,
+				1348D07C20AB9C8000C20191 /* WidgetTableViewCell.swift */,
 			);
 			path = "Today tasks";
 			sourceTree = "<group>";
@@ -272,6 +278,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1348D07A20AB94B300C20191 /* Assets.xcassets in Resources */,
 				1348D04820AB6DD800C20191 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,7 +300,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1348D05520AB775700C20191 /* Database.swift in Sources */,
+				1348D07920AB90BD00C20191 /* PersistentContainer.swift in Sources */,
+				1348D07B20AB94BC00C20191 /* TodayTaskCell.swift in Sources */,
+				1348D07D20AB9C8000C20191 /* WidgetTableViewCell.swift in Sources */,
 				1348D04520AB6DD800C20191 /* TodayViewController.swift in Sources */,
 				1348D05320AB76E500C20191 /* Model.xcdatamodeld in Sources */,
 			);
@@ -305,6 +314,7 @@
 			files = (
 				13961C9C1FEB511100A9B2C1 /* SomeDayVC.swift in Sources */,
 				13F2858F1FF74A4800E598A4 /* TaskVC.swift in Sources */,
+				1348D07820AB90BD00C20191 /* PersistentContainer.swift in Sources */,
 				13961C981FEB511100A9B2C1 /* AppDelegate.swift in Sources */,
 				135E363A1FF71E7400EF6F78 /* TodayTaskCell.swift in Sources */,
 				13961C9A1FEB511100A9B2C1 /* TodayVC.swift in Sources */,
