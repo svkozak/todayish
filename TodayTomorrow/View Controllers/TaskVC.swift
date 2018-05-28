@@ -13,7 +13,7 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 	
     // Context for CoreData
 	
-	let database = (UIApplication.shared.delegate as! AppDelegate)
+	let application = (UIApplication.shared.delegate as! AppDelegate)
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     let someDayBlue = UIColor(red: 0.161, green: 0.502, blue: 0.725, alpha: 1)
@@ -112,7 +112,7 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 			} else {
 				task?.taskDescription = taskDescriptionField.text
 			}
-			database.saveContext()
+			application.saveContext()
 
 			dismiss(animated: false) {
 				self.delegate?.modalDismissed()

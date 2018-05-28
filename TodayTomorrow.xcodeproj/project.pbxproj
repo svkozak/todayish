@@ -21,6 +21,7 @@
 		1348D07A20AB94B300C20191 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1348D03220A94A2700C20191 /* Assets.xcassets */; };
 		1348D07B20AB94BC00C20191 /* TodayTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135E36391FF71E7400EF6F78 /* TodayTaskCell.swift */; };
 		1348D07D20AB9C8000C20191 /* WidgetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1348D07C20AB9C8000C20191 /* WidgetTableViewCell.swift */; };
+		1348D0C220BC7F3B00C20191 /* LongPressReorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1348D0C120BC7F3B00C20191 /* LongPressReorder.swift */; };
 		135E36381FF718E600EF6F78 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 135E36361FF718E600EF6F78 /* Model.xcdatamodeld */; };
 		135E363A1FF71E7400EF6F78 /* TodayTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135E36391FF71E7400EF6F78 /* TodayTaskCell.swift */; };
 		13961C981FEB511100A9B2C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13961C971FEB511100A9B2C1 /* AppDelegate.swift */; };
@@ -69,6 +70,8 @@
 		1348D05220AB756B00C20191 /* TodayTomorrow.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TodayTomorrow.entitlements; sourceTree = "<group>"; };
 		1348D07720AB90BD00C20191 /* PersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainer.swift; sourceTree = "<group>"; };
 		1348D07C20AB9C8000C20191 /* WidgetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetTableViewCell.swift; sourceTree = "<group>"; };
+		1348D0C120BC7F3B00C20191 /* LongPressReorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongPressReorder.swift; sourceTree = "<group>"; };
+		1348D0C320BCA64900C20191 /* Model v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model v2.xcdatamodel"; sourceTree = "<group>"; };
 		135E36371FF718E600EF6F78 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		135E36391FF71E7400EF6F78 /* TodayTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTaskCell.swift; sourceTree = "<group>"; };
 		13961C941FEB511100A9B2C1 /* TodayTomorrow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodayTomorrow.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,6 +109,7 @@
 				1348D03720AA912800C20191 /* Constants.swift */,
 				1348D03420AA36ED00C20191 /* ModalHandler.swift */,
 				1348D07720AB90BD00C20191 /* PersistentContainer.swift */,
+				1348D0C120BC7F3B00C20191 /* LongPressReorder.swift */,
 			);
 			path = "Supporting files";
 			sourceTree = "<group>";
@@ -319,6 +323,7 @@
 				135E363A1FF71E7400EF6F78 /* TodayTaskCell.swift in Sources */,
 				13961C9A1FEB511100A9B2C1 /* TodayVC.swift in Sources */,
 				13338C54200726DB00D2FC39 /* SomeDayTaskCell.swift in Sources */,
+				1348D0C220BC7F3B00C20191 /* LongPressReorder.swift in Sources */,
 				1348D03520AA36ED00C20191 /* ModalHandler.swift in Sources */,
 				135E36381FF718E600EF6F78 /* Model.xcdatamodeld in Sources */,
 				1348D03820AA912800C20191 /* Constants.swift in Sources */,
@@ -580,9 +585,10 @@
 		135E36361FF718E600EF6F78 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				1348D0C320BCA64900C20191 /* Model v2.xcdatamodel */,
 				135E36371FF718E600EF6F78 /* Model.xcdatamodel */,
 			);
-			currentVersion = 135E36371FF718E600EF6F78 /* Model.xcdatamodel */;
+			currentVersion = 1348D0C320BCA64900C20191 /* Model v2.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

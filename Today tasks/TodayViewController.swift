@@ -30,6 +30,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
 		let context = persistentContainer.viewContext
 		if context.hasChanges {
 			do {
+				// try context.save()
 				try context.save()
 			} catch {
 				let nserror = error as NSError
@@ -118,7 +119,6 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
 		task.isCompleted = !task.isCompleted
 		tasks[(indexPath?.row)!].isCompleted ? cell.checkBox.setImage(checked, for: UIControlState.normal) : cell.checkBox.setImage(unchecked, for: .normal)
 		saveContext()
-		// getData()
 		configureTable()
 	}
 	
@@ -127,28 +127,11 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
 		tableView.rowHeight = UITableViewAutomaticDimension
 		tableView.reloadData()
 	}
-	
-	
-	// Move task to Some day
-	
-	func moveTaskToSomeDay(atIndexPath indexPath: IndexPath) {
-		
-		tableView.performBatchUpdates({
-			let task = self.tasks[indexPath.row]
-			task.dueToday = false
-			tasks.remove(at: indexPath.row)
-			saveContext()
-			self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.bottom)
-		}) { (true) in
-			self.getData()
-			self.configureTable()
-		}
-	}
-	
-	
+
 	
 	func getData() {
 		let context = persistentContainer.viewContext
+		context.refreshAllObjects()
 		let fetchRequest = NSFetchRequest<Task>(entityName: "Task")
 		let sort = NSSortDescriptor(key: #keyPath(Task.isCompleted), ascending: true)
 		let predicate = NSPredicate(format: "dueToday == TRUE")
@@ -166,6 +149,5 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
 	}
-	
 	
 }

@@ -4,9 +4,10 @@
         <attribute name="dueToday" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="isCompleted" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="taskDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="taskIndex" optional="YES" attributeType="Integer 32" defaultValueString="9999" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="taskName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Task" positionX="-54" positionY="-9" width="128" height="105"/>
+        <element name="Task" positionX="-54" positionY="-9" width="128" height="120"/>
     </elements>
 </model>

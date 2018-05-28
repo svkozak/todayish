@@ -1,9 +1,7 @@
 //  TodayTomorrow
 //
 //  Created by Sergii Kozak 300979113
-//         and Sergey Sharipov 300300961984
-//
-//
+
 //  Copyright © 2017 Centennial. All rights reserved.
 //
 
@@ -16,13 +14,19 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
     let someDayBlue = Colours.mainLightBlue
 
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-	let database = (UIApplication.shared.delegate as! AppDelegate)
+	let application = (UIApplication.shared.delegate as! AppDelegate)
     var tasks: [Task] = []
     var completedTasks: [Task] = []
-    
+	var longPress = UILongPressGestureRecognizer()
+	var reorderTableView: LongPressReorderTableView!
+	
     @IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var blurEffect: UIVisualEffectView!
 	
+	
+
+	
+	// MARK: -- View will appear configurations --
 	
 	// Reload data before view appears
 	
@@ -40,9 +44,19 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib
+		
+		application.todayVC = self
+		
+		// add coloured image as middle tabbar item
 		let add: UITabBarItem = (self.tabBarController?.tabBar.items![1])!
 		let button: UIImage = (UIImage(named: "add-tab")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal))!
 		add.image = button
+		
+		// long press
+		reorderTableView = LongPressReorderTableView(tableView)
+		reorderTableView.delegate = self
+		reorderTableView.enableLongPressReorder()
+		
 	}
 	
 	
@@ -67,7 +81,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TodayTaskCell") as! TodayTaskCell
-        cell.todayTaskNameLabel.text = tasks[indexPath.row].taskName
+		cell.todayTaskNameLabel.text = tasks[indexPath.row].taskName! + ", index: \(tasks[indexPath.row].taskIndex)"
         
         setSelectionStatus(cell: cell, checked: tasks[indexPath.row].isCompleted)
         
@@ -115,7 +129,27 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 	}
 	
 	
-    
+	override func reorderFinished(initialIndex: IndexPath, finalIndex: IndexPath) {
+		// Gesture is finished and cell is back inside the table at finalIndex position
+		let task = tasks[initialIndex.row]
+		tasks.remove(at: initialIndex.row)
+		tasks.insert(task, at: finalIndex.row)
+		task.taskIndex = Int32(finalIndex.row)
+		application.saveContext()
+		tableView.reloadData()
+		print("inserted & saved")
+	}
+	
+	
+	override func positionChanged(currentIndex: IndexPath, newIndex: IndexPath) {
+		let task = tasks[newIndex.row]
+		task.taskIndex = Int32(currentIndex.row)
+		application.saveContext()
+	}
+	
+	
+	
+	// MARK: -- Task actions --
     // Delete row and task from database
     
     func deleteTask(atIndexPath indexPath: IndexPath) {
@@ -124,7 +158,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 			let task = self.tasks[indexPath.row]
 			tasks.remove(at: indexPath.row)
 			self.context.delete(task)
-			self.database.saveContext()
+			self.application.saveContext()
 			self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
 		}) { (true) in
 			self.getData()
@@ -142,7 +176,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 			let task = self.tasks[indexPath.row]
 			task.dueToday = false
 			tasks.remove(at: indexPath.row)
-			self.database.saveContext()
+			self.application.saveContext()
 			self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.bottom)
 		}) { (true) in
 			self.getData()
@@ -174,20 +208,20 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
     }
     
     
-    
-    
     // Get data from database
     
     func getData() {
+		// context.refreshAllObjects()
         let fetchRequest = NSFetchRequest<Task>(entityName: "Task")
-        let sort = NSSortDescriptor(key: #keyPath(Task.isCompleted), ascending: true)
+        // let sort = NSSortDescriptor(key: #keyPath(Task.isCompleted), ascending: true)
+		let sort = NSSortDescriptor(key: #keyPath(Task.taskIndex), ascending: true)
         let predicate = NSPredicate(format: "dueToday == TRUE")
         fetchRequest.predicate = predicate
         fetchRequest.sortDescriptors = [sort]
         do {
             tasks = try context.fetch(fetchRequest)
         } catch {
-            print("Cannot fetch")
+            print("Cannot fetch because \(error.localizedDescription)")
         }
     }
     
@@ -198,15 +232,15 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
         let cell = sender.superview?.superview?.superview as! TodayTaskCell
         let indexPath = tableView.indexPath(for: cell)
         let task = tasks[(indexPath?.row)!]
-        
         task.isCompleted = !task.isCompleted
         setSelectionStatus(cell: cell, checked: task.isCompleted)
-        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        application.saveContext()
         getData()
+		configureTable()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500), execute: {
-            self.configureTable()
-        })
+//        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500), execute: {
+//            self.configureTable()
+//        })
     }
     
     @IBAction func deleteCompletedTasks(_ sender: UIButton) {
@@ -218,6 +252,10 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
         getData()
         configureTable()
     }
+
+	
+	
+	
     
     // helper method to reload table
 	
