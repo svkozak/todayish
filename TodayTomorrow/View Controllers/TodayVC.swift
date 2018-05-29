@@ -9,6 +9,8 @@ import UIKit
 import CoreData
 
 class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarControllerDelegate, ModalHandlerDelegate {
+	
+	// MARK: - Properties
 
     let todayGreen = Colours.mainLightGreen
     let someDayBlue = Colours.mainLightBlue
@@ -17,8 +19,8 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 	let application = (UIApplication.shared.delegate as! AppDelegate)
     var tasks: [Task] = []
     var completedTasks: [Task] = []
-	var longPress = UILongPressGestureRecognizer()
 	var reorderTableView: LongPressReorderTableView!
+	let notification = UISelectionFeedbackGenerator()
 	
     @IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var blurEffect: UIVisualEffectView!
@@ -26,8 +28,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 	
 
 	
-	// MARK: -- View will appear configurations --
-	
+	// MARK: - View will appear configurations
 	// Reload data before view appears
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -61,7 +62,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 	
 	
     
-    // MARK: -- TableView implementation --
+    // MARK: - TableView implementation
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -81,7 +82,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TodayTaskCell") as! TodayTaskCell
-		cell.todayTaskNameLabel.text = tasks[indexPath.row].taskName! + ", index: \(tasks[indexPath.row].taskIndex)"
+		cell.todayTaskNameLabel.text = tasks[indexPath.row].taskName!
         
         setSelectionStatus(cell: cell, checked: tasks[indexPath.row].isCompleted)
         
@@ -129,15 +130,17 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 	}
 	
 	
+		// MARK: - Long press reorder for table
+	
 	override func reorderFinished(initialIndex: IndexPath, finalIndex: IndexPath) {
 		// Gesture is finished and cell is back inside the table at finalIndex position
 		let task = tasks[initialIndex.row]
 		tasks.remove(at: initialIndex.row)
 		tasks.insert(task, at: finalIndex.row)
+		notification.selectionChanged()
 		task.taskIndex = Int32(finalIndex.row)
 		application.saveContext()
-		tableView.reloadData()
-		print("inserted & saved")
+		configureTable()
 	}
 	
 	
@@ -149,7 +152,8 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 	
 	
 	
-	// MARK: -- Task actions --
+	// MARK: - Task actions
+	
     // Delete row and task from database
     
     func deleteTask(atIndexPath indexPath: IndexPath) {
@@ -175,6 +179,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 		tableView.performBatchUpdates({
 			let task = self.tasks[indexPath.row]
 			task.dueToday = false
+			task.taskIndex = 9999
 			tasks.remove(at: indexPath.row)
 			self.application.saveContext()
 			self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.bottom)
@@ -186,7 +191,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 	
 	
     
-    // MARK: -- Segue setup --
+    // MARK: - Navigation - Segue setup
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		
@@ -207,7 +212,8 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 		}
     }
     
-    
+	// MARK: - Database operations
+	
     // Get data from database
     
     func getData() {
@@ -226,21 +232,19 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
     }
     
     
-    // MARK: ---- Action - Tap on checkbox button
+    // MARK: - Actions
     
     @IBAction func checkBoxCheck(sender: UIButton) {
         let cell = sender.superview?.superview?.superview as! TodayTaskCell
         let indexPath = tableView.indexPath(for: cell)
         let task = tasks[(indexPath?.row)!]
         task.isCompleted = !task.isCompleted
-        setSelectionStatus(cell: cell, checked: task.isCompleted)
+		
+        //setSelectionStatus(cell: cell, checked: task.isCompleted)
+		notification.selectionChanged()
         application.saveContext()
         getData()
 		configureTable()
-        
-//        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500), execute: {
-//            self.configureTable()
-//        })
     }
     
     @IBAction func deleteCompletedTasks(_ sender: UIButton) {
@@ -253,19 +257,8 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
         configureTable()
     }
 
-	
-	
-	
-    
-    // helper method to reload table
-	
-	func configureTable() {
-		tableView.rowHeight = UITableViewAutomaticDimension
-		tableView.reloadData()
-	}
 
-
-	// MARK: -- Tabbar controller methods --
+	// MARK: - TabbarController method
 	
 	func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
 		
@@ -278,7 +271,12 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 	}
 	
 	
-	// MARK: -- Helper functions --
+	// MARK: - Helper functions
+	
+	func configureTable() {
+		tableView.rowHeight = UITableViewAutomaticDimension
+		tableView.reloadData()
+	}
 	
 	func applyBlur() {
 		UIView.animate(withDuration: 0.3) {

@@ -15,8 +15,10 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     let someDayBlue = Colours.mainLightBlue
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-	let database = (UIApplication.shared.delegate as! AppDelegate)
+	let application = (UIApplication.shared.delegate as! AppDelegate)
     var tasks: [Task] = []
+	var reorderTableView: LongPressReorderTableView!
+	let notification = UISelectionFeedbackGenerator()
     
     @IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var blurEffect: UIVisualEffectView!
@@ -26,6 +28,11 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
 		self.tabBarController?.delegate = self
 		getData()
 		configureTable()
+		
+		// long press
+		reorderTableView = LongPressReorderTableView(tableView)
+		reorderTableView.delegate = self
+		reorderTableView.enableLongPressReorder()
 	}
 	
 	override func viewDidLoad() {
@@ -105,6 +112,26 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
 		tableView.rowHeight = UITableViewAutomaticDimension
 		tableView.reloadData()
 	}
+	
+	// MARK: -- Long press reorder for table --
+	
+	override func reorderFinished(initialIndex: IndexPath, finalIndex: IndexPath) {
+		// Gesture is finished and cell is back inside the table at finalIndex position
+		let task = tasks[initialIndex.row]
+		tasks.remove(at: initialIndex.row)
+		tasks.insert(task, at: finalIndex.row)
+		notification.selectionChanged()
+		task.taskIndex = Int32(finalIndex.row)
+		application.saveContext()
+		configureTable()
+	}
+	
+	
+	override func positionChanged(currentIndex: IndexPath, newIndex: IndexPath) {
+		let task = tasks[newIndex.row]
+		task.taskIndex = Int32(currentIndex.row)
+		application.saveContext()
+	}
     
     
     // Delete row and task from database
@@ -115,7 +142,7 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
 			let task = self.tasks[indexPath.row]
 			tasks.remove(at: indexPath.row)
 			self.context.delete(task)
-			self.database.saveContext()
+			self.application.saveContext()
 			self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
 		}) { (true) in
 			self.getData()
@@ -131,8 +158,9 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
 		tableView.performBatchUpdates({
 			let task = self.tasks[indexPath.row]
 			task.dueToday = true
+			task.taskIndex = 9999
 			tasks.remove(at: indexPath.row)
-			self.database.saveContext()
+			self.application.saveContext()
 			self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
 		}) { (true) in
 			self.getData()
@@ -149,13 +177,11 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         let task = tasks[(indexPath?.row)!]
         
         task.isCompleted = !task.isCompleted
-        setSelectionStatus(cell: cell, checked: task.isCompleted)
-        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+		notification.selectionChanged()
+        // setSelectionStatus(cell: cell, checked: task.isCompleted)
+        application.saveContext()
         getData()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-            self.tableView.reloadData()
-        })
+        configureTable()
     }
     
     
@@ -175,7 +201,7 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     
     func getData() {
         let fetchRequest = NSFetchRequest<Task>(entityName: "Task")
-        let sort = NSSortDescriptor(key: #keyPath(Task.isCompleted), ascending: true)
+        let sort = NSSortDescriptor(key: #keyPath(Task.taskIndex), ascending: true)
         let predicate = NSPredicate(format: "dueToday == FALSE")
         fetchRequest.predicate = predicate
         fetchRequest.sortDescriptors = [sort]

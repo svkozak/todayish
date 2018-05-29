@@ -11,6 +11,7 @@ import NotificationCenter
 import CoreData
 
 class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDelegate, UITableViewDataSource {
+
 	
 	
 	lazy var persistentContainer: PersistentContainer = {
@@ -30,8 +31,8 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
 		let context = persistentContainer.viewContext
 		if context.hasChanges {
 			do {
-				// try context.save()
 				try context.save()
+				print("saving context from widget")
 			} catch {
 				let nserror = error as NSError
 				fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
@@ -45,6 +46,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
 	
 	@IBOutlet weak var tableView: UITableView!
 	
+	
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +59,6 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
 		// get data from storage
 		getData()
 		configureTable()
-		print(tasks.count)
     }
     
 
@@ -113,11 +114,14 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
 	// MARK: ---- Action - Tap on checkbox button
 	
 	@IBAction func checkBoxCheck(sender: UIButton) {
+		
+		print("checkbox tapped")
+		
 		let cell = sender.superview?.superview?.superview as! WidgetTableViewCell
 		let indexPath = tableView.indexPath(for: cell)
 		let task = tasks[(indexPath?.row)!]
 		task.isCompleted = !task.isCompleted
-		tasks[(indexPath?.row)!].isCompleted ? cell.checkBox.setImage(checked, for: UIControlState.normal) : cell.checkBox.setImage(unchecked, for: .normal)
+		// tasks[(indexPath?.row)!].isCompleted ? cell.checkBox.setImage(checked, for: UIControlState.normal) : cell.checkBox.setImage(unchecked, for: .normal)
 		saveContext()
 		configureTable()
 	}
@@ -133,7 +137,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
 		let context = persistentContainer.viewContext
 		context.refreshAllObjects()
 		let fetchRequest = NSFetchRequest<Task>(entityName: "Task")
-		let sort = NSSortDescriptor(key: #keyPath(Task.isCompleted), ascending: true)
+		let sort = NSSortDescriptor(key: #keyPath(Task.taskIndex), ascending: true)
 		let predicate = NSPredicate(format: "dueToday == TRUE")
 		fetchRequest.predicate = predicate
 		fetchRequest.sortDescriptors = [sort]

@@ -11,6 +11,8 @@ import CoreData
 
 class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 	
+	// MARK: - Properties
+	
     // Context for CoreData
 	
 	let application = (UIApplication.shared.delegate as! AppDelegate)
@@ -30,8 +32,41 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     @IBOutlet weak var taskDescriptionField: UITextView!
     @IBOutlet weak var dueTodaySwitch: UISwitch!
 	
+	// MARK: - View options
+	
+	override func viewWillAppear(_ animated: Bool) {
+		modalView.layer.cornerRadius = 5
+		
+	}
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		if editingTask {
+			taskNameField.text = taskToEdit?.taskName
+			taskDescriptionField.text = (taskToEdit?.taskDescription == "") ? "Description (optional)" : taskToEdit?.taskDescription
+			dueTodaySwitch.isOn = (taskToEdit?.dueToday)! ? true : false
+		}
+		
+		// activate keyboard on load
+		taskNameField.becomeFirstResponder()
+		
+		// Add gesture recognizers for dismissing the keyboard
+		self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
+		
+		// Set placeholder text color
+		taskDescriptionField.textColor = UIColor.lightGray
+		
+		// Set textfield padding
+		let padding = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 10))
+		taskNameField.leftViewMode = UITextFieldViewMode.always
+		taskNameField.leftView = padding
+		
+		
+	}
+	
     
-    // MARK: TextView placeholder and editing style
+    // MARK: - TextView placeholder and editing style
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         if taskDescriptionField.text == "Description (optional)" {
@@ -49,48 +84,15 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
         }
     }
 
-	override func viewWillAppear(_ animated: Bool) {
-		modalView.layer.cornerRadius = 5
-		
-	}
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-		
-		if editingTask {
-			taskNameField.text = taskToEdit?.taskName
-			taskDescriptionField.text = (taskToEdit?.taskDescription == "") ? "Description (optional)" : taskToEdit?.taskDescription
-			dueTodaySwitch.isOn = (taskToEdit?.dueToday)! ? true : false
-		}
 
-		// activate keyboard on load
-		taskNameField.becomeFirstResponder()
-        
-        // Add gesture recognizers for dismissing the keyboard
-        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
-        
-        // Set placeholder text color
-        taskDescriptionField.textColor = UIColor.lightGray
-        
-        // Set textfield padding
-        let padding = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 10))
-        taskNameField.leftViewMode = UITextFieldViewMode.always
-        taskNameField.leftView = padding
-
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     
-    // MARK: -- Save task --
+    // MARK: - IB Actions
     
 	@IBAction func saveTaskPressed(_ sender: UIButton) {
         saveTask()
     }
+	
 	
 	func saveTask() {
 		
@@ -113,16 +115,20 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 				task?.taskDescription = taskDescriptionField.text
 			}
 			application.saveContext()
-
-			dismiss(animated: false) {
-				self.delegate?.modalDismissed()
+			
+			if tabBarController?.selectedIndex == 1 {
+				tabBarController?.selectedIndex = 0
+			} else {
+				dismiss(animated: false) {
+					self.delegate?.modalDismissed()
+				}
 			}
 		}
 	}
 	
     
     
-    // MARK: Keyboard
+    // MARK: - Keyboard handling
 
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -134,10 +140,19 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     
     @IBAction func cancelAddingTask(_ sender: UIButton) {
 		taskNameField.resignFirstResponder()
-		dismiss(animated: false) {
-			self.delegate?.modalDismissed()
+		
+		if tabBarController?.selectedIndex == 1 {
+			tabBarController?.selectedIndex = 0
+		} else {
+			dismiss(animated: false) {
+				self.delegate?.modalDismissed()
+			}
 		}
+		
+		
     }
+	
+	// MARK: - Helper functions
     
     @IBAction func switchFlipped(_ sender: UISwitch) {
         if sender.isOn {

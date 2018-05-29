@@ -40,6 +40,19 @@
 		<string>Naste DemiBold.otf</string>
 		<string>Naste Light.otf</string>
 	</array>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeAdd</string>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>add new task for today</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>New task</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>ca.centennialcollege.TodayTomorrow.first</string>
+		</dict>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

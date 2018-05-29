@@ -14,7 +14,61 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 	var todayVC: TodayVC?
+	
+	// MARK: - Types
+	
+	enum ShortcutIdentifier: String {
+		case first
+		case second
+		
+		// MARK: - Initializers
+		
+		init?(fullType: String) {
+			guard let last = fullType.components(separatedBy: ".").last else { return nil }
+			self.init(rawValue: last)
+		}
+		
+		// MARK: - Properties
+		
+		var type: String {
+			return Bundle.main.bundleIdentifier! + ".\(self.rawValue)"
+		}
+	}
+	
+	/// Saved shortcut item used as a result of an app launch, used later when app is activated.
+	var launchedShortcutItem: UIApplicationShortcutItem?
+	
+	func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+		completionHandler(handleShortcut(shortcutItem: shortcutItem))
+	}
+	
+	private func handleShortcut(shortcutItem: UIApplicationShortcutItem) -> Bool {
+		let shortcutType = shortcutItem.type
+		guard let shortcutIdentifier = ShortcutIdentifier(fullType: shortcutType) else {
+			return false
+		}
+		return selectTabBarItemForIdentifier(shortcutIdentifier)
+	}
+	
+	fileprivate func selectTabBarItemForIdentifier(_ identifier: ShortcutIdentifier) -> Bool {
 
+		
+		guard let tabBarController = self.window?.rootViewController as? UITabBarController else {
+			return false
+		}
+		
+		switch (identifier) {
+		case .first:
+			tabBarController.selectedIndex = 0
+			todayVC?.performSegue(withIdentifier: "showAddTask", sender: todayVC)
+			return true
+		case .second:
+			tabBarController.selectedIndex = 1
+			return true
+		}
+	}
+	
+	// MARK: - Application lifecycle
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
