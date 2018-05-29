@@ -1,8 +1,8 @@
 //  TodayTomorrow
 //
-//  Created by Sergii Kozak 300979113
+//  Created by Sergii Kozak
 
-//  Copyright © 2017 Centennial. All rights reserved.
+//  Copyright © 2017 Sergii Kozak. All rights reserved.
 //
 
 import UIKit
@@ -220,7 +220,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 		// context.refreshAllObjects()
         let fetchRequest = NSFetchRequest<Task>(entityName: "Task")
         // let sort = NSSortDescriptor(key: #keyPath(Task.isCompleted), ascending: true)
-		let sort = NSSortDescriptor(key: #keyPath(Task.taskIndex), ascending: true)
+		let sort = NSSortDescriptor(key: #keyPath(Task.taskIndex), ascending: false)
         let predicate = NSPredicate(format: "dueToday == TRUE")
         fetchRequest.predicate = predicate
         fetchRequest.sortDescriptors = [sort]
