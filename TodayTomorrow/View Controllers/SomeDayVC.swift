@@ -23,6 +23,9 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     @IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var blurEffect: UIVisualEffectView!
 	
+	
+	// MARK: - View actions
+	
 	override func viewWillAppear(_ animated: Bool) {
 		self.tabBarController?.tabBar.tintColor = UIColor.darkGray
 		self.tabBarController?.delegate = self
@@ -39,12 +42,14 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
 		
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
+		
+		tableView.register(UINib(nibName: "TaskCell", bundle: nil), forCellReuseIdentifier: "someDayTaskCell")
 
 	}
     
     
     
-    // MARK: -- TableView Implementation --
+    // MARK: - TableView Implementation
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
 		return 1
@@ -61,16 +66,10 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     }
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: "someDayTaskCell") as! SomeDayTaskCell
-		cell.todayTaskNameLabel.text = tasks[indexPath.row].taskName
-		
-		setSelectionStatus(cell: cell, checked: tasks[indexPath.row].isCompleted)
-		
-		if tasks[indexPath.row].taskDescription == "Task description" {
-			cell.descriptionLabel.text = ""
-		} else {
-			cell.descriptionLabel.text = tasks[indexPath.row].taskDescription
-		}
+		let cell = tableView.dequeueReusableCell(withIdentifier: "someDayTaskCell") as! TaskCell
+		let task = tasks[indexPath.row]
+		cell.configure(title: task.taskName!, description: task.taskDescription!, isCompleted: task.isCompleted)
+		cell.checkBox.addTarget(self, action: #selector(checkBoxChecked(_:)), for: UIControlEvents.touchUpInside)
 		return cell
 	}
 	
@@ -98,7 +97,7 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
 		}
 		
 		let editTask = UIContextualAction(style: .normal, title: "Edit") { (action, view, handler) in
-			let cell = self.tableView.cellForRow(at: indexPath) as! SomeDayTaskCell
+			let cell = self.tableView.cellForRow(at: indexPath) as! TaskCell
 			self.performSegue(withIdentifier: "showEditTask", sender: cell)
 		}
 		let configuration = UISwipeActionsConfiguration(actions: [deleteTask, editTask])
@@ -113,7 +112,7 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
 		tableView.reloadData()
 	}
 	
-	// MARK: -- Long press reorder for table --
+	// MARK: - Long press reorder for table
 	
 	override func reorderFinished(initialIndex: IndexPath, finalIndex: IndexPath) {
 		// Gesture is finished and cell is back inside the table at finalIndex position
@@ -133,7 +132,9 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
 		application.saveContext()
 	}
     
-    
+	
+	// MARK: - Database actions
+	
     // Delete row and task from database
     
     func deleteTask(atIndexPath indexPath: IndexPath) {
@@ -172,7 +173,7 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     // Check box action
     
     @IBAction func checkBoxChecked(_ sender: UIButton) {
-        let cell = sender.superview?.superview?.superview as! SomeDayTaskCell
+        let cell = sender.superview?.superview?.superview?.superview as! TaskCell
         let indexPath = tableView.indexPath(for: cell)
         let task = tasks[(indexPath?.row)!]
         
@@ -201,7 +202,7 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     
     func getData() {
         let fetchRequest = NSFetchRequest<Task>(entityName: "Task")
-        let sort = NSSortDescriptor(key: #keyPath(Task.taskIndex), ascending: false)
+        let sort = NSSortDescriptor(key: #keyPath(Task.taskIndex), ascending: true)
         let predicate = NSPredicate(format: "dueToday == FALSE")
         fetchRequest.predicate = predicate
         fetchRequest.sortDescriptors = [sort]
@@ -212,12 +213,12 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         }
     }
     
-    // MARK: -- Segue setup --
+    // MARK: - Navigation - Segue setup
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		
         if segue.identifier == "showEditTask" {
-            let indexPathForCell = tableView.indexPath(for: sender as! SomeDayTaskCell)
+            let indexPathForCell = tableView.indexPath(for: sender as! TaskCell)
 			let selectedTask = tasks[(indexPathForCell?.row)!]
 			let editTaskVC = segue.destination as! TaskVC
 			editTaskVC.taskToEdit = selectedTask
@@ -233,7 +234,7 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
 		}
     }
 	
-	// MARK: -- Tabbar controller methods --
+	// MARK: - Tabbar controller methods
 	
 	func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
 		
@@ -245,11 +246,11 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
 		}
 	}
     
-	// MARK: -- Helper functions --
+	// MARK: - Helper functions
 
 	func applyBlur() {
 		UIView.animate(withDuration: 0.3) {
-			self.blurEffect.alpha = 1
+			self.blurEffect.alpha = 0.8
 		}
 	}
 	
@@ -265,7 +266,7 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
 		configureTable()
 	}
 	
-	func setSelectionStatus(cell: SomeDayTaskCell, checked: Bool) {
+	func setSelectionStatus(cell: TaskCell, checked: Bool) {
 		if checked {
 			cell.setChecked()
 		} else{

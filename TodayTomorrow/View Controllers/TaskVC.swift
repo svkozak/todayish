@@ -35,7 +35,11 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 	// MARK: - View options
 	
 	override func viewWillAppear(_ animated: Bool) {
-		modalView.layer.cornerRadius = 5
+		modalView.layer.cornerRadius = 10
+		modalView.layer.shadowColor = UIColor.lightGray.cgColor
+		modalView.layer.shadowOffset = CGSize(width: 4, height: 4)
+		modalView.layer.shadowRadius = 20
+		modalView.layer.shadowOpacity = 1
 		
 	}
 	

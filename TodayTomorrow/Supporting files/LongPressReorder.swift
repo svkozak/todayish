@@ -105,6 +105,7 @@ open class LongPressReorderTableView {
 	@objc fileprivate func longPressGestureRecognized(_ gesture: UIGestureRecognizer) {
 		let point = gesture.location(in: tableView)
 		let indexPath = tableView.indexPathForRow(at: point)
+		let hapticNotification = UISelectionFeedbackGenerator()
 		
 		switch gesture.state {
 		case .began:
@@ -115,6 +116,7 @@ open class LongPressReorderTableView {
 				DragInfo.began = true
 				DragInfo.initialIndexPath = indexPath
 				DragInfo.currentIndexPath = indexPath
+				hapticNotification.selectionChanged()
 				
 				let cell = tableView.cellForRow(at: indexPath)!
 				

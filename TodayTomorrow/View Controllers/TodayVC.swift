@@ -24,6 +24,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 	
     @IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var blurEffect: UIVisualEffectView!
+	@IBOutlet weak var topBar: UIView!
 	
 	
 
@@ -45,6 +46,8 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib
+		
+		tableView.register(UINib(nibName: "TaskCell", bundle: nil), forCellReuseIdentifier: "TodayTaskCell")
 		
 		application.todayVC = self
 		
@@ -81,17 +84,11 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TodayTaskCell") as! TodayTaskCell
-		cell.todayTaskNameLabel.text = tasks[indexPath.row].taskName!
-        
-        setSelectionStatus(cell: cell, checked: tasks[indexPath.row].isCompleted)
-        
-        if tasks[indexPath.row].taskDescription == "Task description" {
-            cell.descriptionLabel.text = ""
-        } else {
-            cell.descriptionLabel.text = tasks[indexPath.row].taskDescription
-        }
-        return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TodayTaskCell") as! TaskCell
+		let task = tasks[indexPath.row]
+		cell.configure(title: task.taskName!, description: task.taskDescription!, isCompleted: task.isCompleted)
+		cell.checkBox.addTarget(self, action: #selector(checkBoxCheck(sender:)), for: UIControlEvents.touchUpInside)
+		return cell
     }
 	
     
@@ -109,7 +106,6 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 		}
 		moveTaskToSomeDay.backgroundColor = someDayBlue
 		let configuration = UISwipeActionsConfiguration(actions: [moveTaskToSomeDay])
-		configuration.performsFirstActionWithFullSwipe = true
 		return configuration
 	}
 	
@@ -121,7 +117,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 
 		let editTask = UIContextualAction(style: .normal, title: "Edit") { (action, view, handler) in
 			print("edit task performed")
-			let cell = self.tableView.cellForRow(at: indexPath) as! TodayTaskCell
+			let cell = self.tableView.cellForRow(at: indexPath) as! TaskCell
 			self.performSegue(withIdentifier: "showEditTask", sender: cell)
 		}
 		let configuration = UISwipeActionsConfiguration(actions: [deleteTask, editTask])
@@ -196,7 +192,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		
         if segue.identifier == "showEditTask" {
-			let indexPathForCell = tableView.indexPath(for: sender as! TodayTaskCell)
+			let indexPathForCell = tableView.indexPath(for: sender as! TaskCell)
 			let selectedTask = tasks[(indexPathForCell?.row)!]
 			let editTaskVC = segue.destination as! TaskVC
 			editTaskVC.taskToEdit = selectedTask
@@ -220,7 +216,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 		// context.refreshAllObjects()
         let fetchRequest = NSFetchRequest<Task>(entityName: "Task")
         // let sort = NSSortDescriptor(key: #keyPath(Task.isCompleted), ascending: true)
-		let sort = NSSortDescriptor(key: #keyPath(Task.taskIndex), ascending: false)
+		let sort = NSSortDescriptor(key: #keyPath(Task.taskIndex), ascending: true)
         let predicate = NSPredicate(format: "dueToday == TRUE")
         fetchRequest.predicate = predicate
         fetchRequest.sortDescriptors = [sort]
@@ -235,7 +231,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
     // MARK: - Actions
     
     @IBAction func checkBoxCheck(sender: UIButton) {
-        let cell = sender.superview?.superview?.superview as! TodayTaskCell
+        let cell = sender.superview?.superview?.superview?.superview as! TaskCell
         let indexPath = tableView.indexPath(for: cell)
         let task = tasks[(indexPath?.row)!]
         task.isCompleted = !task.isCompleted
@@ -280,7 +276,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 	
 	func applyBlur() {
 		UIView.animate(withDuration: 0.3) {
-			self.blurEffect.alpha = 1
+			self.blurEffect.alpha = 0.8
 		}
 	}
 	
@@ -296,7 +292,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 		configureTable()
 	}
 	
-	func setSelectionStatus(cell: TodayTaskCell, checked: Bool) {
+	func setSelectionStatus(cell: TaskCell, checked: Bool) {
 		if checked {
 			cell.setChecked()
 		} else{
