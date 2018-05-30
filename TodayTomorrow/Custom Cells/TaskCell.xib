@@ -63,6 +63,7 @@
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="Mex-Pi-WzH" secondAttribute="bottom" constant="8" id="458-68-Vnf"/>
                     <constraint firstAttribute="trailing" secondItem="Mex-Pi-WzH" secondAttribute="trailing" constant="16" id="L1o-Ay-ZNb"/>
@@ -70,6 +71,7 @@
                     <constraint firstItem="Mex-Pi-WzH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="cq1-fb-ByD"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="checkBox" destination="clB-HK-D67" id="XYM-kA-PaB"/>

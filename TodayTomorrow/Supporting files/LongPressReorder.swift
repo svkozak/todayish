@@ -11,8 +11,8 @@ import UIKit
 public enum SelectedRowScale: CGFloat {
 	/// Selected row will pop out without scaling at all
 	case none = 1.00
-	/// Selected row will barely pop out of the table.
-	case small = 1.01
+	/// Selected row will barely pop out of the table. (was 1.01)
+	case small = 0.97
 	/// Selected row will visibly pop out of the table. This is the default value.
 	case medium = 1.03
 	/// Selected row will scale to be considerable big comparing to the other rows of the table.
@@ -97,6 +97,7 @@ open class LongPressReorderTableView {
 	*/
 	open func enableLongPressReorder() {
 		let longPress = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressGestureRecognized(_:)))
+		longPress.minimumPressDuration = 0.2
 		tableView.addGestureRecognizer(longPress)
 	}
 	
@@ -118,6 +119,7 @@ open class LongPressReorderTableView {
 				DragInfo.currentIndexPath = indexPath
 				hapticNotification.selectionChanged()
 				
+				// added casting as TaskCell to apply animation
 				let cell = tableView.cellForRow(at: indexPath)!
 				
 				var center = cell.center

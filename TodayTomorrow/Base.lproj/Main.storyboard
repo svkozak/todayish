@@ -151,6 +151,7 @@
                                                 <constraint firstItem="hzH-Rt-jwv" firstAttribute="leading" secondItem="Uz1-Pd-XpX" secondAttribute="leadingMargin" id="pya-Gn-t79"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <gestureRecognizers/>
                                         <connections>
                                             <outlet property="checkBox" destination="e8v-lg-4U7" id="iMZ-JN-wUS"/>
@@ -572,6 +573,6 @@
         <image name="tomorrow" width="27" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="suC-bh-Sv1"/>
+        <segue reference="Hoj-NG-ie7"/>
     </inferredMetricsTieBreakers>
 </document>

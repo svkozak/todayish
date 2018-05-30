@@ -66,9 +66,8 @@ class TaskCell: UITableViewCell {
 	}
 	
 	@objc func animateTap() {
-		print("tap animation should start")
 		UIView.animate(withDuration: 0.1) {
-			self.containerView.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
+			self.containerView.transform = CGAffineTransform(scaleX: 0.98, y: 0.98)
 		}
 		UIView.animate(withDuration: 0.1, delay: 0.1, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
 				self.containerView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
