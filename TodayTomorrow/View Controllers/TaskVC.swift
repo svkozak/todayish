@@ -11,7 +11,7 @@ import CoreData
 
 class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 	
-	// MARK: - Properties
+	// MARK: - Properties@objc @objc
 	
     // Context for CoreData
 	
@@ -20,6 +20,8 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     
     let someDayBlue = UIColor(red: 0.161, green: 0.502, blue: 0.725, alpha: 1)
     let todayGreen = UIColor(red: 0.298, green: 0.498, blue: 0, alpha: 1)
+	
+	let swipeGesture = UISwipeGestureRecognizer()
 	
 	// delegate will be called when viewcontroller is dismissed
 	weak var delegate: ModalHandlerDelegate?
@@ -35,7 +37,7 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 	// MARK: - View options
 	
 	override func viewWillAppear(_ animated: Bool) {
-		modalView.layer.cornerRadius = 10
+		modalView.layer.cornerRadius = 5
 		modalView.layer.shadowColor = UIColor.lightGray.cgColor
 		modalView.layer.shadowOffset = CGSize(width: 4, height: 4)
 		modalView.layer.shadowRadius = 20
@@ -45,6 +47,8 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		
 		
 		if editingTask {
 			taskNameField.text = taskToEdit?.taskName
@@ -65,6 +69,11 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 		let padding = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 10))
 		taskNameField.leftViewMode = UITextFieldViewMode.always
 		taskNameField.leftView = padding
+		
+		// Add swipe down gesture to cancel adding task
+		swipeGesture.direction = UISwipeGestureRecognizerDirection.down
+		swipeGesture.addTarget(self, action: #selector(cancelAddingTask(_:)))
+		self.view.addGestureRecognizer(swipeGesture)
 		
 		
 	}

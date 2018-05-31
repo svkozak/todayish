@@ -22,7 +22,8 @@ class TaskCell: UITableViewCell {
 	}
 	
 	func setChecked () {
-		checkBox.setImage(UIImage(named: "grey-selected"), for: UIControlState.normal)
+		checkBox.setImage(UIImage(named: "grey-selected")?.withRenderingMode(.alwaysTemplate), for: UIControlState.normal)
+		checkBox.imageView?.tintColor = UIColor.lightGray
 		checkBox.imageView?.tintColor = UIColor.lightGray
 		taskTitleLabel.textColor = UIColor.lightGray
 		taskDescriptionLabel.textColor = UIColor.lightGray
@@ -30,9 +31,10 @@ class TaskCell: UITableViewCell {
 	}
 	
 	func setUnchecked() {
-		checkBox.setImage(UIImage(named: "darkgrey-deselected"), for: UIControlState.normal)
-		taskTitleLabel.textColor = UIColor.darkGray
-		taskDescriptionLabel.textColor = UIColor.darkGray
+		checkBox.setImage(UIImage(named: "darkgrey-deselected")?.withRenderingMode(.alwaysTemplate), for: UIControlState.normal)
+		checkBox.imageView?.tintColor = Colours.mainTextColor
+		taskTitleLabel.textColor = Colours.mainTextColor
+		taskDescriptionLabel.textColor = Colours.mainTextColor
 		//bottomBorder.backgroundColor = UIColor.darkGray
 	}
 	
@@ -40,9 +42,13 @@ class TaskCell: UITableViewCell {
 		
 		self.containerView.layer.shadowColor = UIColor.lightGray.cgColor
 		self.containerView.layer.shadowOffset = CGSize(width: 1, height: 1)
-		self.containerView.layer.shadowRadius = 6
+		self.containerView.layer.shadowRadius = 5
 		self.containerView.layer.shadowOpacity = 0.4
 		self.containerView.layer.cornerRadius = 10
+		
+		self.taskTitleLabel.textColor = Colours.mainTextColor
+		self.taskDescriptionLabel.textColor = Colours.mainTextColor
+		self.checkBox.imageView?.tintColor = Colours.mainTextColor
 		
 		tapGesture.addTarget(self, action: #selector(animateTap))
 		self.containerView.addGestureRecognizer(tapGesture)

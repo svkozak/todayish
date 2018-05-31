@@ -12,20 +12,17 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 	
 	// MARK: - Properties
 
-    let todayGreen = Colours.mainLightGreen
-    let someDayBlue = Colours.mainLightBlue
-
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 	let application = (UIApplication.shared.delegate as! AppDelegate)
     var tasks: [Task] = []
     var completedTasks: [Task] = []
 	var reorderTableView: LongPressReorderTableView!
 	let notification = UISelectionFeedbackGenerator()
+	var showingCompleted = false
 	
     @IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var blurEffect: UIVisualEffectView!
 	@IBOutlet weak var topBar: UIView!
-	
 	
 
 	
@@ -48,6 +45,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 		// Do any additional setup after loading the view, typically from a nib
 		
 		tableView.register(UINib(nibName: "TaskCell", bundle: nil), forCellReuseIdentifier: "TodayTaskCell")
+		tableView.register(UINib(nibName: "TableHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "TableHeaderView")
 		
 		application.todayVC = self
 		
@@ -68,61 +66,95 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
     // MARK: - TableView implementation
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+		
+		if tasks.count == 0 && completedTasks.count == 0 {
+			tableView.isHidden = true
+		} else {
+			tableView.isHidden = false
+		}
+		return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if tasks.count == 0 {
-            tableView.isHidden = true
-            return 0
-        } else {
-            tableView.isHidden = false
-            return tasks.count
-        }
+		
+		if section == 0 {
+			return tasks.count == 0 ? 0 : tasks.count
+		} else {
+			return showingCompleted ? completedTasks.count : 0
+		}
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TodayTaskCell") as! TaskCell
-		let task = tasks[indexPath.row]
+		let task = (indexPath.section == 0) ? tasks[indexPath.row] : completedTasks[indexPath.row]
 		cell.configure(title: task.taskName!, description: task.taskDescription!, isCompleted: task.isCompleted)
 		cell.checkBox.addTarget(self, action: #selector(checkBoxCheck(sender:)), for: UIControlEvents.touchUpInside)
 		return cell
     }
 	
-    
-    // Allow table editing
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
+	
     // Add actions when table row is swiped from left or right
 	
 	func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+		
+		// don't allow moving completed task
+		if indexPath.section == 1 { return nil }
+		
 		let moveTaskToSomeDay = UIContextualAction(style: .destructive, title: "Some day") { (action, view, handler) in
 			self.moveTaskToSomeDay(atIndexPath: indexPath)
 		}
-		moveTaskToSomeDay.backgroundColor = someDayBlue
+		moveTaskToSomeDay.backgroundColor = Colours.mainLightBlue
 		let configuration = UISwipeActionsConfiguration(actions: [moveTaskToSomeDay])
 		return configuration
 	}
 	
 	func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+		
 		let deleteTask = UIContextualAction(style: .destructive, title: "Delete") { (action, view, handler) in
-			print("delete performed")
 			self.deleteTask(atIndexPath: indexPath)
 		}
+		deleteTask.backgroundColor = Colours.mainRed
 
-		let editTask = UIContextualAction(style: .normal, title: "Edit") { (action, view, handler) in
-			print("edit task performed")
+		let editTask = UIContextualAction(style: .normal, title: "Info") { (action, view, handler) in
 			let cell = self.tableView.cellForRow(at: indexPath) as! TaskCell
 			self.performSegue(withIdentifier: "showEditTask", sender: cell)
 		}
+		editTask.backgroundColor = Colours.mainTextColor
 		let configuration = UISwipeActionsConfiguration(actions: [deleteTask, editTask])
 		configuration.performsFirstActionWithFullSwipe = true
 		return configuration
+	}
+	
+	// MARK: - Header view for section
+	
+	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+		if section == 0 {
+			return 0
+		} else {
+			return 60
+		}
+	}
+	
+	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+		if section == 0 {
+			return nil
+		} else {
+			let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "TableHeaderView") as! TableHeaderView
+			headerView.headerButton.addTarget(self, action: #selector(showCompleted), for: UIControlEvents.allEvents)
+			headerView.headerClearButton.addTarget(self, action: #selector(deleteCompletedTasks(_:)), for: UIControlEvents.allEvents)
+			headerView.isHidden = (completedTasks.count == 0) ? true : false
+			
+			let title = showingCompleted ? "Hide completed (\(completedTasks.count))" : "Show completed (\(completedTasks.count))"
+			headerView.headerButton.setTitle(title, for: .normal)
+			headerView.headerClearButton.isHidden = showingCompleted ? false : true
+			return headerView
+		}
+	}
+	
+	@objc func showCompleted() {
+		showingCompleted = !showingCompleted
+		tableView.reloadSections([1], with: UITableViewRowAnimation.fade)
+		tableView.reloadData()
 	}
 	
 	
@@ -146,6 +178,16 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 		application.saveContext()
 	}
 	
+	// disable long press reordering for completed tasks
+	
+	override func startReorderingRow(atIndex indexPath: IndexPath) -> Bool {
+		return indexPath.section == 0 ? true : false
+	}
+	
+	override func allowChangingRow(atIndex indexPath: IndexPath) -> Bool {
+		return indexPath.section == 0 ? true : false
+	}
+	
 	
 	
 	// MARK: - Task actions
@@ -155,16 +197,24 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
     func deleteTask(atIndexPath indexPath: IndexPath) {
 		
 		tableView.performBatchUpdates({
-			let task = self.tasks[indexPath.row]
-			tasks.remove(at: indexPath.row)
-			self.context.delete(task)
+	
+			if indexPath.section == 0 {
+				let task = self.tasks[indexPath.row]
+				tasks.remove(at: indexPath.row)
+				self.context.delete(task)
+			} else {
+				let task = self.completedTasks[indexPath.row]
+				completedTasks.remove(at: indexPath.row)
+				self.context.delete(task)
+			}
+	
 			self.application.saveContext()
 			self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+			
 		}) { (true) in
 			self.getData()
 			self.configureTable()
 		}
-
     }
     
     
@@ -193,7 +243,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 		
         if segue.identifier == "showEditTask" {
 			let indexPathForCell = tableView.indexPath(for: sender as! TaskCell)
-			let selectedTask = tasks[(indexPathForCell?.row)!]
+			let selectedTask = (indexPathForCell?.section == 0) ? tasks[(indexPathForCell?.row)!] : completedTasks[(indexPathForCell?.row)!]
 			let editTaskVC = segue.destination as! TaskVC
 			editTaskVC.taskToEdit = selectedTask
 			editTaskVC.editingTask = true
@@ -210,48 +260,88 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
     
 	// MARK: - Database operations
 	
-    // Get data from database
+    // Get data from database  (AND isCompleted == FALSE)
     
     func getData() {
-		// context.refreshAllObjects()
-        let fetchRequest = NSFetchRequest<Task>(entityName: "Task")
-        // let sort = NSSortDescriptor(key: #keyPath(Task.isCompleted), ascending: true)
-		let sort = NSSortDescriptor(key: #keyPath(Task.taskIndex), ascending: true)
-        let predicate = NSPredicate(format: "dueToday == TRUE")
-        fetchRequest.predicate = predicate
-        fetchRequest.sortDescriptors = [sort]
-        do {
-            tasks = try context.fetch(fetchRequest)
-        } catch {
-            print("Cannot fetch because \(error.localizedDescription)")
-        }
+		getOpenTasks()
+		getCompletedTasks()
     }
+	
+	func getOpenTasks() {
+		let fetchRequest = NSFetchRequest<Task>(entityName: "Task")
+		// let sort = NSSortDescriptor(key: #keyPath(Task.isCompleted), ascending: true)
+		let sort = NSSortDescriptor(key: #keyPath(Task.taskIndex), ascending: true)
+		let predicate = NSPredicate(format: "dueToday == TRUE AND isCompleted == FALSE")
+		fetchRequest.predicate = predicate
+		fetchRequest.sortDescriptors = [sort]
+		do {
+			tasks = try context.fetch(fetchRequest)
+			print(tasks.count)
+		} catch {
+			print("Cannot fetch because \(error.localizedDescription)")
+		}
+	}
+	
+	func getCompletedTasks() {
+		let fetchRequest = NSFetchRequest<Task>(entityName: "Task")
+		let sort = NSSortDescriptor(key: #keyPath(Task.taskIndex), ascending: true)
+		let predicate = NSPredicate(format: "dueToday == TRUE AND isCompleted == TRUE")
+		fetchRequest.predicate = predicate
+		fetchRequest.sortDescriptors = [sort]
+		do {
+			completedTasks = try context.fetch(fetchRequest)
+			print("completed \(completedTasks.count)")
+		} catch {
+			print("Cannot fetch completed tasks because \(error.localizedDescription)")
+		}
+	}
     
     
     // MARK: - Actions
     
     @IBAction func checkBoxCheck(sender: UIButton) {
+		
         let cell = sender.superview?.superview?.superview?.superview as! TaskCell
         let indexPath = tableView.indexPath(for: cell)
-        let task = tasks[(indexPath?.row)!]
+		let task = (indexPath?.section == 0) ? tasks[(indexPath?.row)!] : completedTasks[(indexPath?.row)!]
         task.isCompleted = !task.isCompleted
-		
-        //setSelectionStatus(cell: cell, checked: task.isCompleted)
+        setSelectionStatus(cell: cell, checked: task.isCompleted)
 		notification.selectionChanged()
-        application.saveContext()
-        getData()
-		configureTable()
+		self.application.saveContext()
+		
+
+		tableView.performBatchUpdates({
+			if indexPath?.section == 0 {
+				tasks.remove(at: (indexPath?.row)!)
+				tableView.deleteRows(at: [indexPath!], with: UITableViewRowAnimation.fade)
+
+			} else {
+				completedTasks.remove(at: (indexPath?.row)!)
+				tableView.deleteRows(at: [indexPath!], with: UITableViewRowAnimation.fade)
+
+			}
+		}) { (true) in
+			
+			self.getData()
+			self.configureTable()
+		}
+
     }
     
     @IBAction func deleteCompletedTasks(_ sender: UIButton) {
-        for task in tasks {
-            if(task.isCompleted){
-                context.delete(task)
-            }
+
+        for task in completedTasks {
+			context.delete(task)
+			completedTasks.remove(at: completedTasks.index(of: task)!)
+			application.saveContext()
         }
         getData()
         configureTable()
     }
+	
+
+	
+	
 
 
 	// MARK: - TabbarController method
@@ -270,6 +360,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 	// MARK: - Helper functions
 	
 	func configureTable() {
+		
 		tableView.rowHeight = UITableViewAutomaticDimension
 		tableView.reloadData()
 	}
