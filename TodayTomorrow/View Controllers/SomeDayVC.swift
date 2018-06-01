@@ -196,7 +196,22 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         tableView.reloadData()
     }
     
+	@IBAction func didTapBottomButton(_ sender: UIButton) {
 
+			switch sender.tag {
+			case 0:
+				self.tabBarController?.selectedIndex = 0
+				notification.selectionChanged()
+			case 2:
+				self.tabBarController?.selectedIndex = 2
+				notification.selectionChanged()
+			case 1:
+				performSegue(withIdentifier: "showAddTask", sender: self)
+			default:
+				return
+			}
+	}
+	
     
     // Get data from database
     

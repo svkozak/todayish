@@ -24,6 +24,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 	@IBOutlet weak var blurEffect: UIVisualEffectView!
 	@IBOutlet weak var topBar: UIView!
 	@IBOutlet weak var placeholderView: UIStackView!
+	@IBOutlet weak var largeButton: UIButton!
 	
 
 	
@@ -32,12 +33,11 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 	
 	override func viewWillAppear(_ animated: Bool) {
 		
-		self.tabBarController?.tabBar.tintColor = UIColor.darkGray
-		self.tabBarController?.tabBar.layer.borderColor = UIColor.clear.cgColor
-		self.tabBarController?.delegate = self
-		self.tabBarController?.tabBar.unselectedItemTintColor = UIColor.lightGray
+		self.tabBarController?.tabBar.isHidden = true
+		
 		getData()
 		configureTable()
+		
 	}
 	
 	
@@ -52,9 +52,15 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 		application.todayVC = self
 		
 		// add coloured image as middle tabbar item
-		let add: UITabBarItem = (self.tabBarController?.tabBar.items![1])!
-		let button: UIImage = (UIImage(named: "add-tab")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal))!
-		add.image = button
+//		let add: UITabBarItem = (self.tabBarController?.tabBar.items![1])!
+//		let button: UIImage = (UIImage(named: "add-tab")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal))!
+//		add.image = button
+		
+		largeButton.layer.shadowColor = UIColor.lightGray.cgColor
+		largeButton.layer.shadowOffset = CGSize(width: 0, height: 2)
+		largeButton.layer.shadowRadius = 4
+		largeButton.layer.shadowOpacity = 0.6
+		
 		
 		// long press
 		reorderTableView = LongPressReorderTableView(tableView)
@@ -334,6 +340,24 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
         getData()
         configureTable()
     }
+	
+	@IBAction func didTapBottomButton(_ sender: UIButton) {
+		
+		switch sender.tag {
+		case 0:
+			self.tabBarController?.selectedIndex = 0
+			notification.selectionChanged()
+		case 2:
+			self.tabBarController?.selectedIndex = 2
+			notification.selectionChanged()
+		case 1:
+			performSegue(withIdentifier: "showAddTask", sender: self)
+		default:
+			return
+		}
+	}
+	
+	
 	
 
 	// MARK: - TabbarController override tab action

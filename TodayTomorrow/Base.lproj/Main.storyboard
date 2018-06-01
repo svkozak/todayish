@@ -83,6 +83,84 @@
                                     <outlet property="delegate" destination="9pv-A4-QxB" id="4k9-ut-3C5"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cgV-8U-pL9" userLabel="Bottom">
+                                <rect key="frame" x="0.0" y="558" width="375" height="110"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="uty-gu-sWa" userLabel="bottom buttons">
+                                        <rect key="frame" x="20" y="5" width="335" height="50"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Xx1-pQ-A7c">
+                                                <rect key="frame" x="0.0" y="2.5" width="56" height="47.5"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="POc-xx-d4e">
+                                                        <rect key="frame" x="13" y="0.0" width="30" height="30"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="dYK-hm-VSW"/>
+                                                            <constraint firstAttribute="width" constant="30" id="lBN-M7-iyK"/>
+                                                        </constraints>
+                                                        <state key="normal" image="today"/>
+                                                        <connections>
+                                                            <action selector="didTapBottomButton:" destination="9pv-A4-QxB" eventType="touchUpInside" id="7na-A1-BO9"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tXR-8f-6UF">
+                                                        <rect key="frame" x="11" y="33" width="34" height="14.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="56" id="NrF-Qo-6Zt"/>
+                                                </constraints>
+                                            </stackView>
+                                            <button opaque="NO" tag="1" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Un-hH-uyi">
+                                                <rect key="frame" x="142.5" y="0.0" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="YKX-mT-cda"/>
+                                                    <constraint firstAttribute="height" constant="50" id="bPm-ZU-g37"/>
+                                                </constraints>
+                                                <state key="normal" image="add-large"/>
+                                                <connections>
+                                                    <action selector="didTapBottomButton:" destination="9pv-A4-QxB" eventType="touchUpInside" id="GAF-Tg-pQJ"/>
+                                                </connections>
+                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="QJ0-SV-TuN">
+                                                <rect key="frame" x="279" y="2.5" width="56" height="47.5"/>
+                                                <subviews>
+                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DhG-Sp-TCw">
+                                                        <rect key="frame" x="13" y="0.0" width="30" height="30"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="30" id="7qP-vS-LxX"/>
+                                                            <constraint firstAttribute="height" constant="30" id="cEb-ON-rQy"/>
+                                                        </constraints>
+                                                        <state key="normal" image="someday"/>
+                                                        <connections>
+                                                            <action selector="didTapBottomButton:" destination="9pv-A4-QxB" eventType="touchUpInside" id="bHT-27-fqV"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yaz-tW-tWd">
+                                                        <rect key="frame" x="0.0" y="33" width="56" height="14.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="56" id="DWf-qF-wOR"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="uty-gu-sWa" firstAttribute="leading" secondItem="cgV-8U-pL9" secondAttribute="leading" constant="20" id="UFY-WH-Fea"/>
+                                    <constraint firstItem="uty-gu-sWa" firstAttribute="top" secondItem="cgV-8U-pL9" secondAttribute="top" constant="5" id="iiS-eC-u0f"/>
+                                    <constraint firstAttribute="trailing" secondItem="uty-gu-sWa" secondAttribute="trailing" constant="20" id="lc2-79-zZS"/>
+                                    <constraint firstAttribute="height" constant="110" id="o2I-BP-gJx"/>
+                                </constraints>
+                            </view>
                             <visualEffectView opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sgy-DE-q72">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="qxu-LW-BT9">
@@ -101,11 +179,14 @@
                             <constraint firstItem="dtk-zj-NxK" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="9Rc-ex-XHs"/>
                             <constraint firstItem="B7D-ct-Pgv" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="CFj-c4-VsJ"/>
                             <constraint firstAttribute="bottom" secondItem="sgy-DE-q72" secondAttribute="bottom" id="J6l-Eq-EqS"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="cgV-8U-pL9" secondAttribute="bottom" constant="-50" id="MnU-t5-RiO"/>
                             <constraint firstItem="sgy-DE-q72" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="NuC-Ft-szH"/>
                             <constraint firstItem="B7D-ct-Pgv" firstAttribute="bottom" secondItem="PQr-Ze-W5v" secondAttribute="bottom" id="O4S-n4-23H"/>
                             <constraint firstItem="sgy-DE-q72" firstAttribute="trailing" secondItem="tsR-hK-woN" secondAttribute="trailing" id="PkK-HV-Rik"/>
                             <constraint firstItem="dtk-zj-NxK" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="Xyu-Bk-JAg"/>
+                            <constraint firstItem="cgV-8U-pL9" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="hEz-ZD-NTs"/>
                             <constraint firstItem="dtk-zj-NxK" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="ha8-dw-fC7"/>
+                            <constraint firstItem="cgV-8U-pL9" firstAttribute="trailing" secondItem="tsR-hK-woN" secondAttribute="trailing" id="l04-IJ-B6r"/>
                             <constraint firstItem="B7D-ct-Pgv" firstAttribute="top" secondItem="dtk-zj-NxK" secondAttribute="bottom" id="ppH-Zz-1oi"/>
                             <constraint firstItem="B7D-ct-Pgv" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="rT2-Lt-Rjf"/>
                             <constraint firstItem="Hqf-Ym-cqS" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="uVp-MD-5Pn"/>
@@ -124,6 +205,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="blurEffect" destination="sgy-DE-q72" id="2ZI-wg-ko9"/>
+                        <outlet property="largeButton" destination="8Un-hH-uyi" id="xJg-2m-ueF"/>
                         <outlet property="placeholderView" destination="Hqf-Ym-cqS" id="GtW-vW-uc9"/>
                         <outlet property="tableView" destination="B7D-ct-Pgv" id="5Ad-sQ-Rx7"/>
                         <outlet property="topBar" destination="dtk-zj-NxK" id="PYi-qT-t1h"/>
@@ -163,7 +245,7 @@
                                                         <textInputTraits key="textInputTraits"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <integer key="value" value="10"/>
+                                                                <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
@@ -181,7 +263,7 @@
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <integer key="value" value="10"/>
+                                                                <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
@@ -369,6 +451,87 @@
                                     <outlet property="delegate" destination="8rJ-Kc-sve" id="SWB-VL-TSE"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qMg-id-OdI" userLabel="Bottom">
+                                <rect key="frame" x="0.0" y="558" width="375" height="110"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="lfc-MH-HFa" userLabel="bottom buttons">
+                                        <rect key="frame" x="20" y="5" width="335" height="50"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="UAQ-2C-IL3">
+                                                <rect key="frame" x="0.0" y="2.5" width="56" height="47.5"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DEz-Ba-2hH">
+                                                        <rect key="frame" x="13" y="0.0" width="30" height="30"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="30" id="SSf-qk-mWx"/>
+                                                            <constraint firstAttribute="height" constant="30" id="dwb-Nq-9p1"/>
+                                                        </constraints>
+                                                        <state key="normal" image="today"/>
+                                                        <connections>
+                                                            <action selector="didTapBottomButton:" destination="9pv-A4-QxB" eventType="touchUpInside" id="00d-ex-VDY"/>
+                                                            <action selector="didTapBottomButton:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="jo5-qn-J27"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uc5-7F-4dF">
+                                                        <rect key="frame" x="11" y="33" width="34" height="14.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="56" id="qMi-Am-xiK"/>
+                                                </constraints>
+                                            </stackView>
+                                            <button opaque="NO" tag="1" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uJg-rE-GbS">
+                                                <rect key="frame" x="142.5" y="0.0" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="Mkw-N0-37Q"/>
+                                                    <constraint firstAttribute="width" constant="50" id="OVj-9G-nLu"/>
+                                                </constraints>
+                                                <state key="normal" image="add-large"/>
+                                                <connections>
+                                                    <action selector="didTapBottomButton:" destination="9pv-A4-QxB" eventType="touchUpInside" id="ZXV-yc-gc2"/>
+                                                    <action selector="didTapBottomButton:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="spL-fq-TXS"/>
+                                                </connections>
+                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="iJE-Hq-6p5">
+                                                <rect key="frame" x="279" y="2.5" width="56" height="47.5"/>
+                                                <subviews>
+                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hiM-uY-pAb">
+                                                        <rect key="frame" x="13" y="0.0" width="30" height="30"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="4eO-6Y-VCm"/>
+                                                            <constraint firstAttribute="width" constant="30" id="tes-Xp-pVo"/>
+                                                        </constraints>
+                                                        <state key="normal" image="someday"/>
+                                                        <connections>
+                                                            <action selector="didTapBottomButton:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="65Q-ea-axX"/>
+                                                            <action selector="didTapBottomButton:" destination="9pv-A4-QxB" eventType="touchUpInside" id="T21-kt-IUQ"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xPU-wZ-U11">
+                                                        <rect key="frame" x="0.0" y="33" width="56" height="14.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="56" id="XQR-Zr-Gtk"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="lfc-MH-HFa" firstAttribute="top" secondItem="qMg-id-OdI" secondAttribute="top" constant="5" id="2Ni-Su-hDf"/>
+                                    <constraint firstItem="lfc-MH-HFa" firstAttribute="leading" secondItem="qMg-id-OdI" secondAttribute="leading" constant="20" id="6m3-12-FAP"/>
+                                    <constraint firstAttribute="height" constant="110" id="In4-YU-p45"/>
+                                    <constraint firstAttribute="trailing" secondItem="lfc-MH-HFa" secondAttribute="trailing" constant="20" id="voc-HD-jWF"/>
+                                </constraints>
+                            </view>
                             <visualEffectView opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zBN-Gg-cii">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="U0m-m5-bOY">
@@ -380,13 +543,16 @@
                         </subviews>
                         <color key="backgroundColor" red="0.96078431369999995" green="0.96862745100000003" blue="0.98039215690000003" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
+                            <constraint firstItem="qMg-id-OdI" firstAttribute="trailing" secondItem="O1u-W8-tvY" secondAttribute="trailing" id="6OY-mC-to1"/>
                             <constraint firstItem="0xb-mr-ekj" firstAttribute="top" secondItem="SOt-Sy-Ttv" secondAttribute="bottom" id="6U1-fP-kuW"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="bottom" secondItem="qMg-id-OdI" secondAttribute="bottom" constant="-50" id="BZl-jW-GF4"/>
                             <constraint firstItem="zBN-Gg-cii" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" id="Kwb-7i-Bc0"/>
                             <constraint firstItem="zBN-Gg-cii" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="LOU-81-Eu3"/>
                             <constraint firstItem="SOt-Sy-Ttv" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" id="NkM-y1-5oM"/>
                             <constraint firstItem="zBN-Gg-cii" firstAttribute="trailing" secondItem="O1u-W8-tvY" secondAttribute="trailing" id="SEV-OQ-kao"/>
                             <constraint firstItem="SOt-Sy-Ttv" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="Tug-fl-K89"/>
                             <constraint firstItem="22t-zG-vYS" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="Ve0-y6-1n0"/>
+                            <constraint firstItem="qMg-id-OdI" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="e6R-NX-9yD"/>
                             <constraint firstAttribute="bottom" secondItem="zBN-Gg-cii" secondAttribute="bottom" id="n5e-if-7Tx"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="22t-zG-vYS" secondAttribute="trailing" constant="50" id="qRw-p0-5g6"/>
                             <constraint firstItem="22t-zG-vYS" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="50" id="qyg-Dg-HYo"/>
@@ -438,12 +604,14 @@
     </scenes>
     <resources>
         <image name="Add" width="26" height="26"/>
+        <image name="add-large" width="50" height="50"/>
         <image name="bench" width="142" height="148"/>
-        <image name="today" width="26" height="26"/>
+        <image name="someday" width="30" height="30"/>
+        <image name="today" width="30" height="30"/>
         <image name="tomorrow" width="27" height="26"/>
         <image name="tree-colour" width="149" height="151"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Hoj-NG-ie7"/>
+        <segue reference="suC-bh-Sv1"/>
     </inferredMetricsTieBreakers>
 </document>
