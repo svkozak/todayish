@@ -23,6 +23,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
     @IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var blurEffect: UIVisualEffectView!
 	@IBOutlet weak var topBar: UIView!
+	@IBOutlet weak var placeholderView: UIStackView!
 	
 
 	
@@ -32,6 +33,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 	override func viewWillAppear(_ animated: Bool) {
 		
 		self.tabBarController?.tabBar.tintColor = UIColor.darkGray
+		self.tabBarController?.tabBar.layer.borderColor = UIColor.clear.cgColor
 		self.tabBarController?.delegate = self
 		self.tabBarController?.tabBar.unselectedItemTintColor = UIColor.lightGray
 		getData()
@@ -68,9 +70,12 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
     func numberOfSections(in tableView: UITableView) -> Int {
 		
 		if tasks.count == 0 && completedTasks.count == 0 {
-			tableView.isHidden = true
+			
+			UIView.animate(withDuration: 0.5) {
+				tableView.isHidden = true
+			}
 		} else {
-			tableView.isHidden = false
+				tableView.isHidden = false
 		}
 		return 2
     }
@@ -128,17 +133,12 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 	// MARK: - Header view for section
 	
 	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-		if section == 0 {
-			return 0
-		} else {
-			return 60
-		}
+		// show header only for completed tasks section
+		return section == 0 ? 0 : 60
 	}
 	
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-		if section == 0 {
-			return nil
-		} else {
+
 			let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "TableHeaderView") as! TableHeaderView
 			headerView.headerButton.addTarget(self, action: #selector(showCompleted), for: UIControlEvents.allEvents)
 			headerView.headerClearButton.addTarget(self, action: #selector(deleteCompletedTasks(_:)), for: UIControlEvents.allEvents)
@@ -148,17 +148,16 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 			headerView.headerButton.setTitle(title, for: .normal)
 			headerView.headerClearButton.isHidden = showingCompleted ? false : true
 			return headerView
-		}
 	}
 	
 	@objc func showCompleted() {
 		showingCompleted = !showingCompleted
 		tableView.reloadSections([1], with: UITableViewRowAnimation.fade)
-		tableView.reloadData()
+		configureTable()
 	}
 	
 	
-		// MARK: - Long press reorder for table
+	// MARK: - Long press reorder for table
 	
 	override func reorderFinished(initialIndex: IndexPath, finalIndex: IndexPath) {
 		// Gesture is finished and cell is back inside the table at finalIndex position
@@ -190,7 +189,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 	
 	
 	
-	// MARK: - Task actions
+	// MARK: - Task table row actions
 	
     // Delete row and task from database
     
@@ -235,6 +234,41 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 		}
     }
 	
+	// MARK: - Database operations
+	
+	// Get data from database  (AND isCompleted == FALSE)
+	
+	func getData() {
+		getOpenTasks()
+		getCompletedTasks()
+	}
+	
+	func getOpenTasks() {
+		let fetchRequest = NSFetchRequest<Task>(entityName: "Task")
+		let sort = NSSortDescriptor(key: #keyPath(Task.taskIndex), ascending: true)
+		let predicate = NSPredicate(format: "dueToday == TRUE AND isCompleted == FALSE")
+		fetchRequest.predicate = predicate
+		fetchRequest.sortDescriptors = [sort]
+		do {
+			tasks = try context.fetch(fetchRequest)
+		} catch {
+			print("Cannot fetch because \(error.localizedDescription)")
+		}
+	}
+	
+	func getCompletedTasks() {
+		let fetchRequest = NSFetchRequest<Task>(entityName: "Task")
+		let sort = NSSortDescriptor(key: #keyPath(Task.taskIndex), ascending: true)
+		let predicate = NSPredicate(format: "dueToday == TRUE AND isCompleted == TRUE")
+		fetchRequest.predicate = predicate
+		fetchRequest.sortDescriptors = [sort]
+		do {
+			completedTasks = try context.fetch(fetchRequest)
+		} catch {
+			print("Cannot fetch completed tasks because \(error.localizedDescription)")
+		}
+	}
+	
 	
     
     // MARK: - Navigation - Segue setup
@@ -258,46 +292,10 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 		}
     }
     
-	// MARK: - Database operations
-	
-    // Get data from database  (AND isCompleted == FALSE)
-    
-    func getData() {
-		getOpenTasks()
-		getCompletedTasks()
-    }
-	
-	func getOpenTasks() {
-		let fetchRequest = NSFetchRequest<Task>(entityName: "Task")
-		// let sort = NSSortDescriptor(key: #keyPath(Task.isCompleted), ascending: true)
-		let sort = NSSortDescriptor(key: #keyPath(Task.taskIndex), ascending: true)
-		let predicate = NSPredicate(format: "dueToday == TRUE AND isCompleted == FALSE")
-		fetchRequest.predicate = predicate
-		fetchRequest.sortDescriptors = [sort]
-		do {
-			tasks = try context.fetch(fetchRequest)
-			print(tasks.count)
-		} catch {
-			print("Cannot fetch because \(error.localizedDescription)")
-		}
-	}
-	
-	func getCompletedTasks() {
-		let fetchRequest = NSFetchRequest<Task>(entityName: "Task")
-		let sort = NSSortDescriptor(key: #keyPath(Task.taskIndex), ascending: true)
-		let predicate = NSPredicate(format: "dueToday == TRUE AND isCompleted == TRUE")
-		fetchRequest.predicate = predicate
-		fetchRequest.sortDescriptors = [sort]
-		do {
-			completedTasks = try context.fetch(fetchRequest)
-			print("completed \(completedTasks.count)")
-		} catch {
-			print("Cannot fetch completed tasks because \(error.localizedDescription)")
-		}
-	}
+
     
     
-    // MARK: - Actions
+    // MARK: - IB Actions
     
     @IBAction func checkBoxCheck(sender: UIButton) {
 		
@@ -309,7 +307,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 		notification.selectionChanged()
 		self.application.saveContext()
 		
-
+		// remove completed task from section and vice versa
 		tableView.performBatchUpdates({
 			if indexPath?.section == 0 {
 				tasks.remove(at: (indexPath?.row)!)
@@ -340,11 +338,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
     }
 	
 
-	
-	
-
-
-	// MARK: - TabbarController method
+	// MARK: - TabbarController override tab action
 	
 	func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
 		
