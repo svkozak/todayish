@@ -1,4 +1,5 @@
-//  TodayTomorrow
+//
+//  Todayish
 //
 //  Created by Sergii Kozak
 
@@ -56,6 +57,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 //		let button: UIImage = (UIImage(named: "add-tab")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal))!
 //		add.image = button
 		
+		// button shadow
 		largeButton.layer.shadowColor = UIColor.lightGray.cgColor
 		largeButton.layer.shadowOffset = CGSize(width: 0, height: 2)
 		largeButton.layer.shadowRadius = 4
@@ -362,15 +364,15 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 
 	// MARK: - TabbarController override tab action
 	
-	func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-		
-		if viewController is TaskVC {
-			performSegue(withIdentifier: "showAddTask", sender: self)
-			return false
-		} else {
-			return true
-		}
-	}
+//	func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+//
+//		if viewController is TaskVC {
+//			performSegue(withIdentifier: "showAddTask", sender: self)
+//			return false
+//		} else {
+//			return true
+//		}
+//	}
 	
 	
 	// MARK: - Helper functions
@@ -407,10 +409,6 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 		}
 	}
 	
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
-	}
 
 }
 
