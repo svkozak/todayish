@@ -70,10 +70,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
     func numberOfSections(in tableView: UITableView) -> Int {
 		
 		if tasks.count == 0 && completedTasks.count == 0 {
-			
-			UIView.animate(withDuration: 0.5) {
 				tableView.isHidden = true
-			}
 		} else {
 				tableView.isHidden = false
 		}
@@ -333,6 +330,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 			completedTasks.remove(at: completedTasks.index(of: task)!)
 			application.saveContext()
         }
+		notification.selectionChanged()
         getData()
         configureTable()
     }
