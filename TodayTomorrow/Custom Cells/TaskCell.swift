@@ -14,12 +14,13 @@ class TaskCell: UITableViewCell {
 	@IBOutlet weak var checkBox: UIButton!
 	@IBOutlet weak var taskTitleLabel: UILabel!
 	@IBOutlet weak var taskDescriptionLabel: UILabel!
+	@IBOutlet weak var reminderImageView: UIImageView!
 	
 	var tapGesture = UITapGestureRecognizer()
 	
-	func checkBoxCheck() {
-		print("pressed")
-	}
+//	func checkBoxCheck() {
+//		print("pressed")
+//	}
 	
 	func setChecked () {
 		checkBox.setImage(UIImage(named: "grey-selected")?.withRenderingMode(.alwaysTemplate), for: UIControlState.normal)
@@ -38,7 +39,7 @@ class TaskCell: UITableViewCell {
 		//bottomBorder.backgroundColor = UIColor.darkGray
 	}
 	
-	func configure(title: String, description: String, isCompleted: Bool ) {
+	func configure(title: String, description: String, isCompleted: Bool, hasDueDate: Bool, isOverdue: Bool ) {
 		
 		self.containerView.layer.shadowColor = UIColor.lightGray.cgColor
 		self.containerView.layer.shadowOffset = CGSize(width: 1, height: 1)
@@ -49,6 +50,8 @@ class TaskCell: UITableViewCell {
 		self.taskTitleLabel.textColor = Colours.mainTextColor
 		self.taskDescriptionLabel.textColor = Colours.mainTextColor
 		self.checkBox.imageView?.tintColor = Colours.mainTextColor
+		self.reminderImageView.image = UIImage(named: "alarmclock")?.withRenderingMode(.alwaysTemplate)
+		self.reminderImageView.tintColor = Colours.mainTextColor
 		
 		tapGesture.addTarget(self, action: #selector(animateTap))
 		self.containerView.addGestureRecognizer(tapGesture)
@@ -67,6 +70,12 @@ class TaskCell: UITableViewCell {
 			self.setChecked()
 		} else {
 			self.setUnchecked()
+		}
+		
+		self.reminderImageView.isHidden = hasDueDate ? false : true
+		
+		if isOverdue {
+			self.reminderImageView.tintColor = Colours.mainRed
 		}
 		
 	}

@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -73,6 +74,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 		
+		// Ask for notification authorization
+		UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (accepted, error) in
+			if !accepted {
+				print("access denied")
+			}
+		}
 		
         return true
     }
@@ -140,6 +147,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+	
+	// MARK: - Create user notification
+	
+	func scheduleNotification(at date: Date, with title: String) {
+		let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+		let components = calendar.dateComponents(in: TimeZone.current, from: date)
+		let newComponents = DateComponents(calendar: calendar, timeZone: .current, month: components.month, day: components.day, hour: components.hour, minute: components.minute)
+		let trigger = UNCalendarNotificationTrigger.init(dateMatching: newComponents, repeats: false)
+		
+		let content = UNMutableNotificationContent()
+		content.title = title
+		content.body = "You asked to remind about this."
+		content.sound = UNNotificationSound.default()
+		
+		let request = UNNotificationRequest(identifier: "\(title) + \(date.description)", content: content, trigger: trigger)
+		
+		// UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+		UNUserNotificationCenter.current().add(request) { (error) in
+			if let error = error {
+				print(error.localizedDescription)
+			}
+		}
+	}
+	
 
 
 }

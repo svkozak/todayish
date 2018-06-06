@@ -97,7 +97,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TodayTaskCell") as! TaskCell
 		let task = (indexPath.section == 0) ? tasks[indexPath.row] : completedTasks[indexPath.row]
-		cell.configure(title: task.taskName!, description: task.taskDescription!, isCompleted: task.isCompleted)
+		cell.configure(title: task.taskName!, description: task.taskDescription!, isCompleted: task.isCompleted, hasDueDate: task.hasDueDate, isOverdue: task.isOverdue)
 		cell.checkBox.addTarget(self, action: #selector(checkBoxCheck(sender:)), for: UIControlEvents.touchUpInside)
 		return cell
     }
@@ -258,6 +258,9 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 		fetchRequest.sortDescriptors = [sort]
 		do {
 			tasks = try context.fetch(fetchRequest)
+			for task in tasks {
+				checkIfOverdue(task)
+			}
 		} catch {
 			print("Cannot fetch because \(error.localizedDescription)")
 		}
@@ -409,6 +412,17 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 		} else{
 			cell.setUnchecked()
 		}
+	}
+	
+	func checkIfOverdue(_ task: Task) {
+		let dateNow = Date(timeIntervalSinceNow: 0)
+		
+		if task.hasDueDate {
+			task.isOverdue = task.dueDate! < dateNow ? true : false
+		} else {
+			task.isOverdue = false
+		}
+		
 	}
 	
 	

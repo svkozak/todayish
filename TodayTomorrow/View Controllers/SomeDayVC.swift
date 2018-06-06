@@ -74,7 +74,8 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "someDayTaskCell") as! TaskCell
 		let task = (indexPath.section == 0) ? tasks[indexPath.row] : completedTasks[indexPath.row]
-		cell.configure(title: task.taskName!, description: task.taskDescription!, isCompleted: task.isCompleted)
+		let hasDueDate = task.dueDate == nil ? false : true
+		cell.configure(title: task.taskName!, description: task.taskDescription!, isCompleted: task.isCompleted, hasDueDate: hasDueDate, isOverdue: task.isOverdue)
 		cell.checkBox.addTarget(self, action: #selector(checkBoxCheck(_:)), for: UIControlEvents.touchUpInside)
 		return cell
 	}
