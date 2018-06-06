@@ -86,6 +86,7 @@
 		13961CA51FEB511100A9B2C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13C6AD0820C07604002DFD66 /* TableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableHeaderView.swift; sourceTree = "<group>"; };
 		13C6AD0A20C07629002DFD66 /* TableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableHeaderView.xib; sourceTree = "<group>"; };
+		13C6AD2D20C1C75D002DFD66 /* Model v3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model v3.xcdatamodel"; sourceTree = "<group>"; };
 		13F2858E1FF74A4800E598A4 /* TaskVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskVC.swift; sourceTree = "<group>"; };
 		3ED952C0620BD0130579D50A /* Pods_Today_tasks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Today_tasks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA7B66EFE1938324CFA50338 /* Pods-TodayTomorrow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayTomorrow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TodayTomorrow/Pods-TodayTomorrow.debug.xcconfig"; sourceTree = "<group>"; };
@@ -711,10 +712,11 @@
 		135E36361FF718E600EF6F78 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				13C6AD2D20C1C75D002DFD66 /* Model v3.xcdatamodel */,
 				1348D0C320BCA64900C20191 /* Model v2.xcdatamodel */,
 				135E36371FF718E600EF6F78 /* Model.xcdatamodel */,
 			);
-			currentVersion = 1348D0C320BCA64900C20191 /* Model v2.xcdatamodel */;
+			currentVersion = 13C6AD2D20C1C75D002DFD66 /* Model v3.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

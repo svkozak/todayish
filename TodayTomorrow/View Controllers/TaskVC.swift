@@ -110,11 +110,7 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 	func saveTask() {
 		
 		if taskNameField.text == "" {
-			let alert = UIAlertController(title: "🤷‍♂️", message: "Task name shouldn't be empty", preferredStyle: .alert)
-			let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-			alert.addAction(action)
-			self.present(alert, animated: true, completion: nil)
-			
+			cancelTask()
 		} else {
 			
 			let task = editingTask ? taskToEdit : Task(context: context)
@@ -127,8 +123,9 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 			} else {
 				task?.taskDescription = taskDescriptionField.text
 			}
-			application.saveContext()
 			
+			application.saveContext()
+
 			if tabBarController?.selectedIndex == 1 {
 				tabBarController?.selectedIndex = 0
 			} else {
@@ -138,6 +135,8 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 			}
 		}
 	}
+	
+	
 	
     
     
@@ -150,8 +149,9 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
         return true
     }
     
-    
-    @IBAction func cancelAddingTask(_ sender: UIButton) {
+	
+	func cancelTask() {
+		
 		taskNameField.resignFirstResponder()
 		
 		if tabBarController?.selectedIndex == 1 {
@@ -161,9 +161,9 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 				self.delegate?.modalDismissed()
 			}
 		}
-		
-		
-    }
+	}
+	
+	
 	
 	// MARK: - Helper functions
     
@@ -174,6 +174,14 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 			print("not today")
         }
     }
+	
+	func showErrorAlert() {
+		let alert = UIAlertController(title: "🤷‍♂️", message: "Task name shouldn't be empty", preferredStyle: .alert)
+		let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+		alert.addAction(action)
+		self.present(alert, animated: true, completion: nil)
+	}
+	
 	
 	
 

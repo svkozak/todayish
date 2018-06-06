@@ -59,9 +59,9 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 		
 		// button shadow
 		largeButton.layer.shadowColor = UIColor.lightGray.cgColor
-		largeButton.layer.shadowOffset = CGSize(width: 0, height: 2)
-		largeButton.layer.shadowRadius = 4
-		largeButton.layer.shadowOpacity = 0.6
+		largeButton.layer.shadowOffset = CGSize(width: 1, height: 1)
+		largeButton.layer.shadowRadius = 3
+		largeButton.layer.shadowOpacity = 0.4
 		
 		
 		// long press
@@ -248,7 +248,9 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 		getCompletedTasks()
 	}
 	
+	
 	func getOpenTasks() {
+		
 		let fetchRequest = NSFetchRequest<Task>(entityName: "Task")
 		let sort = NSSortDescriptor(key: #keyPath(Task.taskIndex), ascending: true)
 		let predicate = NSPredicate(format: "dueToday == TRUE AND isCompleted == FALSE")
@@ -408,6 +410,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 			cell.setUnchecked()
 		}
 	}
+	
 	
 
 }
