@@ -50,17 +50,14 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 		modalView.layer.shadowOffset = CGSize(width: 4, height: 4)
 		modalView.layer.shadowRadius = 20
 		modalView.layer.shadowOpacity = 1
-		
-		
-		
 	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		// Keyboard
+		// Keyboard notification to determine size for auto layout
 		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
-		NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
+
 		
 		if editingTask {
 			taskNameField.text = taskToEdit?.taskName
@@ -85,7 +82,7 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 		
 		// Add gesture recognizers for dismissing the keyboard
 		// self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
-		self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cancelTask)))
+		self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissTask)))
 		
 		// Set placeholder text color
 //		taskDescriptionField.textColor = UIColor.lightGray
@@ -101,7 +98,7 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 		
 		// Add swipe down gesture to cancel adding task
 		swipeGesture.direction = UISwipeGestureRecognizerDirection.down
-		swipeGesture.addTarget(self, action: #selector(cancelTask))
+		swipeGesture.addTarget(self, action: #selector(dismissTask))
 		self.view.addGestureRecognizer(swipeGesture)
 		
 		// date picker
@@ -142,34 +139,14 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 	@objc func saveTask() {
 		
 		if taskNameField.text == "" {
-			cancelTask()
+			dismissTask()
 		} else {
 			
-			let task = editingTask ? taskToEdit : Task(context: context)
-			
-			task?.taskName = taskNameField.text!
-			
-			if taskDescriptionField.text == "" || taskDescriptionField.text == "Description" {
-				task?.taskDescription = ""
+			if editingTask {
+				updateTask(task: taskToEdit!, title: taskNameField.text!, description: taskDescriptionField.text!, reminder: remiderField.text!)
 			} else {
-				task?.taskDescription = taskDescriptionField.text
+				createNewTask(title: taskNameField.text!, description: taskDescriptionField.text, reminder: remiderField.text!)
 			}
-			
-			if remiderField.text != "" {
-				task?.dueDate = remiderDate
-				task?.hasDueDate = true
-				application.scheduleNotification(at: remiderDate, with: taskNameField.text!)
-			} else {
-				task?.hasDueDate = false
-			}
-
-			// task index to remember task position in table
-			
-			// task?.taskIndex = editingTask ? (task?.taskIndex)! : Int32(taskIndex + 1)
-			
-			task?.dateAdded = Date(timeIntervalSinceNow: 0)
-			
-			application.saveContext()
 
 			if tabBarController?.selectedIndex == 2 {
 				tabBarController?.selectedIndex = 0
@@ -182,8 +159,50 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 		}
 	}
 	
+	func createNewTask(title: String, description: String, reminder: String) {
+		let task = Task(context: context)
+		task.taskName = title
+		task.taskDescription = description
+		task.dateAdded = Date(timeIntervalSinceNow: 0)
+		
+		let dueDate = (reminder == "") ? nil : remiderDate
+		
+		if dueDate != nil {
+			task.dueDate = dueDate
+			task.hasDueDate = true
+			application.scheduleNotification(at: dueDate!, withTitle: title, withIdentifier: (task.dateAdded?.description)!)
+		}
+		
+		application.saveContext()
+	}
 	
-	@objc func cancelTask() {
+	
+	func updateTask(task: Task, title: String, description: String, reminder: String) {
+		task.taskName = title
+		
+		if description == "" || description == "Description" {
+			task.taskDescription = ""
+		} else {
+			task.taskDescription = description
+		}
+		
+		let dueDate = (reminder == "") ? nil : remiderDate
+		
+		if dueDate != nil {
+			task.dueDate = dueDate
+			task.hasDueDate = true
+			application.scheduleNotification(at: dueDate!, withTitle: title, withIdentifier: (task.dateAdded?.description)!)
+		} else {
+			task.dueDate = nil
+			task.hasDueDate = false
+			application.cancelNotification(withIdentifier: (task.dateAdded?.description)!)
+		}
+		
+		application.saveContext()
+	}
+	
+	
+	@objc func dismissTask() {
 		
 		taskNameField.resignFirstResponder()
 		
@@ -196,6 +215,8 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 		}
 	}
 	
+	
+	// MARK: - Date picker
 	
 	@objc func didSelectDate() {
 //		let dateFormatter = DateFormatter()
@@ -210,7 +231,7 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 	
 	
     
-    // MARK: - Keyboard handling
+    // MARK: - Textfield handling
 
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -221,21 +242,17 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 	
 	
 	// MARK: - Helper functions
-    
-    @IBAction func switchFlipped(_ sender: UISwitch) {
-        if sender.isOn {
-			print("today")
-        } else {
-			print("not today")
-        }
-    }
 	
 	func createToolbar() {
 		toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 44) )
 		let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(saveTask))
 		let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-		let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTask))
+		let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismissTask))
 		toolBar.setItems([cancelButton, flexSpace, doneButton], animated: true)
+		toolBar.tintColor = Colours.mainTextColor
+		toolBar.backgroundColor = UIColor.white
+		toolBar.isTranslucent = false
+		toolBar.clipsToBounds = true
 		
 		remiderField.inputAccessoryView = toolBar
 		taskDescriptionField.inputAccessoryView = toolBar
@@ -261,10 +278,8 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 			}
 		}
 	}
-	
-	func createTask() {
-		
-	}
+
+	// receive notification about keyboard and get it's size to animate modal view
 	
 	@objc func keyboardWillShow(_ notification: Notification) {
 		let userInfo = notification.userInfo
@@ -272,22 +287,7 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 		let keyboardRect = keyboardInfo.cgRectValue
 		
 		bottomConstraint.constant = keyboardRect.height
-		print(bottomConstraint.constant)
 	}
-	
-	@objc func keyboardWillHide(_ notification: Notification) {
-		print("will hide")
-	}
-	
-	
-//	func showErrorAlert() {
-//		let alert = UIAlertController(title: "🤷‍♂️", message: "Task name shouldn't be empty", preferredStyle: .alert)
-//		let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-//		alert.addAction(action)
-//		self.present(alert, animated: true, completion: nil)
-//	}
-	
-	
 	
 
 }

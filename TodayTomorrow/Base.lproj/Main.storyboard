@@ -297,6 +297,9 @@
                                                         <integer key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="LzB-Wj-r9S" id="aA8-xn-JFH"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <constraints>

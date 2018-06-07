@@ -28,7 +28,7 @@ class TaskCell: UITableViewCell {
 		checkBox.imageView?.tintColor = UIColor.lightGray
 		taskTitleLabel.textColor = UIColor.lightGray
 		taskDescriptionLabel.textColor = UIColor.lightGray
-		//bottomBorder.backgroundColor = UIColor.lightGray
+		reminderImageView.tintColor = UIColor.lightGray
 	}
 	
 	func setUnchecked() {
@@ -36,7 +36,7 @@ class TaskCell: UITableViewCell {
 		checkBox.imageView?.tintColor = Colours.mainTextColor
 		taskTitleLabel.textColor = Colours.mainTextColor
 		taskDescriptionLabel.textColor = Colours.mainTextColor
-		//bottomBorder.backgroundColor = UIColor.darkGray
+		reminderImageView.tintColor = Colours.mainTextColor
 	}
 	
 	func configure(title: String, description: String, isCompleted: Bool, hasDueDate: Bool, isOverdue: Bool ) {
@@ -74,7 +74,7 @@ class TaskCell: UITableViewCell {
 		
 		self.reminderImageView.isHidden = hasDueDate ? false : true
 		
-		if isOverdue {
+		if isOverdue && !isCompleted {
 			self.reminderImageView.tintColor = Colours.mainRed
 		}
 		

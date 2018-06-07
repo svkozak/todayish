@@ -213,6 +213,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 				let task = self.tasks[indexPath.row]
 				tasks.remove(at: indexPath.row)
 				self.context.delete(task)
+				self.application.cancelNotification(withIdentifier: (task.dateAdded?.description)!)
 			} else {
 				let task = self.completedTasks[indexPath.row]
 				completedTasks.remove(at: indexPath.row)
@@ -323,6 +324,8 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
         let indexPath = tableView.indexPath(for: cell)
 		let task = (indexPath?.section == 0) ? tasks[(indexPath?.row)!] : completedTasks[(indexPath?.row)!]
         task.isCompleted = !task.isCompleted
+		manageNotification(forTask: task)
+		
         setSelectionStatus(cell: cell, checked: task.isCompleted)
 		notification.selectionChanged()
 		self.application.saveContext()
@@ -348,6 +351,8 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 		}
 
     }
+	
+
     
     @IBAction func deleteCompletedTasks(_ sender: UIButton) {
 
@@ -442,7 +447,16 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 		tableView.isHidden = !tableView.isHidden
 	}
 	
-	
+	func manageNotification(forTask task: Task) {
+		
+		if task.isCompleted {
+			application.cancelNotification(withIdentifier: (task.dateAdded?.description)!)
+		} else {
+			if task.hasDueDate {
+				application.scheduleNotification(at: task.dueDate!, withTitle: task.taskName!, withIdentifier: (task.dateAdded?.description)!)
+			}
+		}
+	}
 	
 
 }

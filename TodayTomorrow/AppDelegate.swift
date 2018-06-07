@@ -150,7 +150,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	
 	// MARK: - Create user notification
 	
-	func scheduleNotification(at date: Date, with title: String) {
+	func scheduleNotification(at date: Date, withTitle title: String, withIdentifier identifier: String) {
 		let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
 		let components = calendar.dateComponents(in: TimeZone.current, from: date)
 		let newComponents = DateComponents(calendar: calendar, timeZone: .current, month: components.month, day: components.day, hour: components.hour, minute: components.minute)
@@ -161,14 +161,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		content.body = "You asked to remind about this."
 		content.sound = UNNotificationSound.default()
 		
-		let request = UNNotificationRequest(identifier: "\(title) + \(date.description)", content: content, trigger: trigger)
+		let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
 		
 		// UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+		
+		// remove pending request with the same identifier
+		UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier])
+		
+		// add new request to queue
 		UNUserNotificationCenter.current().add(request) { (error) in
 			if let error = error {
 				print(error.localizedDescription)
 			}
+			print("added notification with identifier: \(identifier)")
 		}
+		
+	}
+	
+	func cancelNotification(withIdentifier identifier: String) {
+		UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier])
+		print("removed notification with identifier: \(identifier)")
 	}
 	
 
