@@ -1,0 +1,6 @@
+framework module Pods_Today_tasks {
+  umbrella header "Pods-Today tasks-umbrella.h"
+
+  export *
+  module * { export * }
+}

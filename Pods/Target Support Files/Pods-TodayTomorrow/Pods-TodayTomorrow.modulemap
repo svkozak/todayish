@@ -1,0 +1,6 @@
+framework module Pods_TodayTomorrow {
+  umbrella header "Pods-TodayTomorrow-umbrella.h"
+
+  export *
+  module * { export * }
+}
