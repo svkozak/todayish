@@ -32,15 +32,15 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 	var toolBar = UIToolbar()
 	var showingMore = false
 	let dateFormatter = DateFormatter()
+	var taskIndex: Int!
 
     
 	@IBOutlet weak var modalView: UIView!
 	@IBOutlet weak var taskNameField: UITextField!
     @IBOutlet weak var taskDescriptionField: UITextView!
-    @IBOutlet weak var dueTodaySwitch: UISwitch!
 	@IBOutlet weak var remiderField: UITextField!
 	@IBOutlet weak var moreButton: UIButton!
-	@IBOutlet weak var taskDetails: UIStackView!
+	@IBOutlet weak var bottomConstraint: NSLayoutConstraint!
 	
 	// MARK: - View options
 	
@@ -51,10 +51,16 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 		modalView.layer.shadowRadius = 20
 		modalView.layer.shadowOpacity = 1
 		
+		
+		
 	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		// Keyboard
+		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+		NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
 		
 		if editingTask {
 			taskNameField.text = taskToEdit?.taskName
@@ -68,10 +74,6 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 				remiderField.text = dateFormatter.string(from: date)
 				remiderField.clearButtonMode = .always
 			}
-			
-			
-			
-			
 			// dueTodaySwitch.isOn = (taskToEdit?.dueToday)! ? true : false
 		}
 		
@@ -120,7 +122,7 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 			taskDescriptionField.textColor = Colours.mainTextColor
 			taskDescriptionField.text = ""
 		} else {
-			taskDescriptionField.textColor = UIColor.lightText
+			taskDescriptionField.textColor = UIColor.lightGray
 		}
     }
     
@@ -145,7 +147,7 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 			
 			let task = editingTask ? taskToEdit : Task(context: context)
 			
-			task?.taskName = taskNameField.text
+			task?.taskName = taskNameField.text!
 			
 			if taskDescriptionField.text == "" || taskDescriptionField.text == "Description" {
 				task?.taskDescription = ""
@@ -160,6 +162,12 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 			} else {
 				task?.hasDueDate = false
 			}
+
+			// task index to remember task position in table
+			
+			// task?.taskIndex = editingTask ? (task?.taskIndex)! : Int32(taskIndex + 1)
+			
+			task?.dateAdded = Date(timeIntervalSinceNow: 0)
 			
 			application.saveContext()
 
@@ -238,19 +246,38 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 		
 		if showingMore {
 			
-			UIView.animate(withDuration: 0.2) {
+			UIView.animate(withDuration: 0.3) {
 				self.taskDescriptionField.isHidden = false
 				self.remiderField.isHidden = false
 				self.moreButton.setTitle("Less", for: .normal)
 			}
 			
 		} else {
-				taskDescriptionField.isHidden = true
-				remiderField.isHidden = true
-				moreButton.setTitle("More", for: .normal)
+			
+			UIView.animate(withDuration: 0.3) {
+				self.taskDescriptionField.isHidden = true
+				self.remiderField.isHidden = true
+				self.moreButton.setTitle("More", for: .normal)
+			}
 		}
 	}
 	
+	func createTask() {
+		
+	}
+	
+	@objc func keyboardWillShow(_ notification: Notification) {
+		let userInfo = notification.userInfo
+		let keyboardInfo = userInfo?[UIKeyboardFrameEndUserInfoKey] as! NSValue
+		let keyboardRect = keyboardInfo.cgRectValue
+		
+		bottomConstraint.constant = keyboardRect.height
+		print(bottomConstraint.constant)
+	}
+	
+	@objc func keyboardWillHide(_ notification: Notification) {
+		print("will hide")
+	}
 	
 	
 //	func showErrorAlert() {

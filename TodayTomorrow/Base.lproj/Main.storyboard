@@ -232,26 +232,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4B2-8T-6gj">
-                                <rect key="frame" x="16" y="78" width="343" height="229"/>
+                                <rect key="frame" x="0.0" y="406" width="375" height="212"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wLM-XI-C75" userLabel="swipe indicator">
-                                        <rect key="frame" x="156" y="10" width="30" height="7"/>
-                                        <color key="backgroundColor" red="0.96078431369999995" green="0.96862745100000003" blue="0.98039215690000003" alpha="1" colorSpace="deviceRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="LPO-Ta-rzH"/>
-                                            <constraint firstAttribute="height" constant="7" id="wJq-vU-eGz"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <integer key="value" value="3"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="bUA-NZ-OJ1" userLabel="content stack">
-                                        <rect key="frame" x="10" y="27" width="323" height="192"/>
+                                        <rect key="frame" x="10" y="10" width="355" height="192"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="UQD-ZD-0v2">
-                                                <rect key="frame" x="0.0" y="0.0" width="323" height="44"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="UQD-ZD-0v2">
+                                                <rect key="frame" x="0.0" y="0.0" width="355" height="44"/>
                                                 <color key="backgroundColor" red="0.96078431369999995" green="0.96862745100000003" blue="0.98039215690000003" alpha="1" colorSpace="deviceRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="b1l-mg-iaq"/>
@@ -269,7 +256,7 @@
                                                 </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CPy-eU-xtK">
-                                                <rect key="frame" x="0.0" y="54" width="323" height="30"/>
+                                                <rect key="frame" x="0.0" y="54" width="355" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="JjE-Uw-DuV"/>
                                                 </constraints>
@@ -279,12 +266,12 @@
                                                 </state>
                                             </button>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" keyboardDismissMode="onDrag" text="Description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ndw-6B-3zY">
-                                                <rect key="frame" x="0.0" y="94" width="323" height="44"/>
+                                                <rect key="frame" x="0.0" y="94" width="355" height="44"/>
                                                 <color key="backgroundColor" red="0.96078431369999995" green="0.96862745100000003" blue="0.98039215690000003" alpha="1" colorSpace="deviceRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="TFr-17-jXN"/>
+                                                    <constraint firstAttribute="height" constant="44" id="gaQ-t9-uKS"/>
                                                 </constraints>
-                                                <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <userDefinedRuntimeAttributes>
@@ -297,10 +284,10 @@
                                                 </connections>
                                             </textView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Reminder (optional)" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ZBn-vw-Xqa">
-                                                <rect key="frame" x="0.0" y="148" width="323" height="44"/>
+                                                <rect key="frame" x="0.0" y="148" width="355" height="44"/>
                                                 <color key="backgroundColor" red="0.96078431369999995" green="0.96862745100000003" blue="0.98039215690000003" alpha="1" colorSpace="deviceRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="7j9-HC-neQ"/>
+                                                    <constraint firstAttribute="height" constant="44" id="InI-CG-6JE"/>
                                                 </constraints>
                                                 <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
@@ -328,26 +315,25 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="bUA-NZ-OJ1" secondAttribute="trailing" constant="10" id="cRk-RY-XjK"/>
-                                    <constraint firstItem="wLM-XI-C75" firstAttribute="top" secondItem="4B2-8T-6gj" secondAttribute="top" constant="10" id="jWB-Vq-1mf"/>
                                     <constraint firstItem="bUA-NZ-OJ1" firstAttribute="leading" secondItem="4B2-8T-6gj" secondAttribute="leading" constant="10" id="jsh-BF-G0Y"/>
-                                    <constraint firstItem="bUA-NZ-OJ1" firstAttribute="top" secondItem="wLM-XI-C75" secondAttribute="bottom" constant="10" id="nAr-hL-bUp"/>
                                     <constraint firstAttribute="bottom" secondItem="bUA-NZ-OJ1" secondAttribute="bottom" constant="10" id="ne1-pt-AoV"/>
                                     <constraint firstItem="bUA-NZ-OJ1" firstAttribute="centerX" secondItem="4B2-8T-6gj" secondAttribute="centerX" id="oqx-R6-GSG"/>
-                                    <constraint firstItem="wLM-XI-C75" firstAttribute="centerX" secondItem="4B2-8T-6gj" secondAttribute="centerX" id="ven-4d-XQq"/>
+                                    <constraint firstItem="bUA-NZ-OJ1" firstAttribute="top" secondItem="4B2-8T-6gj" secondAttribute="top" constant="10" id="wjd-xv-pJr"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="SYZ-Vd-rhu" firstAttribute="bottom" secondItem="4B2-8T-6gj" secondAttribute="bottom" constant="360" id="2cm-7a-I8N"/>
-                            <constraint firstItem="4B2-8T-6gj" firstAttribute="leading" secondItem="SYZ-Vd-rhu" secondAttribute="leading" constant="16" id="XcP-hW-N9b"/>
-                            <constraint firstItem="SYZ-Vd-rhu" firstAttribute="trailing" secondItem="4B2-8T-6gj" secondAttribute="trailing" constant="16" id="bnw-MA-1hU"/>
+                            <constraint firstAttribute="bottom" secondItem="4B2-8T-6gj" secondAttribute="bottom" constant="49" id="2cm-7a-I8N"/>
+                            <constraint firstItem="4B2-8T-6gj" firstAttribute="leading" secondItem="SYZ-Vd-rhu" secondAttribute="leading" id="XcP-hW-N9b"/>
+                            <constraint firstItem="SYZ-Vd-rhu" firstAttribute="trailing" secondItem="4B2-8T-6gj" secondAttribute="trailing" id="bnw-MA-1hU"/>
                             <constraint firstItem="4B2-8T-6gj" firstAttribute="centerX" secondItem="LOp-T8-2SM" secondAttribute="centerX" id="vK3-DI-pTb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SYZ-Vd-rhu"/>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="1" title="new task" image="Add" id="bNK-3R-WMj"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="new task" id="bNK-3R-WMj"/>
                     <connections>
+                        <outlet property="bottomConstraint" destination="2cm-7a-I8N" id="wOu-EV-zO9"/>
                         <outlet property="modalView" destination="4B2-8T-6gj" id="a9j-MC-VHa"/>
                         <outlet property="moreButton" destination="CPy-eU-xtK" id="xsA-qx-Y1f"/>
                         <outlet property="remiderField" destination="ZBn-vw-Xqa" id="Chv-d5-Ahu"/>
@@ -357,7 +343,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zxa-Ee-UEp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2628" y="-154.27286356821591"/>
+            <point key="canvasLocation" x="2630" y="-196"/>
         </scene>
         <!--Some day-->
         <scene sceneID="wg7-f3-ORb">
@@ -576,7 +562,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Add" width="26" height="26"/>
         <image name="add-large" width="50" height="50"/>
         <image name="bench" width="142" height="148"/>
         <image name="someday" width="30" height="30"/>
@@ -585,6 +570,6 @@
         <image name="tree-colour" width="149" height="151"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="suC-bh-Sv1"/>
+        <segue reference="1TB-Sv-i2i"/>
     </inferredMetricsTieBreakers>
 </document>

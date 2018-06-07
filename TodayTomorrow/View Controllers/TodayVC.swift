@@ -19,7 +19,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
     var completedTasks: [Task] = []
 	var reorderTableView: LongPressReorderTableView!
 	let notification = UISelectionFeedbackGenerator()
-	var showingCompleted = false
+	var showingCompleted: Bool!
 	
     @IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var blurEffect: UIVisualEffectView!
@@ -46,6 +46,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib
+		showingCompleted = false
 		
 		tableView.register(UINib(nibName: "TaskCell", bundle: nil), forCellReuseIdentifier: "TodayTaskCell")
 		tableView.register(UINib(nibName: "TableHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "TableHeaderView")
@@ -79,8 +80,12 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 		
 		if tasks.count == 0 && completedTasks.count == 0 {
 				tableView.isHidden = true
+			UIView.animate(withDuration: 0.3, delay: 0.5, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+				self.placeholderView.alpha = 1
+			}, completion: nil)
 		} else {
-				tableView.isHidden = false
+			tableView.isHidden = false
+			placeholderView.alpha = 0
 		}
 		return 2
     }
@@ -99,6 +104,8 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 		let task = (indexPath.section == 0) ? tasks[indexPath.row] : completedTasks[indexPath.row]
 		cell.configure(title: task.taskName!, description: task.taskDescription!, isCompleted: task.isCompleted, hasDueDate: task.hasDueDate, isOverdue: task.isOverdue)
 		cell.checkBox.addTarget(self, action: #selector(checkBoxCheck(sender:)), for: UIControlEvents.touchUpInside)
+		task.taskIndex = Int32(indexPath.row)
+		application.saveContext()
 		return cell
     }
 	
@@ -253,9 +260,10 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 		
 		let fetchRequest = NSFetchRequest<Task>(entityName: "Task")
 		let sort = NSSortDescriptor(key: #keyPath(Task.taskIndex), ascending: true)
+		let sortByDate = NSSortDescriptor(key: #keyPath(Task.dateAdded), ascending: true)
 		let predicate = NSPredicate(format: "dueToday == TRUE AND isCompleted == FALSE")
 		fetchRequest.predicate = predicate
-		fetchRequest.sortDescriptors = [sort]
+		fetchRequest.sortDescriptors = [sort, sortByDate]
 		do {
 			tasks = try context.fetch(fetchRequest)
 			for task in tasks {
@@ -292,12 +300,14 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 			editTaskVC.taskToEdit = selectedTask
 			editTaskVC.editingTask = true
 			editTaskVC.delegate = self
+			editTaskVC.taskIndex = tasks.count
 			applyBlur()
         }
 		
 		if segue.identifier == "showAddTask" {
 			let addTaskVC = segue.destination as! TaskVC
 			addTaskVC.delegate = self
+			addTaskVC.taskIndex = tasks.count
 			applyBlur()
 		}
     }
@@ -326,10 +336,13 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 			} else {
 				completedTasks.remove(at: (indexPath?.row)!)
 				tableView.deleteRows(at: [indexPath!], with: UITableViewRowAnimation.fade)
-
+				
 			}
 		}) { (true) in
 			
+			if self.self.completedTasks.count == 0 {
+				self.showingCompleted = false
+			}
 			self.getData()
 			self.configureTable()
 		}
@@ -424,6 +437,11 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 		}
 		
 	}
+	
+	func hideTableView() {
+		tableView.isHidden = !tableView.isHidden
+	}
+	
 	
 	
 
