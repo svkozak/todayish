@@ -9,6 +9,7 @@
 import UIKit
 import NotificationCenter
 import CoreData
+import UserNotifications
 
 class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDelegate, UITableViewDataSource {
 	
@@ -94,12 +95,14 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
 		
 		if tasks.count == 0 {
 			UIView.animate(withDuration: 0.3) {
+				tableView.isHidden = true
 				self.noMoreTasksLabel.alpha = 1
 			}
 			return 0
 		} else {
+			tableView.isHidden = false
 			noMoreTasksLabel.alpha = 0
-			return 1
+			return tasks.count
 		}
 	}
 	
@@ -133,6 +136,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
 		let indexPath = tableView.indexPath(for: cell)
 		let task = tasks[(indexPath?.row)!]
 		task.isCompleted = true
+		manageNotifications(task: task)
 		cell.checkBox.setImage(checked, for: UIControlState.normal)
 		saveContext()
 
@@ -166,7 +170,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
 	
 	func configureTable() {
 		tableView.rowHeight = UITableViewAutomaticDimension
-		tableView.estimatedRowHeight = 55
+		// tableView.estimatedRowHeight = 55
 		tableView.reloadData()
 	}
 
@@ -190,6 +194,10 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
+	}
+	
+	func manageNotifications(task: Task) {
+		UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [(task.dateAdded?.description)!])
 	}
 	
 }
