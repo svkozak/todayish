@@ -27,6 +27,7 @@ enum Colours {
 	
 	
 	static let mainTextColor = UIColor(red: 0.173, green: 0.243, blue: 0.314, alpha: 1)
+	static let placeholderLightGray = UIColor(red: 0.780, green: 0.780, blue: 0.804, alpha: 1)
 	
 }
 

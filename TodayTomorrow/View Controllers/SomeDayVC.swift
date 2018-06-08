@@ -42,9 +42,9 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
 		
 		// button shadow
 		largeButton.layer.shadowColor = UIColor.lightGray.cgColor
-		largeButton.layer.shadowOffset = CGSize(width: 0, height: 2)
-		largeButton.layer.shadowRadius = 4
-		largeButton.layer.shadowOpacity = 0.6
+		largeButton.layer.shadowOffset = CGSize(width: 1, height: 1)
+		largeButton.layer.shadowRadius = 3
+		largeButton.layer.shadowOpacity = 0.4
 
 		// long press
 		reorderTableView = LongPressReorderTableView(tableView)

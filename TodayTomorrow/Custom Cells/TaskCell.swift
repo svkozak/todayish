@@ -43,8 +43,8 @@ class TaskCell: UITableViewCell {
 		
 		self.containerView.layer.shadowColor = UIColor.lightGray.cgColor
 		self.containerView.layer.shadowOffset = CGSize(width: 1, height: 1)
-		self.containerView.layer.shadowRadius = 3
-		self.containerView.layer.shadowOpacity = 0.4
+		self.containerView.layer.shadowRadius = 2
+		self.containerView.layer.shadowOpacity = 0.3
 		self.containerView.layer.cornerRadius = 10
 		
 		self.taskTitleLabel.textColor = Colours.mainTextColor

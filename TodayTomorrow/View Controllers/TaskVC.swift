@@ -119,7 +119,7 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 			taskDescriptionField.textColor = Colours.mainTextColor
 			taskDescriptionField.text = ""
 		} else {
-			taskDescriptionField.textColor = UIColor.lightGray
+			taskDescriptionField.textColor = Colours.placeholderLightGray
 		}
     }
     
@@ -295,7 +295,7 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 		let keyboardInfo = userInfo?[UIKeyboardFrameEndUserInfoKey] as! NSValue
 		let keyboardRect = keyboardInfo.cgRectValue
 		
-		bottomConstraint.constant = keyboardRect.height
+		bottomConstraint.constant = keyboardRect.height - 5
 	}
 	
 
