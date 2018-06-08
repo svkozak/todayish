@@ -37,6 +37,8 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
 		
+		taskDataStore.application.someDayVC = self
+		
 		tableView.register(UINib(nibName: "TaskCell", bundle: nil), forCellReuseIdentifier: "someDayTaskCell")
 		tableView.register(UINib(nibName: "TableHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "TableHeaderView")
 		

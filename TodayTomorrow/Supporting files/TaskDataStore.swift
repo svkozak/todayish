@@ -26,6 +26,8 @@ class TaskDataStore: NSObject {
 	// MARK: - Database GET operations
 	
 	func getData() {
+		
+		context.refreshAllObjects()
 		getOpenTasks()
 		getCompletedTasks()
 		getPostponedOpenTasks()

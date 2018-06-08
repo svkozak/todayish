@@ -11,6 +11,7 @@ import NotificationCenter
 import CoreData
 
 class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDelegate, UITableViewDataSource {
+	
 
 	
 	
@@ -29,6 +30,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
 	
 	func saveContext () {
 		let context = persistentContainer.viewContext
+		context.mergePolicy = NSOverwriteMergePolicy
 		if context.hasChanges {
 			do {
 				try context.save()
@@ -45,6 +47,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
 	var tasks: [Task] = []
 	
 	@IBOutlet weak var tableView: UITableView!
+	@IBOutlet weak var noMoreTasksLabel: UILabel!
 	
 	
         
@@ -53,7 +56,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
         // Do any additional setup after loading the view from its nib.
 		
 		// allow widget to be larger size
-		self.extensionContext?.widgetLargestAvailableDisplayMode = .expanded
+		self.extensionContext?.widgetLargestAvailableDisplayMode = .compact
 		self.preferredContentSize = CGSize(width: self.view.frame.width, height: 100)
 		
 		// get data from storage
@@ -88,7 +91,16 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
 	// TableView implementation
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return tasks.count > 5 ? 5 : tasks.count
+		
+		if tasks.count == 0 {
+			UIView.animate(withDuration: 0.3) {
+				self.noMoreTasksLabel.alpha = 1
+			}
+			return 0
+		} else {
+			noMoreTasksLabel.alpha = 0
+			return 1
+		}
 	}
 	
 	
@@ -111,24 +123,50 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
 	}
 	
 	
+	
+	
 	// MARK: ---- Action - Tap on checkbox button
 	
 	@IBAction func checkBoxCheck(sender: UIButton) {
 		
-		print("checkbox tapped")
-		
 		let cell = sender.superview?.superview?.superview as! WidgetTableViewCell
 		let indexPath = tableView.indexPath(for: cell)
 		let task = tasks[(indexPath?.row)!]
-		task.isCompleted = !task.isCompleted
-		// tasks[(indexPath?.row)!].isCompleted ? cell.checkBox.setImage(checked, for: UIControlState.normal) : cell.checkBox.setImage(unchecked, for: .normal)
+		task.isCompleted = true
+		cell.checkBox.setImage(checked, for: UIControlState.normal)
 		saveContext()
-		configureTable()
+
+		tableView.performBatchUpdates({
+			tasks.remove(at: tasks.index(of: task)!)
+			tableView.deleteRows(at: [indexPath!], with: UITableViewRowAnimation.fade)
+		}) { (true) in
+			self.getData()
+			self.configureTable()
+		}
 	}
+	
+	@IBAction func didTapAddForToday(_ sender: UIButton) {
+		
+		let scheme = (sender.tag == 0) ? "taskForToday://" : "taskForSomeDay://"
+		let url = URL(string: scheme)
+		self.extensionContext?.open(url!, completionHandler: { (success) in
+			print(url!)
+			if (!success) {
+				print("error: failed to open app from Today Extension")
+			}
+		})
+	}
+	
+	
+	
+	
+	
+	// MARK: - Helper methods
 	
 	
 	func configureTable() {
 		tableView.rowHeight = UITableViewAutomaticDimension
+		tableView.estimatedRowHeight = 55
 		tableView.reloadData()
 	}
 
@@ -138,7 +176,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
 		context.refreshAllObjects()
 		let fetchRequest = NSFetchRequest<Task>(entityName: "Task")
 		let sort = NSSortDescriptor(key: #keyPath(Task.taskIndex), ascending: true)
-		let predicate = NSPredicate(format: "dueToday == TRUE")
+		let predicate = NSPredicate(format: "dueToday == TRUE AND isCompleted == FALSE")
 		fetchRequest.predicate = predicate
 		fetchRequest.sortDescriptors = [sort]
 		do {

@@ -15,21 +15,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 	var todayVC: TodayVC?
+	var someDayVC: SomeDayVC?
 	
-	// MARK: - Types
+	// MARK: - App shortcut types
 	
 	enum ShortcutIdentifier: String {
 		case first
 		case second
 		
-		// MARK: - Initializers
-		
 		init?(fullType: String) {
 			guard let last = fullType.components(separatedBy: ".").last else { return nil }
 			self.init(rawValue: last)
 		}
-		
-		// MARK: - Properties
 		
 		var type: String {
 			return Bundle.main.bundleIdentifier! + ".\(self.rawValue)"
@@ -68,6 +65,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			return true
 		}
 	}
+	
+	
+	// MARK: - URL scheme to open from today extension
+	
+	func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+		
+		guard let tabBarController = self.window?.rootViewController as? UITabBarController else {
+			return false
+		}
+		
+		if url.scheme == "taskForToday" {
+			tabBarController.selectedIndex = 0
+			todayVC?.performSegue(withIdentifier: "showAddTask", sender: todayVC)
+		}
+		
+		if url.scheme == "taskForSomeDay" {
+			tabBarController.selectedIndex = 2
+			someDayVC?.performSegue(withIdentifier: "showAddTask", sender: someDayVC)
+		}
+		
+		return true
+	}
+	
+	
 	
 	// MARK: - Application lifecycle
 
@@ -139,6 +160,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func saveContext () {
         let context = persistentContainer.viewContext
+		context.mergePolicy = NSOverwriteMergePolicy
         if context.hasChanges {
             do {
                 try context.save()

@@ -524,7 +524,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="some day" image="tomorrow" id="jtZ-zB-pcr">
+                    <tabBarItem key="tabBarItem" title="some day" id="jtZ-zB-pcr">
                         <color key="badgeColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" title="Some day" largeTitleDisplayMode="always" id="CkM-Fa-2gB"/>
@@ -569,10 +569,9 @@
         <image name="bench" width="140" height="150"/>
         <image name="someday" width="30" height="30"/>
         <image name="today" width="30" height="30"/>
-        <image name="tomorrow" width="27" height="26"/>
         <image name="tree" width="140" height="150"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7Do-F9-jO9"/>
+        <segue reference="suC-bh-Sv1"/>
     </inferredMetricsTieBreakers>
 </document>

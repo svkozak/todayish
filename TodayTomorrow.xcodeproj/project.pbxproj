@@ -32,6 +32,7 @@
 		13C6AD0B20C07629002DFD66 /* TableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13C6AD0A20C07629002DFD66 /* TableHeaderView.xib */; };
 		13F2858F1FF74A4800E598A4 /* TaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F2858E1FF74A4800E598A4 /* TaskVC.swift */; };
 		13FC2A3020C9EB53002C38E5 /* TaskDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FC2A2F20C9EB53002C38E5 /* TaskDataStore.swift */; };
+		13FC2A3620CA14B4002C38E5 /* LongPressReorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1348D0C120BC7F3B00C20191 /* LongPressReorder.swift */; };
 		9567C28486A262C35EFB9E1B /* Pods_TodayTomorrow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB0D30DDB62F672461D5DACE /* Pods_TodayTomorrow.framework */; };
 		AFFF52F55E1AD84B689C6FC7 /* Pods_Today_tasks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ED952C0620BD0130579D50A /* Pods_Today_tasks.framework */; };
 /* End PBXBuildFile section */
@@ -436,6 +437,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13FC2A3620CA14B4002C38E5 /* LongPressReorder.swift in Sources */,
 				1348D07920AB90BD00C20191 /* PersistentContainer.swift in Sources */,
 				1348D07D20AB9C8000C20191 /* WidgetTableViewCell.swift in Sources */,
 				1348D04520AB6DD800C20191 /* TodayViewController.swift in Sources */,
