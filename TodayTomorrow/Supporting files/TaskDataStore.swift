@@ -9,7 +9,8 @@
 import UIKit
 import CoreData
 
-class TaskDataStore {
+class TaskDataStore: NSObject {
+	
 	
 	static let shared = TaskDataStore()
 	
@@ -70,7 +71,7 @@ class TaskDataStore {
 		fetchRequest.predicate = predicate
 		fetchRequest.sortDescriptors = [sort]
 		do {
-			tasks = try context.fetch(fetchRequest)
+			postponedOpenTasks = try context.fetch(fetchRequest)
 		} catch {
 			print("Cannot fetch because \(error.localizedDescription)")
 		}
@@ -83,7 +84,7 @@ class TaskDataStore {
 		fetchRequest.predicate = predicate
 		fetchRequest.sortDescriptors = [sort]
 		do {
-			completedTasks = try context.fetch(fetchRequest)
+			postponedCompletedTasks = try context.fetch(fetchRequest)
 		} catch {
 			print("Cannot fetch completed tasks because \(error.localizedDescription)")
 		}
@@ -101,6 +102,17 @@ class TaskDataStore {
 			task.isOverdue = false
 		}
 		
+	}
+	
+	func manageNotification(forTask task: Task) {
+		
+		if task.isCompleted {
+			application.cancelNotification(withIdentifier: (task.dateAdded?.description)!)
+		} else {
+			if task.hasDueDate {
+				application.scheduleNotification(at: task.dueDate!, withTitle: task.taskName!, withIdentifier: (task.dateAdded?.description)!)
+			}
+		}
 	}
 	
 	

@@ -27,12 +27,12 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 	weak var delegate: ModalHandlerDelegate?
 	var taskToEdit: Task?
 	var editingTask: Bool = false
+	var taskForToday: Bool!
 	var remiderDate = Date()
 	var datePicker = UIDatePicker()
 	var toolBar = UIToolbar()
 	var showingMore = false
 	let dateFormatter = DateFormatter()
-	var taskIndex: Int!
 
     
 	@IBOutlet weak var modalView: UIView!
@@ -162,7 +162,14 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 	func createNewTask(title: String, description: String, reminder: String) {
 		let task = Task(context: context)
 		task.taskName = title
-		task.taskDescription = description
+		
+		if description == "" || description == "Description" {
+			task.taskDescription = ""
+		} else {
+			task.taskDescription = description
+		}
+		
+		
 		task.dateAdded = Date(timeIntervalSinceNow: 0)
 		
 		let dueDate = (reminder == "") ? nil : remiderDate
@@ -172,6 +179,8 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 			task.hasDueDate = true
 			application.scheduleNotification(at: dueDate!, withTitle: title, withIdentifier: (task.dateAdded?.description)!)
 		}
+		
+		task.dueToday = taskForToday ? true : false
 		
 		application.saveContext()
 	}

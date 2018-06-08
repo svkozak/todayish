@@ -126,6 +126,7 @@
 		1348D03620AA370000C20191 /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
+				13FC2A2F20C9EB53002C38E5 /* TaskDataStore.swift */,
 				1348D03720AA912800C20191 /* Constants.swift */,
 				1348D03420AA36ED00C20191 /* ModalHandler.swift */,
 				1348D07720AB90BD00C20191 /* PersistentContainer.swift */,
@@ -162,7 +163,6 @@
 				13961C991FEB511100A9B2C1 /* TodayVC.swift */,
 				13961C9B1FEB511100A9B2C1 /* SomeDayVC.swift */,
 				13F2858E1FF74A4800E598A4 /* TaskVC.swift */,
-				13FC2A2F20C9EB53002C38E5 /* TaskDataStore.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";

@@ -208,7 +208,6 @@
                         <outlet property="largeButton" destination="8Un-hH-uyi" id="xJg-2m-ueF"/>
                         <outlet property="placeholderView" destination="Hqf-Ym-cqS" id="GtW-vW-uc9"/>
                         <outlet property="tableView" destination="B7D-ct-Pgv" id="5Ad-sQ-Rx7"/>
-                        <outlet property="topBar" destination="dtk-zj-NxK" id="PYi-qT-t1h"/>
                         <segue destination="LzB-Wj-r9S" kind="presentation" identifier="showEditTask" modalPresentationStyle="overCurrentContext" id="Hoj-NG-ie7"/>
                         <segue destination="LzB-Wj-r9S" kind="presentation" identifier="showAddTask" modalPresentationStyle="overCurrentContext" id="7Do-F9-jO9"/>
                     </connections>
@@ -532,6 +531,7 @@
                     <connections>
                         <outlet property="blurEffect" destination="zBN-Gg-cii" id="Yeg-xS-cx2"/>
                         <outlet property="largeButton" destination="uJg-rE-GbS" id="RUo-IT-wNI"/>
+                        <outlet property="placeholderView" destination="22t-zG-vYS" id="cY5-JZ-EpJ"/>
                         <outlet property="tableView" destination="0xb-mr-ekj" id="8qv-ub-464"/>
                         <segue destination="LzB-Wj-r9S" kind="presentation" identifier="showEditTask" modalPresentationStyle="overCurrentContext" id="suC-bh-Sv1"/>
                         <segue destination="LzB-Wj-r9S" kind="presentation" identifier="showAddTask" modalPresentationStyle="overCurrentContext" id="AdL-mU-80z"/>
@@ -573,6 +573,6 @@
         <image name="tree-colour" width="149" height="151"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1TB-Sv-i2i"/>
+        <segue reference="suC-bh-Sv1"/>
     </inferredMetricsTieBreakers>
 </document>
