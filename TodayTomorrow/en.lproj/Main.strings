@@ -1,0 +1,51 @@
+
+/* Class = "UILabel"; text = "Some day"; ObjectID = "27a-Q4-uRH"; */
+"27a-Q4-uRH.text" = "Some day";
+
+/* Class = "UILabel"; text = "Add a new task and swipe existing tasks for more options."; ObjectID = "53u-lj-Ceg"; */
+"53u-lj-Ceg.text" = "Add a new task and swipe existing tasks for more options.";
+
+/* Class = "UIButton"; normalTitle = "More"; ObjectID = "CPy-eU-xtK"; */
+"CPy-eU-xtK.normalTitle" = "More";
+
+/* Class = "UINavigationItem"; title = "Some day"; ObjectID = "CkM-Fa-2gB"; */
+"CkM-Fa-2gB.title" = "Some day";
+
+/* Class = "UINavigationItem"; title = "Today"; ObjectID = "EJQ-L9-XVo"; */
+"EJQ-L9-XVo.title" = "Today";
+
+/* Class = "UILabel"; text = "Today"; ObjectID = "Ewv-lD-DYw"; */
+"Ewv-lD-DYw.text" = "Today";
+
+/* Class = "UIViewController"; title = "Add task"; ObjectID = "LzB-Wj-r9S"; */
+"LzB-Wj-r9S.title" = "Add task";
+
+/* Class = "UILabel"; text = "Add a new task and swipe existing tasks for more options."; ObjectID = "PHn-GD-z6u"; */
+"PHn-GD-z6u.text" = "Add a new task and swipe existing tasks for more options.";
+
+/* Class = "UILabel"; text = "Today"; ObjectID = "Uc5-7F-4dF"; */
+"Uc5-7F-4dF.text" = "Today";
+
+/* Class = "UITextField"; placeholder = "Reminder (optional)"; ObjectID = "ZBn-vw-Xqa"; */
+"ZBn-vw-Xqa.placeholder" = "Reminder (optional)";
+
+/* Class = "UITabBarItem"; title = "new task"; ObjectID = "bNK-3R-WMj"; */
+"bNK-3R-WMj.title" = "new task";
+
+/* Class = "UITabBarItem"; title = "some day"; ObjectID = "jtZ-zB-pcr"; */
+"jtZ-zB-pcr.title" = "some day";
+
+/* Class = "UITextView"; text = "Description"; ObjectID = "ndw-6B-3zY"; */
+"ndw-6B-3zY.text" = "Description";
+
+/* Class = "UITabBarItem"; title = "today"; ObjectID = "rlW-TH-F2U"; */
+"rlW-TH-F2U.title" = "today";
+
+/* Class = "UILabel"; text = "Today"; ObjectID = "tXR-8f-6UF"; */
+"tXR-8f-6UF.text" = "Today";
+
+/* Class = "UILabel"; text = "Some day"; ObjectID = "xPU-wZ-U11"; */
+"xPU-wZ-U11.text" = "Some day";
+
+/* Class = "UILabel"; text = "Some day"; ObjectID = "yaz-tW-tWd"; */
+"yaz-tW-tWd.text" = "Some day";
