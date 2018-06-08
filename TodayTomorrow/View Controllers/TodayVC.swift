@@ -3,7 +3,7 @@
 //
 //  Created by Sergii Kozak
 
-//  Copyright © 2017 Sergii Kozak. All rights reserved.
+//  Copyright © 2018 Sergii Kozak. All rights reserved.
 //
 
 import UIKit
@@ -12,12 +12,6 @@ import CoreData
 class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarControllerDelegate, ModalHandlerDelegate {
 	
 	// MARK: - Properties
-
-//  let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-//	let application = (UIApplication.shared.delegate as! AppDelegate)
-	
-    // var taskDataStore.tasks: [Task] = []
-    // var taskDataStore.completedTasks: [Task] = []
 	
 	let taskDataStore = TaskDataStore.shared
 	
@@ -27,25 +21,21 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 	
     @IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var blurEffect: UIVisualEffectView!
-//	@IBOutlet weak var topBar: UIView!
 	@IBOutlet weak var placeholderView: UIStackView!
 	@IBOutlet weak var largeButton: UIButton!
 	
 
 	
-	// MARK: - View will appear configurations
+	// MARK: - View options
 	// Reload data before view appears
 	
 	override func viewWillAppear(_ animated: Bool) {
-		
 		self.tabBarController?.tabBar.isHidden = true
-		
 		taskDataStore.getData()
 		configureTable()
 		
 	}
-	
-	
+
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -56,11 +46,6 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 		tableView.register(UINib(nibName: "TableHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "TableHeaderView")
 		
 		taskDataStore.application.todayVC = self
-		
-		// add coloured image as middle tabbar item
-//		let add: UITabBarItem = (self.tabBarController?.tabBar.items![1])!
-//		let button: UIImage = (UIImage(named: "add-tab")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal))!
-//		add.image = button
 		
 		// button shadow
 		largeButton.layer.shadowColor = UIColor.lightGray.cgColor
@@ -251,49 +236,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 		}
     }
 	
-	// MARK: - Database operations
-	
-//	// Get data from database  (AND isCompleted == FALSE)
-//
-//	func taskDataStore.getData() {
-//		getOpenTasks()
-//		getCompletedTasks()
-//	}
-//
-//
-//	func getOpenTasks() {
-//
-//		let fetchRequest = NSFetchRequest<Task>(entityName: "Task")
-//		let sort = NSSortDescriptor(key: #keyPath(Task.taskIndex), ascending: true)
-//		let sortByDate = NSSortDescriptor(key: #keyPath(Task.dateAdded), ascending: true)
-//		let predicate = NSPredicate(format: "dueToday == TRUE AND isCompleted == FALSE")
-//		fetchRequest.predicate = predicate
-//		fetchRequest.sortDescriptors = [sort, sortByDate]
-//		do {
-//			taskDataStore.tasks = try context.fetch(fetchRequest)
-//			for task in taskDataStore.tasks {
-//				checkIfOverdue(task)
-//			}
-//		} catch {
-//			print("Cannot fetch because \(error.localizedDescription)")
-//		}
-//	}
-//
-//	func getCompletedTasks() {
-//		let fetchRequest = NSFetchRequest<Task>(entityName: "Task")
-//		let sort = NSSortDescriptor(key: #keyPath(Task.taskIndex), ascending: true)
-//		let predicate = NSPredicate(format: "dueToday == TRUE AND isCompleted == TRUE")
-//		fetchRequest.predicate = predicate
-//		fetchRequest.sortDescriptors = [sort]
-//		do {
-//			taskDataStore.completedTasks = try context.fetch(fetchRequest)
-//		} catch {
-//			print("Cannot fetch completed tasks because \(error.localizedDescription)")
-//		}
-//	}
-	
-	
-    
+
     // MARK: - Navigation - Segue setup
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -315,9 +258,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 			applyBlur()
 		}
     }
-    
-
-    
+	
     
     // MARK: - IB Actions
     
@@ -327,7 +268,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
         let indexPath = tableView.indexPath(for: cell)
 		let task = (indexPath?.section == 0) ? taskDataStore.tasks[(indexPath?.row)!] : taskDataStore.completedTasks[(indexPath?.row)!]
         task.isCompleted = !task.isCompleted
-		manageNotification(forTask: task)
+		taskDataStore.manageNotification(forTask: task)
 		
         setSelectionStatus(cell: cell, checked: task.isCompleted)
 		hapticNotification.selectionChanged()
@@ -356,7 +297,6 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
     }
 	
 
-    
     @IBAction func deleteCompletedTasks(_ sender: UIButton) {
 
         for task in taskDataStore.completedTasks {
@@ -384,8 +324,6 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 			return
 		}
 	}
-	
-	
 	
 
 	// MARK: - TabbarController override tab action
@@ -432,32 +370,6 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 			cell.setChecked()
 		} else{
 			cell.setUnchecked()
-		}
-	}
-	
-	func checkIfOverdue(_ task: Task) {
-		let dateNow = Date(timeIntervalSinceNow: 0)
-		
-		if task.hasDueDate {
-			task.isOverdue = task.dueDate! < dateNow ? true : false
-		} else {
-			task.isOverdue = false
-		}
-		
-	}
-	
-	func hideTableView() {
-		tableView.isHidden = !tableView.isHidden
-	}
-	
-	func manageNotification(forTask task: Task) {
-		
-		if task.isCompleted {
-			taskDataStore.application.cancelNotification(withIdentifier: (task.dateAdded?.description)!)
-		} else {
-			if task.hasDueDate {
-				taskDataStore.application.scheduleNotification(at: task.dueDate!, withTitle: task.taskName!, withIdentifier: (task.dateAdded?.description)!)
-			}
 		}
 	}
 	

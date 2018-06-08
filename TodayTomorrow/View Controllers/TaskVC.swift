@@ -2,8 +2,8 @@
 //  AddTaskViewController.swift
 //  TodayTomorrow
 //
-//  Created by Sergey Kozak on 29/12/2017.
-//  Copyright © 2017 Centennial. All rights reserved.
+//  Created by Sergii Kozak.
+//  Copyright © 2018 Centennial. All rights reserved.
 //
 
 import UIKit

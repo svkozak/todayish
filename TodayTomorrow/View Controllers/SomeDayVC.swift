@@ -2,7 +2,7 @@
 //  Todayish
 //
 //  Created by Sergeii Kozak
-//  Copyright © 2017 Sergii Kozak. All rights reserved.
+//  Copyright © 2018 Sergii Kozak. All rights reserved.
 //
 
 import UIKit
@@ -27,9 +27,7 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
 	override func viewWillAppear(_ animated: Bool) {
 		
 		taskDataStore.getData()
-		// getData()
 		configureTable()
-		print(taskDataStore.postponedOpenTasks.count)
 	}
 	
 	override func viewDidLoad() {
@@ -223,39 +221,6 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
 			self.configureTable()
 		}
     }
-	
-	// Get data from database
-	
-//	func getData() {
-//		getOpenTasks()
-//		getCompletedTasks()
-//	}
-//
-//	func getOpenTasks() {
-//		let fetchRequest = NSFetchRequest<Task>(entityName: "Task")
-//		let sort = NSSortDescriptor(key: #keyPath(Task.taskIndex), ascending: true)
-//		let predicate = NSPredicate(format: "dueToday == FALSE AND isCompleted == FALSE")
-//		fetchRequest.predicate = predicate
-//		fetchRequest.sortDescriptors = [sort]
-//		do {
-//			tasks = try context.fetch(fetchRequest)
-//		} catch {
-//			print("Cannot fetch because \(error.localizedDescription)")
-//		}
-//	}
-//
-//	func getCompletedTasks() {
-//		let fetchRequest = NSFetchRequest<Task>(entityName: "Task")
-//		let sort = NSSortDescriptor(key: #keyPath(Task.taskIndex), ascending: true)
-//		let predicate = NSPredicate(format: "dueToday == FALSE AND isCompleted == TRUE")
-//		fetchRequest.predicate = predicate
-//		fetchRequest.sortDescriptors = [sort]
-//		do {
-//			completedTasks = try context.fetch(fetchRequest)
-//		} catch {
-//			print("Cannot fetch completed tasks because \(error.localizedDescription)")
-//		}
-//	}
 	
 	// MARK: - Navigation - Segue setup
 	
