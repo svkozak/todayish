@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		131038CA20CC8CE000044D9E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 131038CC20CC8CE000044D9E /* InfoPlist.strings */; };
 		1315841E20CC7D6400F48895 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1315842020CC7D6400F48895 /* Localizable.strings */; };
 		1315842220CC807D00F48895 /* TableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1315842420CC807D00F48895 /* TableHeaderView.xib */; };
 		1348D03320A94A2700C20191 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1348D03220A94A2700C20191 /* Assets.xcassets */; };
@@ -64,6 +65,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		131038CB20CC8CE000044D9E /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		131038CD20CC8CE300044D9E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1315841F20CC7D6400F48895 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1315842120CC7D6600F48895 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1315842620CC808A00F48895 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/TableHeaderView.strings; sourceTree = "<group>"; };
@@ -171,6 +174,7 @@
 				1348D04420AB6DD800C20191 /* TodayViewController.swift */,
 				1348D04620AB6DD800C20191 /* MainInterface.storyboard */,
 				1348D04920AB6DD800C20191 /* Info.plist */,
+				131038CC20CC8CE000044D9E /* InfoPlist.strings */,
 				1348D07C20AB9C8000C20191 /* WidgetTableViewCell.swift */,
 			);
 			path = "Today tasks";
@@ -348,6 +352,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1348D07A20AB94B300C20191 /* Assets.xcassets in Resources */,
+				131038CA20CC8CE000044D9E /* InfoPlist.strings in Resources */,
 				1348D04820AB6DD800C20191 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -498,6 +503,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		131038CC20CC8CE000044D9E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				131038CB20CC8CE000044D9E /* uk */,
+				131038CD20CC8CE300044D9E /* ru */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		1315842020CC7D6400F48895 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
