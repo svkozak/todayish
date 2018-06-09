@@ -1,7 +1,17 @@
-/* 
-  Localizable.strings
-  TodayTomorrow
+/*
+ Localizable.strings
+ TodayTomorrow
+ 
+ Created by Sergii Kozak on 09/06/2018.
+ Copyright © 2018 Sergii Kozak. All rights reserved.
+ */
 
-  Created by Sergey Kozak on 09/06/2018.
-  Copyright © 2018 Centennial. All rights reserved.
-*/
+"Show completed" = "Показати виконані";
+"Hide completed" = "Сховати виконані";
+"More" = "Більше";
+"Less" = "Менше";
+"Some day" = "Потім";
+"Today" = "Сьогодні";
+"Description" = "Нотатки";
+"Delete" = "Видалити";
+"Edit" = "Змінити";
