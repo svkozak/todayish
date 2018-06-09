@@ -31,3 +31,15 @@ enum Colours {
 	
 }
 
+enum LocalizedStrings {
+	
+	static let showCompleted = NSLocalizedString("Show completed", comment: "to show completed tasks")
+	static let hideCompleted = NSLocalizedString("Hide completed", comment: "to hide completed tasks")
+	static let showMore = NSLocalizedString("More", comment: "to show more options for creating task")
+	static let showLess = NSLocalizedString("Less", comment: "")
+	static let moveToSomeDay = NSLocalizedString("Some day", comment: "")
+	static let moveToToday = NSLocalizedString("Today", comment: "")
+	static let description = NSLocalizedString("Description", comment: "")
+	static let delete = NSLocalizedString("Delete", comment: "")
+}
+
