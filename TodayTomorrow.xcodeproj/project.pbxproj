@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1315841E20CC7D6400F48895 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1315842020CC7D6400F48895 /* Localizable.strings */; };
+		1315842220CC807D00F48895 /* TableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1315842420CC807D00F48895 /* TableHeaderView.xib */; };
 		1348D03320A94A2700C20191 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1348D03220A94A2700C20191 /* Assets.xcassets */; };
 		1348D03520AA36ED00C20191 /* ModalHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1348D03420AA36ED00C20191 /* ModalHandler.swift */; };
 		1348D03820AA912800C20191 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1348D03720AA912800C20191 /* Constants.swift */; };
@@ -31,7 +32,6 @@
 		13961CA41FEB511100A9B2C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13961CA21FEB511100A9B2C1 /* LaunchScreen.storyboard */; };
 		13C516D720CB740000661331 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 13C516D920CB740000661331 /* InfoPlist.strings */; };
 		13C6AD0920C07604002DFD66 /* TableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C6AD0820C07604002DFD66 /* TableHeaderView.swift */; };
-		13C6AD0B20C07629002DFD66 /* TableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13C6AD0A20C07629002DFD66 /* TableHeaderView.xib */; };
 		13F2858F1FF74A4800E598A4 /* TaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F2858E1FF74A4800E598A4 /* TaskVC.swift */; };
 		13FC2A3020C9EB53002C38E5 /* TaskDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FC2A2F20C9EB53002C38E5 /* TaskDataStore.swift */; };
 		13FC2A3620CA14B4002C38E5 /* LongPressReorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1348D0C120BC7F3B00C20191 /* LongPressReorder.swift */; };
@@ -66,6 +66,9 @@
 /* Begin PBXFileReference section */
 		1315841F20CC7D6400F48895 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1315842120CC7D6600F48895 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1315842620CC808A00F48895 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/TableHeaderView.strings; sourceTree = "<group>"; };
+		1315842720CC809B00F48895 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TableHeaderView.xib; sourceTree = "<group>"; };
+		1315842820CC80AD00F48895 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/TableHeaderView.strings; sourceTree = "<group>"; };
 		1348D03220A94A2700C20191 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1348D03420AA36ED00C20191 /* ModalHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalHandler.swift; sourceTree = "<group>"; };
 		1348D03720AA912800C20191 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -101,7 +104,6 @@
 		13C516E120CB745D00661331 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		13C516E220CB745D00661331 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		13C6AD0820C07604002DFD66 /* TableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableHeaderView.swift; sourceTree = "<group>"; };
-		13C6AD0A20C07629002DFD66 /* TableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableHeaderView.xib; sourceTree = "<group>"; };
 		13C6AD2D20C1C75D002DFD66 /* Model v3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model v3.xcdatamodel"; sourceTree = "<group>"; };
 		13F2858E1FF74A4800E598A4 /* TaskVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskVC.swift; sourceTree = "<group>"; };
 		13FC2A0A20C865C5002C38E5 /* Model v4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model v4.xcdatamodel"; sourceTree = "<group>"; };
@@ -190,7 +192,7 @@
 				1348D0C620BDA57300C20191 /* TaskCell.swift */,
 				1348D0C720BDA57300C20191 /* TaskCell.xib */,
 				13C6AD0820C07604002DFD66 /* TableHeaderView.swift */,
-				13C6AD0A20C07629002DFD66 /* TableHeaderView.xib */,
+				1315842420CC807D00F48895 /* TableHeaderView.xib */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -359,7 +361,7 @@
 				13961CA41FEB511100A9B2C1 /* LaunchScreen.storyboard in Resources */,
 				1315841E20CC7D6400F48895 /* Localizable.strings in Resources */,
 				1348D03320A94A2700C20191 /* Assets.xcassets in Resources */,
-				13C6AD0B20C07629002DFD66 /* TableHeaderView.xib in Resources */,
+				1315842220CC807D00F48895 /* TableHeaderView.xib in Resources */,
 				13961C9F1FEB511100A9B2C1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -503,6 +505,16 @@
 				1315842120CC7D6600F48895 /* ru */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		1315842420CC807D00F48895 /* TableHeaderView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1315842620CC808A00F48895 /* ru */,
+				1315842720CC809B00F48895 /* Base */,
+				1315842820CC80AD00F48895 /* uk */,
+			);
+			name = TableHeaderView.xib;
 			sourceTree = "<group>";
 		};
 		1348D04620AB6DD800C20191 /* MainInterface.storyboard */ = {
