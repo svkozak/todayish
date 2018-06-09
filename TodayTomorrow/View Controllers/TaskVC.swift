@@ -85,7 +85,7 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 		self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissTask)))
 		
 		// Set placeholder text color
-//		taskDescriptionField.textColor = UIColor.lightGray
+		taskDescriptionField.text = LocalizedStrings.description
 		
 		// Set textfield padding
 		let padding = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 10))
