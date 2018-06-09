@@ -61,7 +61,7 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 		
 		if editingTask {
 			taskNameField.text = taskToEdit?.taskName
-			taskDescriptionField.text = (taskToEdit?.taskDescription == "") ? "Description" : taskToEdit?.taskDescription
+			taskDescriptionField.text = (taskToEdit?.taskDescription == "") ? LocalizedStrings.description : taskToEdit?.taskDescription
 			
 			if let date = taskToEdit?.dueDate {
 				datePicker.date = date
@@ -115,7 +115,7 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     // MARK: - TextView placeholder and editing style
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if taskDescriptionField.text == "Description" {
+        if taskDescriptionField.text == LocalizedStrings.description {
 			taskDescriptionField.textColor = Colours.mainTextColor
 			taskDescriptionField.text = ""
 		} else {
@@ -126,7 +126,7 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         taskDescriptionField.resignFirstResponder()
         if taskDescriptionField.text == "" {
-            taskDescriptionField.text = "Description"
+            taskDescriptionField.text = LocalizedStrings.description
         }
     }
 
@@ -163,7 +163,7 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 		let task = Task(context: context)
 		task.taskName = title
 		
-		if description == "" || description == "Description" {
+		if description == "" || description == LocalizedStrings.description {
 			task.taskDescription = ""
 		} else {
 			task.taskDescription = description
@@ -189,7 +189,7 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 	func updateTask(task: Task, title: String, description: String, reminder: String) {
 		task.taskName = title
 		
-		if description == "" || description == "Description" {
+		if description == "" || description == LocalizedStrings.description {
 			task.taskDescription = ""
 		} else {
 			task.taskDescription = description
@@ -275,7 +275,7 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 			UIView.animate(withDuration: 0.3) {
 				self.taskDescriptionField.isHidden = false
 				self.remiderField.isHidden = false
-				self.moreButton.setTitle("Less", for: .normal)
+				self.moreButton.setTitle(LocalizedStrings.showLess, for: .normal)
 			}
 			
 		} else {
@@ -283,7 +283,7 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 			UIView.animate(withDuration: 0.3) {
 				self.taskDescriptionField.isHidden = true
 				self.remiderField.isHidden = true
-				self.moreButton.setTitle("More", for: .normal)
+				self.moreButton.setTitle(LocalizedStrings.showMore , for: .normal)
 			}
 		}
 	}

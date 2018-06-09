@@ -95,7 +95,7 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
 		// don't allow moving completed task
 		if indexPath.section == 1 { return nil }
 		
-		let moveTaskToToday = UIContextualAction(style: .destructive, title: "Today") { (action, view, handler) in
+		let moveTaskToToday = UIContextualAction(style: .destructive, title: LocalizedStrings.moveToSomeDay) { (action, view, handler) in
 			self.moveTaskToToday(atIndexPath: indexPath)
 		}
 		moveTaskToToday.backgroundColor = Colours.mainLightGreen
@@ -105,11 +105,11 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
 	}
 	
 	func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-		let deleteTask = UIContextualAction(style: .destructive, title: "Delete") { (action, view, handler) in
+		let deleteTask = UIContextualAction(style: .destructive, title: LocalizedStrings.delete) { (action, view, handler) in
 			self.deleteTask(atIndexPath: indexPath)
 		}
 		
-		let editTask = UIContextualAction(style: .normal, title: "Edit") { (action, view, handler) in
+		let editTask = UIContextualAction(style: .normal, title: LocalizedStrings.edit) { (action, view, handler) in
 			let cell = self.tableView.cellForRow(at: indexPath) as! TaskCell
 			self.performSegue(withIdentifier: "showEditTask", sender: cell)
 		}
@@ -133,7 +133,7 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
 		headerView.headerClearButton.addTarget(self, action: #selector(deleteCompletedTasks(_:)), for: UIControlEvents.allEvents)
 		headerView.isHidden = (taskDataStore.postponedCompletedTasks.count == 0) ? true : false
 		
-		let title = showingCompleted ? "Hide completed (\(taskDataStore.postponedCompletedTasks.count))" : "Show completed (\(taskDataStore.postponedCompletedTasks.count))"
+		let title = showingCompleted ? "\(LocalizedStrings.hideCompleted) (\(taskDataStore.postponedCompletedTasks.count))" : "\(LocalizedStrings.showCompleted) (\(taskDataStore.postponedCompletedTasks.count))"
 		headerView.headerButton.setTitle(title, for: .normal)
 		headerView.headerClearButton.isHidden = showingCompleted ? false : true
 		return headerView

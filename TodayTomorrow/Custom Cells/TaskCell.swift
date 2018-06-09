@@ -58,7 +58,7 @@ class TaskCell: UITableViewCell {
 		
 		self.taskTitleLabel.text = title
 		
-		if description == "Task description" {
+		if description == LocalizedStrings.description {
 			self.taskDescriptionLabel.text = ""
 			self.taskDescriptionLabel.isHidden = true
 		} else {
