@@ -67,16 +67,26 @@
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES"
       launchAutomaticallySubstyle = "2">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.springboard">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "13961C931FEB511100A9B2C1"
-            BuildableName = "TodayTomorrow.app"
-            BlueprintName = "TodayTomorrow"
+            BlueprintIdentifier = "1348D03E20AB6DD700C20191"
+            BuildableName = "Today tasks.appex"
+            BlueprintName = "Today tasks"
             ReferencedContainer = "container:TodayTomorrow.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "1348D03E20AB6DD700C20191"
+            BuildableName = "Today tasks.appex"
+            BlueprintName = "Today tasks"
+            ReferencedContainer = "container:TodayTomorrow.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

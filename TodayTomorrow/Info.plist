@@ -61,9 +61,9 @@
 			<key>UIApplicationShortcutItemIconType</key>
 			<string>UIApplicationShortcutIconTypeAdd</string>
 			<key>UIApplicationShortcutItemSubtitle</key>
-			<string>add new task for today</string>
+			<string>ADD_FOR_TODAY</string>
 			<key>UIApplicationShortcutItemTitle</key>
-			<string>New task</string>
+			<string>NEW_TASK</string>
 			<key>UIApplicationShortcutItemType</key>
 			<string>ca.centennialcollege.TodayTomorrow.first</string>
 		</dict>
