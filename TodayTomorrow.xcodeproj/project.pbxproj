@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1315841E20CC7D6400F48895 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1315842020CC7D6400F48895 /* Localizable.strings */; };
 		1348D03320A94A2700C20191 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1348D03220A94A2700C20191 /* Assets.xcassets */; };
 		1348D03520AA36ED00C20191 /* ModalHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1348D03420AA36ED00C20191 /* ModalHandler.swift */; };
 		1348D03820AA912800C20191 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1348D03720AA912800C20191 /* Constants.swift */; };
@@ -28,6 +29,7 @@
 		13961C9C1FEB511100A9B2C1 /* SomeDayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13961C9B1FEB511100A9B2C1 /* SomeDayVC.swift */; };
 		13961C9F1FEB511100A9B2C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13961C9D1FEB511100A9B2C1 /* Main.storyboard */; };
 		13961CA41FEB511100A9B2C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13961CA21FEB511100A9B2C1 /* LaunchScreen.storyboard */; };
+		13C516D720CB740000661331 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 13C516D920CB740000661331 /* InfoPlist.strings */; };
 		13C6AD0920C07604002DFD66 /* TableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C6AD0820C07604002DFD66 /* TableHeaderView.swift */; };
 		13C6AD0B20C07629002DFD66 /* TableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13C6AD0A20C07629002DFD66 /* TableHeaderView.xib */; };
 		13F2858F1FF74A4800E598A4 /* TaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F2858E1FF74A4800E598A4 /* TaskVC.swift */; };
@@ -62,6 +64,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1315841F20CC7D6400F48895 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1315842120CC7D6600F48895 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1348D03220A94A2700C20191 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1348D03420AA36ED00C20191 /* ModalHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalHandler.swift; sourceTree = "<group>"; };
 		1348D03720AA912800C20191 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -86,6 +90,16 @@
 		13961C9E1FEB511100A9B2C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		13961CA31FEB511100A9B2C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		13961CA51FEB511100A9B2C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		13C516D820CB740000661331 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		13C516DA20CB740E00661331 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		13C516DB20CB745000661331 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Main.strings; sourceTree = "<group>"; };
+		13C516DC20CB745000661331 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		13C516DD20CB745100661331 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/MainInterface.strings; sourceTree = "<group>"; };
+		13C516DE20CB745100661331 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		13C516DF20CB745C00661331 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		13C516E020CB745C00661331 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		13C516E120CB745D00661331 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/MainInterface.strings; sourceTree = "<group>"; };
+		13C516E220CB745D00661331 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		13C6AD0820C07604002DFD66 /* TableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableHeaderView.swift; sourceTree = "<group>"; };
 		13C6AD0A20C07629002DFD66 /* TableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableHeaderView.xib; sourceTree = "<group>"; };
 		13C6AD2D20C1C75D002DFD66 /* Model v3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model v3.xcdatamodel"; sourceTree = "<group>"; };
@@ -211,9 +225,11 @@
 				1348D03620AA370000C20191 /* Supporting files */,
 				13961C9D1FEB511100A9B2C1 /* Main.storyboard */,
 				1348D03220A94A2700C20191 /* Assets.xcassets */,
+				1315842020CC7D6400F48895 /* Localizable.strings */,
 				13961CA21FEB511100A9B2C1 /* LaunchScreen.storyboard */,
 				135E36361FF718E600EF6F78 /* Model.xcdatamodeld */,
 				13961CA51FEB511100A9B2C1 /* Info.plist */,
+				13C516D920CB740000661331 /* InfoPlist.strings */,
 			);
 			path = TodayTomorrow;
 			sourceTree = "<group>";
@@ -310,6 +326,8 @@
 			knownRegions = (
 				en,
 				Base,
+				uk,
+				ru,
 			);
 			mainGroup = 13961C8B1FEB511100A9B2C1;
 			productRefGroup = 13961C951FEB511100A9B2C1 /* Products */;
@@ -337,7 +355,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1348D0C920BDA57300C20191 /* TaskCell.xib in Resources */,
+				13C516D720CB740000661331 /* InfoPlist.strings in Resources */,
 				13961CA41FEB511100A9B2C1 /* LaunchScreen.storyboard in Resources */,
+				1315841E20CC7D6400F48895 /* Localizable.strings in Resources */,
 				1348D03320A94A2700C20191 /* Assets.xcassets in Resources */,
 				13C6AD0B20C07629002DFD66 /* TableHeaderView.xib in Resources */,
 				13961C9F1FEB511100A9B2C1 /* Main.storyboard in Resources */,
@@ -476,10 +496,21 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		1315842020CC7D6400F48895 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1315841F20CC7D6400F48895 /* uk */,
+				1315842120CC7D6600F48895 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		1348D04620AB6DD800C20191 /* MainInterface.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				1348D04720AB6DD800C20191 /* Base */,
+				13C516DD20CB745100661331 /* uk */,
+				13C516E120CB745D00661331 /* ru */,
 			);
 			name = MainInterface.storyboard;
 			sourceTree = "<group>";
@@ -489,6 +520,8 @@
 			children = (
 				13961C9E1FEB511100A9B2C1 /* Base */,
 				13FC2A3820CAF38B002C38E5 /* en */,
+				13C516DB20CB745000661331 /* uk */,
+				13C516DF20CB745C00661331 /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -497,8 +530,21 @@
 			isa = PBXVariantGroup;
 			children = (
 				13961CA31FEB511100A9B2C1 /* Base */,
+				13C516DC20CB745000661331 /* uk */,
+				13C516E020CB745C00661331 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		13C516D920CB740000661331 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				13C516D820CB740000661331 /* en */,
+				13C516DA20CB740E00661331 /* Base */,
+				13C516DE20CB745100661331 /* uk */,
+				13C516E220CB745D00661331 /* ru */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -515,7 +561,7 @@
 				INFOPLIST_FILE = "Today tasks/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "ca.svkozak.Todayish.Today-tasks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ca.maybelater.Todayish.Today-tasks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
@@ -534,7 +580,7 @@
 				INFOPLIST_FILE = "Today tasks/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "ca.svkozak.Todayish.Today-tasks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ca.maybelater.Todayish.Today-tasks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
@@ -546,6 +592,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -605,6 +652,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -663,8 +711,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AM6YCEQCTE;
 				INFOPLIST_FILE = TodayTomorrow/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ca.svkozak.Todayish;
+				PRODUCT_BUNDLE_IDENTIFIER = ca.maybelater.Todayish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -681,8 +730,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AM6YCEQCTE;
 				INFOPLIST_FILE = TodayTomorrow/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ca.svkozak.Todayish;
+				PRODUCT_BUNDLE_IDENTIFIER = ca.maybelater.Todayish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -1,0 +1,15 @@
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "0lV-80-l05"; */
+"0lV-80-l05.text" = "Label";
+
+/* Class = "UILabel"; text = "You are clear! Tap below to add task"; ObjectID = "BQZ-YN-Ngn"; */
+"BQZ-YN-Ngn.text" = "You are clear! Tap below to add task";
+
+/* Class = "UIButton"; normalTitle = "+ some day"; ObjectID = "Ef5-lA-vWP"; */
+"Ef5-lA-vWP.normalTitle" = "+ some day";
+
+/* Class = "UIButton"; normalTitle = "+ today"; ObjectID = "WY3-MW-otF"; */
+"WY3-MW-otF.normalTitle" = "+ today";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "Zea-Ub-Ohy"; */
+"Zea-Ub-Ohy.text" = "Title";
