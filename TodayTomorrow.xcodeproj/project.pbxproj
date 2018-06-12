@@ -585,7 +585,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AM6YCEQCTE;
 				INFOPLIST_FILE = "Today tasks/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ca.maybelater.Todayish.Today-tasks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -604,7 +604,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AM6YCEQCTE;
 				INFOPLIST_FILE = "Today tasks/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ca.maybelater.Todayish.Today-tasks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
