@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  TodayTomorrow
+
+  Created by Sergey Kozak on 08/06/2018.
+  Copyright © 2018 Centennial. All rights reserved.
+*/
+"NEW_TASK" = "Нове завдання";
+"ADD_FOR_TODAY" = "Додати на сьогодні";

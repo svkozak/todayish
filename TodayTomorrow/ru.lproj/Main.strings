@@ -1,0 +1,51 @@
+
+/* Class = "UILabel"; text = "Some day"; ObjectID = "27a-Q4-uRH"; */
+"27a-Q4-uRH.text" = "Потом";
+
+/* Class = "UILabel"; text = "Add a new task and swipe existing tasks for more options."; ObjectID = "53u-lj-Ceg"; */
+"53u-lj-Ceg.text" = "Добавьте новые задачи и сдвиньте существующие для дополнительных действий.";
+
+/* Class = "UIButton"; normalTitle = "More"; ObjectID = "CPy-eU-xtK"; */
+"CPy-eU-xtK.normalTitle" = "Больше";
+
+/* Class = "UINavigationItem"; title = "Some day"; ObjectID = "CkM-Fa-2gB"; */
+"CkM-Fa-2gB.title" = "Потом";
+
+/* Class = "UINavigationItem"; title = "Today"; ObjectID = "EJQ-L9-XVo"; */
+"EJQ-L9-XVo.title" = "Сегодня";
+
+/* Class = "UILabel"; text = "Today"; ObjectID = "Ewv-lD-DYw"; */
+"Ewv-lD-DYw.text" = "Сегодня";
+
+/* Class = "UIViewController"; title = "Add task"; ObjectID = "LzB-Wj-r9S"; */
+"LzB-Wj-r9S.title" = "Add task";
+
+/* Class = "UILabel"; text = "Add a new task and swipe existing tasks for more options."; ObjectID = "PHn-GD-z6u"; */
+"PHn-GD-z6u.text" = "Добавьте новые задачи и сдвиньте существующие для дополнительных действий.";
+
+/* Class = "UILabel"; text = "Today"; ObjectID = "Uc5-7F-4dF"; */
+"Uc5-7F-4dF.text" = "Сегодня";
+
+/* Class = "UITextField"; placeholder = "Reminder (optional)"; ObjectID = "ZBn-vw-Xqa"; */
+"ZBn-vw-Xqa.placeholder" = "Напомнить? (не обязательно)";
+
+/* Class = "UITabBarItem"; title = "new task"; ObjectID = "bNK-3R-WMj"; */
+"bNK-3R-WMj.title" = "Создать";
+
+/* Class = "UITabBarItem"; title = "some day"; ObjectID = "jtZ-zB-pcr"; */
+"jtZ-zB-pcr.title" = "Потом";
+
+/* Class = "UITextView"; text = "Description"; ObjectID = "ndw-6B-3zY"; */
+"ndw-6B-3zY.text" = "Описание";
+
+/* Class = "UITabBarItem"; title = "today"; ObjectID = "rlW-TH-F2U"; */
+"rlW-TH-F2U.title" = "Сегодня";
+
+/* Class = "UILabel"; text = "Today"; ObjectID = "tXR-8f-6UF"; */
+"tXR-8f-6UF.text" = "Сегодня";
+
+/* Class = "UILabel"; text = "Some day"; ObjectID = "xPU-wZ-U11"; */
+"xPU-wZ-U11.text" = "Потом";
+
+/* Class = "UILabel"; text = "Some day"; ObjectID = "yaz-tW-tWd"; */
+"yaz-tW-tWd.text" = "Потом";

@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  TodayTomorrow
+
+  Created by Sergii Kozak on 09/06/2018.
+  Copyright © 2018 Sergii Kozak. All rights reserved.
+*/
+
+"Show completed" = "Показать выполненные";
+"Hide completed" = "Спрятать";
+"More" = "Больше";
+"Less" = "Меньше";
+"Some day" = "Потом";
+"Today" = "Сегодня";
+"Description" = "Описание";
+"Delete" = "Удалить";
+"Edit" = "Изменить";

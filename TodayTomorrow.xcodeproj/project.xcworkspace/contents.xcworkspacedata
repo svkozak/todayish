@@ -1,7 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+   <Group
+      location = "group:ShadowView"
+      name = "ShadowView">
+      <FileRef
+         location = "group:ShadowView+BlurProcess.swift">
+      </FileRef>
+      <FileRef
+         location = "group:UIView+Image.swift">
+      </FileRef>
+      <FileRef
+         location = "group:UIImage+Size.swift">
+      </FileRef>
+      <FileRef
+         location = "group:ShadowView.swift">
+      </FileRef>
+      <FileRef
+         location = "group:UIImageEffects.swift">
+      </FileRef>
+      <FileRef
+         location = "group:UIView+Shadow.swift">
+      </FileRef>
+      <FileRef
+         location = "group:Info.plist">
+      </FileRef>
+   </Group>
    <FileRef
-      location = "self:TodayTomorrow.xcodeproj">
+      location = "self:">
    </FileRef>
 </Workspace>
