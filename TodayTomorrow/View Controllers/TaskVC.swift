@@ -61,7 +61,14 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 		
 		if editingTask {
 			taskNameField.text = taskToEdit?.taskName
-			taskDescriptionField.text = (taskToEdit?.taskDescription == "") ? LocalizedStrings.description : taskToEdit?.taskDescription
+			
+			if taskToEdit?.taskDescription == "" {
+				taskDescriptionField.text = LocalizedStrings.description
+				taskDescriptionField.textColor = Colours.placeholderLightGray
+			} else {
+				taskDescriptionField.text = taskToEdit?.taskDescription
+				taskDescriptionField.textColor = Colours.mainTextColor
+			}
 			
 			if let date = taskToEdit?.dueDate {
 				datePicker.date = date
@@ -72,6 +79,8 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 				remiderField.clearButtonMode = .always
 			}
 			// dueTodaySwitch.isOn = (taskToEdit?.dueToday)! ? true : false
+		} else {
+			taskDescriptionField.text = LocalizedStrings.description
 		}
 		
 		// create toolbar for keyboard
@@ -85,7 +94,7 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 		self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissTask)))
 		
 		// Set placeholder text color
-		taskDescriptionField.text = LocalizedStrings.description
+		// taskDescriptionField.text = LocalizedStrings.description
 		
 		// Set textfield padding
 		let padding = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 10))
@@ -119,7 +128,7 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 			taskDescriptionField.textColor = Colours.mainTextColor
 			taskDescriptionField.text = ""
 		} else {
-			taskDescriptionField.textColor = Colours.placeholderLightGray
+			taskDescriptionField.textColor = taskDescriptionField.text != "" ? Colours.mainTextColor : Colours.placeholderLightGray
 		}
     }
     
@@ -127,6 +136,7 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
         taskDescriptionField.resignFirstResponder()
         if taskDescriptionField.text == "" {
             taskDescriptionField.text = LocalizedStrings.description
+			taskDescriptionField.textColor = Colours.placeholderLightGray
         }
     }
 
