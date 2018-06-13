@@ -95,7 +95,7 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
 		// don't allow moving completed task
 		if indexPath.section == 1 { return nil }
 		
-		let moveTaskToToday = UIContextualAction(style: .destructive, title: LocalizedStrings.moveToSomeDay) { (action, view, handler) in
+		let moveTaskToToday = UIContextualAction(style: .destructive, title: LocalizedStrings.moveToToday) { (action, view, handler) in
 			self.moveTaskToToday(atIndexPath: indexPath)
 		}
 		moveTaskToToday.backgroundColor = Colours.mainLightGreen
