@@ -228,7 +228,7 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
 		
 		if segue.identifier == "showEditTask" {
 			let indexPathForCell = tableView.indexPath(for: sender as! TaskCell)
-			let selectedTask = taskDataStore.postponedOpenTasks[(indexPathForCell?.row)!]
+			let selectedTask = ((indexPathForCell?.section)! == 0) ? taskDataStore.postponedOpenTasks[(indexPathForCell?.row)!] : taskDataStore.postponedCompletedTasks[(indexPathForCell?.row)!]
 			let editTaskVC = segue.destination as! TaskVC
 			editTaskVC.taskToEdit = selectedTask
 			editTaskVC.editingTask = true
