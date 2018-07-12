@@ -56,7 +56,7 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 		super.viewDidLoad()
 		
 		// Keyboard notification to determine size for auto layout
-		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
 
 		
 		if editingTask {
@@ -98,7 +98,7 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 		
 		// Set textfield padding
 		let padding = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 10))
-		taskNameField.leftViewMode = UITextFieldViewMode.always
+		taskNameField.leftViewMode = UITextField.ViewMode.always
 		taskNameField.leftView = padding
 		remiderField.leftViewMode = .always
 		remiderField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 10))
@@ -106,12 +106,12 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 		
 		
 		// Add swipe down gesture to cancel adding task
-		swipeGesture.direction = UISwipeGestureRecognizerDirection.down
+		swipeGesture.direction = UISwipeGestureRecognizer.Direction.down
 		swipeGesture.addTarget(self, action: #selector(dismissTask))
 		self.view.addGestureRecognizer(swipeGesture)
 		
 		// date picker
-		datePicker.addTarget(self, action: #selector(didSelectDate), for: UIControlEvents.valueChanged)
+		datePicker.addTarget(self, action: #selector(didSelectDate), for: UIControl.Event.valueChanged)
 		remiderField.inputView = datePicker
 		
 		moreButton.addTarget(self, action: #selector(showMore), for: .touchUpInside)
@@ -302,7 +302,7 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 	
 	@objc func keyboardWillShow(_ notification: Notification) {
 		let userInfo = notification.userInfo
-		let keyboardInfo = userInfo?[UIKeyboardFrameEndUserInfoKey] as! NSValue
+		let keyboardInfo = userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
 		let keyboardRect = keyboardInfo.cgRectValue
 		
 		bottomConstraint.constant = keyboardRect.height - 5

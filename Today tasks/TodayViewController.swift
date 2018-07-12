@@ -111,7 +111,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
 		let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! WidgetTableViewCell
 		cell.titleLabel.text = tasks[indexPath.row].taskName
 		cell.descriptionLabel.text = tasks[indexPath.row].taskDescription
-		tasks[indexPath.row].isCompleted ? cell.checkBox.setImage(checked, for: UIControlState.normal) : cell.checkBox.setImage(unchecked, for: .normal)
+		tasks[indexPath.row].isCompleted ? cell.checkBox.setImage(checked, for: UIControl.State.normal) : cell.checkBox.setImage(unchecked, for: .normal)
 		return cell
 	}
 	
@@ -137,12 +137,12 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
 		let task = tasks[(indexPath?.row)!]
 		task.isCompleted = true
 		manageNotifications(task: task)
-		cell.checkBox.setImage(checked, for: UIControlState.normal)
+		cell.checkBox.setImage(checked, for: UIControl.State.normal)
 		saveContext()
 
 		tableView.performBatchUpdates({
 			tasks.remove(at: tasks.index(of: task)!)
-			tableView.deleteRows(at: [indexPath!], with: UITableViewRowAnimation.fade)
+			tableView.deleteRows(at: [indexPath!], with: UITableView.RowAnimation.fade)
 		}) { (true) in
 			self.getData()
 			self.configureTable()
@@ -169,7 +169,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
 	
 	
 	func configureTable() {
-		tableView.rowHeight = UITableViewAutomaticDimension
+		tableView.rowHeight = UITableView.automaticDimension
 		// tableView.estimatedRowHeight = 55
 		tableView.reloadData()
 	}

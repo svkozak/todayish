@@ -31,6 +31,11 @@ enum Colours {
 	
 }
 
+enum TagColours {
+	static let white = "white"
+	static let blue = "blue"
+}
+
 enum LocalizedStrings {
 	
 	static let showCompleted = NSLocalizedString("Show completed", comment: "to show completed tasks")

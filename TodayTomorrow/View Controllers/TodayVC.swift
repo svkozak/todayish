@@ -18,6 +18,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 	var reorderTableView: LongPressReorderTableView!
 	let hapticNotification = UISelectionFeedbackGenerator()
 	var showingCompleted: Bool!
+	var tapGesture = UITapGestureRecognizer()
 	
     @IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var blurEffect: UIVisualEffectView!
@@ -59,6 +60,9 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 		reorderTableView.delegate = self
 		reorderTableView.enableLongPressReorder()
 		
+		// tap gesture target
+		tapGesture.addTarget(self, action: #selector(changeColourTag))
+		tableView.addGestureRecognizer(tapGesture)
 	}
 	
 	
@@ -69,7 +73,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 		
 		if taskDataStore.tasks.count == 0 && taskDataStore.completedTasks.count == 0 {
 				tableView.isHidden = true
-			UIView.animate(withDuration: 0.3, delay: 0.5, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+			UIView.animate(withDuration: 0.3, delay: 0.5, options: UIView.AnimationOptions.beginFromCurrentState, animations: {
 				self.placeholderView.alpha = 1
 			}, completion: nil)
 		} else {
@@ -91,12 +95,38 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TodayTaskCell") as! TaskCell
 		let task = (indexPath.section == 0) ? taskDataStore.tasks[indexPath.row] : taskDataStore.completedTasks[indexPath.row]
-		cell.configure(title: task.taskName!, description: task.taskDescription!, isCompleted: task.isCompleted, hasDueDate: task.hasDueDate, isOverdue: task.isOverdue)
-		cell.checkBox.addTarget(self, action: #selector(checkBoxCheck(sender:)), for: UIControlEvents.touchUpInside)
+		cell.configure(title: task.taskName!, description: task.taskDescription!, isCompleted: task.isCompleted, hasDueDate: task.hasDueDate, isOverdue: task.isOverdue, colourTag: task.tagColor!)
+		cell.checkBox.addTarget(self, action: #selector(checkBoxCheck(sender:)), for: UIControl.Event.touchUpInside)
+		// cell.addGestureRecognizer(tapGesture)
 		task.taskIndex = Int32(indexPath.row)
 		taskDataStore.application.saveContext()
 		return cell
     }
+	
+	
+	@objc func changeColourTag(sender: UITapGestureRecognizer) {
+		
+		let tapLocation = sender.location(in: tableView)
+		guard let tapIndexPath = tableView.indexPathForRow(at: tapLocation) else { return }
+		let cell = tableView.cellForRow(at: tapIndexPath) as! TaskCell
+		let task = taskDataStore.tasks[tapIndexPath.row]
+
+		if sender.state == .ended {
+			
+				switch task.tagColor {
+				case TagColours.white:
+					task.tagColor = TagColours.blue
+					cell.updateColour(colourTag: task.tagColor!)
+				case TagColours.blue:
+					task.tagColor = TagColours.white
+					cell.updateColour(colourTag: task.tagColor!)
+				default:
+					task.tagColor = TagColours.white
+				}
+			taskDataStore.application.saveContext()
+		}
+		
+	}
 	
 	
     // Add actions when table row is swiped from left or right
@@ -141,8 +171,8 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 
 			let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "TableHeaderView") as! TableHeaderView
-			headerView.headerButton.addTarget(self, action: #selector(showCompleted), for: UIControlEvents.allEvents)
-			headerView.headerClearButton.addTarget(self, action: #selector(deleteCompletedTasks(_:)), for: UIControlEvents.allEvents)
+			headerView.headerButton.addTarget(self, action: #selector(showCompleted), for: UIControl.Event.allEvents)
+			headerView.headerClearButton.addTarget(self, action: #selector(deleteCompletedTasks(_:)), for: UIControl.Event.allEvents)
 			headerView.isHidden = (taskDataStore.completedTasks.count == 0) ? true : false
 			
 			let title = showingCompleted ? "\(LocalizedStrings.hideCompleted) (\(taskDataStore.completedTasks.count))" : "\(LocalizedStrings.showCompleted) (\(taskDataStore.completedTasks.count))"
@@ -153,7 +183,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 	
 	@objc func showCompleted() {
 		showingCompleted = !showingCompleted
-		tableView.reloadSections([1], with: UITableViewRowAnimation.fade)
+		tableView.reloadSections([1], with: UITableView.RowAnimation.fade)
 		configureTable()
 	}
 	
@@ -210,7 +240,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 			}
 	
 			taskDataStore.application.saveContext()
-			self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+			self.tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
 			
 		}) { (true) in
 			self.taskDataStore.getData()
@@ -229,7 +259,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 			task.taskIndex = 9999
 			taskDataStore.tasks.remove(at: indexPath.row)
 			taskDataStore.application.saveContext()
-			self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.bottom)
+			self.tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.bottom)
 		}) { (true) in
 			self.taskDataStore.getData()
 			self.configureTable()
@@ -278,11 +308,11 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 		tableView.performBatchUpdates({
 			if indexPath?.section == 0 {
 				taskDataStore.tasks.remove(at: (indexPath?.row)!)
-				tableView.deleteRows(at: [indexPath!], with: UITableViewRowAnimation.fade)
+				tableView.deleteRows(at: [indexPath!], with: UITableView.RowAnimation.fade)
 
 			} else {
 				taskDataStore.completedTasks.remove(at: (indexPath?.row)!)
-				tableView.deleteRows(at: [indexPath!], with: UITableViewRowAnimation.fade)
+				tableView.deleteRows(at: [indexPath!], with: UITableView.RowAnimation.fade)
 				
 			}
 		}) { (true) in
@@ -343,7 +373,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 	
 	func configureTable() {
 		
-		tableView.rowHeight = UITableViewAutomaticDimension
+		tableView.rowHeight = UITableView.automaticDimension
 		tableView.reloadData()
 	}
 	
