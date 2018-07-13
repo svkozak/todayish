@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarControllerDelegate, ModalHandlerDelegate {
+class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarControllerDelegate, UIGestureRecognizerDelegate, ModalHandlerDelegate {
 	
 	// MARK: - Properties
 	
@@ -18,7 +18,8 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 	var reorderTableView: LongPressReorderTableView!
 	let hapticNotification = UISelectionFeedbackGenerator()
 	var showingCompleted: Bool!
-	var tapGesture = UITapGestureRecognizer()
+//	var tapGesture = UITapGestureRecognizer()
+	var doubleTapGesture = UITapGestureRecognizer()
 	
     @IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var blurEffect: UIVisualEffectView!
@@ -61,8 +62,14 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 		reorderTableView.enableLongPressReorder()
 		
 		// tap gesture target
-		tapGesture.addTarget(self, action: #selector(changeColourTag))
-		tableView.addGestureRecognizer(tapGesture)
+//		tapGesture.delegate = self
+		doubleTapGesture.delegate = self
+//		tapGesture.addTarget(self, action: #selector(animateCellTap))
+		doubleTapGesture.addTarget(self, action: #selector(changeColourTag))
+		doubleTapGesture.numberOfTapsRequired = 2
+//		tableView.addGestureRecognizer(tapGesture)
+		tableView.addGestureRecognizer(doubleTapGesture)
+		
 	}
 	
 	
@@ -97,7 +104,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 		let task = (indexPath.section == 0) ? taskDataStore.tasks[indexPath.row] : taskDataStore.completedTasks[indexPath.row]
 		cell.configure(title: task.taskName!, description: task.taskDescription!, isCompleted: task.isCompleted, hasDueDate: task.hasDueDate, isOverdue: task.isOverdue, colourTag: task.tagColor!)
 		cell.checkBox.addTarget(self, action: #selector(checkBoxCheck(sender:)), for: UIControl.Event.touchUpInside)
-		// cell.addGestureRecognizer(tapGesture)
+//		cell.addGestureRecognizer(tapGesture)
 		task.taskIndex = Int32(indexPath.row)
 		taskDataStore.application.saveContext()
 		return cell
@@ -109,24 +116,48 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 		let tapLocation = sender.location(in: tableView)
 		guard let tapIndexPath = tableView.indexPathForRow(at: tapLocation) else { return }
 		let cell = tableView.cellForRow(at: tapIndexPath) as! TaskCell
-		let task = taskDataStore.tasks[tapIndexPath.row]
+		let task = tapIndexPath.section == 0 ? taskDataStore.tasks[tapIndexPath.row] : taskDataStore.completedTasks[tapIndexPath.row]
 
 		if sender.state == .ended {
 			
+			if tapIndexPath.section == 1 {
+				cell.animateTap()
+				return
+			} else {
 				switch task.tagColor {
 				case TagColours.white:
+					task.tagColor = TagColours.yellow
+					cell.updateColour(colourTag: task.tagColor!, isOverdue: task.isOverdue)
+				case TagColours.yellow:
 					task.tagColor = TagColours.blue
-					cell.updateColour(colourTag: task.tagColor!)
+					cell.updateColour(colourTag: task.tagColor!, isOverdue: task.isOverdue)
 				case TagColours.blue:
 					task.tagColor = TagColours.white
-					cell.updateColour(colourTag: task.tagColor!)
+					cell.updateColour(colourTag: task.tagColor!, isOverdue: task.isOverdue)
 				default:
 					task.tagColor = TagColours.white
 				}
+			}
+			
 			taskDataStore.application.saveContext()
 		}
 		
 	}
+	
+//	@objc func animateCellTap() {
+//		let tapLocation = tapGesture.location(in: tableView)
+//		guard let tapIndexPath = tableView.indexPathForRow(at: tapLocation) else { return }
+//		let cell = tableView.cellForRow(at: tapIndexPath) as! TaskCell
+//
+//		print("tap triggered")
+//
+//		UIView.animate(withDuration: 0.1) {
+//			cell.containerView.transform = CGAffineTransform(scaleX: 0.98, y: 0.98)
+//		}
+//		UIView.animate(withDuration: 0.1, delay: 0.1, options: UIView.AnimationOptions.beginFromCurrentState, animations: {
+//			cell.containerView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+//		}, completion: nil)
+//	}
 	
 	
     // Add actions when table row is swiped from left or right
@@ -300,7 +331,12 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
         task.isCompleted = !task.isCompleted
 		taskDataStore.manageNotification(forTask: task)
 		
-        setSelectionStatus(cell: cell, checked: task.isCompleted)
+		if task.isCompleted {
+			cell.setChecked()
+		} else {
+			cell.setUnchecked(tagColour: task.tagColor!, isOverdue: task.isOverdue)
+		}
+		
 		hapticNotification.selectionChanged()
 		taskDataStore.application.saveContext()
 		
@@ -395,13 +431,34 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 		configureTable()
 	}
 	
-	func setSelectionStatus(cell: TaskCell, checked: Bool) {
-		if checked {
-			cell.setChecked()
-		} else{
-			cell.setUnchecked()
-		}
-	}
+//	func setSelectionStatus(cell: TaskCell, checked: Bool) {
+//		if checked {
+//			cell.setChecked()
+//		} else{
+//			cell.setUnchecked()
+//		}
+//	}
+	
+
+
+//	func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+//		if gestureRecognizer == self.tapGesture && otherGestureRecognizer == self.doubleTapGesture {
+//			return true
+//		} else {
+//			return false
+//		}
+//	}
+	
+//	func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+//		
+//		let cell = TaskCell()
+//		
+//		if gestureRecognizer == cell.tap && otherGestureRecognizer == doubleTapGesture {
+//			return true
+//		}
+//		
+//		return false
+//	}
 	
 
 }

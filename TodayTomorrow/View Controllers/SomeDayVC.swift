@@ -255,7 +255,13 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
 		task.isCompleted = !task.isCompleted
 		taskDataStore.manageNotification(forTask: task)
 		
-		setSelectionStatus(cell: cell, checked: task.isCompleted)
+		if task.isCompleted {
+			cell.setChecked()
+		} else {
+			cell.setUnchecked(tagColour: task.tagColor!, isOverdue: task.isOverdue)
+		}
+		
+//		setSelectionStatus(cell: cell, checked: task.isCompleted)
 		notification.selectionChanged()
 		taskDataStore.application.saveContext()
 		
@@ -334,13 +340,13 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
 		configureTable()
 	}
 	
-	func setSelectionStatus(cell: TaskCell, checked: Bool) {
-		if checked {
-			cell.setChecked()
-		} else{
-			cell.setUnchecked()
-		}
-	}
+//	func setSelectionStatus(cell: TaskCell, checked: Bool) {
+//		if checked {
+//			cell.setChecked()
+//		} else{
+//			cell.setUnchecked()
+//		}
+//	}
 
 
 
