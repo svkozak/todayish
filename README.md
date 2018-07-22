@@ -2,7 +2,7 @@
 
 ### Simple task manager that lets you quickly add to-dos, complete important ones today and postpone others to some other day.
 
-![Download](appstore.svg)
+[![Download on the AppStore](appstore.svg)](https://itunes.apple.com/us/app/todayish/id1396367169)
 
 * Local CoreData storage
 * Tableview left and right swipe actions
