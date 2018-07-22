@@ -2,6 +2,8 @@
 
 ### Simple task manager that lets you quickly add to-dos, complete important ones today and postpone others to some other day.
 
+
+
 * Quickly add tasks to two main lists - Today and Some day
 * Swipe tasks to edit or easily move them between lists
 * Add optional task descriptions
