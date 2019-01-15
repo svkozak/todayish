@@ -93,7 +93,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	
 	// MARK: - Application lifecycle
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 		
 		// taskDataStore = TaskDataStore.shared
@@ -185,7 +185,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let content = UNMutableNotificationContent()
 		content.title = title
 		content.body = "You asked to remind about this."
-		content.sound = UNNotificationSound.default()
+		content.sound = UNNotificationSound.default
 		
 		let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
 		

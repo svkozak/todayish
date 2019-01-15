@@ -23,7 +23,7 @@ class TaskCell: UITableViewCell {
 //	}
 	
 	func setChecked () {
-		checkBox.setImage(UIImage(named: "grey-selected")?.withRenderingMode(.alwaysTemplate), for: UIControlState.normal)
+		checkBox.setImage(UIImage(named: "grey-selected")?.withRenderingMode(.alwaysTemplate), for: UIControl.State.normal)
 		checkBox.imageView?.tintColor = UIColor.lightGray
 		checkBox.imageView?.tintColor = UIColor.lightGray
 		taskTitleLabel.textColor = UIColor.lightGray
@@ -32,7 +32,7 @@ class TaskCell: UITableViewCell {
 	}
 	
 	func setUnchecked() {
-		checkBox.setImage(UIImage(named: "darkgrey-deselected")?.withRenderingMode(.alwaysTemplate), for: UIControlState.normal)
+		checkBox.setImage(UIImage(named: "darkgrey-deselected")?.withRenderingMode(.alwaysTemplate), for: UIControl.State.normal)
 		checkBox.imageView?.tintColor = Colours.mainTextColor
 		taskTitleLabel.textColor = Colours.mainTextColor
 		taskDescriptionLabel.textColor = Colours.mainTextColor
@@ -84,7 +84,7 @@ class TaskCell: UITableViewCell {
 		UIView.animate(withDuration: 0.1) {
 			self.containerView.transform = CGAffineTransform(scaleX: 0.98, y: 0.98)
 		}
-		UIView.animate(withDuration: 0.1, delay: 0.1, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+		UIView.animate(withDuration: 0.1, delay: 0.1, options: UIView.AnimationOptions.beginFromCurrentState, animations: {
 				self.containerView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
 		}, completion: nil)
 	}

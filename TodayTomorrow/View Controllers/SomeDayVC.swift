@@ -60,7 +60,7 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
 		
 		if taskDataStore.postponedOpenTasks.count == 0 && taskDataStore.postponedCompletedTasks.count == 0 {
 			tableView.isHidden = true
-			UIView.animate(withDuration: 0.3, delay: 0.5, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+			UIView.animate(withDuration: 0.3, delay: 0.5, options: UIView.AnimationOptions.beginFromCurrentState, animations: {
 				self.placeholderView.alpha = 1
 			}, completion: nil)
 		} else {
@@ -82,7 +82,7 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
 		let cell = tableView.dequeueReusableCell(withIdentifier: "someDayTaskCell") as! TaskCell
 		let task = (indexPath.section == 0) ? taskDataStore.postponedOpenTasks[indexPath.row] : taskDataStore.postponedCompletedTasks[indexPath.row]
 		cell.configure(title: task.taskName!, description: task.taskDescription!, isCompleted: task.isCompleted, hasDueDate: task.hasDueDate, isOverdue: task.isOverdue)
-		cell.checkBox.addTarget(self, action: #selector(checkBoxCheck(_:)), for: UIControlEvents.touchUpInside)
+		cell.checkBox.addTarget(self, action: #selector(checkBoxCheck(_:)), for: UIControl.Event.touchUpInside)
 		task.taskIndex = Int32(indexPath.row)
 		taskDataStore.application.saveContext()
 		return cell
@@ -129,8 +129,8 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		
 		let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "TableHeaderView") as! TableHeaderView
-		headerView.headerButton.addTarget(self, action: #selector(showCompleted), for: UIControlEvents.allEvents)
-		headerView.headerClearButton.addTarget(self, action: #selector(deleteCompletedTasks(_:)), for: UIControlEvents.allEvents)
+		headerView.headerButton.addTarget(self, action: #selector(showCompleted), for: UIControl.Event.allEvents)
+		headerView.headerClearButton.addTarget(self, action: #selector(deleteCompletedTasks(_:)), for: UIControl.Event.allEvents)
 		headerView.isHidden = (taskDataStore.postponedCompletedTasks.count == 0) ? true : false
 		
 		let title = showingCompleted ? "\(LocalizedStrings.hideCompleted) (\(taskDataStore.postponedCompletedTasks.count))" : "\(LocalizedStrings.showCompleted) (\(taskDataStore.postponedCompletedTasks.count))"
@@ -141,7 +141,7 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
 	
 	@objc func showCompleted() {
 		showingCompleted = !showingCompleted
-		tableView.reloadSections([1], with: UITableViewRowAnimation.fade)
+		tableView.reloadSections([1], with: UITableView.RowAnimation.fade)
 		configureTable()
 	}
 
@@ -196,7 +196,7 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
 			}
 			
 			taskDataStore.application.saveContext()
-			self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+			self.tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
 			
 		}) { (true) in
 			self.taskDataStore.getData()
@@ -215,7 +215,7 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
 			task.taskIndex = 9999
 			taskDataStore.postponedOpenTasks.remove(at: indexPath.row)
 			taskDataStore.application.saveContext()
-			self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.bottom)
+			self.tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.bottom)
 		}) { (true) in
 			self.taskDataStore.getData()
 			self.configureTable()
@@ -263,11 +263,11 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
 		tableView.performBatchUpdates({
 			if indexPath?.section == 0 {
 				taskDataStore.postponedOpenTasks.remove(at: (indexPath?.row)!)
-				tableView.deleteRows(at: [indexPath!], with: UITableViewRowAnimation.fade)
+				tableView.deleteRows(at: [indexPath!], with: UITableView.RowAnimation.fade)
 				
 			} else {
 				taskDataStore.postponedCompletedTasks.remove(at: (indexPath?.row)!)
-				tableView.deleteRows(at: [indexPath!], with: UITableViewRowAnimation.fade)
+				tableView.deleteRows(at: [indexPath!], with: UITableView.RowAnimation.fade)
 				
 			}
 		}) { (true) in
@@ -312,7 +312,7 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
 	// MARK: - Helper functions
 	
 	func configureTable() {
-		tableView.rowHeight = UITableViewAutomaticDimension
+		tableView.rowHeight = UITableView.automaticDimension
 		tableView.reloadData()
 	}
 
