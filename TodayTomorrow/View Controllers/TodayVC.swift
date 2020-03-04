@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarControllerDelegate, UIGestureRecognizerDelegate, ModalHandlerDelegate {
+class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarControllerDelegate, UIGestureRecognizerDelegate, ModalHandlerDelegate, UIPopoverPresentationControllerDelegate {
     
     // MARK: - Properties
     
@@ -65,10 +65,10 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 //        tapGesture.delegate = self
         doubleTapGesture.delegate = self
 //        tapGesture.addTarget(self, action: #selector(animateCellTap))
-        doubleTapGesture.addTarget(self, action: #selector(changeColourTag))
+        
         doubleTapGesture.numberOfTapsRequired = 2
 //        tableView.addGestureRecognizer(tapGesture)
-        tableView.addGestureRecognizer(doubleTapGesture)
+        // tableView.addGestureRecognizer(doubleTapGesture)
         
     }
     
@@ -104,7 +104,8 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
         let task = (indexPath.section == 0) ? taskDataStore.tasks[indexPath.row] : taskDataStore.completedTasks[indexPath.row]
 		cell.configure(title: task.taskName!, description: task.taskDescription!, isCompleted: task.isCompleted, hasDueDate: task.hasDueDate, isOverdue: task.isOverdue)
         cell.checkBox.addTarget(self, action: #selector(checkBoxCheck(sender:)), for: UIControl.Event.touchUpInside)
-//        cell.addGestureRecognizer(tapGesture)
+        cell.addGestureRecognizer(doubleTapGesture)
+        doubleTapGesture.addTarget(self, action: #selector(showLabelsPopover))
         task.taskIndex = Int32(indexPath.row)
         taskDataStore.application.saveContext()
         return cell
@@ -211,6 +212,13 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
             headerView.headerClearButton.isHidden = showingCompleted ? false : true
             return headerView
     }
+    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let cell = tableView.cellForRow(at: indexPath) as! TaskCell
+//        let view = cell.containerView
+//        cell.animateTap()
+//        showLabelsPopover(controllerView: view!)
+//    }
     
     @objc func showCompleted() {
         showingCompleted = !showingCompleted
@@ -334,7 +342,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
         if task.isCompleted {
             cell.setChecked()
         } else {
-            cell.setUnchecked(tagColour: task.tagColor!, isOverdue: task.isOverdue)
+            cell.setUnchecked()
         }
         
         hapticNotification.selectionChanged()
@@ -367,7 +375,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 
         for task in taskDataStore.completedTasks {
             taskDataStore.context.delete(task)
-            taskDataStore.completedTasks.remove(at: taskDataStore.completedTasks.index(of: task)!)
+            taskDataStore.completedTasks.remove(at: taskDataStore.completedTasks.firstIndex(of: task)!)
             taskDataStore.application.saveContext()
         }
         hapticNotification.selectionChanged()
@@ -429,6 +437,31 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
         removeBlur()
         taskDataStore.getData()
         configureTable()
+    }
+    
+    @objc func showLabelsPopover() {
+        
+        print("double tapped")
+        
+        let controllerV = doubleTapGesture.view
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let labelsVC = storyboard.instantiateViewController(withIdentifier: "labelsPopoverVC")
+        
+        labelsVC.modalPresentationStyle = .popover
+        labelsVC.popoverPresentationController?.sourceView = controllerV
+        labelsVC.popoverPresentationController?.sourceRect = controllerV!.frame
+        labelsVC.popoverPresentationController?.canOverlapSourceViewRect = false
+        labelsVC.popoverPresentationController?.permittedArrowDirections = [UIPopoverArrowDirection.up, UIPopoverArrowDirection.down]
+        labelsVC.popoverPresentationController?.delegate = self
+        
+        self.present(labelsVC, animated: true, completion: nil)
+    }
+    
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        
+        return UIModalPresentationStyle.none
     }
     
 //    func setSelectionStatus(cell: TaskCell, checked: Bool) {

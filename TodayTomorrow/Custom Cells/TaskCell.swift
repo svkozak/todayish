@@ -53,8 +53,8 @@ class TaskCell: UITableViewCell {
 		self.reminderImageView.image = UIImage(named: "alarmclock")?.withRenderingMode(.alwaysTemplate)
 		self.reminderImageView.tintColor = Colours.mainTextColor
 		
-		tapGesture.addTarget(self, action: #selector(animateTap))
-		self.containerView.addGestureRecognizer(tapGesture)
+//        tap.addTarget(self, action: #selector(animateTap))
+//        self.containerView.addGestureRecognizer(tap)
         
         self.taskTitleLabel.text = title
         
@@ -68,12 +68,12 @@ class TaskCell: UITableViewCell {
         
         self.reminderImageView.isHidden = hasDueDate ? false : true
         
-        updateColour(colourTag: colourTag, isOverdue: isOverdue)
+//        updateColour(colourTag: colourTag, isOverdue: isOverdue)
         
         if isCompleted {
             self.setChecked()
         } else {
-            self.setUnchecked(tagColour: colourTag, isOverdue: isOverdue)
+//            self.setUnchecked(tagColour: colourTag, isOverdue: isOverdue)
         }
         
         

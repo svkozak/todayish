@@ -141,7 +141,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
 		saveContext()
 
 		tableView.performBatchUpdates({
-			tasks.remove(at: tasks.index(of: task)!)
+			tasks.remove(at: tasks.firstIndex(of: task)!)
 			tableView.deleteRows(at: [indexPath!], with: UITableView.RowAnimation.fade)
 		}) { (true) in
 			self.getData()

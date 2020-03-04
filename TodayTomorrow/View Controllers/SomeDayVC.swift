@@ -258,7 +258,7 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         if task.isCompleted {
             cell.setChecked()
         } else {
-            cell.setUnchecked(tagColour: task.tagColor!, isOverdue: task.isOverdue)
+            cell.setUnchecked()
         }
         
 //        setSelectionStatus(cell: cell, checked: task.isCompleted)
@@ -290,7 +290,7 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     @IBAction func deleteCompletedTasks(_ sender: UIButton) {
         for task in taskDataStore.postponedCompletedTasks {
             taskDataStore.context.delete(task)
-            taskDataStore.postponedCompletedTasks.remove(at: taskDataStore.postponedCompletedTasks.index(of: task)!)
+            taskDataStore.postponedCompletedTasks.remove(at: taskDataStore.postponedCompletedTasks.firstIndex(of: task)!)
             taskDataStore.application.saveContext()
         }
         notification.selectionChanged()
