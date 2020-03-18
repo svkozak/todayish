@@ -46,7 +46,7 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		modalView.layer.cornerRadius = 5
-		modalView.layer.shadowColor = UIColor.lightGray.cgColor
+        modalView.layer.shadowColor = UIColor(named: "shadowColour")?.cgColor
 		modalView.layer.shadowOffset = CGSize(width: 4, height: 4)
 		modalView.layer.shadowRadius = 20
 		modalView.layer.shadowOpacity = 1
@@ -64,7 +64,7 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 			
 			if taskToEdit?.taskDescription == "" {
 				taskDescriptionField.text = LocalizedStrings.description
-				taskDescriptionField.textColor = Colours.placeholderLightGray
+				taskDescriptionField.textColor = Colours.mainTextColor
 			} else {
 				taskDescriptionField.text = taskToEdit?.taskDescription
 				taskDescriptionField.textColor = Colours.mainTextColor
@@ -113,6 +113,10 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 		// date picker
 		datePicker.addTarget(self, action: #selector(didSelectDate), for: UIControl.Event.valueChanged)
 		remiderField.inputView = datePicker
+        remiderField.attributedPlaceholder = NSAttributedString.init(string: LocalizedStrings.remind, attributes: [
+                NSAttributedString.Key.foregroundColor : UIColor(named: "mainTextColour")!,
+                NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .thin)
+        ])
 		
 		moreButton.addTarget(self, action: #selector(showMore), for: .touchUpInside)
 		taskDescriptionField.isHidden = true
@@ -136,7 +140,7 @@ class TaskVC: UIViewController, UITextViewDelegate, UITextFieldDelegate {
         taskDescriptionField.resignFirstResponder()
         if taskDescriptionField.text == "" {
             taskDescriptionField.text = LocalizedStrings.description
-			taskDescriptionField.textColor = Colours.placeholderLightGray
+			taskDescriptionField.textColor = Colours.mainTextColor
         }
     }
 

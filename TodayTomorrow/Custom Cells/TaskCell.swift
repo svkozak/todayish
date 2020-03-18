@@ -18,17 +18,13 @@ class TaskCell: UITableViewCell {
     
     var tap = UITapGestureRecognizer()
     
-//    func checkBoxCheck() {
-//        print("pressed")
-//    }
-    
     func setChecked () {
         checkBox.setImage(UIImage(named: "grey-selected")?.withRenderingMode(.alwaysTemplate), for: UIControl.State.normal)
-        checkBox.imageView?.tintColor = UIColor.lightGray
-        checkBox.imageView?.tintColor = UIColor.lightGray
-        taskTitleLabel.textColor = UIColor.lightGray
-        taskDescriptionLabel.textColor = UIColor.lightGray
-        reminderImageView.tintColor = UIColor.lightGray
+        checkBox.imageView?.tintColor = Colours.completedColor
+        checkBox.imageView?.tintColor = Colours.completedColor
+        taskTitleLabel.textColor = Colours.completedColor
+        taskDescriptionLabel.textColor = Colours.completedColor
+        reminderImageView.tintColor = Colours.completedColor
     }
     
 	func setUnchecked() {
@@ -41,7 +37,7 @@ class TaskCell: UITableViewCell {
     
 	func configure(title: String, description: String, isCompleted: Bool, hasDueDate: Bool, isOverdue: Bool ) {
         
-        self.containerView.layer.shadowColor = UIColor.lightGray.cgColor
+        self.containerView.layer.shadowColor = UIColor(named: "shadowColour")?.cgColor
         self.containerView.layer.shadowOffset = CGSize(width: 1, height: 1)
         self.containerView.layer.shadowRadius = 2
         self.containerView.layer.shadowOpacity = 0.3
@@ -53,8 +49,8 @@ class TaskCell: UITableViewCell {
 		self.reminderImageView.image = UIImage(named: "alarmclock")?.withRenderingMode(.alwaysTemplate)
 		self.reminderImageView.tintColor = Colours.mainTextColor
 		
-//        tap.addTarget(self, action: #selector(animateTap))
-//        self.containerView.addGestureRecognizer(tap)
+        tap.addTarget(self, action: #selector(animateTap))
+        self.containerView.addGestureRecognizer(tap)
         
         self.taskTitleLabel.text = title
         
@@ -73,6 +69,7 @@ class TaskCell: UITableViewCell {
         if isCompleted {
             self.setChecked()
         } else {
+            self.setUnchecked()
 //            self.setUnchecked(tagColour: colourTag, isOverdue: isOverdue)
         }
         

@@ -35,6 +35,13 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        if #available(iOS 13.0, *) {
+            blurEffect.effect = UIBlurEffect(style: .systemUltraThinMaterial)
+        } else {
+            blurEffect.effect = UIBlurEffect(style: .regular)
+        }
+        blurEffect.contentView.alpha = 0.8
+        
         taskDataStore.application.someDayVC = self
         
         tableView.register(UINib(nibName: "TaskCell", bundle: nil), forCellReuseIdentifier: "someDayTaskCell")
@@ -108,12 +115,13 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         let deleteTask = UIContextualAction(style: .destructive, title: LocalizedStrings.delete) { (action, view, handler) in
             self.deleteTask(atIndexPath: indexPath)
         }
+        deleteTask.backgroundColor = Colours.mainRed
         
         let editTask = UIContextualAction(style: .normal, title: LocalizedStrings.edit) { (action, view, handler) in
             let cell = self.tableView.cellForRow(at: indexPath) as! TaskCell
             self.performSegue(withIdentifier: "showEditTask", sender: cell)
         }
-        editTask.backgroundColor = Colours.mainTextColor
+        editTask.backgroundColor = Colours.editActionColor
         let configuration = UISwipeActionsConfiguration(actions: [deleteTask, editTask])
         configuration.performsFirstActionWithFullSwipe = true
         return configuration
@@ -325,12 +333,13 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
     func applyBlur() {
         UIView.animate(withDuration: 0.3) {
             self.blurEffect.alpha = 0.8
+            self.blurEffect.isHidden = false
         }
     }
     
     func removeBlur() {
         UIView.animate(withDuration: 0.3) {
-            self.blurEffect.alpha = 0
+            self.blurEffect.isHidden = true
         }
     }
     

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="T8u-18-ecZ">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="T8u-18-ecZ">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dtk-zj-NxK">
-                                <rect key="frame" x="0.0" y="20" width="375" height="80"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qqU-RD-bFS">
                                         <rect key="frame" x="17" y="31" width="350" height="41"/>
@@ -27,13 +26,14 @@
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.94999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ewv-lD-DYw">
                                                 <rect key="frame" x="0.0" y="0.0" width="350" height="41"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="34"/>
-                                                <color key="textColor" red="0.17254901960784313" green="0.24313725490196078" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="textColor" name="titleColour"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
+                                        <color key="backgroundColor" name="backGroundColour"/>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.96078431372549022" green="0.96862745098039216" blue="0.98039215686274506" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="backgroundColor" name="backGroundColour"/>
                                 <constraints>
                                     <constraint firstItem="qqU-RD-bFS" firstAttribute="leading" secondItem="dtk-zj-NxK" secondAttribute="leading" constant="17" id="8Fw-a4-Oif"/>
                                     <constraint firstAttribute="height" constant="80" id="Hxh-dl-Qcs"/>
@@ -42,13 +42,13 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Hqf-Ym-cqS" userLabel="Placeholder text">
-                                <rect key="frame" x="50" y="233" width="275" height="201"/>
+                                <rect key="frame" x="50" y="158" width="275" height="351"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tree" translatesAutoresizingMaskIntoConstraints="NO" id="9XG-rV-qi8">
-                                        <rect key="frame" x="67.5" y="0.0" width="140" height="150"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="275" height="300"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a new task and swipe existing tasks for more options." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHn-GD-z6u">
-                                        <rect key="frame" x="0.0" y="160" width="275" height="41"/>
+                                        <rect key="frame" x="0.0" y="310" width="275" height="41"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -61,10 +61,10 @@
                                 </constraints>
                             </stackView>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="50" estimatedRowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="B7D-ct-Pgv">
-                                <rect key="frame" x="0.0" y="100" width="375" height="458"/>
-                                <color key="backgroundColor" red="0.96078431369999995" green="0.96862745100000003" blue="0.98039215690000003" alpha="1" colorSpace="deviceRGB"/>
+                                <rect key="frame" x="0.0" y="80" width="375" height="478"/>
+                                <color key="backgroundColor" name="backGroundColour"/>
                                 <gestureRecognizers/>
-                                <color key="separatorColor" red="0.96078431369999995" green="0.96862745100000003" blue="0.98039215690000003" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="separatorColor" name="backGroundColour"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TodayTaskCell" rowHeight="55" id="dbK-gs-bov" customClass="TodayTaskCell" customModule="TodayTomorrow" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="55"/>
@@ -72,9 +72,9 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dbK-gs-bov" id="Uz1-Pd-XpX">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" name="backGroundColour"/>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" name="backGroundColour"/>
                                         <gestureRecognizers/>
                                     </tableViewCell>
                                 </prototypes>
@@ -98,7 +98,10 @@
                                                             <constraint firstAttribute="height" constant="30" id="dYK-hm-VSW"/>
                                                             <constraint firstAttribute="width" constant="30" id="lBN-M7-iyK"/>
                                                         </constraints>
-                                                        <state key="normal" image="today"/>
+                                                        <color key="tintColor" name="tabIconColour"/>
+                                                        <state key="normal" image="today">
+                                                            <color key="titleColor" name="tabIconColour"/>
+                                                        </state>
                                                         <connections>
                                                             <action selector="didTapBottomButton:" destination="9pv-A4-QxB" eventType="touchUpInside" id="7na-A1-BO9"/>
                                                         </connections>
@@ -106,7 +109,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tXR-8f-6UF">
                                                         <rect key="frame" x="11" y="33" width="34" height="14.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                        <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="textColor" name="tabIconColour"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -120,7 +123,9 @@
                                                     <constraint firstAttribute="width" constant="50" id="YKX-mT-cda"/>
                                                     <constraint firstAttribute="height" constant="50" id="bPm-ZU-g37"/>
                                                 </constraints>
-                                                <state key="normal" image="add-large"/>
+                                                <state key="normal" image="add-large">
+                                                    <color key="titleShadowColor" name="shadowColour"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="didTapBottomButton:" destination="9pv-A4-QxB" eventType="touchUpInside" id="GAF-Tg-pQJ"/>
                                                 </connections>
@@ -134,15 +139,19 @@
                                                             <constraint firstAttribute="width" constant="30" id="7qP-vS-LxX"/>
                                                             <constraint firstAttribute="height" constant="30" id="cEb-ON-rQy"/>
                                                         </constraints>
-                                                        <state key="normal" image="someday"/>
+                                                        <color key="tintColor" name="tabIconColour"/>
+                                                        <state key="normal" image="someday">
+                                                            <color key="titleColor" name="tabIconColour"/>
+                                                        </state>
                                                         <connections>
                                                             <action selector="didTapBottomButton:" destination="9pv-A4-QxB" eventType="touchUpInside" id="bHT-27-fqV"/>
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yaz-tW-tWd">
                                                         <rect key="frame" x="0.0" y="33" width="56" height="14.5"/>
+                                                        <color key="tintColor" name="tabIconColour"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                        <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="textColor" name="tabIconColour"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -153,7 +162,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="tabBarColour"/>
                                 <constraints>
                                     <constraint firstItem="uty-gu-sWa" firstAttribute="leading" secondItem="cgV-8U-pL9" secondAttribute="leading" constant="20" id="UFY-WH-Fea"/>
                                     <constraint firstItem="uty-gu-sWa" firstAttribute="top" secondItem="cgV-8U-pL9" secondAttribute="top" constant="5" id="iiS-eC-u0f"/>
@@ -161,17 +170,17 @@
                                     <constraint firstAttribute="height" constant="110" id="o2I-BP-gJx"/>
                                 </constraints>
                             </view>
-                            <visualEffectView opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sgy-DE-q72">
+                            <visualEffectView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sgy-DE-q72">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="qxu-LW-BT9">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <gestureRecognizers/>
                                 </view>
-                                <blurEffect style="light"/>
+                                <blurEffect style="systemMaterial"/>
                             </visualEffectView>
                         </subviews>
-                        <color key="backgroundColor" red="0.96078431369999995" green="0.96862745100000003" blue="0.98039215690000003" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" name="backGroundColour"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Hqf-Ym-cqS" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="5cn-dv-QOL"/>
@@ -238,11 +247,11 @@
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="UQD-ZD-0v2">
                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="44"/>
-                                                <color key="backgroundColor" red="0.96078431369999995" green="0.96862745100000003" blue="0.98039215690000003" alpha="1" colorSpace="deviceRGB"/>
+                                                <color key="backgroundColor" name="cellColour"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="b1l-mg-iaq"/>
                                                 </constraints>
-                                                <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="textColor" name="mainTextColour"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                 <userDefinedRuntimeAttributes>
@@ -261,16 +270,16 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
                                                 <state key="normal" title="More">
-                                                    <color key="titleColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="titleColor" name="titleColour"/>
                                                 </state>
                                             </button>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" keyboardDismissMode="onDrag" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ndw-6B-3zY">
                                                 <rect key="frame" x="0.0" y="94" width="355" height="44"/>
-                                                <color key="backgroundColor" red="0.96078431369999995" green="0.96862745100000003" blue="0.98039215690000003" alpha="1" colorSpace="deviceRGB"/>
+                                                <color key="backgroundColor" name="cellColour"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="gaQ-t9-uKS"/>
                                                 </constraints>
-                                                <color key="textColor" red="0.7803921568627451" green="0.7803921568627451" blue="0.80392156862745101" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="textColor" name="mainTextColour"/>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <userDefinedRuntimeAttributes>
@@ -284,11 +293,11 @@
                                             </textView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Reminder (optional)" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ZBn-vw-Xqa">
                                                 <rect key="frame" x="0.0" y="148" width="355" height="44"/>
-                                                <color key="backgroundColor" red="0.96078431369999995" green="0.96862745100000003" blue="0.98039215690000003" alpha="1" colorSpace="deviceRGB"/>
+                                                <color key="backgroundColor" name="cellColour"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="InI-CG-6JE"/>
                                                 </constraints>
-                                                <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="textColor" name="mainTextColour"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
@@ -314,7 +323,7 @@
                                         </constraints>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="drawerColour"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="bUA-NZ-OJ1" secondAttribute="trailing" constant="10" id="cRk-RY-XjK"/>
                                     <constraint firstItem="bUA-NZ-OJ1" firstAttribute="leading" secondItem="4B2-8T-6gj" secondAttribute="leading" constant="10" id="jsh-BF-G0Y"/>
@@ -383,7 +392,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SOt-Sy-Ttv" userLabel="Top bar">
-                                <rect key="frame" x="0.0" y="20" width="375" height="80"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YMG-Ro-rG7">
                                         <rect key="frame" x="16" y="31" width="351" height="41"/>
@@ -391,13 +400,13 @@
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.94999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some day" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="27a-Q4-uRH">
                                                 <rect key="frame" x="0.0" y="0.0" width="351" height="41"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="34"/>
-                                                <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="textColor" name="titleColour"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.96078431369999995" green="0.96862745100000003" blue="0.98039215690000003" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="backgroundColor" name="backGroundColour"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="YMG-Ro-rG7" secondAttribute="trailing" constant="8" id="KHz-Hd-SAJ"/>
                                     <constraint firstItem="YMG-Ro-rG7" firstAttribute="leading" secondItem="SOt-Sy-Ttv" secondAttribute="leading" constant="16" id="bcT-wo-znI"/>
@@ -406,13 +415,13 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="22t-zG-vYS" userLabel="Placeholder">
-                                <rect key="frame" x="50" y="233" width="275" height="201"/>
+                                <rect key="frame" x="50" y="158" width="275" height="351"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bench" translatesAutoresizingMaskIntoConstraints="NO" id="Yea-U9-Aq6">
-                                        <rect key="frame" x="67.5" y="0.0" width="140" height="150"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="275" height="300"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a new task and swipe existing tasks for more options." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53u-lj-Ceg">
-                                        <rect key="frame" x="6.5" y="160" width="262.5" height="41"/>
+                                        <rect key="frame" x="7" y="310" width="261" height="41"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -420,8 +429,8 @@
                                 </subviews>
                             </stackView>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="55" estimatedRowHeight="55" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0xb-mr-ekj">
-                                <rect key="frame" x="0.0" y="100" width="375" height="518"/>
-                                <color key="backgroundColor" red="0.96078431369999995" green="0.96862745100000003" blue="0.98039215690000003" alpha="1" colorSpace="deviceRGB"/>
+                                <rect key="frame" x="0.0" y="80" width="375" height="538"/>
+                                <color key="backgroundColor" name="backGroundColour"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="someDayTaskCell" rowHeight="70" id="czE-56-CC1" userLabel="SomeDayTaskCell" customClass="TaskCell" customModule="TodayTomorrow" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="70"/>
@@ -453,7 +462,10 @@
                                                             <constraint firstAttribute="width" constant="30" id="SSf-qk-mWx"/>
                                                             <constraint firstAttribute="height" constant="30" id="dwb-Nq-9p1"/>
                                                         </constraints>
-                                                        <state key="normal" image="today"/>
+                                                        <color key="tintColor" name="tabIconColour"/>
+                                                        <state key="normal" image="today">
+                                                            <color key="titleColor" name="tabIconColour"/>
+                                                        </state>
                                                         <connections>
                                                             <action selector="didTapBottomButton:" destination="9pv-A4-QxB" eventType="touchUpInside" id="00d-ex-VDY"/>
                                                             <action selector="didTapBottomButton:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="jo5-qn-J27"/>
@@ -461,8 +473,9 @@
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uc5-7F-4dF">
                                                         <rect key="frame" x="11" y="33" width="34" height="14.5"/>
+                                                        <color key="tintColor" name="tabIconColour"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                        <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="textColor" name="tabIconColour"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -476,7 +489,9 @@
                                                     <constraint firstAttribute="height" constant="50" id="Mkw-N0-37Q"/>
                                                     <constraint firstAttribute="width" constant="50" id="OVj-9G-nLu"/>
                                                 </constraints>
-                                                <state key="normal" image="add-large"/>
+                                                <state key="normal" image="add-large">
+                                                    <color key="titleShadowColor" name="shadowColour"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="didTapBottomButton:" destination="9pv-A4-QxB" eventType="touchUpInside" id="ZXV-yc-gc2"/>
                                                     <action selector="didTapBottomButton:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="spL-fq-TXS"/>
@@ -491,7 +506,10 @@
                                                             <constraint firstAttribute="height" constant="30" id="4eO-6Y-VCm"/>
                                                             <constraint firstAttribute="width" constant="30" id="tes-Xp-pVo"/>
                                                         </constraints>
-                                                        <state key="normal" image="someday"/>
+                                                        <color key="tintColor" name="tabIconColour"/>
+                                                        <state key="normal" image="someday">
+                                                            <color key="titleColor" name="tabIconColour"/>
+                                                        </state>
                                                         <connections>
                                                             <action selector="didTapBottomButton:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="65Q-ea-axX"/>
                                                             <action selector="didTapBottomButton:" destination="9pv-A4-QxB" eventType="touchUpInside" id="T21-kt-IUQ"/>
@@ -499,8 +517,9 @@
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xPU-wZ-U11">
                                                         <rect key="frame" x="0.0" y="33" width="56" height="14.5"/>
+                                                        <color key="tintColor" name="tabIconColour"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                        <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="textColor" name="tabIconColour"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -511,7 +530,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="tabBarColour"/>
                                 <constraints>
                                     <constraint firstItem="lfc-MH-HFa" firstAttribute="top" secondItem="qMg-id-OdI" secondAttribute="top" constant="5" id="2Ni-Su-hDf"/>
                                     <constraint firstItem="lfc-MH-HFa" firstAttribute="leading" secondItem="qMg-id-OdI" secondAttribute="leading" constant="20" id="6m3-12-FAP"/>
@@ -519,16 +538,16 @@
                                     <constraint firstAttribute="trailing" secondItem="lfc-MH-HFa" secondAttribute="trailing" constant="20" id="voc-HD-jWF"/>
                                 </constraints>
                             </view>
-                            <visualEffectView opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zBN-Gg-cii">
+                            <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zBN-Gg-cii">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="U0m-m5-bOY">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
-                                <blurEffect style="light"/>
+                                <blurEffect style="systemUltraThinMaterial"/>
                             </visualEffectView>
                         </subviews>
-                        <color key="backgroundColor" red="0.96078431369999995" green="0.96862745100000003" blue="0.98039215690000003" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" name="backGroundColour"/>
                         <constraints>
                             <constraint firstItem="qMg-id-OdI" firstAttribute="trailing" secondItem="O1u-W8-tvY" secondAttribute="trailing" id="6OY-mC-to1"/>
                             <constraint firstItem="0xb-mr-ekj" firstAttribute="top" secondItem="SOt-Sy-Ttv" secondAttribute="bottom" id="6U1-fP-kuW"/>
@@ -597,8 +616,32 @@
         <image name="someday" width="30" height="30"/>
         <image name="today" width="30" height="30"/>
         <image name="tree" width="140" height="150"/>
+        <namedColor name="backGroundColour">
+            <color red="0.96078431372549022" green="0.96862745098039216" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="cellColour">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="drawerColour">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="mainTextColour">
+            <color red="0.17254901960784313" green="0.24313725490196078" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="shadowColour">
+            <color white="0.66699999570846558" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+        <namedColor name="tabBarColour">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="tabIconColour">
+            <color red="0.17254901960784313" green="0.24313725490196078" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="titleColour">
+            <color red="0.17254901960784313" green="0.24313725490196078" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="suC-bh-Sv1"/>
+        <segue reference="Hoj-NG-ie7"/>
     </inferredMetricsTieBreakers>
 </document>

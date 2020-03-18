@@ -49,8 +49,15 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
         
         taskDataStore.application.todayVC = self
         
+        if #available(iOS 13.0, *) {
+            blurEffect.effect = UIBlurEffect(style: .systemUltraThinMaterial)
+        } else {
+            blurEffect.effect = UIBlurEffect(style: .regular)
+        }
+        blurEffect.contentView.alpha = 0.8
+        
         // button shadow
-        largeButton.layer.shadowColor = UIColor.lightGray.cgColor
+        largeButton.layer.shadowColor = UIColor(named: "shadowColour")?.cgColor
         largeButton.layer.shadowOffset = CGSize(width: 1, height: 1)
         largeButton.layer.shadowRadius = 3
         largeButton.layer.shadowOpacity = 0.4
@@ -187,7 +194,7 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
             let cell = self.tableView.cellForRow(at: indexPath) as! TaskCell
             self.performSegue(withIdentifier: "showEditTask", sender: cell)
         }
-        editTask.backgroundColor = Colours.mainTextColor
+        editTask.backgroundColor = Colours.editActionColor
         let configuration = UISwipeActionsConfiguration(actions: [deleteTask, editTask])
         configuration.performsFirstActionWithFullSwipe = true
         return configuration
@@ -424,12 +431,13 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
     func applyBlur() {
         UIView.animate(withDuration: 0.3) {
             self.blurEffect.alpha = 0.8
+            self.blurEffect.isHidden = false
         }
     }
     
     func removeBlur() {
         UIView.animate(withDuration: 0.3) {
-            self.blurEffect.alpha = 0
+            self.blurEffect.isHidden = true
         }
     }
     
@@ -441,21 +449,21 @@ class TodayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
     
     @objc func showLabelsPopover() {
         
-        print("double tapped")
-        
-        let controllerV = doubleTapGesture.view
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let labelsVC = storyboard.instantiateViewController(withIdentifier: "labelsPopoverVC")
-        
-        labelsVC.modalPresentationStyle = .popover
-        labelsVC.popoverPresentationController?.sourceView = controllerV
-        labelsVC.popoverPresentationController?.sourceRect = controllerV!.frame
-        labelsVC.popoverPresentationController?.canOverlapSourceViewRect = false
-        labelsVC.popoverPresentationController?.permittedArrowDirections = [UIPopoverArrowDirection.up, UIPopoverArrowDirection.down]
-        labelsVC.popoverPresentationController?.delegate = self
-        
-        self.present(labelsVC, animated: true, completion: nil)
+//        print("double tapped")
+//
+//        let controllerV = doubleTapGesture.view
+//
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let labelsVC = storyboard.instantiateViewController(withIdentifier: "labelsPopoverVC")
+//
+//        labelsVC.modalPresentationStyle = .popover
+//        labelsVC.popoverPresentationController?.sourceView = controllerV
+//        labelsVC.popoverPresentationController?.sourceRect = controllerV!.frame
+//        labelsVC.popoverPresentationController?.canOverlapSourceViewRect = false
+//        labelsVC.popoverPresentationController?.permittedArrowDirections = [UIPopoverArrowDirection.up, UIPopoverArrowDirection.down]
+//        labelsVC.popoverPresentationController?.delegate = self
+//
+//        self.present(labelsVC, animated: true, completion: nil)
     }
     
     
