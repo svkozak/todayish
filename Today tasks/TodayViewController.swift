@@ -43,8 +43,8 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
 		}
 	}
 	
-	let unchecked = UIImage(named: "darkgrey-deselected")
-	let checked = UIImage(named: "darkgrey-selected")
+    let unchecked = UIImage(named: "darkgrey-deselected")?.withRenderingMode(.alwaysTemplate)
+    let checked = UIImage(named: "darkgrey-selected")?.withRenderingMode(.alwaysTemplate)
 	var tasks: [Task] = []
 	
 	@IBOutlet weak var tableView: UITableView!
@@ -59,6 +59,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
 		// allow widget to be larger size
 		self.extensionContext?.widgetLargestAvailableDisplayMode = .compact
 		self.preferredContentSize = CGSize(width: self.view.frame.width, height: 100)
+    
 		
 		// get data from storage
 		getData()
@@ -110,8 +111,10 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! WidgetTableViewCell
 		cell.titleLabel.text = tasks[indexPath.row].taskName
+        cell.titleLabel.textColor = UIColor(named: "mainTextColour")
 		cell.descriptionLabel.text = tasks[indexPath.row].taskDescription
 		tasks[indexPath.row].isCompleted ? cell.checkBox.setImage(checked, for: UIControl.State.normal) : cell.checkBox.setImage(unchecked, for: .normal)
+        cell.checkBox.imageView?.tintColor = UIColor(named: "mainTextColour")
 		return cell
 	}
 	

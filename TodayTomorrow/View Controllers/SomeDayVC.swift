@@ -48,7 +48,7 @@ class SomeDayVC: UIViewController, UITableViewDataSource, UITableViewDelegate, U
         tableView.register(UINib(nibName: "TableHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "TableHeaderView")
         
         // button shadow
-        largeButton.layer.shadowColor = UIColor.lightGray.cgColor
+        largeButton.layer.shadowColor = UIColor(named: "shadowColour")?.cgColor
         largeButton.layer.shadowOffset = CGSize(width: 1, height: 1)
         largeButton.layer.shadowRadius = 3
         largeButton.layer.shadowOpacity = 0.4
